@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Ray Blog</title>
+        <link>http://localhost:1313/posts/</link>
+        <description>Recent content in Posts on Ray Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Ray</copyright>
+        <lastBuildDate>Sun, 20 Nov 2022 09:03:20 -0800</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>我的第一篇文章</title>
+        <link>http://localhost:1313/posts/my-first-post/</link>
+        <pubDate>Sun, 20 Nov 2022 09:03:20 -0800</pubDate>
+        
+        <guid>http://localhost:1313/posts/my-first-post/</guid>
+        <description>&lt;h2 id=&#34;简介&#34;&gt;简介
+&lt;/h2&gt;&lt;p&gt;这是 &lt;strong&gt;粗体&lt;/strong&gt; 文本，这是 &lt;em&gt;斜体&lt;/em&gt; 文本。&lt;/p&gt;
+&lt;p&gt;访问 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo&lt;/a&gt; 网站！&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title></title>
+        <link>http://localhost:1313/posts/test-post/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/posts/test-post/</guid>
+        <description>&lt;!--
+ * @Author: Ray
+ * @Date: 2025-02-28 00:48:40
+ * @LastEditors: Ray
+ * @LastEditTime: 2025-02-28 00:50:05
+ * @Description: 请填写简介
+--&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;draft-true&#34;&gt;title: &amp;ldquo;Test Post&amp;rdquo;
+description:
+date: 2025-02-28T00:48:40+08:00
+image:
+math:
+license:
+hidden: false
+comments: true
+draft: true
+&lt;/h2&gt;&lt;h1 id=&#34;test-for-post&#34;&gt;test for post
+&lt;/h1&gt;&lt;p&gt;说点什么好呢
+写个小故事吧&lt;/p&gt;
+&lt;!-- Start Generation Here --&gt;
+&lt;h2 id=&#34;这是一个测试文章&#34;&gt;这是一个测试文章
+&lt;/h2&gt;&lt;p&gt;这篇文章是为了测试 Hugo 博客的功能。我们可以在这里添加更多的内容，比如代码示例、图片或其他媒体。&lt;/p&gt;
+&lt;h3 id=&#34;示例代码&#34;&gt;示例代码
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello, World!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;示例图片&#34;&gt;示例图片
+&lt;/h3&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
