@@ -1,1 +1,1 @@
-[]
+[{"content":"test for post\r说点什么好呢 写个小故事吧\n这是一个测试文章\r这篇文章是为了测试 Hugo 博客的功能。我们可以在这里添加更多的内容，比如代码示例、图片或其他媒体。\n示例代码\r1 print(\u0026#34;Hello, World!\u0026#34;) 示例图片\r","date":"2025-02-28T00:48:40+08:00","permalink":"http://localhost:1313/posts/test-post/","title":"Test Post"},{"content":"简介\r这是 粗体 文本，这是 斜体 文本。\n访问 Hugo 网站！\n","date":"2025-02-25T23:48:40+08:00","permalink":"http://localhost:1313/posts/my-first-post/","title":"我的第一篇文章"}]
