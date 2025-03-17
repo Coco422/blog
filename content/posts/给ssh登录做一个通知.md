@@ -24,53 +24,76 @@ draft: false
 注意关键词的设置
 
 ```sh
-# 编辑/etc/ssh/sshrc文件，如果没有自行新建一个sshrc文件
+# 编辑/etc/ssh/sshrc文件 最后更新时间 2025-03-17 11:09:34
 
-#获取登录者的用户名
+# 设置日志文件
+LOG_FILE="/tmp/ssh_notification_debug.log"
 
-user=$USER
-
-#获取登录IP地址
-
-ip=${SSH_CLIENT%% *}
-
-#获取登录的时间
-
-time=$(date +%F%t%k:%M)
-
-#服务器的IP地址和自定义名称
-
-server='47.119.51.122-aliyun-lc99'
-
-  
-
-function DingDingalarm(){
-
-#生成的钉钉机器人的地址。
-
-local url="https://oapi.dingtalk.com/robot/send?access_token=f469bee0141a8edc7b465b85c6e91caf22fbcc0881c2e3c311b2bdfd4aa8abb6"
-
-  
-
-local UA="Mozilla/5.0(WindowsNT6.2;WOW64)AppleWebKit/535.24(KHTML,likeGecko)Chrome/19.0.1055.1Safari/535.24"
-
-  
-
-# 修改为markdown格式
-
-local res=`curl -XPOST -s -L -H"Content-Type:application/json" -H"charset:utf-8" $url -d"{\"msgtype\":\"markdown\",\"markdown\":{\"title\":\"$1\",\"text\":\"$2\"}}"`
-
-  
-
-echo $res
-
+# 记录详细日志的函数
+log_debug() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [PID:$$] [SSH_TTY:$SSH_TTY] [PPID:$PPID] $1" >> "$LOG_FILE"
 }
 
-  
+# 记录脚本启动
+log_debug "脚本开始执行 ===================="
+log_debug "SSH_CLIENT: $SSH_CLIENT"
+
+# 获取登录者的用户名
+user=$USER
+# 获取登录IP地址
+ip=${SSH_CLIENT%% *}
+
+# 创建基于用户、IP和当前小时的锁文件名
+# 这样同一IP同一用户每小时只会通知一次
+current_hour=$(date +%Y%m%d%H)
+LOCK_FILE="/tmp/ssh_notify_${user}_${ip}_${current_hour}"
+GLOBAL_LOCK="/tmp/ssh_notification.lock"
+
+log_debug "检查锁文件: $LOCK_FILE"
+
+# 简化的锁定机制，兼容dash shell
+if [ -f "$LOCK_FILE" ]; then
+    log_debug "本小时已经为用户${user}从IP${ip}发送过通知"
+    echo "Welcome back. The administrator has already been notified of your login this hour."
+    exit 0
+fi
+
+# 创建锁定文件
+touch "$LOCK_FILE"
+log_debug "已创建锁文件: $LOCK_FILE"
+
+# 获取登录的时间
+time=$(date +%F%t%k:%M)
+# 服务器的IP地址和自定义名称
+server='204-ray-server-in-mckj'
+
+# 修改函数声明语法，使其兼容Dash
+DingDingalarm() {
+    log_debug "开始发送钉钉通知"
+    local url="https://oapi.dingtalk.com/robot/send?access_token=钉钉token"
+    local UA="Mozilla/5.0(WindowsNT6.2;WOW64)AppleWebKit/535.24(KHTML,likeGecko)Chrome/19.0.1055.1Safari/535.24"
+    local res
+    res=$(curl -XPOST -s -L -H"Content-Type:application/json" -H"charset:utf-8" "$url" -d "{\"msgtype\":\"markdown\",\"markdown\":{\"title\":\"$1\",\"text\":\"$2\"}}")
+    if [ $? -eq 0 ]; then
+        log_debug "钉钉通知发送成功: $res"
+        echo "钉钉通知已发送，结果：$res"
+        echo "Notification sent to admin."
+    else
+        log_debug "钉钉通知发送失败: $res"
+        echo "钉钉通知发送失败，错误信息：$res"
+    fi
+}
 
 # 使用Markdown格式美化通知内容
+message="### 🔔 服务器登录通知 🔔\n\n**时间**：<font color='#FF5722'>$time</font>\n\n**服务器**：<font color='#2196F3'>$server</font>\n\n**用户**：<font color='#4CAF50'>$user</font>\n\n**来源IP**：<font color='#9C27B0'>$ip</font>\n\n**会话信息**：TTY=$SSH_TTY, PID=$$, PPID=$PPID\n\n> Please make sure to check if this login is expected."
+DingDingalarm "服务器登录通知" "$message"
 
-DingDingalarm "服务器登录通知" "### 🔔 服务器登录通知 🔔\n\n**时间**：<font color='#FF5722'>$time</font>\n\n**服务器**：<font color='#2196F3'>$server</font>\n\n**用户**：<font color='#4CAF50'>$user</font>\n\n**来源IP**：<font color='#9C27B0'>$ip</font>\n\n> 请注意检查此次登录是否为您的预期操作"
+# 打印日志，通知管理员并告知操作将被记录
+echo "The administrator has been notified. All actions will be logged."
+log_debug "通知完成，脚本结束 ===================="
+
+# 要定期清理锁文件，请使用以下命令设置cron作业（在root权限下执行一次）：
+# echo "5 * * * * root find /tmp -name 'ssh_notify_*' -type f -mmin +60 -delete" > /etc/cron.d/clean_ssh_locks
 ```
 
 ### 小插曲
