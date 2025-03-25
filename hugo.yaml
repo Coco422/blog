@@ -31,7 +31,7 @@ services:
         # id:
 
 pagination:
-    pagerSize: 3
+    pagerSize: 8 # 一页展示多少篇
 
 permalinks:
     post: /p/:slug/
@@ -70,7 +70,7 @@ params:
 
     comments:
         enabled: true
-        provider: disqus
+        provider: waline
 
         disqusjs:
             shortname:
@@ -105,8 +105,8 @@ params:
 
         # Waline client configuration see: https://waline.js.org/en/reference/component.html
         waline:
-            serverURL:
-            lang:
+            serverURL: https://anluoying.com/
+            lang: zh-CN
             pageview:
             emoji:
                 - https://unpkg.com/@waline/emojis@1.0.1/weibo
@@ -198,7 +198,12 @@ params:
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-    main: []
+    main:
+        - identifier: home
+          name: Home
+          url: /
+          params:
+              icon: home
 
     social:
         - identifier: github
