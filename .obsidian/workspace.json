@@ -11,14 +11,10 @@
             "id": "e13148bfe467a5e2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "obs_sctipts/DashBoard.md",
-                "mode": "preview",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "DashBoard"
+              "title": "新标签页"
             }
           }
         ]
@@ -94,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "obs_sctipts/DashBoard.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +99,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "DashBoard 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -113,12 +108,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "obs_sctipts/DashBoard.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "DashBoard 的出链列表"
+              "title": "出链"
             }
           },
           {
@@ -170,8 +164,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e13148bfe467a5e2",
+  "active": "04c77bc5d2f55874",
   "lastOpenFiles": [
+    "obs_scripts/NewBlog.js",
+    "obs_scripts/DashBoard.md",
+    "obs_scripts",
     "content/posts/2025m3d25h15m40s26.md",
     "obs_sctipts/DashBoard.md",
     "content/posts/2025m3d25h15m16s25.md",
