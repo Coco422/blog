@@ -2,8 +2,8 @@
 title: "Win 常用开发环境安装"
 description: 
 date: 2025-03-21T23:14:48+08:00
-image: 
-math: 
+tags: ["windows","环境"]
+categories: ["杂技浅尝"]
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true

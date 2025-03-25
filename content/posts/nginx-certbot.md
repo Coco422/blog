@@ -2,8 +2,8 @@
 title: "Nginx Certbot"
 description: 
 date: 2025-03-25T13:00:59+08:00
-image: 
-math: 
+tags: ["nginx"]
+categories: ["杂技浅尝"]
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true

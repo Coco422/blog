@@ -2,9 +2,8 @@
 title: "Nginx 记一次基础转发配置"
 description: 
 date: 2025-03-24T18:10:53+08:00
-image: 
-math: 
-license: 
+tags: ["nginx"]
+categories: ["杂技浅尝"]
 hidden: false
 comments: true
 draft: false

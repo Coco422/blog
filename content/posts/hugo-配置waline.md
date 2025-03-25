@@ -4,6 +4,8 @@ description:
 date: 2025-03-25T13:04:24+08:00
 image: 
 math: 
+tags: ["hugo"]
+categories: ["杂技浅尝"]
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true

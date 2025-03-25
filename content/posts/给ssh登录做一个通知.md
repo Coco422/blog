@@ -2,9 +2,8 @@
 title: "给ssh登录做一个通知"
 description: 有人 ssh 登录服务器时发送消息给我的钉钉
 date: 2025-03-13T18:14:31+08:00
-image: 
-math: true
-license: 
+tags: ["linux","ssh"]
+categories: ["杂技浅尝"]
 hidden: false
 comments: true
 draft: false

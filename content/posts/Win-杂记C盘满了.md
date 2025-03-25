@@ -2,8 +2,8 @@
 title: "Win 杂记C盘满了"
 description: 
 date: 2025-03-22T19:15:00+08:00
-image: 
-math: 
+tags: ["windows","环境"]
+categories: ["杂技浅尝"]
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
