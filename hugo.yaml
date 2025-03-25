@@ -200,6 +200,7 @@ params:
 menu:
     main:
         - identifier: home
+          weight: -100
           name: Home
           url: /
           params:
