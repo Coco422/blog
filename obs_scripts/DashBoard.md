@@ -30,17 +30,17 @@ color blue
 class .self-btn
 ```
 ```button
-name ⬆️ 提交博客
+name 🆕 提交博客
 type command
-action Git: add .
-color purple
+action Git: Commit all changes
+color green
 class .self-btn
 ```
 ```button
 name ⏫ 发布博客
 type command
 action Git: Push
-color purple
+color red
 class .self-btn
 ```
 ```button

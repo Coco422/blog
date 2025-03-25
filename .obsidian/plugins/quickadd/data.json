@@ -6,6 +6,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "3d1ff6c0-5f2a-4aaa-91d3-bcca9cf30479"
+    },
+    {
+      "id": "9dba1800-21f6-41fd-b1cd-9c9115d14815",
+      "name": "预览博客",
+      "type": "Macro",
+      "command": true,
+      "macroId": "b0667f8a-603a-4283-ab22-63c04d0d2059"
     }
   ],
   "macros": [
@@ -18,6 +25,20 @@
           "type": "UserScript",
           "id": "9efded63-8b25-4c37-b2e4-52168c425f5c",
           "path": "obs_scripts/NewBlog.js",
+          "settings": {}
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "预览博客",
+      "id": "b0667f8a-603a-4283-ab22-63c04d0d2059",
+      "commands": [
+        {
+          "name": "SeeBlog",
+          "type": "UserScript",
+          "id": "6f3140ec-fab4-4d6e-8369-3e7a3b758c4d",
+          "path": "obs_scripts/SeeBlog.js",
           "settings": {}
         }
       ],

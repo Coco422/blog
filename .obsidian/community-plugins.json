@@ -4,5 +4,8 @@
   "homepage",
   "obsidian-charts",
   "buttons",
-  "obsidian-git"
+  "obsidian-git",
+  "obsidian-auto-link-title",
+  "obsidian-emoji-toolbar",
+  "obsidian-image-auto-upload-plugin"
 ]

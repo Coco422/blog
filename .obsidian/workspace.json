@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "obs_scripts/DashBoard.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -182,21 +182,23 @@
   },
   "active": "b9ef257061108c14",
   "lastOpenFiles": [
+    "content/posts/obsidian+hugo.md",
+    "public/tags/obsidian/page/1/index.html",
+    "public/tags/obsidian/page/1",
+    "public/tags/obsidian/page",
+    "public/tags/obsidian/index.xml",
+    "public/tags/obsidian/index.html",
+    "public/tags/obsidian",
+    "public/posts/obsidian+hugo/index.html",
+    "public/posts/obsidian+hugo",
+    "obs_scripts/DashBoard.md",
+    "obs_scripts/SeeBlog.js",
     "content/posts/测试 obs.md",
     "public/posts/测试-obs/index.html",
-    "public/posts/测试-obs",
-    "public/posts/2025m3d25h16m32s12/index.html",
-    "public/posts/2025m3d25h16m32s12",
-    "obs_scripts/DashBoard.md",
     "obs_sctipts/DashBoard.md",
-    "obs_scripts/NewBlog.js",
-    "obs_scripts",
     "content/posts/2025m3d25h15m40s26.md",
     "content/posts/2025m3d25h15m16s25.md",
     "content/posts/2025m3d25h15m39s51.md",
-    "index.html",
-    "obs_sctipts/NewBlog.js",
-    "obs_sctipts/NewBlog.js.md",
-    "obs_sctipts"
+    "obs_sctipts/NewBlog.js.md"
   ]
 }
