@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b03e0b478a4d176b",
+        "id": "79622368aef9fb83",
         "type": "tabs",
         "children": [
           {
-            "id": "e13148bfe467a5e2",
+            "id": "b9ef257061108c14",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "obs_scripts/DashBoard.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "DashBoard"
             }
           }
         ]
@@ -90,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "obs_scripts/DashBoard.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "DashBoard 的反向链接列表"
             }
           },
           {
@@ -108,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "obs_scripts/DashBoard.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "出链"
+              "title": "DashBoard 的出链列表"
             }
           },
           {
@@ -136,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "obs_sctipts/DashBoard.md",
+                "file": "obs_scripts/DashBoard.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -144,9 +150,19 @@
               "icon": "lucide-list",
               "title": "DashBoard 的大纲"
             }
+          },
+          {
+            "id": "b85b9f6c7eefd95d",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -164,13 +180,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "04c77bc5d2f55874",
+  "active": "b9ef257061108c14",
   "lastOpenFiles": [
-    "obs_scripts/NewBlog.js",
+    "content/posts/测试 obs.md",
+    "public/posts/测试-obs/index.html",
+    "public/posts/测试-obs",
+    "public/posts/2025m3d25h16m32s12/index.html",
+    "public/posts/2025m3d25h16m32s12",
     "obs_scripts/DashBoard.md",
+    "obs_sctipts/DashBoard.md",
+    "obs_scripts/NewBlog.js",
     "obs_scripts",
     "content/posts/2025m3d25h15m40s26.md",
-    "obs_sctipts/DashBoard.md",
     "content/posts/2025m3d25h15m16s25.md",
     "content/posts/2025m3d25h15m39s51.md",
     "index.html",

@@ -16,8 +16,8 @@
         {
           "name": "NewBlog",
           "type": "UserScript",
-          "id": "7c9bcc8f-6217-4873-ac9b-c9057c0770f7",
-          "path": "obs_sctipts/NewBlog.js",
+          "id": "9efded63-8b25-4c37-b2e4-52168c425f5c",
+          "path": "obs_scripts/NewBlog.js",
           "settings": {}
         }
       ],
