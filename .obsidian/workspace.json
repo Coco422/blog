@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "602be6afa3f0371d",
+    "id": "5324373015726ba8",
     "type": "split",
     "children": [
       {
-        "id": "79622368aef9fb83",
+        "id": "b744c618c00ca3d4",
         "type": "tabs",
         "children": [
           {
-            "id": "b9ef257061108c14",
+            "id": "8188e0e112c0f325",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 225.5
   },
   "right": {
     "id": "79f6061288492d73",
@@ -166,10 +166,12 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
+      "quickadd:QuickAdd": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -180,8 +182,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b9ef257061108c14",
+  "active": "8188e0e112c0f325",
   "lastOpenFiles": [
+    "content/posts/vite-press食用指南.md",
+    "obs_scripts/DashBoard.md",
+    "content/posts/python-fst-rag.md",
+    "content/posts/nginx-反代.md",
+    "content/posts/nginx-基础.md",
+    "content/posts/nginx-记一次基础转发配置.md",
+    "content/posts/linux-用户管理.md",
+    "content/posts/linux-screen.md",
+    "content/posts/自签证书.md",
     "content/posts/obsidian+hugo.md",
     "public/tags/obsidian/page/1/index.html",
     "public/tags/obsidian/page/1",
@@ -191,7 +202,6 @@
     "public/tags/obsidian",
     "public/posts/obsidian+hugo/index.html",
     "public/posts/obsidian+hugo",
-    "obs_scripts/DashBoard.md",
     "obs_scripts/SeeBlog.js",
     "content/posts/测试 obs.md",
     "public/posts/测试-obs/index.html",
