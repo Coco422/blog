@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b744c618c00ca3d4",
+        "id": "a6949b24b5618e8a",
         "type": "tabs",
         "children": [
           {
-            "id": "8188e0e112c0f325",
+            "id": "a977f855d38b851e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -182,10 +182,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8188e0e112c0f325",
+  "active": "a977f855d38b851e",
   "lastOpenFiles": [
-    "content/posts/vite-press食用指南.md",
+    "content/posts/安装 Ubuntu.md",
     "obs_scripts/DashBoard.md",
+    "content/posts/阿里云服务器初始化.md",
+    "content/posts/vite-press食用指南.md",
     "content/posts/python-fst-rag.md",
     "content/posts/nginx-反代.md",
     "content/posts/nginx-基础.md",
