@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4f05a3197a522d7c",
+        "id": "36c0db1ea80b5f96",
         "type": "tabs",
         "children": [
           {
-            "id": "f5fc9134dc843ed5",
+            "id": "fed161df1589803c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -182,10 +182,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f5fc9134dc843ed5",
+  "active": "fed161df1589803c",
   "lastOpenFiles": [
-    "content/posts/weclone 跟风.md",
+    "content/posts/自动部署前端项目.md",
     "obs_scripts/DashBoard.md",
+    "content/posts/weclone 跟风.md",
     "content/posts/老朋友 Wireshark 在 mac 上抓包 https.md",
     "content/posts/Harbor 部署记录.md",
     "content/posts/git漏提交了怎么办.md",
