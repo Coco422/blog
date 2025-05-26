@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "36c0db1ea80b5f96",
+        "id": "50375be13daf3e9a",
         "type": "tabs",
         "children": [
           {
-            "id": "fed161df1589803c",
+            "id": "daea96eaee08bf6b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "203",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -182,17 +183,32 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fed161df1589803c",
+  "active": "daea96eaee08bf6b",
   "lastOpenFiles": [
+    "content/posts/vite-press食用指南.md",
+    " 2/67f76cebbf55e.png",
+    " 2/67f76b00d7589.png",
+    " 2",
+    "/ 2",
+    "content/posts/阿里云服务器初始化.md",
     "content/posts/自动部署前端项目.md",
-    "obs_scripts/DashBoard.md",
+    " 1/682f32de4bb90.png",
+    " 1/682ee7cf4fbe8.png",
+    " 1/682ee7746ff99.png",
+    " 1/682ee5d6a1773.png",
+    " 1",
+    "/ 1",
+    "content/posts/git漏提交了怎么办.md",
+    "content/posts/obsidian+hugo.md",
     "content/posts/weclone 跟风.md",
+    "content/posts/Win-常用开发环境安装.md",
+    "content/posts/Win-杂记C盘满了.md",
+    "content/posts/安装 Ubuntu.md",
+    "content/posts/给ssh登录做一个通知.md",
     "content/posts/老朋友 Wireshark 在 mac 上抓包 https.md",
     "content/posts/Harbor 部署记录.md",
-    "content/posts/git漏提交了怎么办.md",
-    "content/posts/安装 Ubuntu.md",
-    "content/posts/阿里云服务器初始化.md",
-    "content/posts/vite-press食用指南.md",
+    "public/img/avatar_hu_3864c7486b877814.png",
+    "obs_scripts/DashBoard.md",
     "content/posts/python-fst-rag.md",
     "content/posts/nginx-反代.md",
     "content/posts/nginx-基础.md",
@@ -200,22 +216,16 @@
     "content/posts/linux-用户管理.md",
     "content/posts/linux-screen.md",
     "content/posts/自签证书.md",
-    "content/posts/obsidian+hugo.md",
     "public/tags/obsidian/page/1/index.html",
     "public/tags/obsidian/page/1",
     "public/tags/obsidian/page",
     "public/tags/obsidian/index.xml",
     "public/tags/obsidian/index.html",
     "public/tags/obsidian",
-    "public/posts/obsidian+hugo/index.html",
-    "public/posts/obsidian+hugo",
-    "obs_scripts/SeeBlog.js",
     "content/posts/测试 obs.md",
-    "public/posts/测试-obs/index.html",
     "obs_sctipts/DashBoard.md",
     "content/posts/2025m3d25h15m40s26.md",
     "content/posts/2025m3d25h15m16s25.md",
-    "content/posts/2025m3d25h15m39s51.md",
-    "obs_sctipts/NewBlog.js.md"
+    "content/posts/2025m3d25h15m39s51.md"
   ]
 }

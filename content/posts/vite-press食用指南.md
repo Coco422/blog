@@ -71,7 +71,7 @@ bun run docs:dev
 
 随后在页面中打开就能看到美丽的文档界面了，怪像一回事儿的，以下截图我已经略微修改过了，跟着官方文档改 index.md 文件就能看到对首页的改动了。
 
-![image.png](http://203.86.7.109:7791/uploads/2025/04/10/67f76b00d7589.png)
+![67f76b00d7589](https://imgbed.anluoying.com/2025/05/9dd7f3f1024cd6778d2b0af73ea59e48.png)
 
 ## 部署 github pages
 
@@ -102,7 +102,7 @@ base 最早是使用`/` 但是当我部署后出现了各种资源 404 的情况
 
 github 的仓库中要设置 pages，这里我跟踪 build from main 分支的 root 路径 根据需求调整
 
-![image.png](http://203.86.7.109:7791/uploads/2025/04/10/67f76cebbf55e.png)
+![67f76cebbf55e](https://imgbed.anluoying.com/2025/05/78aea1ecb7e9528312657e2567432df8.png)
 
 随后推送之后就能等待流程完成。最后访问给到的地址就能看到页面咯
 [Ray-Doc](https://coco422.github.io/ray-doc/)
