@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "50375be13daf3e9a",
+        "id": "9059108130e87f5a",
         "type": "tabs",
         "children": [
           {
-            "id": "daea96eaee08bf6b",
+            "id": "1a722386d24c4a0a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "203",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -183,15 +182,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "daea96eaee08bf6b",
+  "active": "1a722386d24c4a0a",
   "lastOpenFiles": [
+    "content/posts/PG connect 字符串错误.md",
+    "obs_scripts/DashBoard.md",
+    "content/posts/自动部署前端项目.md",
     "content/posts/vite-press食用指南.md",
     " 2/67f76cebbf55e.png",
     " 2/67f76b00d7589.png",
     " 2",
     "/ 2",
     "content/posts/阿里云服务器初始化.md",
-    "content/posts/自动部署前端项目.md",
     " 1/682f32de4bb90.png",
     " 1/682ee7cf4fbe8.png",
     " 1/682ee7746ff99.png",
@@ -208,7 +209,6 @@
     "content/posts/老朋友 Wireshark 在 mac 上抓包 https.md",
     "content/posts/Harbor 部署记录.md",
     "public/img/avatar_hu_3864c7486b877814.png",
-    "obs_scripts/DashBoard.md",
     "content/posts/python-fst-rag.md",
     "content/posts/nginx-反代.md",
     "content/posts/nginx-基础.md",
