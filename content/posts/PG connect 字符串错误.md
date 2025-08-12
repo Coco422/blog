@@ -60,7 +60,7 @@ Node.js v22.12.0
 
 可以在 Node.js 或 bash 中使用如下代码快速生成 percent‑encoding 版本：
 
-```
+```bash
 > encodeURIComponent('abc#12345')
 " abc%12345 "
 ```
