@@ -71,13 +71,6 @@ params:
     hiddenInSingle: true # hide on single page
 
   comments: true
-  waline:
-    serverURL: https://waline.anluoying.com/   # <-- your endpoint
-    lang: zh-CN
-    pageview: true
-    emoji:
-      - https://unpkg.com/@waline/emojis@1.0.1/weibo
-    requiredMeta: [name, email]
 # --------------------未配置--------------------------
 
   ShowRssButtonInSectionTermList: true

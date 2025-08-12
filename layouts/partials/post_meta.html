@@ -12,11 +12,12 @@
 {{- $scratch.Add "meta" (slice (i18n "words" .WordCount | default (printf "%d words" .WordCount))) }}
 {{- end }}
 
+<!-- 
 {{- /* Waline: add views & comments into meta list */ -}}
 {{- $path := .RelPermalink -}}
 {{- $views := printf "<span class='waline-meta waline-views' title='Views'><span class='waline-pageview-count' data-path='%s'>0</span>&nbsp;%s</span>" $path (i18n "views" | default "views") -}}
 {{- $comments := printf "<span class='waline-meta waline-comments' title='Comments'><span class='waline-comment-count' data-path='%s'>0</span>&nbsp;%s</span>" $path (i18n "comments" | default "comments") -}}
-{{- $scratch.Add "meta" (slice $views $comments) -}}
+{{- $scratch.Add "meta" (slice $views $comments) -}} -->
 
 
 {{- if not (.Param "hideAuthor") -}}
