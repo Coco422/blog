@@ -1,257 +1,153 @@
 baseurl: https://blog.anluoying.com/
-languageCode: zh-cn
-theme: PaperMod
 title: 安落滢 Blog
-copyright: 安落滢
-
-# Theme i18n support
-# Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
-DefaultContentLanguage: zh-cn
-
-# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
-# This will make .Summary and .WordCount behave correctly for CJK languages.
-hasCJKLanguage: true
-
-languages:
-
-    zh-cn:
-        languageName: 中文
-        title: 安落滢 Blog
-        weight: 2
-        params:
-            sidebar:
-                subtitle: 只今只道只今句，梅子熟时栀子香
-
-services:
-    # Change it to your Disqus shortname before using
-    # disqus:
-        # shortname: "hugo-theme-stack"
-    # GA Tracking ID
-    # googleAnalytics:
-        # id:
-
 pagination:
-    pagerSize: 8 # 一页展示多少篇
+  pagerSize: 5
+theme: PaperMod
 
-permalinks:
-    post: /p/:slug/
-    page: /:slug/
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
 
 params:
-    mainSections:
-        - posts
-    featuredImageField: image
-    rssFullContent: true
-    favicon: /favicon.ico
 
-    footer:
-        since: 2025
-        customText: 碎碎念集合
+# 已配置内容
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: 安落滢 Blog
+  description: "安落滢 Blog - A blog about technology, life, and everything in between."
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Ray
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+  # 这几个还没搞懂
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  # 到此为止
 
-    dateFormat:
-        published: Jan 02, 2006
-        lastUpdated: Jan 02, 2006 15:04 MST
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  showtoc: true
+  tocopen: false
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  
+  # home-info mode
+  homeInfoParams:
+    Title: "Hi there 👋"
+    Content: Welcome to my blog, my name is Ray. I am a software developer and this is my personal blog where I share my thoughts, experiences, and projects. Feel free to explore and connect with me!
 
-    sidebar:
-        emoji: 🤓
-        subtitle: 只今只道只今句，梅子熟时栀子香
-        avatar:
-            enabled: true
-            local: true
-            src: img/avatar.png
+  socialIcons:
+    - name: x
+      url: "https://x.com/@Anluoying"
+    - name: github
+      url: "https://github.com/coco422"
 
-    article:
-        math: true
-        toc: true
-        readingTime: true
-        license:
-            enabled: true
-            default: Licensed under CC BY-NC-SA 4.0
+  outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # necessary for search
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
 
-    comments:
-        enabled: true
-        provider: waline
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
 
-        disqusjs:
-            shortname:
-            apiUrl:
-            apiKey:
-            admin:
-            adminLabel:
+  comments: true
+  waline:
+    serverURL: https://waline.anluoying.com/   # <-- your endpoint
+    lang: zh-CN
+    pageview: true
+    emoji:
+      - https://unpkg.com/@waline/emojis@1.0.1/weibo
+    requiredMeta: [name, email]
+# --------------------未配置--------------------------
 
-        utterances:
-            repo:
-            issueTerm: pathname
-            label:
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  hidemeta: false
+  hideSummary: false
 
-        beaudar:
-            repo:
-            issueTerm: pathname
-            label:
-            theme:
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "<link / abs url>"
+    favicon16x16: "<link / abs url>"
+    favicon32x32: "<link / abs url>"
+    apple_touch_icon: "<link / abs url>"
+    safari_pinned_tab: "<link / abs url>"
 
-        remark42:
-            host:
-            site:
-            locale:
+  label:
+    text: "Home"
+    icon: /apple-touch-icon.png
+    iconHeight: 35
 
-        vssue:
-            platform:
-            owner:
-            repo:
-            clientId:
-            clientSecret:
-            autoCreateIssue: false
+  analytics:
+    google:
+      SiteVerificationTag: "ray521980"
+    bing:
+      SiteVerificationTag: "ray521980"
+    yandex:
+      SiteVerificationTag: "ray521980"
 
-        # Waline client configuration see: https://waline.js.org/en/reference/component.html
-        waline:
-            serverURL: https://waline.anluoying.com/
-            lang: zh-CN
-            pageview:
-            emoji:
-                - https://unpkg.com/@waline/emojis@1.0.1/weibo
-            requiredMeta:
-                - name
-                - email
-            locale:
-                admin: Admin
-                placeholder:
-            
+  editPost:
+    URL: "https://github.com/Coco422/blog/tree/main/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
 
-        twikoo:
-            envId:
-            region:
-            path:
-            lang:
-
-        # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
-        cactus:
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
-            serverName: "cactus.chat"
-            siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
-
-        giscus:
-            repo:
-            repoID:
-            category:
-            categoryID:
-            mapping:
-            lightTheme:
-            darkTheme:
-            reactionsEnabled: 1
-            emitMetadata: 0
-
-        gitalk:
-            owner:
-            admin:
-            repo:
-            clientID:
-            clientSecret:
-            proxy:
-
-        cusdis:
-            host:
-            id:
-    widgets:
-        homepage:
-            - type: search
-            - type: archives
-              params:
-                  limit: 5
-            - type: categories
-              params:
-                  limit: 10
-            - type: tag-cloud
-              params:
-                  limit: 10
-        page:
-            - type: toc
-
-    opengraph:
-        github:
-            # Your Twitter username
-            site: https://github.com/Coco422
-
-            # Available values: summary, summary_large_image
-            card: summary_large_image
-
-    defaultImage:
-        opengraph:
-            enabled: false
-            local: false
-            src:
-
-    colorScheme:
-        # Display toggle
-        toggle: true
-
-        # Available values: auto, light, dark
-        default: auto
-
-    imageProcessing:
-        cover:
-            enabled: true
-        content:
-            enabled: true
-
-### Custom menu
-### See https://stack.jimmycai.com/config/menu
-### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-    main:
-        - identifier: home
-          weight: -100
-          name: Home
-          url: /
-          params:
-              icon: home
-
-    social:
-        - identifier: github
-          name: GitHub
-          url: https://github.com/Coco422
-          params:
-              icon: brand-github
-
-
-
-related:
-    includeNewer: true
-    threshold: 60
-    toLower: false
-    indices:
-        - name: tags
-          weight: 100
-
-        - name: categories
-          weight: 200
-
+  main:
+    - identifier: About
+      name: About
+      url: /About/
+      weight: 10
+    - identifier: Links
+      name: Links
+      url: /Links/
+      weight: 20
+    - identifier: Search
+      name: Search
+      url: /Search/
+      weight: 30
+    - identifier: Archives
+      name: Archives
+      url: /Archives/
+      weight: 40
+    - identifier: Tags
+      name: Tags
+      url: /Tags/
+      weight: 60
+    - identifier: 安落滢
+      name: Ray-Site
+      url: https://anluoying.com/
+      weight: 70
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+pygmentsUseClasses: true
 markup:
-    goldmark:
-        extensions:
-            passthrough:
-                enable: true
-                delimiters:
-                    block:
-                        - - \[
-                          - \]
-                        - - $$
-                          - $$
-                    inline:
-                        - - \(
-                          - \)
-        renderer:
-            ## Set to true if you have HTML content inside Markdown
-            unsafe: true
-    tableOfContents:
-        endLevel: 4
-        ordered: true
-        startLevel: 2
-    highlight:
-        noClasses: false
-        codeFences: true
-        guessSyntax: true
-        lineNoStart: 1
-        lineNos: true
-        lineNumbersInTable: true
-        tabWidth: 4
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: true
+    tabWidth: 4

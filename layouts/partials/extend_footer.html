@@ -1,0 +1,15 @@
+{{- /* Footer custom content area start */ -}}
+{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+{{- /* Footer custom content area end */ -}}
+<!-- Waline count-only on all pages -->
+<script type="module">
+  import { pageviewCount } from 'https://unpkg.com/@waline/client@v3/dist/pageview.js';
+  import { commentCount } from 'https://unpkg.com/@waline/client@v3/dist/comment.js';
+
+  // 你的 Waline 服务端地址（建议从 Hugo params 传入）
+  const serverURL = '{{ site.Params.waline.serverURL }}';
+
+  // 列表页、单文页都会：扫描整页中所有 .waline-pageview-count / .waline-comment-count 元素并填充
+  pageviewCount({ serverURL });
+  commentCount({ serverURL });
+</script>

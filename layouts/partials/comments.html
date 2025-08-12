@@ -1,0 +1,28 @@
+  <div id="waline"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.css" />
+
+  <script type="module">
+    import { init } from 'https://cdn.jsdelivr.net/npm/@waline/client@v3/dist/waline.js';
+
+    const el = '#waline';
+    const serverURL = '{{ .Site.Params.waline.serverURL }}';
+
+    if (!serverURL) {
+      console.warn('[Waline] Missing .Site.Params.waline.serverURL');
+    }
+
+    const mount = document.querySelector(el);
+    if (mount) {
+      init({
+        el,
+        serverURL,
+        lang: '{{ .Site.Params.waline.lang | default "zh-CN" }}',
+        emoji: {{ .Site.Params.waline.emoji | default (slice) | jsonify }},
+        requiredMeta: {{ .Site.Params.waline.requiredMeta | default (slice) | jsonify }},
+        pageview: {{ .Site.Params.waline.pageview | default true }},
+        comment: true,       // enable comment counting too
+        dark: 'html.dark',   // follow PaperMod dark mode
+        path: location.pathname
+      });
+    }
+  </script>
