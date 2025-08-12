@@ -1,8 +1,8 @@
 baseurl: https://blog.anluoying.com/
 languageCode: zh-cn
 theme: hugo-theme-stack
-title: Ray Blog
-copyright: Ray
+title: 安落滢 Blog
+copyright: 安落滢
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
@@ -16,7 +16,7 @@ languages:
 
     zh-cn:
         languageName: 中文
-        title: Ray Blog
+        title: 安落滢 Blog
         weight: 2
         params:
             sidebar:
@@ -105,7 +105,7 @@ params:
 
         # Waline client configuration see: https://waline.js.org/en/reference/component.html
         waline:
-            serverURL: https://anluoying.com/
+            serverURL: https://waline.anluoying.com/
             lang: zh-CN
             pageview:
             emoji:
