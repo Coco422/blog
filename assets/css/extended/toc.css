@@ -1,0 +1,102 @@
+
+:root {
+  --article-width: 720px;
+  --toc-width: 230px; /* adjust as needed */
+  --toc-gap: 4.5rem; /* safe gap between TOC and article */
+}
+
+/* Base TOC box appearance */
+.toc {
+  margin: 0 2px 40px 2px;
+  border: 1px solid var(--border);
+  background: var(--entry);
+  border-radius: var(--radius);
+  padding: 0.4em;
+}
+
+/* Fully detached left sidebar TOC on desktop */
+@media (min-width: 1100px) {
+  .toc {
+    position: fixed;              /* fully detach from article flow */
+    top: 6.5rem;                  /* below header; tweak to your navbar height */
+    left: max(16px, calc(50% - (var(--article-width) / 2) - var(--toc-width) - var(--toc-gap)));
+    transform: translateX(-4px);
+    width: var(--toc-width);
+    max-height: calc(100vh - 8rem); /* keep a bit of breathing room */
+    overflow: auto;
+    z-index: 3;
+    margin: 0;                    /* no flow margins when fixed */
+    box-shadow: 0 4px 14px rgba(0,0,0,.18);
+    backdrop-filter: saturate(140%) blur(6px);
+  }
+
+  .toc .inner a { text-decoration: none; opacity: .9; transition: opacity .15s ease, color .15s ease; }
+  .toc .inner a:hover { opacity: 1; color: var(--secondary); }
+  .toc ul { list-style: none; padding-left: .2rem; }
+  .toc li { position: relative; padding-left: .75rem; }
+  .toc li::before { content: ""; position: absolute; left: 0; top: .65em; width: .35rem; height: .35rem; border-radius: 50%; background: var(--tertiary); opacity: .6; }
+}
+
+.toc details summary {
+  cursor: zoom-in;
+  margin-inline-start: 20px;
+  padding: 12px 0;
+}
+
+.toc details[open] summary {
+  font-weight: 500;
+}
+
+.toc .inner {
+  margin: 0 0 0 20px;
+  padding: 0 15px 15px 20px;
+  font-size: 16px;
+  max-height: 83vh;
+  overflow-y: auto;
+}
+
+.toc .inner::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border: 7px solid var(--theme);
+  border-radius: var(--radius);
+}
+
+.toc ul {
+  list-style-type: circle;
+}
+
+.toc li ul {
+  margin-inline-start: calc(var(--gap) * 0.5);
+  list-style-type: none;
+}
+
+.toc li {
+  list-style: none;
+  font-size: 0.95rem;
+  padding-bottom: 5px;
+}
+
+.toc .active {
+  font-size: 110%;
+  font-weight: 600;
+  color: #614a85;
+  text-decoration: underline;
+}
+
+.toc li a:hover {
+  color: var(--secondary);
+}
+
+
+/* Optional: ensure a tiny buffer between page edge and left TOC */
+@media (min-width: 1400px) {
+  .page,
+  .main { padding-left: max(var(--gap), 0px); }
+}
+
+@media (max-width: 1099px) {
+  .toc { position: relative; left: auto; top: auto; max-height: none; box-shadow: none; backdrop-filter: none; }
+}
+@media (min-width: 1100px) and (max-width: 1360px) {
+  .toc { left: max(12px, calc(50% - (var(--article-width) / 2) - var(--toc-width) - (var(--toc-gap) + 5rem))); }
+}

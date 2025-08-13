@@ -17,8 +17,8 @@ params:
 
 # 已配置内容
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: 安落滢 Blog
-  description: "安落滢 Blog - A blog about technology, life, and everything in between."
+  title: Ray Blog
+  description: "安落滢的博客 - A blog about technology, life, and everything in between."
   keywords: [Blog, Portfolio, PaperMod]
   author: Ray
   DateFormat: "January 2, 2006"
@@ -33,7 +33,7 @@ params:
   ShowCodeCopyButtons: true
   ShowWordCount: true
   showtoc: true
-  tocopen: false
+  tocopen: true
   ShowBreadCrumbs: true
   ShowPostNavLinks: true
 
@@ -104,10 +104,10 @@ params:
     yandex:
       SiteVerificationTag: "ray521980"
 
-  editPost:
-    URL: "https://github.com/Coco422/blog/tree/main/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+  # editPost:
+  #   URL: "https://github.com/Coco422/blog/tree/main/content"
+  #   Text: "Suggest Changes" # edit text
+  #   appendFilePath: true # to append file path to Edit link
 
 menu:
   main:
