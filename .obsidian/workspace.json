@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4509724f8bf84da7",
+        "id": "8b6a31370078c629",
         "type": "tabs",
         "children": [
           {
-            "id": "e7a7b303c61786dc",
+            "id": "afe2410b37ca66b5",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -182,15 +182,25 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "afe2410b37ca66b5",
   "lastOpenFiles": [
+    "content/posts/2025m8d13h10m3s51.md",
+    "obs_scripts/DashBoard.md",
+    "public/apple-touch-icon.png",
+    "static/apple-touch-icon.png",
+    "public/favicon-32x32.png",
+    "static/favicon-32x32.png",
+    "public/favicon-32x32.jpg",
+    "static/favicon-32x32.jpg",
+    "public/favicon-16x16.png",
+    "static/favicon-16x16.png",
+    "public/raylogo32*32.jpg",
+    "public/raylogo16*16.png",
+    "public/posts/2025m8d13h10m3s51/index.html",
+    "public/posts/2025m8d13h10m3s51",
     "content/links.md",
     "content/about.md",
     "static/favicon.ico",
-    "public/raylogo.png",
-    "static/raylogo.png",
-    "public/raylogo copy.png",
-    "static/raylogo copy.png",
     "layouts/partials/waline_count.html",
     "layouts/partials/templates/_funcs/get-page-images.html",
     "layouts/partials/templates/twitter_cards.html",
@@ -198,22 +208,14 @@
     "layouts/partials/templates/opengraph.html",
     "layouts/_default/_markup/render-image.html",
     "layouts/partials/templates/_funcs",
-    "layouts/shortcodes/rtl.html",
-    "layouts/shortcodes/rawhtml.html",
     "content/search.md",
     "content/archives.md",
-    "themes/hugo-theme-stack/images/tn.png",
-    "themes/hugo-theme-stack/images/screenshot.png",
     "themes/hugo-theme-stack/exampleSite/content/post/rich-content/index.md",
-    "themes/hugo-theme-stack/exampleSite/content/post/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg",
     "themes/hugo-theme-stack/exampleSite/content/post/placeholder-text/index.md",
     "themes/hugo-theme-stack/exampleSite/content/post/placeholder-text/index.ar.md",
     "themes/hugo-theme-stack/exampleSite/content/post/math-typesetting/index.md",
-    "themes/hugo-theme-stack/exampleSite/content/post/markdown-syntax/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg",
     "themes/hugo-theme-stack/exampleSite/content/post/markdown-syntax/index.md",
-    "themes/hugo-theme-stack/exampleSite/content/post/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg",
     "themes/hugo-theme-stack/exampleSite/content/post/emoji-support/index.md",
-    "themes/hugo-theme-stack/exampleSite/content/post/chinese-test/luca-bravo-alS7ewQ41M8-unsplash.jpg",
     "themes/hugo-theme-stack/exampleSite/content/post/chinese-test/index.zh-cn.md",
     "themes/hugo-theme-stack/exampleSite/content/page/search/index.md",
     "themes/hugo-theme-stack/exampleSite/content/page/links/index.md",
@@ -226,9 +228,6 @@
     "themes/hugo-theme-stack/exampleSite/README.md",
     "themes/hugo-theme-stack/archetypes/tags.md",
     "themes/hugo-theme-stack/archetypes/default.md",
-    "themes/hugo-theme-stack/archetypes/categories.md",
-    "themes/hugo-theme-stack/README.md",
-    "themes/PaperMod/README.md",
-    "obs_scripts/DashBoard.md"
+    "themes/hugo-theme-stack/archetypes/categories.md"
   ]
 }

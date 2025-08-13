@@ -2,6 +2,8 @@
 title: PG connect 字符串错误
 description: 
 date: 2025-08-04T11:44:00+08:00
+lastmod: 2025-08-13T11:44:00+08:00
+showLastmod: true
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
