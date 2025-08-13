@@ -66,7 +66,7 @@ categories:
 
 另外反代 nginx 的配置如下
 
-```
+```nginx
 server {  
     server_name  hub.test.cn;  
     client_max_body_size 2000M;  

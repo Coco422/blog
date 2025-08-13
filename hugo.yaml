@@ -136,10 +136,15 @@ menu:
       url: https://anluoying.com/
       weight: 70
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
-pygmentsUseClasses: true
+# pygmentsUseClasses: true
 markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+        title: true
   highlight:
-    noClasses: false
+    noClasses: true
     codeFences: true
     guessSyntax: true
     lineNoStart: 1

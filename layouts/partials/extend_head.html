@@ -6,3 +6,7 @@
 {{- /* Load custom TOC CSS via Hugo Pipes (ensures it’s included even if the default pipeline was overridden) */ -}}
 {{- $toc := resources.Get "css/extended/toc.css" | resources.Minify | resources.Fingerprint -}}
 <link rel="stylesheet" href="{{ $toc.RelPermalink }}" integrity="{{ $toc.Data.Integrity }}">
+
+{{- /* Load custom Quote CSS */ -}}
+{{- $quote := resources.Get "css/extended/quote.css" | resources.Minify | resources.Fingerprint -}}
+<link rel="stylesheet" href="{{ $quote.RelPermalink }}" integrity="{{ $quote.Data.Integrity }}">

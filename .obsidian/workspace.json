@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "8b6a31370078c629",
+        "id": "4509724f8bf84da7",
         "type": "tabs",
         "children": [
           {
-            "id": "afe2410b37ca66b5",
+            "id": "e7a7b303c61786dc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/博客精装修.md",
+                "file": "content/posts/Harbor 部署记录.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "博客精装修"
+              "title": "Harbor 部署记录"
             }
           }
         ]
@@ -182,8 +182,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "afe2410b37ca66b5",
+  "active": "04c77bc5d2f55874",
   "lastOpenFiles": [
+    "public/css/extended/quote.min.0da6728fc373a443d5373c37b1aa7d3579e2c3b01cf831823fda82a84dd5cc19.css",
+    "obs_scripts/DashBoard.md",
+    "content/posts/博客精装修.md",
     "public/css/extended/toc.min.7af253d0f4ca5b2966a05d9f57bdb0b9e55d43bbe3963cdf7812145c27d3bbb7.css",
     "public/assets/css/stylesheet.eff0b045b23dd27ba21cd1f91a92bc5703f957924ba7f0e67a0cbaf2a445979c.css",
     "public/css/extended/toc.min.9193a56362e3089fdf9df5b841ba9821bde73d0e83396e10c23bc85de81e799b.css",
@@ -194,7 +197,6 @@
     "public/assets/css/stylesheet.2bedd813d3e838dee198ddb21501e615ee9aa68c213f99a1213962b4e0fafa16.css",
     "public/css/extended/toc.min.05abe7f4331d192c9de0f381e1e07b80648416ab147dccf109ab39a080a37456.css",
     "public/assets/css/stylesheet.4553be256d0a1de28da3e6edb6ccd31535abad8b5e80137fb3f20303636c7634.css",
-    "public/css/extended/toc.min.908d768bfa11db3b6b4ba34c66dd4a33441525dea7992524cbf1af53129fba94.css",
     "assets/bak/img/avatar.png",
     "assets/bak/icons/user.svg",
     "assets/bak/icons/toggle-right.svg",
@@ -205,8 +207,6 @@
     "assets/bak/icons/messages.svg",
     "assets/bak/icons/link.svg",
     "assets/bak/icons/language.svg",
-    "obs_scripts/DashBoard.md",
-    "content/posts/博客精装修.md",
     "content/links.md",
     "content/about.md",
     "content/search.md",
