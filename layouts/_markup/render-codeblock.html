@@ -1,0 +1,20 @@
+<!--
+ * @Description: file user-defined header
+-->
+{{/* 计算行数 */}}
+{{ $lines := (len (split .Inner "\n")) }}
+{{ $autoThreshold := 15 }} {{/* 超过多少行自动折叠，自行调整 */}}
+
+{{ $needCollapse := ge $lines $autoThreshold }}
+
+{{ if $needCollapse }}
+<details>
+  <summary>显示已折叠代码（{{ $lines }} 行）</summary>
+{{ end }}
+
+{{ $r := transform.HighlightCodeBlock . }}
+{{ $r.Wrapped }}
+
+{{ if $needCollapse }}
+</details>
+{{ end }}
