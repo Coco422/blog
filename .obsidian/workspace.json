@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c776ecb0cfa4a15c",
+        "id": "09bd8e00e7c82f79",
         "type": "tabs",
         "children": [
           {
-            "id": "e6159a1b5912ba63",
+            "id": "9b3d94be9f94fb3f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -182,10 +182,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e6159a1b5912ba63",
+  "active": "9b3d94be9f94fb3f",
   "lastOpenFiles": [
-    "content/posts/SLM-1-数据准备.md",
     "content/posts/SLM-2-模型训练.md",
+    "content/posts/SLM-1-数据准备.md",
     "obs_scripts/DashBoard.md",
     "content/posts/Jupyter !和%.md",
     "content/posts/博客精装修.md",

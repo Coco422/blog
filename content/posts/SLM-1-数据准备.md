@@ -1,5 +1,5 @@
 ---
-title: SLM-1
+title: SLM-1-数据准备
 description: 从零训练一个小语言模型
 date: 2025-08-19T11:14:18+08:00
 license: Licensed under CC BY-NC-SA 4.0
