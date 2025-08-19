@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "7a749a64eb56442e",
+        "id": "c776ecb0cfa4a15c",
         "type": "tabs",
         "children": [
           {
-            "id": "64f6cb93d54c408c",
+            "id": "e6159a1b5912ba63",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -182,10 +182,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "64f6cb93d54c408c",
+  "active": "e6159a1b5912ba63",
   "lastOpenFiles": [
-    "content/posts/博客精装修.md",
+    "content/posts/SLM-1-数据准备.md",
+    "content/posts/SLM-2-模型训练.md",
     "obs_scripts/DashBoard.md",
+    "content/posts/Jupyter !和%.md",
+    "content/posts/博客精装修.md",
     "layouts/_markup/render-codeblock.html",
     "layouts/_markup",
     "layouts/_default/_markup/render-codeblock.html",
@@ -226,8 +229,6 @@
     "themes/hugo-theme-stack/exampleSite/content/categories/Test/_index.md",
     "themes/hugo-theme-stack/exampleSite/content/_index.zh-cn.md",
     "themes/hugo-theme-stack/exampleSite/content/_index.md",
-    "themes/hugo-theme-stack/exampleSite/README.md",
-    "themes/hugo-theme-stack/archetypes/tags.md",
-    "themes/hugo-theme-stack/archetypes/default.md"
+    "themes/hugo-theme-stack/exampleSite/README.md"
   ]
 }
