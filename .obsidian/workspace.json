@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b7727f2b56f37cc5",
+        "id": "a99d5e349f543f8b",
         "type": "tabs",
         "children": [
           {
-            "id": "8a5ee5149118d666",
+            "id": "7bdf570ebc44df76",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -183,13 +183,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8a5ee5149118d666",
+  "active": "7bdf570ebc44df76",
   "lastOpenFiles": [
+    "content/posts/内网穿透浅尝.md",
+    "obs_scripts/DashBoard.md",
     "content/about.md",
     "content/archives.md",
     "content/links.md",
     "content/search.md",
-    "obs_scripts/DashBoard.md",
     "content/posts/vllm 推理 qwen3 没有 think 标签.md",
     "content/posts/SLM-2-模型训练.md",
     "content/posts/SLM-1-数据准备.md",
@@ -229,7 +230,6 @@
     "themes/hugo-theme-stack/exampleSite/content/page/about/index.zh-cn.md",
     "themes/hugo-theme-stack/exampleSite/content/page/about/index.md",
     "themes/hugo-theme-stack/exampleSite/content/categories/Test/_index.md",
-    "themes/hugo-theme-stack/exampleSite/content/_index.zh-cn.md",
-    "themes/hugo-theme-stack/exampleSite/content/_index.md"
+    "themes/hugo-theme-stack/exampleSite/content/_index.zh-cn.md"
   ]
 }
