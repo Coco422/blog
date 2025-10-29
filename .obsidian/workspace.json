@@ -5,10 +5,12 @@
     "children": [
       {
         "id": "041761e9ce2823df",
+        "id": "7e8b7f5240b54642",
         "type": "tabs",
         "children": [
           {
             "id": "4d7b8afdc1655dd7",
+            "id": "29826ed4310cfa1e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -44,7 +46,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "文件列表"
             }
           },
           {
@@ -170,25 +172,27 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
+      "bases:创建新数据库": false,
       "quickadd:QuickAdd": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
       "homepage:Open homepage": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4d7b8afdc1655dd7",
+  "active": "29826ed4310cfa1e",
   "lastOpenFiles": [
+    "content/posts/内网穿透浅尝.md",
     "obs_scripts/DashBoard.md",
-    "content/posts/Harbor push unauthorized.md",
-    "content/posts/代理下git连不上.md",
-    "content/posts/claude code配置.md",
-    "content/posts/Idea 激活.md",
+    "content/about.md",
+    "content/archives.md",
+    "content/links.md",
+    "content/search.md",
+    "content/posts/vllm 推理 qwen3 没有 think 标签.md",
     "content/posts/SLM-2-模型训练.md",
     "content/posts/SLM-1-数据准备.md",
     "content/posts/Jupyter !和%.md",
@@ -214,10 +218,6 @@
     "assets/bak/icons/messages.svg",
     "assets/bak/icons/link.svg",
     "assets/bak/icons/language.svg",
-    "content/links.md",
-    "content/about.md",
-    "content/search.md",
-    "content/archives.md",
     "themes/hugo-theme-stack/exampleSite/content/post/rich-content/index.md",
     "themes/hugo-theme-stack/exampleSite/content/post/placeholder-text/index.md",
     "themes/hugo-theme-stack/exampleSite/content/post/placeholder-text/index.ar.md",
@@ -229,6 +229,8 @@
     "themes/hugo-theme-stack/exampleSite/content/page/links/index.md",
     "themes/hugo-theme-stack/exampleSite/content/page/archives/index.md",
     "themes/hugo-theme-stack/exampleSite/content/page/about/index.zh-cn.md",
-    "themes/hugo-theme-stack/exampleSite/content/page/about/index.md"
+    "themes/hugo-theme-stack/exampleSite/content/page/about/index.md",
+    "themes/hugo-theme-stack/exampleSite/content/categories/Test/_index.md",
+    "themes/hugo-theme-stack/exampleSite/content/_index.zh-cn.md"
   ]
 }
