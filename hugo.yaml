@@ -113,23 +113,23 @@ menu:
   main:
     - identifier: About
       name: About
-      url: /About/
+      url: /about/
       weight: 10
     - identifier: Links
       name: Links
-      url: /Links/
+      url: /links/
       weight: 20
     - identifier: Search
       name: Search
-      url: /Search/
+      url: /search/
       weight: 30
     - identifier: Archives
       name: Archives
-      url: /Archives/
+      url: /archives/
       weight: 40
     - identifier: Tags
       name: Tags
-      url: /Tags/
+      url: /tags/
       weight: 60
     - identifier: 安落滢
       name: Ray-Site
