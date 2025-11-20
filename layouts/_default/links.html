@@ -1,0 +1,152 @@
+{{ define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description }}
+  </div>
+  {{- end }}
+</header>
+
+<div class="post-content">
+  {{ .Content }}
+
+  {{ if .Site.Data.links }}
+    {{ $links := .Site.Data.links }}
+    
+    {{/* 1. 常用网站/论坛 (Common) */}}
+    {{ if $links.common }}
+    <h3 class="links-category-title">常用网站</h3>
+    <div class="links-grid">
+      {{ range $links.common }}
+      <a class="link-card" href="{{ .url }}" target="_blank" rel="noopener">
+        <div class="link-icon-wrapper">
+          <img class="link-icon" src="{{ .icon }}" alt="{{ .name }} icon" loading="lazy" />
+        </div>
+        <div class="link-info">
+          <div class="link-title">{{ .name }}</div>
+          <div class="link-desc">{{ .description }}</div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* 2. 朋友博客 (Friends) */}}
+    {{ if $links.friends }}
+    <h3 class="links-category-title" style="margin-top: 2rem;">友情链接</h3>
+    <div class="links-grid">
+      {{ range $links.friends }}
+      <a class="link-card" href="{{ .url }}" target="_blank" rel="noopener">
+        <div class="link-icon-wrapper">
+          <img class="link-icon" src="{{ .icon }}" alt="{{ .name }} icon" loading="lazy" />
+        </div>
+        <div class="link-info">
+          <div class="link-title">{{ .name }}</div>
+          <div class="link-desc">{{ .description }}</div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+  {{ end }}
+</div>
+<br>
+<br>
+{{/* Add Comments Section */}}
+{{- if .Site.Params.comments }}
+  {{- partial "comments.html" . }}
+{{- end }}
+
+<style>
+  /* Grid Layout */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  /* Card Style */
+  .link-card {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: var(--entry);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    text-decoration: none !important;
+    color: var(--primary);
+    overflow: hidden;
+  }
+
+  .link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--secondary);
+  }
+
+  /* Dark mode hover fix */
+  .dark .link-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Icon */
+  .link-icon-wrapper {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+    border-radius: 8px;
+    background: var(--code-bg); /* Slight bg for transparency images */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .link-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain; /* Ensure icon fits well */
+    border-radius: 4px;
+  }
+
+  /* Info */
+  .link-info {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  .link-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .link-desc {
+    font-size: 13px;
+    color: var(--secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+  }
+
+  /* Title Style */
+  .links-category-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--primary);
+    padding-left: 10px;
+  }
+</style>
+
+{{ end }}

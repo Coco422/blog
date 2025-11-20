@@ -1,0 +1,14 @@
+common:
+  - name: "Linux do"
+    url: "https://linux.do/"
+    icon: "https://linux.do/favicon/proxied?https%3A%2F%2Flinux.do%2Fuploads%2Fdefault%2Foptimized%2F4X%2Fc%2Fc%2Fd%2Fccd8c210609d498cbeb3d5201d4c259348447562_2_32x32.png"
+    description: "Linux do 是我加入后从没讨论过 Linux 的友好社区，学了很多，站除我佬"
+
+
+friends:
+
+  - name: "Ray Blog"
+    url: "https://blog.anluoying.com"
+    icon: "https://blog.anluoying.com/apple-touch-icon.png"
+    description: "这是我自己的博客啦"
+
