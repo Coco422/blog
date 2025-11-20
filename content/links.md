@@ -1,6 +1,6 @@
 ---
 title: "Links"
-layout: "Links"
-url: "/Links/"
-summary: Links
+layout: "links"
+url: "/links/"
+summary: links
 ---

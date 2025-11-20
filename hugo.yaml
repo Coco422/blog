@@ -144,7 +144,7 @@ markup:
         block: true
         title: true
   highlight:
-    noClasses: true
+    noClasses: false
     codeFences: true
     guessSyntax: true
     lineNoStart: 1
