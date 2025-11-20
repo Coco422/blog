@@ -13,6 +13,13 @@ minify:
   disableXML: true
   minifyOutput: true
 
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
+
 params:
 
 # 已配置内容
@@ -52,11 +59,6 @@ params:
     - name: github
       url: "https://github.com/coco422"
 
-  outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON # necessary for search
   # for search
   # https://fusejs.io/api/options.html
   fuseOpts:
