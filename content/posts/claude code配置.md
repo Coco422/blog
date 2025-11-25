@@ -4,7 +4,7 @@ description:
 date: 2025-08-24T01:51:47+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
-comments: false
+comments: true
 draft: false
 tags:
 categories:
