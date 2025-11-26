@@ -1,0 +1,17 @@
+{
+  "media": {
+    "root": "assets",
+    "public": "assets"
+  },
+  "content": {
+    "root": "content"
+  },
+  "code": {
+    "root": "layouts"
+  },
+  "themeConfig": [
+    "hugo.yaml"
+  ],
+  "arrangement": [],
+  "showCommitModal": false
+}
