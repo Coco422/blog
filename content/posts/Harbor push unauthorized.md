@@ -1,15 +1,15 @@
 ---
 title: Harbor push unauthorized
-description:
-date: 2025-10-29T23:41:55+08:00
+description: null
+date: 2025-10-29T15:41:55.000Z
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
-draft: true
+draft: false
 tags:
-  - ""
+  - ''
 categories:
-  - ""
+  - ''
 ---
 # Harbor push unauthorized
 
@@ -35,7 +35,6 @@ error from registry: unauthorized to access repository: hotpotcat/perm-check, ac
 
 ![image.png](https://imgbed.anluoying.com/2025/10/5af07164d59ff3259f7829789c032d1b.png)
 
-
 ## 怀疑系统，用wsl试试
 
 ![image.png](https://imgbed.anluoying.com/2025/10/1a5ea19c863328e12f952c762aba60b6.png)
@@ -54,7 +53,7 @@ error from registry: unauthorized to access repository: hotpotcat/perm-check, ac
 
 ## 看后台日志
 
-到这一步我其实严重怀疑是网络问题。但是我没证据
+到这一步我其实严重怀疑是网络问题。但是我没证据所以还是先看后台日志，好在看了
 
 ```
 registry           | ::1 - - [29/Oct/2025:15:38:14 +0000] "GET / HTTP/1.1" 200 0 "" "curl/8.12.0"
@@ -117,4 +116,6 @@ PUT /v2/hotpotcat/perm-check/blobs/uploads/<UUID>?_state=...&digest=sha256:...  
 这说明：鉴权没问题（能拿到 push token，并且能启动上传会话），但在“最终提交”这一步 Authorization 失效/丢失，或者 _state（Harbor/registry 的上传状态令牌）验证失败，于是被 401。
 ```
 
-关上代理 依旧没用！ 绝望了。难道真的要抓包吗？
+## nginx 问题
+
+后台日志拉出来一读，果然，前面正常，中间一步鉴权失败。那肯定是中间的网关把我的认证给搞丢了。最后更新 nginx 配置，让他把 header 都传过来就正常了
