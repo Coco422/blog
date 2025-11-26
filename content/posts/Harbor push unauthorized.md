@@ -1,13 +1,15 @@
 ---
 title: Harbor push unauthorized
-description: null
-date: 2025-10-29T15:41:55.000Z
+description: 自建 harbor 配置域名之后非公司局域网无法完全正常使用
+date: '2025-10-29T15:41:55.000Z'
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
 tags:
-  - ''
+  - nginx
+  - Harbor
+  - Linux
 categories:
   - ''
 ---
@@ -119,3 +121,7 @@ PUT /v2/hotpotcat/perm-check/blobs/uploads/<UUID>?_state=...&digest=sha256:...  
 ## nginx 问题
 
 后台日志拉出来一读，果然，前面正常，中间一步鉴权失败。那肯定是中间的网关把我的认证给搞丢了。最后更新 nginx 配置，让他把 header 都传过来就正常了
+
+## 结论
+
+nginx 配置我就不贴了。具体原因在内网没遇到过是哪怕内网用域名 解析的逻辑和在外网不一样。少经过一层 nginx。AI 造福人类，多读日志头脑清晰，这是个小问题。
