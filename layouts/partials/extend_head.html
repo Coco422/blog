@@ -10,3 +10,16 @@
 {{- /* Load custom Quote CSS */ -}}
 {{- $quote := resources.Get "css/extended/quote.css" | resources.Minify | resources.Fingerprint -}}
 <link rel="stylesheet" href="{{ $quote.RelPermalink }}" integrity="{{ $quote.Data.Integrity }}">
+
+{{- if or .Site.Params.fancybox (not (isset .Site.Params "fancybox")) }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+  // 等待 DOM 加载完成
+  document.addEventListener("DOMContentLoaded", function() {
+      Fancybox.bind('[data-fancybox="gallery"]', {
+        // Your custom options
+      });
+  });
+</script>
+{{- end }}

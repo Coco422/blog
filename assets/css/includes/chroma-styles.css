@@ -1,83 +1,57 @@
 /* 
-   Override PaperMod's default chroma-styles.css 
-   to support Light (GitHub) and Dark (Dracula) modes.
+   Unified Dark Theme (Atom One Dark) for All Modes
+   Providing high contrast and vivid colors for better readability.
 */
 
 :root {
-    /* Light Mode Variables (GitHub Light) */
-    --chroma-bg: #f6f8fa; /* Slightly grey for contrast on white paper */
-    --chroma-color: #24292e;
-    --chroma-err: #b31d28;
-    --chroma-line-hl: #e1e4e8;
-    --chroma-line-num: #959da5;
+    /* Atom One Dark Palette */
+    --chroma-bg: #282c34;       /* Deep Grey Background */
+    --chroma-color: #abb2bf;    /* Light Grey Foreground */
+    --chroma-err: #f44747;      /* Red for Errors */
+    --chroma-line-hl: #3e4451;  /* Slightly lighter grey for line highlight */
+    --chroma-line-num: #636d83; /* Blue-grey for line numbers */
     
-    /* Tokens */
-    --chroma-k: #d73a49; /* Keyword */
-    --chroma-kc: #005cc5; /* Keyword Constant */
-    --chroma-kd: #d73a49; /* Keyword Declaration */
-    --chroma-kn: #d73a49; /* Keyword Namespace */
-    --chroma-kp: #d73a49; /* Keyword Pseudo */
-    --chroma-kr: #d73a49; /* Keyword Reserved */
-    --chroma-kt: #d73a49; /* Keyword Type */
-    --chroma-na: #6f42c1; /* Name Attribute */
-    --chroma-nc: #6f42c1; /* Name Class */
-    --chroma-no: #005cc5; /* Name Constant */
-    --chroma-ne: #6f42c1; /* Name Exception */
-    --chroma-nf: #6f42c1; /* Name Function */
-    --chroma-nl: #005cc5; /* Name Label */
-    --chroma-nn: #6f42c1; /* Name Namespace */
-    --chroma-nt: #22863a; /* Name Tag */
-    --chroma-nv: #005cc5; /* Name Variable */
-    --chroma-s: #032f62;  /* Literal String */
-    --chroma-m: #005cc5;  /* Literal Number */
-    --chroma-o: #d73a49;  /* Operator */
-    --chroma-ow: #d73a49; /* Operator Word */
-    --chroma-c: #6a737d;  /* Comment */
-    --chroma-cs: #6a737d; /* Comment Special */
-    --chroma-cp: #d73a49; /* Comment Preproc */
-    --chroma-gd: #b31d28; /* Generic Deleted */
-    --chroma-gi: #22863a; /* Generic Inserted */
-    --chroma-gu: #735c0f; /* Generic Subheading */
+    /* Syntax Tokens */
+    --chroma-k: #c678dd;        /* Keyword - Purple */
+    --chroma-kc: #d19a66;       /* Constant - Orange */
+    --chroma-kd: #c678dd;       /* Declaration - Purple */
+    --chroma-kn: #c678dd;       /* Namespace - Purple */
+    --chroma-kp: #c678dd;       /* Pseudo - Purple */
+    --chroma-kr: #c678dd;       /* Reserved - Purple */
+    --chroma-kt: #e5c07b;       /* Type - Yellow */
+    
+    --chroma-na: #e06c75;       /* Name Attribute - Red */
+    --chroma-nc: #e5c07b;       /* Name Class - Yellow */
+    --chroma-no: #d19a66;       /* Name Constant - Orange */
+    --chroma-ne: #e06c75;       /* Name Exception - Red */
+    --chroma-nf: #61afef;       /* Name Function - Bright Blue */
+    --chroma-nl: #e06c75;       /* Name Label - Red */
+    --chroma-nn: #e5c07b;       /* Name Namespace - Yellow */
+    --chroma-nt: #e06c75;       /* Name Tag - Red */
+    --chroma-nv: #e06c75;       /* Name Variable - Red */
+    
+    --chroma-s: #98c379;        /* String - Green */
+    --chroma-m: #d19a66;        /* Number - Orange */
+    
+    --chroma-o: #56b6c2;        /* Operator - Cyan */
+    --chroma-ow: #c678dd;       /* Operator Word - Purple */
+    
+    --chroma-c: #7f848e;        /* Comment - Grey (Lightened for visibility) */
+    --chroma-cs: #7f848e;       /* Comment Special */
+    --chroma-cp: #c678dd;       /* Comment Preproc - Purple */
+    
+    --chroma-gd: #e06c75;       /* Generic Deleted - Red */
+    --chroma-gi: #98c379;       /* Generic Inserted - Green */
+    --chroma-gu: #61afef;       /* Generic Subheading - Blue */
 }
 
+/* Remove Dark Mode Override to enforce unified dark theme */
 .dark {
-    /* Dark Mode Variables (Dracula) */
-    --chroma-bg: #282a36;
-    --chroma-color: #f8f8f2;
-    --chroma-err: #ff5555;
-    --chroma-line-hl: #44475a;
-    --chroma-line-num: #6272a4;
-    
-    /* Tokens */
-    --chroma-k: #ff79c6;
-    --chroma-kc: #ff79c6;
-    --chroma-kd: #8be9fd;
-    --chroma-kn: #ff79c6;
-    --chroma-kp: #ff79c6;
-    --chroma-kr: #ff79c6;
-    --chroma-kt: #8be9fd;
-    --chroma-na: #50fa7b;
-    --chroma-nc: #50fa7b;
-    --chroma-no: #bd93f9;
-    --chroma-ne: #50fa7b;
-    --chroma-nf: #50fa7b;
-    --chroma-nl: #8be9fd;
-    --chroma-nn: #50fa7b;
-    --chroma-nt: #ff79c6;
-    --chroma-nv: #8be9fd;
-    --chroma-s: #f1fa8c;
-    --chroma-m: #bd93f9;
-    --chroma-o: #ff79c6;
-    --chroma-ow: #ff79c6;
-    --chroma-c: #6272a4;
-    --chroma-cs: #6272a4;
-    --chroma-cp: #ff79c6;
-    --chroma-gd: #ff5555;
-    --chroma-gi: #50fa7b;
-    --chroma-gu: #8be9fd;
+    /* Optional: You can tweak background slightly darker for dark mode if desired, 
+       but for now we keep it consistent as requested. */
 }
 
-/* Background & Basic Text */
+/* Apply Variables */
 .chroma { 
     color: var(--chroma-color);
     background-color: var(--chroma-bg);
@@ -104,10 +78,6 @@
 .chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi, .chroma .il, .chroma .mo { color: var(--chroma-m) }
 .chroma .o, .chroma .ow { color: var(--chroma-o); font-weight: bold; }
 .chroma .c, .chroma .cm, .chroma .c1, .chroma .cs, .chroma .ch, .chroma .cp { color: var(--chroma-c); font-style: italic; }
-.chroma .gd { color: var(--chroma-gd); background-color: #ffeef0; }
-.chroma .gi { color: var(--chroma-gi); background-color: #f0fff4; }
+.chroma .gd { color: var(--chroma-gd); background-color: #4b1818; }
+.chroma .gi { color: var(--chroma-gi); background-color: #1e3a23; }
 .chroma .gu { color: var(--chroma-gu); font-weight: bold; }
-
-.dark .chroma .gd { background-color: #4b1818; }
-.dark .chroma .gi { background-color: #1e3a23; }
-

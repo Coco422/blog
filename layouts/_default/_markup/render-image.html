@@ -1,0 +1,40 @@
+{{- /* 1. 解析 Markdown 里的图片路径 */ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $src := $u.String -}}
+
+{{- /* 2. 如果不是绝对路径（如 http://...），则尝试在资源中查找 */ -}}
+{{- if not $u.IsAbs -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path }}
+  
+  {{- /* 3. 尝试从“页面资源”或“全局资源”中查找该图片 */ -}}
+  {{- with or (.PageInner.Resources.Get $path) (resources.Get $path) -}}
+    {{- /* 4. 如果找到了，获取它在网站最终生成的正确相对链接 */ -}}
+    {{- $src = .RelPermalink -}}
+    
+    {{- /* 5. 假如原链接带参数(?size=small)或锚点(#top)，把它们拼回去 */ -}}
+    {{- with $u.RawQuery -}}
+      {{- $src = printf "%s?%s" $src . -}}
+    {{- end -}}
+    {{- with $u.Fragment -}}
+      {{- $src = printf "%s#%s" $src . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 6. 构建 img 标签属性：合并默认属性和自动生成的属性 */ -}}
+{{- $attributes := merge .Attributes (dict "alt" .Text "src" $src "title" (.Title | transform.HTMLEscape) "loading" "lazy") -}}
+
+<div class="post-img-view">
+    <!-- 
+       href: 指向图片大图的链接（Fancybox 需要知道点开后显示什么）
+       data-fancybox="gallery": 告诉 Fancybox JS 插件，这个链接要用灯箱打开，而不是跳转页面 
+    -->
+    <a data-fancybox="gallery" href="{{ $src }}">
+        <img
+        {{- range $k, $v := $attributes -}}
+            {{- if $v -}}
+            {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
+            {{- end -}}
+        {{- end -}}>
+    </a>
+</div>
