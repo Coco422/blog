@@ -8,23 +8,89 @@
     {{- end }}
 </header>
 
-<div class="terms-grid-container">
-    {{- $type := .Type }}
-    {{- range $key, $value := .Data.Terms.Alphabetical }}
-    {{- $name := .Name }}
-    {{- $count := .Count }}
-    {{- with site.GetPage (printf "/%s/%s" $type $name) }}
-    <a class="term-card" href="{{ .Permalink }}">
-        <div class="term-card-content">
-            <h2 class="term-name">{{ .Name }}</h2>
-            <span class="term-count">{{ $count }} 篇</span>
-        </div>
-    </a>
-    {{- end }}
-    {{- end }}
-</div>
+{{- if eq .Type "tags" }}
+    {{/* Tags Page: Word Cloud Style */}}
+    <div class="tags-cloud-container">
+        {{- $type := .Type }}
+        {{- range $key, $value := .Data.Terms.Alphabetical }}
+        {{- $name := .Name }}
+        {{- $count := .Count }}
+        
+        {{- /* Calculate font size: 1rem + log(count) * 0.5rem */ -}}
+        {{- $size := add 1 (mul (math.Log $count) 0.5) }} 
+        {{- if gt $size 2.5 }}{{ $size = 2.5 }}{{ end }} 
+        
+        {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+        <a class="tag-cloud-item" href="{{ .Permalink }}" data-size="{{ $size }}">
+            {{ .Name }}
+            <span class="tag-count">({{ $count }})</span>
+        </a>
+        {{- end }}
+        {{- end }}
+    </div>
+
+    <script>
+        document.querySelectorAll('.tag-cloud-item').forEach(item => {
+            const size = item.getAttribute('data-size');
+            item.style.fontSize = size + 'rem';
+        });
+    </script>
+
+{{- else }}
+    {{/* Categories Page: Grid Card Style */}}
+    <div class="terms-grid-container">
+        {{- $type := .Type }}
+        {{- range $key, $value := .Data.Terms.Alphabetical }}
+        {{- $name := .Name }}
+        {{- $count := .Count }}
+        {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+        <a class="term-card" href="{{ .Permalink }}">
+            <div class="term-card-content">
+                <h2 class="term-name">{{ .Name }}</h2>
+                <span class="term-count">{{ $count }} 篇</span>
+            </div>
+        </a>
+        {{- end }}
+        {{- end }}
+    </div>
+{{- end }}
 
 <style>
+    /* Tags Cloud Styles */
+    .tags-cloud-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: baseline;
+        gap: 15px;
+        padding: 20px;
+        background: var(--entry);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+    }
+
+    .tag-cloud-item {
+        color: var(--primary);
+        text-decoration: none !important;
+        transition: all 0.2s ease;
+        line-height: 1.2;
+        padding: 4px 8px;
+        border-radius: 6px;
+    }
+
+    .tag-cloud-item:hover {
+        color: var(--secondary);
+        background: var(--code-bg);
+        transform: scale(1.1);
+    }
+
+    .tag-count {
+        font-size: 0.5em;
+        color: var(--secondary);
+        vertical-align: super;
+    }
+
+    /* Categories Grid Styles */
     .terms-grid-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -52,7 +118,6 @@
         border-color: var(--primary);
     }
 
-    /* Dark mode hover fix */
     .dark .term-card:hover {
         box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
@@ -77,4 +142,3 @@
     }
 </style>
 {{- end }}
-
