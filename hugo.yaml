@@ -129,6 +129,10 @@ menu:
       name: Archives
       url: /archives/
       weight: 40
+    - identifier: Categories
+      name: Categories
+      url: /categories/
+      weight: 50
     - identifier: Tags
       name: Tags
       url: /tags/
