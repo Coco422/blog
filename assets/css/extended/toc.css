@@ -23,7 +23,7 @@
     transform: translateX(-4px);
     width: var(--toc-width);
     max-height: calc(100vh - 8rem); /* keep a bit of breathing room */
-    overflow: auto;
+    overflow: hidden;             /* 移除外层滚动条 */
     z-index: 3;
     margin: 0;                    /* no flow margins when fixed */
     box-shadow: 0 4px 14px rgba(0,0,0,.18);
