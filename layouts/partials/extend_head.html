@@ -7,9 +7,13 @@
 {{- $toc := resources.Get "css/extended/toc.css" | resources.Minify | resources.Fingerprint -}}
 <link rel="stylesheet" href="{{ $toc.RelPermalink }}" integrity="{{ $toc.Data.Integrity }}">
 
-{{- /* Load custom Quote CSS */ -}}
-{{- $quote := resources.Get "css/extended/quote.css" | resources.Minify | resources.Fingerprint -}}
-<link rel="stylesheet" href="{{ $quote.RelPermalink }}" integrity="{{ $quote.Data.Integrity }}">
+{{- /* Load custom Outdated CSS */ -}}
+{{- $outdated := resources.Get "css/extended/outdated.css" | resources.Minify | resources.Fingerprint -}}
+<link rel="stylesheet" href="{{ $outdated.RelPermalink }}" integrity="{{ $outdated.Data.Integrity }}">
+
+{{- /* Load custom Alerts CSS */ -}}
+{{- $alerts := resources.Get "css/extended/alerts.css" | resources.Minify | resources.Fingerprint -}}
+<link rel="stylesheet" href="{{ $alerts.RelPermalink }}" integrity="{{ $alerts.Data.Integrity }}">
 
 {{- if or .Site.Params.fancybox (not (isset .Site.Params "fancybox")) }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>

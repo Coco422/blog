@@ -1,0 +1,33 @@
+{{- /* Render Blockquote Hook with GitHub Alerts Support (Hugo v0.132.0+) */ -}}
+{{- $alertTypes := dict 
+  "note" (dict "icon" "ℹ️" "class" "note" "title" "Note")
+  "tip" (dict "icon" "💡" "class" "tip" "title" "Tip")
+  "important" (dict "icon" "❗" "class" "important" "title" "Important")
+  "warning" (dict "icon" "⚠️" "class" "warning" "title" "Warning")
+  "caution" (dict "icon" "🔥" "class" "caution" "title" "Caution")
+-}}
+
+{{- if eq .Type "alert" -}}
+  {{- $alertType := .AlertType | lower -}}
+  {{- $config := index $alertTypes $alertType -}}
+  
+  {{- /* Fallback for unknown alert types */ -}}
+  {{- if not $config -}}
+    {{- $config = dict "icon" "❓" "class" "note" "title" ($alertType | title) -}}
+  {{- end -}}
+
+  <div class="markdown-alert markdown-alert-{{ $config.class }}">
+    <p class="markdown-alert-title">
+      <span class="markdown-alert-icon">{{ $config.icon }}</span>
+      {{ $config.title }}
+    </p>
+    <div class="markdown-alert-content">
+      {{ .Text }}
+    </div>
+  </div>
+{{- else -}}
+  {{- /* Normal blockquote */ -}}
+  <blockquote>
+    {{ .Text }}
+  </blockquote>
+{{- end -}}

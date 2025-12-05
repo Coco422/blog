@@ -84,7 +84,7 @@ params:
   disableSpecial1stPost: false
   disableScrollToTop: false
   hidemeta: false
-  hideSummary: true
+  hideSummary: false
 
   assets:
     favicon: "/favicon.ico"
@@ -145,6 +145,8 @@ menu:
 # pygmentsUseClasses: true
 markup:
   goldmark:
+    renderer:
+      unsafe: true
     parser:
       attribute:
         block: true
