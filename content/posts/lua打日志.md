@@ -11,10 +11,10 @@ tags:
   - freeswitch
 categories:
   - 琐碎快记
-lastmod: 2025-12-08T09:30:53+08:00
+lastmod: 2025-12-08T09:31:27+08:00
 showLastMod: true
 ---
->! [NOTE]
+>[!NOTE]
 >lua 有很多有趣的语法和平时的不一样，比如这个打印字符串
 
 
