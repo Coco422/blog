@@ -9,5 +9,6 @@
   "obsidian-emoji-toolbar",
   "obsidian-image-auto-upload-plugin",
   "simple-code-formatter",
-  "obsidian-textgenerator-plugin"
+  "obsidian-textgenerator-plugin",
+  "frontmatter-modified-date"
 ]

@@ -6,6 +6,8 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: true
+lastmod: {{ .Date }}
+showLastMod: true
 tags: [""]
 categories: [""]
 ---

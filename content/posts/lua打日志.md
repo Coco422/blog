@@ -5,13 +5,19 @@ date: 2025-09-25T15:44:17+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
-draft: true
+draft: false
 tags:
   - Lua
   - freeswitch
 categories:
   - 琐碎快记
+lastmod: 2025-12-08T09:30:53+08:00
+showLastMod: true
 ---
+>! [NOTE]
+>lua 有很多有趣的语法和平时的不一样，比如这个打印字符串
+
+
 ```lua
 local banner = string.rep("★", 12) .. " ORDER_NO: " .. orderNo .. " " .. string.rep("★", 12)
 
