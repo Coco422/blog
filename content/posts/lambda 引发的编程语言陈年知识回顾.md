@@ -9,7 +9,8 @@ draft: false
 tags:
   - programming-language
 categories:
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:26:16+08:00
 ---
 > 偷听会议室老板拷打同事知道什么是 lambda 吗？同时我正在看一篇关于使用aws mqtt的文章，里面提到了aws lambda。我一想，lambda 不就是匿名函数吗，然后呢，似乎我并不了解他，就好像我看到一只鸟，我知道他叫布谷鸟，也许我知道他还叫大杜鹃（实际不知道，我刚刚搜的），英文名叫Cuculus canorus，但是我依旧不了解他（ `费曼父亲的教导`），那么我深深反思，我不知道什么是 lambda，我现在需要知道一下。
 > 

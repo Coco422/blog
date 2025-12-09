@@ -7,10 +7,10 @@ hidden: false
 comments: true
 draft: false
 tags:
-  - ""
+  - git
 categories:
-  - ""
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:26:52+08:00
 ---
 在代理下，git使用ssh 22端口时连接不上。关掉代理就可以
 

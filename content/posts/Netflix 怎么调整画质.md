@@ -9,7 +9,8 @@ draft: false
 tags:
   - life
 categories:
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:27:05+08:00
 ---
 ## 如何查看当前网飞的画质
 
