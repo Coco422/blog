@@ -11,7 +11,7 @@ tags:
   - freeswitch
 categories:
   - 琐碎快记
-lastmod: 2025-12-08T09:31:27+08:00
+lastmod: 2025-12-08T09:32:49+08:00
 showLastMod: true
 ---
 >[!NOTE]
