@@ -1,6 +1,6 @@
 ---
 title: 老朋友 Wireshark 在 mac 上抓包 https
-description: 
+description:
 date: 2025-05-13T18:25:40+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -10,8 +10,8 @@ tags:
   - wireshark
   - network
 categories:
-  - ""
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:25:10+08:00
 ---
 > 参考文章
 > [Mac下抓包工具wireshark的安装和使用- 醉丶春风的Blog](https://www.xstnet.com/article-155.html)

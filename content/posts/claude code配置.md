@@ -8,8 +8,8 @@ comments: true
 draft: false
 tags:
 categories:
-  - ""
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:25:43+08:00
 ---
 windows使用cluade code
 

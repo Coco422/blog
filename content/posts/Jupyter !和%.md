@@ -1,6 +1,6 @@
 ---
 title: jupyter !和%
-description: 
+description:
 date: 2025-08-19T11:49:44+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -9,8 +9,8 @@ draft: false
 tags:
   - Jupyter
 categories:
-  - ""
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:26:00+08:00
 ---
 
 学习别人给到的 Jupyter 代码时，其中有安装依赖的代码 使用

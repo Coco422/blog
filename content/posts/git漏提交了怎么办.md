@@ -1,6 +1,6 @@
 ---
 title: git漏提交了怎么办
-description: 
+description:
 date: 2025-05-09T16:45:37+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -10,8 +10,8 @@ tags:
   - github
   - git
 categories:
-  - ""
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:25:50+08:00
 ---
 使用 Git 的 **amend** 功能，将未保存的文件修改后“补充”到你刚刚的那次提交中，而不会增加新的提交记录。
 

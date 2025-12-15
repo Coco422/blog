@@ -8,8 +8,8 @@ comments: true
 draft: false
 tags:
 categories:
-  - ""
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:25:57+08:00
 ---
 记录一下当前Idea激活的方法，Idea用的不多
 激活仓库

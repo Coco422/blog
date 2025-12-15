@@ -9,8 +9,8 @@ draft: false
 tags:
   - llm
 categories:
-  - ""
-  - 琐碎快记
+  - 杂技浅尝
+lastmod: 2025-12-10T00:26:46+08:00
 ---
 > 克隆自己
 
