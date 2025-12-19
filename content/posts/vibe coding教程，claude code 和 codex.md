@@ -9,6 +9,7 @@ draft: false
 tags:
   - 教程
 categories:
+lastmod: 2025-12-19T17:17:48+08:00
 ---
 ![image.png](https://imgbed.anluoying.com/2025/11/94f41f82704abb8f3c4bc281cc97c1ee.png)
 
@@ -172,48 +173,7 @@ claude --version
 
 ### **Linux 系统**
 
-#### 方法1：临时设置（仅当前终端有效）
-
-- 在 **终端** 中执行：
-```Bash
-    export ANTHROPIC_BASE_URL="https://code.newcli.com/claude"
-    export ANTHROPIC_API_KEY="替换为您的API Key"
-```
-
-#### 方法2：永久设置
-
-1. 编辑 shell 配置文件（根据使用的 shell 选择）：
-```Bash
-    # 如果是 bash
-    echo 'export ANTHROPIC_BASE_URL="https://code.newcli.com/claude"' >> ~/.bashrc
-    echo 'export ANTHROPIC_API_KEY="替换为您的API Key"' >> ~/.bashrc
-    
-    # 如果是 zsh
-    echo 'export ANTHROPIC_BASE_URL="https://code.newcli.com/claude"' >> ~/.zshrc
-    echo 'export ANTHROPIC_API_KEY="替换为您的API Key"' >> ~/.zshrc
-```
-2. 立即生效：
-```Bash
-    source ~/.bashrc  # 或 source ~/.zshrc
-```
-
-#### 方法3：配置settings.json
-
-- 创建 `~/.claude/settings.json` 文件，内容如下：
-
-```Bash
-    {
-      "env": {
-        "ANTHROPIC_AUTH_TOKEN": "替换为您的API Key",
-        "ANTHROPIC_BASE_URL": "https://code.newcli.com/claude",
-        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1
-      },
-      "permissions": {
-        "allow": [],
-        "deny": []
-      }
-    }
-```
+和 mac 类似
 
 既然用这个。那可以关注一下之前的博客，ccs 这个sh工具也还能用[claude code配置 \| 安落滢 Blog](https://blog.anluoying.com/posts/claude-code%E9%85%8D%E7%BD%AE/)
 
@@ -248,7 +208,7 @@ echo %ANTHROPIC_API_KEY%
 
 安装官方claudecode插件
 
-vscode中claudecode新版本插件强制登录解决方案： 新建 ~/.claude/config.json 内容： `{` `"primaryApiKey": "fox"` `}`
+vscode中claudecode新版本插件强制登录解决方案： 新建 ~/.claude/config.json 内容： `{"primaryApiKey": "fox"}`
 
 # 二、CodeX安装教程
 

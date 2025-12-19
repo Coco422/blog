@@ -101,7 +101,7 @@ gemini3 解释
 [頭等物件 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E9%A0%AD%E7%AD%89%E7%89%A9%E4%BB%B6)
 
 有一等就有二等，下面是 gemini 给的解释
-![image.png](https://imgbed.szmckj.cn/uploads/2025/12/05/6932aa43db551.png)
+![image.png](https://imgbed.anluoying.com/2025/12/c8a5fd68ad849f69fc9770b505e2efd9.png)
 
 ### 闭包（Closure）
 

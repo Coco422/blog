@@ -24,16 +24,16 @@ gemini3 目前我两个用的地方，一个在 ai studio 里面直接用，另�
 
 ## 开搓
 
-![image.png](https://imgbed.szmckj.cn/uploads/2025/11/28/692976fecfc75.png)
+![image.png](https://imgbed.anluoying.com/2025/12/3c2f73d3a6e3d68f5fdf7c09ceeaf1c5.png)
 
 接一杯水的功夫出来了。这个设计很符合我的概念（但是我本能的觉得性能影响很大，以后堆积越来越多的工具，一打开我的网站，啪的一下要下载好几十MB 的内容。）
 
 编译预览一下，这期间有一点小问题，反正我也不是很懂前端，他给修好了
 随后上点强度，一口气提了 9 个比较常见的网页工具，一次性完成。
 
-![image.png](https://imgbed.szmckj.cn/uploads/2025/11/28/69297776d728e.png)
+![image.png](https://imgbed.anluoying.com/2025/12/17e023ef35f88a22e9121867d71e9dfe.png)
 
-![image.png](https://imgbed.szmckj.cn/uploads/2025/11/28/692977aa760df.png)
+![image.png](https://imgbed.anluoying.com/2025/12/87b4b231261aa9c660f3e6e3e13f6f0d.png)
 
 可以，很满意哦，回头做个深色浅色模式随系统切换
 
@@ -89,17 +89,17 @@ jobs:
           publish_dir: ./frontend/dist
 ```
 
-![image.png](https://imgbed.szmckj.cn/uploads/2025/11/28/69297b2747c62.png)
-![image.png](https://imgbed.szmckj.cn/uploads/2025/11/28/69297b364ee02.png)
+![image.png](https://imgbed.anluoying.com/2025/12/d5e712cdfa88d645d4cd46bdbd6022fe.png)
+![image.png](https://imgbed.anluoying.com/2025/12/ae2b6bc04e502d4a9a0c070d5f86a4c0.png)
 [GitHub Pages 文档 - GitHub 文档](https://docs.github.com/zh/pages)
 [关于自定义域名和 GitHub 页面 - GitHub 文档](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
-![image.png](https://imgbed.szmckj.cn/uploads/2025/11/28/69297b48677b4.png)
+![image.png](https://imgbed.anluoying.com/2025/12/6919cfc80fc3a6508148a964e156f078.png)
 
 ok 耐心等个几分钟。之后就可以愉快的访问我自己的工具箱啦
 
 ## 问题
 
-![f8a50e07-14aa-4354-b3cd-55d25169f22f.png](https://imgbed.szmckj.cn/uploads/2025/11/28/692973588c63a.png)
+![f8a50e07-14aa-4354-b3cd-55d25169f22f.png](https://imgbed.anluoying.com/2025/12/692a4e017db8b80516334a6f4074c95a.png)
 
 - 从 2022 年起，GITHUB_TOKEN 的默认权限 _变成只读 (read only)_，所以默认情况下它 **没权限** 向仓库写（push commit）了 [Permissions denied to github actions bot while building documentation - General Usage - Julia Programming Language](https://discourse.julialang.org/t/permissions-denied-to-github-actions-bot-while-building-documentation/88158)
 
