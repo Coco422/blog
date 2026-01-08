@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: true
-lastmod: 2026-01-09T00:51:08+08:00
+lastmod: 2026-01-09T01:35:27+08:00
 showLastMod: true
 tags:
   - vibe-coding
