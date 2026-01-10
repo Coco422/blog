@@ -5,8 +5,8 @@ date: 2026-01-09T00:32:49+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
-draft: true
-lastmod: 2026-01-09T01:35:27+08:00
+draft: false
+lastmod: 2026-01-10T23:28:48+08:00
 showLastMod: true
 tags:
   - vibe-coding
@@ -66,3 +66,13 @@ ok，[Intro \| OpenCode](https://opencode.ai/docs#configure)
 
 ## 配置更多”懒人包“ 和各种小技巧
 
+### Oh-my-opencode
+
+[GitHub - code-yeongyu/oh-my-opencode: The Best Agent Harness. Meet Sisyphus: The Batteries-Included Agent that codes like you.](https://github.com/code-yeongyu/oh-my-opencode)
+
+准备好环境运行`pnpx oh-my-opencode install`即可
+
+![image.png](https://imgbed.anluoying.com/2026/01/8be56ce86f59b862425b65856cc6e21d.png)
+
+我由于有google pro，嫖上这个gemini后就没有探索过别的内容了。
+这两天用的不多，留给以后更新。如果好用的话。
