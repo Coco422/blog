@@ -146,10 +146,10 @@ UUID (Universally Unique Identifier)
 
 感谢 gemini 和 gpt 两位 G 老师
 
-[Bluetooth Low Energy - Wikipedia](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy#)
-[Bluetooth - Wikipedia](https://en.wikipedia.org/wiki/Bluetooth)
-[连接硬件能力 / 蓝牙 / 介绍](https://developers.weixin.qq.com/miniprogram/dev/framework/device/bluetooth.html)
-[经典蓝牙与低功耗蓝牙BLE开发基础知识：服务、特征、属性、UUID-云社区-华为云](https://bbs.huaweicloud.com/blogs/354107)
+- [Bluetooth Low Energy - Wikipedia](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy#)
+- [Bluetooth - Wikipedia](https://en.wikipedia.org/wiki/Bluetooth)
+- [连接硬件能力 / 蓝牙 / 介绍](https://developers.weixin.qq.com/miniprogram/dev/framework/device/bluetooth.html)
+- [经典蓝牙与低功耗蓝牙BLE开发基础知识：服务、特征、属性、UUID-云社区-华为云](https://bbs.huaweicloud.com/blogs/354107)
 
 另外调试过程中有两个手机 app 挺有帮助
 
