@@ -9,7 +9,7 @@ draft: false
 tags:
   - 教程
 categories:
-lastmod: 2025-12-19T17:17:48+08:00
+lastmod: 2026-01-24T10:29:52+08:00
 ---
 ![image.png](https://imgbed.anluoying.com/2025/11/94f41f82704abb8f3c4bc281cc97c1ee.png)
 
@@ -151,7 +151,7 @@ claude --version
 
 1. 编辑 shell 配置文件（根据使用的 shell 选择）：
 
- ```Bash
+```Bash
     # 如果是 bash（默认）
     echo 'export ANTHROPIC_BASE_URL="https://code.newcli.com/claude"' >> ~/.bash_profile
     echo 'export ANTHROPIC_API_KEY="替换为您的API Key"' >> ~/.bash_profile
@@ -159,15 +159,14 @@ claude --version
     # 如果是 zsh
     echo 'export ANTHROPIC_BASE_URL="https://code.newcli.com/claude"' >> ~/.zshrc
     echo 'export ANTHROPIC_API_KEY="替换为您的API Key"' >> ~/.zshrc
-    ```
+```
 
 1. 立即生效：
 
 ```Bash
     source ~/.bash_profile  # 或 source ~/.zshrc
-    ```
+```
 
-  
 
 ---
 

@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-01-07T23:35:10+08:00
+lastmod: 2026-01-24T02:42:50+08:00
 showLastMod: true
 tags:
   - linux
@@ -65,9 +65,53 @@ my-app/
 
 ### 如果在已有的项目里面创建环境
 
-已有 pyproject.toml 直接 `uv init .`即可
+没有 pyproject.toml 直接 `uv init .`即可
 
-如果是有 requirements.txt 可以通过下面的命令迁移
+有的话就 `uv sync` 除非这个里面放的是旧的 pip体系
+
+那么pyproject.toml 中没有依赖的管理也木有项目声明 例如
+
+```toml
+[tool.black]
+line-length = 120
+target-version = ['py310', 'py311', 'py312']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | __pycache__
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 120
+skip = [".git", "__pycache__", ".env", "venv", ".venv"]
+
+[tool.bandit]
+exclude_dirs = ["tests", "test_*.py"]
+skips = ["B101"]  # assert 语句在测试中是允许的
+```
+
+那么其实可以加上 项目的声明，消除警告
+
+```
+[project]
+name = "daily_stock_analysis"
+version = "0.1.0"
+requires-python = ">=3.10,<3.13"
+```
+
+通过下面的命令迁移，只有requirements 时同理
 
 ```
 uv add -r requirements.txt
