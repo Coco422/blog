@@ -59,8 +59,15 @@ class MarkdownProcessor:
         return images
 
     def update_image_urls(self, md_file: Path, url_mapping: Dict[str, str],
-                         backup_dir: Path) -> bool:
-        """Update image URLs in markdown file and save to backup directory"""
+                         backup_dir: Optional[Path] = None, in_place: bool = False) -> bool:
+        """Update image URLs in markdown file
+
+        Args:
+            md_file: Source markdown file
+            url_mapping: Dictionary mapping old URLs to new URLs
+            backup_dir: Directory to save updated file (if not in_place)
+            in_place: If True, update the original file directly
+        """
         try:
             with open(md_file, 'r', encoding='utf-8') as f:
                 content = f.read()
@@ -73,9 +80,18 @@ class MarkdownProcessor:
                     modified = True
 
             if modified:
-                # Create backup directory structure
-                backup_file = self.create_backup(md_file, backup_dir, content)
-                self.logger.info(f"Updated: {md_file.name} -> {backup_file}")
+                if in_place:
+                    # Update original file directly
+                    with open(md_file, 'w', encoding='utf-8') as f:
+                        f.write(content)
+                    self.logger.info(f"Updated in place: {md_file.name}")
+                elif backup_dir:
+                    # Save to backup directory
+                    backup_file = self.create_backup(md_file, backup_dir, content)
+                    self.logger.info(f"Updated: {md_file.name} -> {backup_file}")
+                else:
+                    self.logger.warning(f"No output specified for {md_file.name}")
+                    return False
                 return True
 
             return False

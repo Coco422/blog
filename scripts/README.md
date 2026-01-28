@@ -2,6 +2,60 @@
 
 博客图片管理工具 - 用于备份和迁移博客图片的 Python CLI 工具
 
+## 🚀 快速开始（推荐）
+
+### 方式一：一键式自动化（最简单）
+
+**适合大多数场景，全自动完成下载、上传、更新链接**
+
+```bash
+# 1. 预览模式（强烈推荐首次运行）
+python3 scripts/auto_migrate.py --dry-run
+
+# 2. 正式执行迁移
+python3 scripts/auto_migrate.py
+```
+
+**重要提醒**：运行前请确保：
+1. ✅ PicGo 已启动
+2. ✅ PicGo 已配置正确的图床（imgbed.anluoying.com）
+3. ✅ 图床配置已测试可用
+
+脚本会在运行时检查并提醒你确认这些配置。
+
+**功能特性**：
+- ✅ 自动备份所有文件（操作前）
+- ✅ 下载外部图片到本地
+- ✅ 上传本地图片到图床
+- ✅ 自动更新 Markdown 文件链接
+- ✅ 提供回滚功能
+
+**备份位置**：`~/.blog_image_backups/`
+
+**回滚操作**：
+```bash
+# 列出所有备份
+python3 scripts/auto_migrate.py --list-backups
+
+# 回滚到最新备份
+python3 scripts/auto_migrate.py --rollback
+
+# 回滚到指定备份
+python3 scripts/auto_migrate.py --rollback 20260128_160000
+```
+
+### 方式二：修复已上传的链接
+
+如果图片已上传成功但 Markdown 文件链接没更新：
+
+```bash
+python3 scripts/fix_current_links.py --yes
+```
+
+### 方式三：手动分步操作
+
+如果需要更细粒度的控制，可以使用 `blog_image_manager.py`（见下文详细说明）
+
 ## 功能特性
 
 - ✅ **下载操作**：将远程图片下载到本地备份

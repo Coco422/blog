@@ -166,11 +166,16 @@ class ImageUploader:
                         'failed': len(failed)
                     })
 
-            # Update markdown files if backup_dir specified
-            if backup_dir and url_mappings:
+            # Update markdown files
+            if url_mappings:
                 self.logger.info("Updating markdown files...")
                 for md_file, url_mapping in url_mappings.items():
-                    self.processor.update_image_urls(md_file, url_mapping, backup_dir)
+                    if backup_dir:
+                        # Save to backup directory
+                        self.processor.update_image_urls(md_file, url_mapping, backup_dir=backup_dir)
+                    else:
+                        # Update original file in place
+                        self.processor.update_image_urls(md_file, url_mapping, in_place=True)
 
         return {
             'total': total_images,
