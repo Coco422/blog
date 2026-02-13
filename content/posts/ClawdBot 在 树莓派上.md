@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: true
-lastmod: 2026-01-28T16:12:18+08:00
+lastmod: 2026-02-04T15:47:59+08:00
 showLastMod: true
 tags:
   - ""
@@ -23,5 +23,6 @@ categories:
 
 `curl -fsSL https://clawd.bot/install.sh | bash`
 
-![image.png](images/ClawdBot-在-树莓派上/697980a6b1df4.png)
 
+
+![image.png](https://imgbed.szmckj.cn/uploads/2026/01/29/697b35ccd2c74.png)
