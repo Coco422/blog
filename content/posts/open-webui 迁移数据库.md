@@ -372,3 +372,7 @@ if __name__ == "__main__":
 执行完之后 再运行
 ![image.png](https://imgbed.szmckj.cn/uploads/2026/02/13/698f08c226e0a.png)
 即可
+
+> [!important] 
+> 这里要注意，volume还是要挂载回去，因为像upload的file之类的还在里面，并不在数据库里
+> 
