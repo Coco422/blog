@@ -19,10 +19,43 @@ import argparse
 import logging
 import sys
 import shutil
-import requests
+import random
 from pathlib import Path
 from datetime import datetime
 from typing import Optional
+
+
+def check_dependencies():
+    """检查必需的依赖是否已安装"""
+    missing_deps = []
+
+    try:
+        import requests
+    except ImportError:
+        missing_deps.append("requests")
+
+    if missing_deps:
+        print("=" * 60)
+        print("❌ 缺少必需的依赖")
+        print("=" * 60)
+        print("以下依赖未安装:")
+        for dep in missing_deps:
+            print(f"  - {dep}")
+        print()
+        print("请运行以下命令安装依赖:")
+        print(f"  pip install {' '.join(missing_deps)}")
+        print()
+        print("或者安装所有依赖:")
+        print("  pip install -r requirements.txt")
+        print("=" * 60)
+        sys.exit(1)
+
+
+# 检查依赖
+check_dependencies()
+
+# 依赖检查通过后再导入
+import requests
 
 # 添加脚本目录到 Python 路径
 sys.path.insert(0, str(Path(__file__).parent))
@@ -45,6 +78,36 @@ class AutoMigrator:
         # 备份目录
         self.backup_root = Path.home() / ".blog_image_backups"
         self.current_backup = self.backup_root / datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    def confirm_operation(self) -> bool:
+        """正式运行前的二次确认"""
+        if self.dry_run:
+            return True
+
+        print("\n" + "=" * 60)
+        print("⚠️  正式运行确认")
+        print("=" * 60)
+        print("此操作将：")
+        print("  1. 备份所有 Markdown 文件")
+        print("  2. 下载外部图片到本地")
+        print("  3. 上传本地图片到图床")
+        print("  4. 修改 Markdown 文件中的图片链接")
+        print()
+        print("虽然会创建备份，但仍建议先运行 --dry-run 预览")
+        print("=" * 60)
+
+        # 生成四位随机数
+        verification_code = str(random.randint(1000, 9999))
+        print(f"\n请输入验证码以继续: {verification_code}")
+
+        user_input = input("验证码: ").strip()
+
+        if user_input != verification_code:
+            print("❌ 验证码错误，操作已取消")
+            return False
+
+        print("✓ 验证通过，开始执行迁移")
+        return True
 
     def check_picgo_status(self) -> bool:
         """检查 PicGo 服务状态"""
@@ -118,11 +181,17 @@ class AutoMigrator:
         """下载外部图片到本地"""
         try:
             print("\n" + "=" * 60)
-            print("步骤 1: 下载外部图片")
+            print("📥 步骤 1/2: 下载外部图片")
             print("=" * 60)
+            print("🔍 正在扫描 Markdown 文件...")
 
             markdown_files = list(self.config.CONTENT_DIR.glob("*.md"))
+            print(f"✓ 找到 {len(markdown_files)} 个 Markdown 文件")
             self.logger.info(f"找到 {len(markdown_files)} 个 Markdown 文件")
+
+            print("\n🔧 初始化下载器...")
+            print("  - 模式: 部分下载（仅外部图片）")
+            print("  - 排除域名: imgbed.anluoying.com")
 
             # 初始化下载器，排除已在目标图床的图片
             downloader = ImageDownloader(
@@ -132,6 +201,7 @@ class AutoMigrator:
             )
 
             # 下载图片到工作目录
+            print("\n⏳ 开始下载外部图片...")
             images_dir = work_dir / "images"
             result = downloader.download_all_images(
                 markdown_files,
@@ -139,7 +209,8 @@ class AutoMigrator:
                 dry_run=self.dry_run
             )
 
-            print(f"  找到外部图片: {result['total']}")
+            print("\n📊 下载结果:")
+            print(f"  外部图片总数: {result['total']}")
             print(f"  成功下载: {result['successful']}")
             print(f"  失败: {len(result['failed'])}")
 
@@ -160,10 +231,15 @@ class AutoMigrator:
         """上传本地图片到图床"""
         try:
             print("\n" + "=" * 60)
-            print("步骤 2: 上传本地图片到图床")
+            print("📤 步骤 2/2: 上传本地图片到图床")
             print("=" * 60)
+            print("🔍 正在扫描本地图片...")
 
             markdown_files = list(self.config.CONTENT_DIR.glob("*.md"))
+
+            print("\n🔧 初始化上传器...")
+            print(f"  - PicGo 地址: {self.config.PICGO_DEFAULT_URL}")
+            print("  - 缓存: 启用")
 
             # 初始化上传器
             uploader = ImageUploader(
@@ -173,6 +249,7 @@ class AutoMigrator:
             )
 
             # 上传图片并更新 MD 文件
+            print("\n⏳ 开始上传本地图片...")
             result = uploader.upload_all_local_images(
                 markdown_files,
                 source_dir=self.config.CONTENT_DIR,
@@ -180,7 +257,8 @@ class AutoMigrator:
                 dry_run=self.dry_run
             )
 
-            print(f"  找到本地图片: {result['total']}")
+            print("\n📊 上传结果:")
+            print(f"  本地图片总数: {result['total']}")
             print(f"  成功上传: {result['successful']}")
             print(f"  使用缓存: {result['cached']}")
             print(f"  失败: {len(result['failed'])}")
@@ -203,31 +281,44 @@ class AutoMigrator:
         start_time = datetime.now()
 
         print("\n" + "=" * 60)
-        print("博客图片自动迁移工具")
+        print("🚀 博客图片自动迁移工具")
         print("=" * 60)
+        print(f"📁 博客目录: {self.config.BLOG_ROOT}")
+        print(f"📝 文章目录: {self.config.CONTENT_DIR}")
 
         if self.dry_run:
-            print("⚠️  运行模式: DRY RUN (预览模式，不会实际修改文件)")
+            print("\n⚠️  运行模式: DRY RUN (预览模式，不会实际修改文件)")
         else:
-            print("运行模式: 正式模式")
+            print("\n⚙️  运行模式: 正式模式")
         print("=" * 60)
 
+        # 0. 正式运行前的二次确认
+        if not self.confirm_operation():
+            print("\n❌ 迁移已取消")
+            return False
+
         # 1. 检查 PicGo 状态
+        print("\n" + "=" * 60)
+        print("🔍 步骤 0: 检查环境")
+        print("=" * 60)
         if not self.check_picgo_status():
             print("\n❌ 迁移已取消")
             return False
 
         # 2. 创建备份
         print("\n" + "=" * 60)
-        print("创建备份")
+        print("💾 创建备份")
         print("=" * 60)
+        print("⏳ 正在备份文件...")
         if not self.create_backup():
             print("❌ 备份失败，迁移已取消")
             return False
 
         # 创建临时工作目录
         work_dir = self.current_backup / "work"
-        work_dir.mkdir(exist_ok=True)
+        if not self.dry_run:
+            print("📂 创建工作目录...")
+        work_dir.mkdir(parents=True, exist_ok=True)
 
         # 3. 下载外部图片
         download_result = self.download_external_images(work_dir)
@@ -244,17 +335,17 @@ class AutoMigrator:
     def print_final_report(self, download_result: dict, upload_result: dict, duration):
         """打印最终报告"""
         print("\n" + "=" * 60)
-        print("迁移完成报告")
+        print("✅ 迁移完成报告")
         print("=" * 60)
-        print(f"执行时间: {duration.total_seconds():.1f}秒")
-        print(f"备份位置: {self.current_backup}")
+        print(f"⏱️  执行时间: {duration.total_seconds():.1f}秒")
+        print(f"💾 备份位置: {self.current_backup}")
         print()
-        print("下载统计:")
+        print("📥 下载统计:")
         print(f"  外部图片总数: {download_result['total']}")
         print(f"  成功下载: {download_result['successful']}")
         print(f"  下载失败: {len(download_result['failed'])}")
         print()
-        print("上传统计:")
+        print("📤 上传统计:")
         print(f"  本地图片总数: {upload_result['total']}")
         print(f"  成功上传: {upload_result['successful']}")
         print(f"  使用缓存: {upload_result['cached']}")
@@ -263,10 +354,12 @@ class AutoMigrator:
 
         if self.dry_run:
             print("⚠️  这是预览模式，未实际修改文件")
+            print("\n💡 提示: 确认无误后，运行以下命令执行正式迁移:")
+            print(f"  python {Path(__file__).name}")
         else:
-            print("✓ 迁移已完成!")
+            print("🎉 迁移已完成!")
             print()
-            print("如果发现问题，可以使用以下命令回滚:")
+            print("💡 如果发现问题，可以使用以下命令回滚:")
             print(f"  python {Path(__file__).name} --rollback {self.current_backup.name}")
         print("=" * 60)
 

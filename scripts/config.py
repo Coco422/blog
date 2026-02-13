@@ -4,8 +4,8 @@ from pathlib import Path
 class Config:
     """Configuration constants for blog image manager"""
 
-    # Paths
-    BLOG_ROOT = Path("/Users/ray/Documents/blog")
+    # Paths - 自动检测博客根目录（脚本所在目录的父目录）
+    BLOG_ROOT = Path(__file__).parent.parent.resolve()
     CONTENT_DIR = BLOG_ROOT / "content/posts"
     IMAGES_DIR = BLOG_ROOT / "images"
     CACHE_FILE = BLOG_ROOT / ".image_cache.json"
