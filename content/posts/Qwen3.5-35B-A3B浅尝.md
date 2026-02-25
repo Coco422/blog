@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-02-25T17:09:14+08:00
+lastmod: 2026-02-25T17:20:24+08:00
 showLastMod: true
 tags:
   - llm
@@ -18,7 +18,7 @@ categories:
 
 > [!info] 
 >  
-Qwen3.5 系列终于发布了小杯模型，对应的在阿里云提供 API，Qwen3.5-Plus 即 Qwen3.5-397B-A17B，Qwen3.5-Flash 即 Qwen3.5-35B-A3B。
+>Qwen3.5 系列终于发布了小杯模型，对应的在阿里云提供 API，Qwen3.5-Plus 即 Qwen3.5-397B-A17B，Qwen3.5-Flash 即 Qwen3.5-35B-A3B。
 >
 >前面几天对于 Qwen3.5-Plus 的表现，网友评论都是不错、那么这个小杯表现如何是我们比较关注的，毕竟一点资源就能跑起来了。
 
