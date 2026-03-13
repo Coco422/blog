@@ -1,6 +1,22 @@
 {{- /* 1. 解析 Markdown 里的图片路径 */ -}}
 {{- $u := urls.Parse .Destination -}}
 {{- $src := $u.String -}}
+{{- $alt := .Text | default "" -}}
+{{- $width := "" -}}
+{{- $height := "" -}}
+
+{{- /* 兼容 Obsidian 风格的图片尺寸语法：![alt|300](...) / ![alt|300x200](...) / ![alt|x200](...) */ -}}
+{{- if findRE `\|\d+x\d+$` $alt 1 -}}
+  {{- $width = replaceRE `^.*\|(\d+)x(\d+)$` "$1" $alt -}}
+  {{- $height = replaceRE `^.*\|(\d+)x(\d+)$` "$2" $alt -}}
+  {{- $alt = replaceRE `\|\d+x\d+$` "" $alt -}}
+{{- else if findRE `\|\d+$` $alt 1 -}}
+  {{- $width = replaceRE `^.*\|(\d+)$` "$1" $alt -}}
+  {{- $alt = replaceRE `\|\d+$` "" $alt -}}
+{{- else if findRE `\|x\d+$` $alt 1 -}}
+  {{- $height = replaceRE `^.*\|x(\d+)$` "$1" $alt -}}
+  {{- $alt = replaceRE `\|x\d+$` "" $alt -}}
+{{- end -}}
 
 {{- /* 2. 如果不是绝对路径（如 http://...），则尝试在资源中查找 */ -}}
 {{- if not $u.IsAbs -}}
@@ -22,7 +38,14 @@
 {{- end -}}
 
 {{- /* 6. 构建 img 标签属性：合并默认属性和自动生成的属性 */ -}}
-{{- $attributes := merge .Attributes (dict "alt" .Text "src" $src "title" (.Title | transform.HTMLEscape) "loading" "lazy") -}}
+{{- $sizeAttributes := dict -}}
+{{- if and $width (not (isset .Attributes "width")) -}}
+  {{- $sizeAttributes = merge $sizeAttributes (dict "width" $width) -}}
+{{- end -}}
+{{- if and $height (not (isset .Attributes "height")) -}}
+  {{- $sizeAttributes = merge $sizeAttributes (dict "height" $height) -}}
+{{- end -}}
+{{- $attributes := merge .Attributes $sizeAttributes (dict "alt" $alt "src" $src "title" (.Title | transform.HTMLEscape) "loading" "lazy") -}}
 
 <div class="post-img-view">
     <!-- 
@@ -32,7 +55,7 @@
     <a data-fancybox="gallery" href="{{ $src }}">
         <img
         {{- range $k, $v := $attributes -}}
-            {{- if $v -}}
+            {{- if or $v (eq $k "alt") -}}
             {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
             {{- end -}}
         {{- end -}}>
