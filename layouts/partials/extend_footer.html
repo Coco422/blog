@@ -1,0 +1,19 @@
+{{- $neko := site.Params.neko | default dict -}}
+{{- $enabled := true -}}
+{{- if isset $neko "enable" -}}
+  {{- $enabled = $neko.enable -}}
+{{- end -}}
+{{- $onlyHome := true -}}
+{{- if isset $neko "onlyHome" -}}
+  {{- $onlyHome = $neko.onlyHome -}}
+{{- end -}}
+
+{{- if and $enabled (or (not $onlyHome) .IsHome) -}}
+  {{- $script := resources.Get "js/neko.js" | js.Build (dict "minify" hugo.IsProduction) -}}
+  {{- if not site.Params.assets.disableFingerprinting -}}
+    {{- $script = $script | fingerprint -}}
+<script defer crossorigin="anonymous" data-oneko-gif="/hugo-neko/oneko.gif" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{- else -}}
+<script defer crossorigin="anonymous" data-oneko-gif="/hugo-neko/oneko.gif" src="{{ $script.RelPermalink }}"></script>
+  {{- end -}}
+{{- end -}}

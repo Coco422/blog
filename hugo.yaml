@@ -77,6 +77,10 @@ params:
     hiddenInSingle: true # hide on single page
 
   comments: true
+
+  neko:
+    enable: true
+    onlyHome: true
 # --------------------未配置--------------------------
 
   ShowRssButtonInSectionTermList: true
