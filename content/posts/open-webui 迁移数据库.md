@@ -368,9 +368,9 @@ if __name__ == "__main__":
 
 ## 执行
 
-![image.png](https://imgbed.szmckj.cn/uploads/2026/02/13/698efeaca9368.png)
+![image.png](https://imgbed.anluoying.com/2026/03/5865c55f8e8333f5b1e4f8f5ef02ce14.png)
 执行完之后 再运行
-![image.png](https://imgbed.szmckj.cn/uploads/2026/02/13/698f08c226e0a.png)
+![image.png](https://imgbed.anluoying.com/2026/03/dc54e61d130f42cc3d035679ac3e9d21.png)
 即可
 
 > [!important] 

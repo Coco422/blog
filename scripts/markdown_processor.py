@@ -2,8 +2,7 @@ import re
 import logging
 from pathlib import Path
 from dataclasses import dataclass
-from typing import List, Dict, Optional
-from urllib.parse import urlparse
+from typing import List, Dict, Optional, Tuple
 
 
 @dataclass
@@ -23,7 +22,9 @@ class MarkdownProcessor:
 
     def __init__(self, config):
         self.config = config
-        self.image_pattern = re.compile(r'!\[(.*?)\]\((.*?)(?:\s+(=\d+x\d+))?\)')
+        # Match the core markdown image syntax, then parse destination details separately.
+        self.image_pattern = re.compile(r'!\[(.*?)\]\((.*?)\)')
+        self.inline_code_pattern = re.compile(r'`[^`]*`')
         self.logger = logging.getLogger(__name__)
 
     def extract_images(self, md_file: Path) -> List[ImageReference]:
@@ -34,11 +35,35 @@ class MarkdownProcessor:
             with open(md_file, 'r', encoding='utf-8') as f:
                 content = f.read()
 
+            in_fenced_code = False
+            fence_marker = None
+
             for line_num, line in enumerate(content.split('\n'), 1):
-                for match in self.image_pattern.finditer(line):
+                stripped = line.lstrip()
+
+                # Ignore fenced code blocks (``` or ~~~).
+                if stripped.startswith('```') or stripped.startswith('~~~'):
+                    marker = stripped[:3]
+                    if not in_fenced_code:
+                        in_fenced_code = True
+                        fence_marker = marker
+                    elif marker == fence_marker:
+                        in_fenced_code = False
+                        fence_marker = None
+                    continue
+
+                if in_fenced_code:
+                    continue
+
+                # Ignore inline code examples like `![alt](url)`.
+                parse_line = self.inline_code_pattern.sub('', line)
+
+                for match in self.image_pattern.finditer(parse_line):
                     alt_text = match.group(1)
-                    url = match.group(2)
-                    size_spec = match.group(3) if len(match.groups()) >= 3 else None
+                    destination = match.group(2)
+                    url, size_spec = self.parse_destination(destination)
+                    if not url:
+                        continue
 
                     is_remote = self.is_remote_url(url)
                     is_local = self.is_local_path(url)
@@ -57,6 +82,32 @@ class MarkdownProcessor:
             self.logger.error(f"Error extracting images from {md_file}: {e}")
 
         return images
+
+    def parse_destination(self, destination: str) -> Tuple[Optional[str], Optional[str]]:
+        """Parse markdown image destination into URL and optional size spec."""
+        destination = destination.strip()
+        if not destination:
+            return None, None
+
+        size_spec = None
+        size_match = re.search(r'(?:^|\s)(=\d+x\d+)\s*$', destination)
+        if size_match:
+            size_spec = size_match.group(1)
+            destination = destination[:size_match.start()].strip()
+
+        # Strip optional title suffixes: "title", 'title', or (title)
+        destination = re.sub(r'\s+"[^"]*"\s*$', '', destination)
+        destination = re.sub(r"\s+'[^']*'\s*$", '', destination)
+        destination = re.sub(r'\s+\([^)]+\)\s*$', '', destination)
+
+        if destination.startswith('<') and '>' in destination:
+            destination = destination[1:destination.find('>')].strip()
+
+        if not destination:
+            return None, size_spec
+
+        url = destination.split()[0]
+        return url, size_spec
 
     def update_image_urls(self, md_file: Path, url_mapping: Dict[str, str],
                          backup_dir: Optional[Path] = None, in_place: bool = False) -> bool:

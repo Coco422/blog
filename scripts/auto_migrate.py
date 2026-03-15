@@ -202,11 +202,11 @@ class AutoMigrator:
 
             # 下载图片到工作目录
             print("\n⏳ 开始下载外部图片...")
-            images_dir = work_dir / "images"
             result = downloader.download_all_images(
                 markdown_files,
-                work_dir,
-                dry_run=self.dry_run
+                backup_dir=None,
+                dry_run=self.dry_run,
+                in_place=True
             )
 
             print("\n📊 下载结果:")

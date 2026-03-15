@@ -83,8 +83,8 @@ class ImageDownloader:
 
         return dest_path.parent / f"{stem}_{url_hash}{suffix}"
 
-    def download_all_images(self, markdown_files: List[Path], backup_dir: Path,
-                           dry_run: bool = False) -> Dict:
+    def download_all_images(self, markdown_files: List[Path], backup_dir: Optional[Path],
+                           dry_run: bool = False, in_place: bool = False) -> Dict:
         """Download all images from markdown files"""
         self.logger.info(f"Starting download in {self.mode} mode")
         if self.exclude_domains:
@@ -94,8 +94,16 @@ class ImageDownloader:
         images_to_download = []
         url_mappings = {}  # md_file -> {old_url: new_url}
 
-        # Create images directory in backup_dir instead of blog root
-        images_base_dir = backup_dir / 'images'
+        if in_place:
+            if markdown_files:
+                images_base_dir = markdown_files[0].parent / 'images'
+            else:
+                images_base_dir = self.config.CONTENT_DIR / 'images'
+        else:
+            if backup_dir is None:
+                raise ValueError("backup_dir is required when in_place=False")
+            # Create images directory in backup_dir instead of blog root
+            images_base_dir = backup_dir / 'images'
 
         for md_file in markdown_files:
             images = self.processor.extract_images(md_file)
@@ -164,7 +172,10 @@ class ImageDownloader:
             if url_mappings:
                 self.logger.info("Updating markdown files...")
                 for md_file, url_mapping in url_mappings.items():
-                    self.processor.update_image_urls(md_file, url_mapping, backup_dir)
+                    if in_place:
+                        self.processor.update_image_urls(md_file, url_mapping, in_place=True)
+                    else:
+                        self.processor.update_image_urls(md_file, url_mapping, backup_dir=backup_dir)
 
         return {
             'total': total_images,

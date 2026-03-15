@@ -34,7 +34,7 @@ categories:
 
 效果图：
 
-![image.png](https://imgbed.szmckj.cn/uploads/2026/01/29/697b35ccd2c74.png)
+![image.png](https://imgbed.anluoying.com/2026/03/52ffeb67c2e01179d91a93b0ca8f98ad.png)
 
 叫上同事进来试了一下，没想到还真的能用。功能一切正常，简单试了一下，模型能力挺重要的，如果没有定时提醒之类的能力，agent 还是比较鸡肋，但是如果未来接入飞书、配合适当的 skills、做好持久 memory，那么个人秘书就在眼前了。
 
