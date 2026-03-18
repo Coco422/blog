@@ -9,7 +9,7 @@
   "obsidian-emoji-toolbar",
   "obsidian-image-auto-upload-plugin",
   "simple-code-formatter",
-  "obsidian-textgenerator-plugin",
   "frontmatter-modified-date",
-  "obsidian-markdown-formatting-assistant-plugin"
+  "obsidian-markdown-formatting-assistant-plugin",
+  "openai-summary-helper"
 ]

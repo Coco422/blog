@@ -1,0 +1,10 @@
+{
+  "id": "openai-summary-helper",
+  "name": "OpenAI Summary Helper",
+  "version": "0.0.1",
+  "minAppVersion": "1.5.0",
+  "description": "Generate note summaries and frontmatter descriptions with an OpenAI-compatible API.",
+  "author": "Ray",
+  "authorUrl": "https://blog.anluoying.com",
+  "isDesktopOnly": false
+}

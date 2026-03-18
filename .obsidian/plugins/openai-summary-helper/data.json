@@ -1,0 +1,10 @@
+{
+  "apiKey": "",
+  "baseUrl": "https://api.siliconflow.cn/v1",
+  "descriptionPrompt": "请基于下面文章生成一段适合写入 frontmatter description 的中文描述。\n要求：\n1. 60 到 100 字；\n2. 保持准确、具体，不要夸张；\n3. 只输出 description 正文，不要额外解释；\n\n文章标题：{{title}}\n文章路径：{{path}}\n\n文章内容：\n{{content}}",
+  "maxInputChars": 32000,
+  "model": "zai-org/GLM-4.5-Air",
+  "overwriteDescription": false,
+  "rollingSummaryPrompt": "你正在执行长文的分段递进摘要任务。\n整篇文章共 {{chunk_total}} 段，当前处理第 {{chunk_index}} 段。\n你会看到两部分输入：\n1. 已有累计摘要：表示截至上一段为止的重要内容；\n2. 当前段正文：这次新增需要纳入总结的内容。\n\n你的目标不是只总结当前段，而是输出一份“截至当前段为止”的累计摘要。\n要求：\n1. 优先保留已有累计摘要中的关键信息，并与当前段的新信息整合；\n2. 去重和压缩，避免重复表述；\n3. 用 4 到 6 条要点总结；\n4. 最后一行单独给出一句总括；\n5. 不要编造原文没有提到的信息；\n\n文章标题：{{title}}\n文章路径：{{path}}\n\n已有累计摘要：\n{{previous_summary}}\n\n当前处理段正文：\n{{content}}",
+  "summaryPrompt": "请阅读下面的文章，并生成中文概括。\n要求：\n1. 用 3 到 5 条要点总结；\n2. 最后一行单独给出一句总括；\n3. 不要编造原文没有提到的信息；\n\n文章标题：{{title}}\n文章路径：{{path}}\n\n文章内容：\n{{content}}"
+}
