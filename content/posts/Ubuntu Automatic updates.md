@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: true
-lastmod: 2026-03-18T15:28:20+08:00
+lastmod: 2026-03-18T16:06:19+08:00
 showLastMod: true
 tags:
   - ubuntu
