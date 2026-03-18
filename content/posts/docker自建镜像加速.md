@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-03-02T15:19:07+08:00
+lastmod: 2026-03-18T14:21:45+08:00
 showLastMod: true
 tags:
   - docker
@@ -48,4 +48,9 @@ categories:
 
 ![image.png|300](https://imgbed.anluoying.com/2026/03/c8519a3fdb442eba4d33d685f8b65159.png)
 
-舒服了
+舒服了,全部配置完后，这里搜索想要的镜像，会生成对应的加速命令
+
+当然，也可以直接在常用的服务器上配置一下 registry-mirrors，如图所示
+修改/etc/docker/daemon.json
+
+![image.png|300](https://imgbed.anluoying.com/2026/03/9f241c981a69f12375804ef64e7cd6fc.png)
