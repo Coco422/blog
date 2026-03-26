@@ -1,6 +1,6 @@
 ---
 title: "Hugo 配置waline"
-description: 
+description: 惯例先放网址，我这里参考了 好多，但是终究没有能抄的作业 hugo-theme-stack/config.yaml at master · CaiJimmy/hugo-theme-stack · GitHub(https://github.
 date: 2025-03-25T13:04:24+08:00
 image: 
 math: 

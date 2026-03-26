@@ -1,6 +1,6 @@
 ---
 title: "Nginx 记一次基础转发配置"
-description: 
+description: server { listen 1043 ssl default_server; server_name 172.16.99.32; ssl_certificate /etc/nginx/ssl/1043/server.crt; ssl_
 date: 2025-03-24T18:10:53+08:00
 tags: ["nginx"]
 categories: ["杂技浅尝"]

@@ -1,6 +1,6 @@
 ---
 title: ClawdBot 在 树莓派上
-description:
+description: ClawdBot（现已改名 Moltbot）在树莓派上的安装与配置实践，包括 skills 配置和使用经验分享。
 date: 2026-01-28T11:18:13+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

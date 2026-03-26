@@ -1,6 +1,6 @@
 ---
 title: Day01 Go 环境与基础
-description:
+description: Day01 Go 环境与基础 首先准备环境。（之前为了搞些小工具，多多少少接触一点go，不过几乎可以说为0） 那么最重要的：官网，哪里的文档都不如亲妈的描述 !note go.dev(https://go.dev/) Docu
 date: 2025-12-19T23:46:01+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

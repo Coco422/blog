@@ -1,6 +1,6 @@
 ---
 title: Netflix 怎么调整画质
-description:
+description: 如何查看当前网飞的画质 播放状态下，按Ctrl + Alt + Shift +q 显示当前串流状态，如图所示。我当前是2K的状态，但是之前一直好奇怎么调整，今天一位L站佬友给解惑了 !image.png(https://imgbed.an
 date: 2025-11-27T22:30:18+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

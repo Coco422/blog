@@ -1,6 +1,6 @@
 ---
 title: jupyter !和%
-description:
+description: 学习别人给到的 Jupyter 代码时，其中有安装依赖的代码 使用 Jupyter !pip install numpy 这里我看到 vscode 插件提示我 !image.png(https://imgbed.anluoying.com/
 date: 2025-08-19T11:49:44+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

@@ -1,6 +1,6 @@
 ---
 title: 代理下git连不上
-description:
+description: 在代理下，git使用ssh 22端口时连接不上。关掉代理就可以 参考本文 本地打开代理，Git无法使用SSH连接GitHubGitHub SSH连接的血泪史:短短一行报错，让我在接下来的48小时 - 掘金(https://juejin.cn
 date: 2025-08-24T01:56:31+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

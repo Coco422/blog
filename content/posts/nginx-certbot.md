@@ -1,6 +1,6 @@
 ---
 title: "Nginx Certbot"
-description: 
+description: Nginx and Let’s Encrypt with Docker 这篇主要都是来自 medium 的这篇文章 Nginx and Let’s Encrypt with Docker in Less Than 5 Minutes \|
 date: 2025-03-25T13:00:59+08:00
 tags: ["nginx"]
 categories: ["杂技浅尝"]

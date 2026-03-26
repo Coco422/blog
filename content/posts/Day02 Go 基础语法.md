@@ -1,6 +1,6 @@
 ---
 title: Day02 Go 基础语法
-description:
+description: "!summary 惭愧，举例 Day1 已经过去 83 天了。今天才开始继续学习 翻出 A Tour of Go，继续上次的篇章往下走一走 For Go 只有一种循环结构，即 for 循环。 最基本的 for 循环由三个部分组成"
 date: 2025-12-21T23:43:29+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

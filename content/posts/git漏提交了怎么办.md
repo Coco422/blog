@@ -1,6 +1,6 @@
 ---
 title: git漏提交了怎么办
-description:
+description: 使用 Git 的 amend 功能，将未保存的文件修改后“补充”到你刚刚的那次提交中，而不会增加新的提交记录。 ✅ 1. 保存你漏掉的那个文件 先确保你已经保存了那个文件的最新修改。 --- ✅ 2. 添加这个文件到暂存区 git add
 date: 2025-05-09T16:45:37+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

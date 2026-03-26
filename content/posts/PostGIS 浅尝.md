@@ -1,6 +1,6 @@
 ---
 title: PostGIS 浅尝
-description:
+description: PostGIS 教程 1. 什么是 PostGIS PostGIS 是 PostgreSQL 数据库的一个扩展，它允许在数据库中存储和操作 GIS（地理信息系统）空间数据。它为 PostgreSQL 添加了空间数据类型、索引和大量空间函数
 date: 2026-01-26T11:33:52+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

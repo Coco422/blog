@@ -1,6 +1,6 @@
 ---
 title: vite-press 食用指南
-description: 十分钟构建超美观文档
+description: 前几天给同事分享文档的时候一直在用 语雀啥的。突然想到，如果要维护一个像 vue 或者vite 那一类的文档给用户看该怎么快速搭建的。理应有前辈完成这种工作。让 grok 搜了一下。顺便解惑原来对于 wiki doc 等的认识，有兴趣的
 date: 2025-04-10T14:43:10+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

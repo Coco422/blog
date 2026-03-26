@@ -1,5 +1,5 @@
 baseurl: https://blog.anluoying.com/
-title: 安落滢 Blog
+title: 安落滢 Blog - 技术分享与生活记录
 pagination:
   pagerSize: 5
 theme: PaperMod
@@ -12,6 +12,9 @@ buildExpired: false
 minify:
   disableXML: true
   minifyOutput: true
+
+permalinks:
+  categories: /categories/:slug/
 
 # Security headers
 server:

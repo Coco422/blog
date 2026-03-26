@@ -1,6 +1,6 @@
 ---
 title: hugo 的博客点击图片放大
-description:
+description: 昨天抄来改改一篇很长的 cc 教程，里面有不少图片，发现我的主题似乎没法点击放大图片，于是求助 gemini3 实现方式 1. 用Hugo Render Hook（渲染钩子），它接管了 Markdown 中图片语法 !Alt(src "
 date: 2025-11-28T10:15:26+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

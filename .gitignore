@@ -5,3 +5,4 @@ public/
 .obsidian/workspace.json
 
 __pycache__/
+fix_descriptions.sh

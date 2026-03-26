@@ -1,6 +1,6 @@
 ---
 title: SLM-2-模型训练
-description: 
+description: 接上篇，定义 SLM 的模型架构 代码如下 python import torch import torch.nn as nn import torch.nn.functional as F import math from datacl
 date: 2025-08-19T12:35:53+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

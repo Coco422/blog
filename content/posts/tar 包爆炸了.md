@@ -1,6 +1,6 @@
 ---
 title: tar 包爆炸了
-description:
+description: 很狼狈的一件事情，到手一个 tar 压缩包之后。直接运行 tar -xvf 罪魁祸首.tar 结果就像一个在我混乱的卧室里 爆开一包薯片一样，撒的到处都是，一点点捡可能还捡不干净，有一些文件的修改日期十分远古，看不出来是否来自压缩包内 首先
 date: 2025-11-12T10:51:54+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

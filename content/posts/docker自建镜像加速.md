@@ -1,6 +1,6 @@
 ---
 title: docker自建镜像加速
-description:
+description: "!info 我实在是受不了这个网络问题，不能畅快的 pull image 就和便秘一样。 然而，大部分的曾经一配即可用的镜像源大多数不好用或者开始收费，这些就不多说了，总之就是不好用了，那么我就打算自建一个。 之前是给公司打了个"
 date: 2026-03-02T11:30:42+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

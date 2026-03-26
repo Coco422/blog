@@ -1,6 +1,6 @@
 ---
 title: PG connect 字符串错误
-description:
+description: "PostgreSQL Documentation 17 32.1. Database Connection Control Functions(https//www.postgresql.org/docs/current/libpq"
 date: 2025-08-04T11:44:00+08:00
 lastmod: 2025-12-10T00:26:34+08:00
 showLastmod: true

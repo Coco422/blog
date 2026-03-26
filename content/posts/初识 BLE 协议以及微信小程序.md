@@ -1,6 +1,6 @@
 ---
 title: 初识 BLE 协议以及微信小程序
-description:
+description: 手头有个项目，涉及到 app 端蓝牙连接。硬件开发伙伴给到了 BLE 协议，完全一头雾水 最近忙的没空推进 Go 的学习，想着博客至少不能落下更新，不管怎么样也要逼自己写一篇水文。 什么是 BLE 首先得知道什么是蓝牙（Blue
 date: 2026-01-19T11:36:17+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

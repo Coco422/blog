@@ -1,6 +1,6 @@
 ---
 title: 老朋友 Wireshark 在 mac 上抓包 https
-description:
+description: 参考文章 Mac下抓包工具wireshark的安装和使用- 醉丶春风的Blog(https://www.xstnet.com/article-155.html) 我云了，原来wireshark可以抓HTTPS明文包 \| Mon
 date: 2025-05-13T18:25:40+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

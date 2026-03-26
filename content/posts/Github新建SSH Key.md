@@ -1,6 +1,6 @@
 ---
 title: Github新建SSH Key
-description:
+description: 一，先在本机生成 SSH key 推荐用 ed25519，短、安全、GitHub 首选。 ssh-keygen -t ed25519 -C "your_email@example.com" 一路回车即可，默认会生成在： ~/.ssh/id
 date: 2026-02-02T22:20:13+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
