@@ -13,6 +13,17 @@ minify:
   disableXML: true
   minifyOutput: true
 
+# Security headers
+server:
+  headers:
+    - for: /**
+      values:
+        Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'"
+        Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"
+        X-Frame-Options: "SAMEORIGIN"
+        X-Content-Type-Options: "nosniff"
+        Referrer-Policy: "strict-origin-when-cross-origin"
+
 
 outputs:
   home:
@@ -24,7 +35,7 @@ params:
 
 # 已配置内容
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: Ray Blog
+  title: 安落滢 Blog - 技术、生活与思考
   description: "安落滢的博客 - A blog about technology, life, and everything in between."
   keywords: [Blog, Portfolio, PaperMod]
   author: Ray
@@ -101,6 +112,7 @@ params:
     text: "Home"
     icon: /apple-touch-icon.png
     iconHeight: 35
+    iconAlt: "安落滢 Blog Logo"
 
   analytics:
     google:
