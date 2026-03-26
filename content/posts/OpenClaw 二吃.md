@@ -1,5 +1,6 @@
 ---
 title: OpenClaw 二吃
+slug: openclaw-feishu-integration
 description: OpenClaw 配置连接飞书并且尝试对接 Qwen3.5-35B-A3B
 date: 2026-02-25T17:54:16+08:00
 license: Licensed under CC BY-NC-SA 4.0

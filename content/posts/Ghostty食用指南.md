@@ -1,6 +1,7 @@
 ---
 title: Ghostty食用指南
-description:
+slug: ghostty-guide
+description: Ghostty 终端使用指南，从安装到配置的完整教程，包括主题设置、字体配置和快捷键使用技巧。
 date: 2026-03-17T17:35:25+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

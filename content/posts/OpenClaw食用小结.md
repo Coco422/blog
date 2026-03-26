@@ -1,5 +1,6 @@
 ---
 title: openclaw食用小结
+slug: openclaw-summary
 description: OpenClaw 的价值不在于它能做什么，而在于你能想到用它做什么，能不能赚到钱取决于你怎么用，但 Token 消耗确实也是实实在在的成本。
 date: 2026-03-16T00:37:01+08:00
 license: Licensed under CC BY-NC-SA 4.0
