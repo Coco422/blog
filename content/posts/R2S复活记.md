@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-03-26T11:30:56+08:00
+lastmod: 2026-03-27T00:18:13+08:00
 showLastMod: true
 tags:
   - network
@@ -49,7 +49,12 @@ R2S IP：`192.168.6.80`
 按照 G 老师的推荐，我找到了[iStoreOS download \| SourceForge.net](https://sourceforge.net/projects/istoreos/) ，不得不说（AI 万岁）
 配合[balenaEtcher - Flash OS images to SD cards & USB drives](https://etcher.balena.io/#download-etcher)进行刷机，断电拔掉内存卡
 
-此处欠了几张图
+![Screenshot 2026-03-25 222859.png|300](https://imgbed.anluoying.com/2026/03/7cd3f1d7dbb000c496e86fbfe5b220e7.png)
+下载好的系统镜像传入 Etcher
+插入读卡器，选择读卡器
+![Screenshot 2026-03-25 222819.png|300](https://imgbed.anluoying.com/2026/03/563f076fb1569bd7d22e1feab9805de6.png)
+开始刷
+![Screenshot 2026-03-25 222853.png|300](https://imgbed.anluoying.com/2026/03/150f05e8028672345f519669b3a3b663.png)
 
 刷完之后插上内存卡，等待灯闪烁平稳后，访问 `192.168.100.1` 默认密码 password
 进入页面后一看服务啥都木有，先装个 passwall2，我在市场里没找到，所以就用.run 自己安装
@@ -145,3 +150,15 @@ DHCP 设置唯一授权
 
 > [!hint] 
 > 然后现在遇到了个倒霉的事情，在外面跑的时候，发现 Todesk 回不了家，他说我家里电脑是海外用户。回头还要配置一下 
+
+## todesk rustdesk 无法连接
+
+
+![image.png|300](https://imgbed.anluoying.com/2026/03/776b9c44a670a7953f3bf3aaee3c2bbc.png)
+打开passwall2 开启fakeDNS
+分流规则China组增加todesk域名
+![image.png|300](https://imgbed.anluoying.com/2026/03/e944c2db2ec61c4ee5350d8bcf30c343.png)
+转发配置TCP代理方式选择 TPROXY
+![image.png|300](https://imgbed.anluoying.com/2026/03/22c8aebcca7700456588b71356f0186a.png)
+
+除此之外，暂时没搞懂为什么，但是rustdesk能连上了。todesk似乎还不稳定，还是接着留问题在这吧。

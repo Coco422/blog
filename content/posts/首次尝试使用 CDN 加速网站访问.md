@@ -1,17 +1,100 @@
 ---
 title: 首次尝试使用 CDN 加速网站访问
-description: "!Screenshot 2026-03-25 at 16.31.24.png|300(https//imgbed.anluoying.com/2026/03/b2cd7e000388f86cfed0790e89b2fdfa.png) 初次"
+description: 本文记录了作者首次使用CDN加速网站访问的实践过程，包括CDN基础概念介绍、选择Doki CDN平台的原因、详细配置步骤以及加速效果对比。作者通过配置子域名www.666.com，上传SSL证书，设置CNAME解析，成功实现了网站访问加速。
 date: 2026-03-25T16:31:04+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
-draft: true
-lastmod: 2026-03-25T16:32:36+08:00
+draft: false
+lastmod: 2026-03-27T00:42:17+08:00
 showLastMod: true
 tags:
-  - ""
+  - network
 categories:
-  - ""
+  - 杂技浅尝
 ---
-![Screenshot 2026-03-25 at 16.31.24.png|300](https://imgbed.anluoying.com/2026/03/b2cd7e000388f86cfed0790e89b2fdfa.png)
+### 基础概念
+
+- **CDN**（Content Delivery Network / Content Distribution Network） 内容分发网络（或内容交付网络）。它是一个分布在全球各地的服务器网络，把你的网站内容（图片、JS、CSS、视频、HTML 等）缓存到离用户更近的服务器上，从而加快访问速度、减轻源站压力、提高可用性。
+- **源站（Origin Server / 源服务器）** 你自己的服务器（你例子里的服务器 A），存放网站原始内容的服务器。CDN 所有内容最初都来自这里。
+- **边缘节点（Edge Node / PoP - Point of Presence）** CDN 在全球各地部署的“边缘”服务器。用户访问时，CDN 会把请求调度到离用户最近的边缘节点。如果节点有缓存，就直接返回；没有就去源站拉取（回源）。
+
 ## 初次使用CDN
+
+部署了网站，假设域名为 666.com
+客户反馈访问经常断联。那是由于我的服务器在地球的另一端，所以域名直接解析到的是我的服务器IP
+
+由于使用的DNS服务商并没有像CF的小黄云代理我的网络，所以这个做法一来是连接不稳定、二来是暴露服务器公网地址容易被打死，所以在这个情况下，逼我去看了一下CDN
+
+首先看了一下阿里云的（贵，放弃了）
+在热佬的社区留言发现了这个平台，Doki CDN
+
+## 配置过程
+
+### 环境情况
+
+我已有美国服务器A，域名666.com直接指向服务器A的地址，A部署nginx代理并且部署证书开启TSL
+
+### 配置CDN
+
+我购买了一个套餐，选择了我要加速的域名
+平台会给到我一个用来CNAME指向的域名，让我去DNS解析平台配置，而我为了快速上线，这里没有切换主域名的使用，而是选择加速了一个www.666.com
+
+### DokiDoki CDN 侧完整配置步骤
+
+登录 **DokiDoki CDN 控制台**（dooki.cloud 后台）：
+
+1. **添加加速域名**
+    - 去「CDN加速」→ 点击「添加网站」。
+    - **加速域名** 填：www.666.com（强烈推荐子域名）
+    - **源站类型**：选「源站 IP」→ 填服务器 A 的 IP（或者选「源站域名」填原来的域名也行）。
+    - **回源协议**：建议选「协议跟随」或「HTTP」（先用 HTTP 回源最稳，等全通后再改 HTTPS）。
+    - 提交，等待审核通过（一般几分钟）。
+2. **上传证书（必须做！）**
+    - 去「证书管理」或「SSL 证书」页面 → 「添加证书」/「上传证书」。
+    - **证书名称**：随便起个（如 666-letsencrypt）。
+    - **证书公钥（PEM）**：复制 Let's Encrypt **fullchain.pem**（或 crt 文件）全部内容（从 -----BEGIN CERTIFICATE----- 到结束，包含中间证书链）。
+    - **私钥（PEM）**：复制 **privkey.pem**（或 .key 文件）全部内容。
+    - 保存。
+    - 回到刚添加的域名配置里，找到 HTTPS 设置 → 选择刚上传的证书 → 开启 HTTPS。
+3. **获取 CNAME**
+    - 在域名列表里找到 `www.666.com`，复制它对应的 **CNAME 值** 填写到DNS解析平台处，我这里www原本有一个默认的 www 的A记录，直接改了就行
+
+> [!hint] 
+>  用工具验证是否生效：
+>  - 命令行输入 `nslookup www.666.com`
+
+大功告成
+
+![Screenshot 2026-03-25 at 16.31.24.png|300|300](https://imgbed.anluoying.com/2026/03/b2cd7e000388f86cfed0790e89b2fdfa.png)
+
+## 给大家看看效果
+
+### 加速前
+
+![9db7b2c1-a1b8-41e0-9558-bb396d8ea805.png|300](https://imgbed.anluoying.com/2026/03/db6c021603b835cdb9f027a2ad4ebdb4.png)
+
+### 加速后
+
+![adf729c2-783e-4ec9-b98a-048aa8cdfb00.png|300|300](https://imgbed.anluoying.com/2026/03/f90b40c99fee6fa168f82390f7bfb57d.png)
+## 什么叫端口跟随
+
+这里是我的疑问，就是用户访问 http的时候 理论走的是CDN的80端口，那么他回源到服务器要访问 80还是443就由这个配置指定
+
+> 回源协议 + 端口 的设置，决定了 CDN 节点从服务器 A 拉取资源时，用什么协议和哪个端口。
+
+## 什么叫回源主机名
+
+
+（也叫「回源主机头」、「随源站主机名」、「Origin Host」或「回源 HOST」）
+
+这是 CDN 回源时，在 HTTP 请求头里带的 **Host 字段** 是什么。
+
+我的服务器 A 上跑了网站 666.com，Nginx/Apache 等 Web 服务器是根据请求头里的 **Host** 来决定把请求交给哪个虚拟主机（virtual host）处理的。
+
+- **不随源（默认或跟随加速域名）**：
+    - CDN 回源时，Host 头会带 `www.666.com`（也就是用户访问的加速域名）。
+    - 适合情况：服务器上，`www.666.com` 这个域名已经正确绑定了对应的网站配置。
+- **随源主机名**（跟随源站）：
+    - CDN 回源时，Host 头会带我们填的**源站域名**（通常是源站配置里填的那个域名或 IP 对应的主机名）。
+    - 适合情况：当源站服务器上绑定的站点域名 和 加速域名 不一样时，用这个可以让 CDN 告诉源站“我要访问的是源站上的哪个站点”。
