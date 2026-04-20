@@ -12,6 +12,7 @@ import {
   requireApiVersion,
   requestUrl,
 } from "obsidian";
+import { applyPatch, createTwoFilesPatch, parsePatch, type StructuredPatch, type StructuredPatchHunk } from "diff";
 
 interface OpenAISummarySettings {
   apiKey: string;
@@ -20,6 +21,7 @@ interface OpenAISummarySettings {
   maxInputChars: number;
   model: string;
   overwriteDescription: boolean;
+  reviewPrompt: string;
   rollingSummaryPrompt: string;
   summaryPrompt: string;
 }
@@ -43,6 +45,21 @@ const DEFAULT_SETTINGS: OpenAISummarySettings = {
   maxInputChars: 24000,
   model: "gpt-4.1-mini",
   overwriteDescription: false,
+  reviewPrompt: [
+    "你是一名中文文章编辑助手，请直接输出“修订后的完整 Markdown 文本”，用于替换原文。",
+    "目标：修正错别字、语病、表达不顺、重复、标点和措辞问题，但不要改变作者原意。",
+    "要求：",
+    "1. YAML frontmatter 必须保持原样，除非其中有明显错别字；",
+    "2. 保持标题层级、列表、链接、引用、表格、代码块等 Markdown 结构；",
+    "3. 不要新增解释，不要写审稿意见，不要使用代码围栏；",
+    "4. 只输出修订后的完整 Markdown 文本；",
+    "",
+    "文章标题：{{title}}",
+    "文章路径：{{path}}",
+    "",
+    "原文全文：",
+    "{{content}}",
+  ].join("\n"),
   rollingSummaryPrompt: [
     "你正在执行长文的分段递进摘要任务。",
     "整篇文章共 {{chunk_total}} 段，当前处理第 {{chunk_index}} 段。",
@@ -85,6 +102,7 @@ const DEFAULT_SETTINGS: OpenAISummarySettings = {
 const API_KEY_SECRET_ID = "openai-summary-helper-api-key";
 const MIN_CHUNK_SIZE = 1000;
 const MAX_CARRYOVER_CHARS = 4000;
+const REVIEW_DIFF_CONTEXT_LINES = 3;
 
 interface CompletionResult {
   answer: string;
@@ -347,6 +365,265 @@ class LiveGenerationModal extends Modal {
   }
 }
 
+interface ReviewDiffModalOptions {
+  diffText: string;
+  file: TFile;
+  onApply: () => void | Promise<void>;
+}
+
+type ReviewDiffLineKind = "addition" | "context" | "deletion" | "note";
+
+interface ReviewDiffStats {
+  additions: number;
+  deletions: number;
+  hunks: number;
+}
+
+class ReviewDiffModal extends Modal {
+  private readonly diffText: string;
+  private readonly file: TFile;
+  private readonly onApply: () => void | Promise<void>;
+
+  constructor(app: App, options: ReviewDiffModalOptions) {
+    super(app);
+    this.diffText = options.diffText;
+    this.file = options.file;
+    this.onApply = options.onApply;
+  }
+
+  onOpen(): void {
+    const { contentEl } = this;
+    const patches = parsePatch(this.diffText);
+    const stats = this.countDiffStats(patches);
+
+    this.setTitle(`AI review diff: ${this.file.basename}`);
+
+    const helper = contentEl.createEl("p", {
+      text: `Review the unified diff below. If you approve it, the plugin will apply these changes to "${this.file.path}".`,
+    });
+    helper.style.marginBottom = "0.75rem";
+    helper.style.color = "var(--text-muted)";
+    helper.style.lineHeight = "1.5";
+
+    const meta = contentEl.createEl("p", {
+      text: `Hunks: ${stats.hunks} | Additions: ${stats.additions} | Deletions: ${stats.deletions}`,
+    });
+    meta.style.margin = "0 0 0.75rem 0";
+    meta.style.fontWeight = "600";
+
+    const diffEl = contentEl.createDiv();
+    diffEl.style.maxHeight = "28rem";
+    diffEl.style.overflow = "auto";
+    diffEl.style.background = "var(--background-primary)";
+    diffEl.style.border = "1px solid var(--background-modifier-border)";
+    diffEl.style.borderRadius = "8px";
+
+    if (patches.length > 0) {
+      this.renderStructuredDiff(diffEl, patches);
+    } else {
+      this.renderRawDiff(diffEl);
+    }
+
+    const actions = contentEl.createDiv();
+    actions.style.display = "flex";
+    actions.style.gap = "0.75rem";
+    actions.style.flexWrap = "wrap";
+    actions.style.marginTop = "1rem";
+
+    const copyButton = actions.createEl("button", { text: "Copy diff" });
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(this.diffText);
+        new Notice("Copied review diff to clipboard.");
+      } catch (error) {
+        console.error("Failed to copy review diff", error);
+        new Notice("Could not copy review diff.");
+      }
+    });
+
+    const applyButton = actions.createEl("button", { text: "Apply changes" });
+    applyButton.addClass("mod-cta");
+    applyButton.addEventListener("click", async () => {
+      applyButton.toggleAttribute("disabled", true);
+      try {
+        await this.onApply();
+        this.close();
+      } catch (error) {
+        console.error("Failed to apply AI review changes", error);
+        new Notice(error instanceof Error ? error.message : "Failed to apply AI review changes.");
+        applyButton.toggleAttribute("disabled", false);
+      }
+    });
+
+    const closeButton = actions.createEl("button", { text: "Close" });
+    closeButton.addEventListener("click", () => this.close());
+  }
+
+  onClose(): void {
+    this.contentEl.empty();
+  }
+
+  private countDiffStats(patches: StructuredPatch[]): ReviewDiffStats {
+    let additions = 0;
+    let deletions = 0;
+    let hunks = 0;
+
+    for (const patch of patches) {
+      hunks += patch.hunks.length;
+      for (const hunk of patch.hunks) {
+        for (const line of hunk.lines) {
+          if (line.startsWith("+")) {
+            additions += 1;
+          } else if (line.startsWith("-")) {
+            deletions += 1;
+          }
+        }
+      }
+    }
+
+    return { additions, deletions, hunks };
+  }
+
+  private renderStructuredDiff(parent: HTMLElement, patches: StructuredPatch[]): void {
+    for (const [patchIndex, patch] of patches.entries()) {
+      if (patchIndex > 0) {
+        const spacer = parent.createDiv();
+        spacer.style.height = "0.75rem";
+        spacer.style.background = "var(--background-secondary)";
+        spacer.style.borderTop = "1px solid var(--background-modifier-border)";
+        spacer.style.borderBottom = "1px solid var(--background-modifier-border)";
+      }
+
+      const header = parent.createDiv({
+        text: `${patch.oldFileName ?? this.file.path} -> ${patch.newFileName ?? this.file.path}`,
+      });
+      header.style.padding = "0.6rem 0.75rem";
+      header.style.fontFamily = "var(--font-monospace)";
+      header.style.fontSize = "12px";
+      header.style.fontWeight = "600";
+      header.style.background = "var(--background-secondary)";
+      header.style.borderBottom = "1px solid var(--background-modifier-border)";
+      header.style.wordBreak = "break-all";
+
+      for (const hunk of patch.hunks) {
+        this.renderHunk(parent, hunk);
+      }
+    }
+  }
+
+  private renderHunk(parent: HTMLElement, hunk: StructuredPatchHunk): void {
+    const hunkHeader = parent.createDiv({
+      text: `@@ -${hunk.oldStart},${hunk.oldLines} +${hunk.newStart},${hunk.newLines} @@`,
+    });
+    hunkHeader.style.padding = "0.35rem 0.75rem";
+    hunkHeader.style.fontFamily = "var(--font-monospace)";
+    hunkHeader.style.fontSize = "12px";
+    hunkHeader.style.color = "var(--text-muted)";
+    hunkHeader.style.background = "var(--background-secondary-alt)";
+    hunkHeader.style.borderBottom = "1px solid var(--background-modifier-border)";
+
+    let oldLineNumber = hunk.oldStart;
+    let newLineNumber = hunk.newStart;
+
+    for (const rawLine of hunk.lines) {
+      if (rawLine.startsWith("\\")) {
+        this.renderDiffRow(parent, "note", null, null, "\\", rawLine.slice(1).trimStart());
+        continue;
+      }
+
+      if (rawLine.startsWith("+")) {
+        this.renderDiffRow(parent, "addition", null, newLineNumber, "+", rawLine.slice(1));
+        newLineNumber += 1;
+        continue;
+      }
+
+      if (rawLine.startsWith("-")) {
+        this.renderDiffRow(parent, "deletion", oldLineNumber, null, "-", rawLine.slice(1));
+        oldLineNumber += 1;
+        continue;
+      }
+
+      this.renderDiffRow(parent, "context", oldLineNumber, newLineNumber, " ", rawLine.slice(1));
+      oldLineNumber += 1;
+      newLineNumber += 1;
+    }
+  }
+
+  private renderDiffRow(
+    parent: HTMLElement,
+    kind: ReviewDiffLineKind,
+    oldLineNumber: number | null,
+    newLineNumber: number | null,
+    prefix: string,
+    content: string,
+  ): void {
+    const row = parent.createDiv();
+    row.style.display = "grid";
+    row.style.gridTemplateColumns = "4rem 4rem 1.5rem minmax(0, 1fr)";
+    row.style.alignItems = "start";
+    row.style.fontFamily = "var(--font-monospace)";
+    row.style.fontSize = "12px";
+    row.style.lineHeight = "1.6";
+    row.style.borderBottom = "1px solid var(--background-modifier-border-hover)";
+
+    if (kind === "addition") {
+      row.style.background = "rgba(46, 160, 67, 0.14)";
+    } else if (kind === "deletion") {
+      row.style.background = "rgba(248, 81, 73, 0.14)";
+    } else if (kind === "note") {
+      row.style.background = "var(--background-secondary)";
+    }
+
+    if (kind === "note") {
+      const note = row.createDiv({
+        text: `${prefix}${content}`,
+      });
+      note.style.gridColumn = "1 / -1";
+      note.style.padding = "0.2rem 0.75rem";
+      note.style.color = "var(--text-muted)";
+      note.style.fontStyle = "italic";
+      note.style.whiteSpace = "pre-wrap";
+      note.style.wordBreak = "break-word";
+      return;
+    }
+
+    this.renderLineNumberCell(row, oldLineNumber);
+    this.renderLineNumberCell(row, newLineNumber);
+
+    const prefixEl = row.createDiv({ text: prefix });
+    prefixEl.style.padding = "0.2rem 0";
+    prefixEl.style.textAlign = "center";
+    prefixEl.style.color = kind === "addition" ? "#1a7f37" : kind === "deletion" ? "#cf222e" : "var(--text-faint)";
+    prefixEl.style.fontWeight = "700";
+
+    const contentEl = row.createDiv({ text: content });
+    contentEl.style.padding = "0.2rem 0.75rem 0.2rem 0";
+    contentEl.style.whiteSpace = "pre-wrap";
+    contentEl.style.wordBreak = "break-word";
+  }
+
+  private renderLineNumberCell(parent: HTMLElement, lineNumber: number | null): void {
+    const cell = parent.createDiv({
+      text: lineNumber === null ? "" : String(lineNumber),
+    });
+    cell.style.padding = "0.2rem 0.5rem";
+    cell.style.textAlign = "right";
+    cell.style.color = "var(--text-faint)";
+    cell.style.userSelect = "none";
+    cell.style.borderRight = "1px solid var(--background-modifier-border-hover)";
+  }
+
+  private renderRawDiff(parent: HTMLElement): void {
+    const rawEl = parent.createEl("pre");
+    rawEl.setText(this.diffText);
+    rawEl.style.margin = "0";
+    rawEl.style.padding = "0.75rem";
+    rawEl.style.whiteSpace = "pre-wrap";
+    rawEl.style.wordBreak = "break-word";
+    rawEl.style.background = "var(--background-secondary)";
+  }
+}
+
 export default class OpenAISummaryHelperPlugin extends Plugin {
   settings: OpenAISummarySettings = DEFAULT_SETTINGS;
   private currentOperationToken = 0;
@@ -386,6 +663,14 @@ export default class OpenAISummaryHelperPlugin extends Plugin {
       name: "Generate description for current note",
       callback: async () => {
         await this.generateDescriptionForCurrentNote();
+      },
+    });
+
+    this.addCommand({
+      id: "ai-review-current-note",
+      name: "AI review current note",
+      callback: async () => {
+        await this.reviewCurrentNote();
       },
     });
   }
@@ -595,6 +880,96 @@ export default class OpenAISummaryHelperPlugin extends Plugin {
     }
   }
 
+  private async reviewCurrentNote(): Promise<void> {
+    const context = await this.getActiveNoteContext(false);
+    if (!context) {
+      return;
+    }
+
+    if (context.content.length > this.settings.maxInputChars) {
+      new Notice(
+        `AI review currently requires the full note in one request. Current note length is ${context.content.length} characters, limit is ${this.settings.maxInputChars}.`,
+        8000,
+      );
+      return;
+    }
+
+    const originalContent = context.content;
+    const modal = new LiveGenerationModal(this.app, {
+      helperText:
+        "This panel streams the AI's revised full note. When generation finishes, the plugin will open a unified diff preview so you can approve the exact line changes before anything is applied.",
+      title: `AI review task: ${context.file.basename}`,
+    });
+    modal.open();
+
+    const progress = this.beginOperation(`Reviewing "${context.file.basename}" with AI...`);
+    const bridge = this.createBridge(modal, progress);
+
+    try {
+      const result = await this.requestCompletion(
+        this.renderPrompt(this.settings.reviewPrompt, context.file, originalContent),
+        bridge,
+        `Reviewing "${context.file.basename}" and drafting a revised note...`,
+      );
+
+      const revisedContent = this.extractReviewContent(result.answer);
+      const diffText = this.createReviewDiff(context.file, originalContent, revisedContent);
+
+      if (!this.hasMeaningfulDiff(diffText)) {
+        const message = `AI review finished for "${context.file.basename}". No wording fixes were suggested.`;
+        progress.complete(message);
+        if (!modal.isClosed()) {
+          modal.updateContent({
+            answer: "No wording fixes were suggested for the current note.",
+            rawAnswer: result.rawAnswer,
+            thinking: result.thinking,
+          });
+          modal.markComplete(message);
+        }
+        return;
+      }
+
+      const message = `AI review finished for "${context.file.basename}". Opening diff preview...`;
+      progress.complete(message);
+      if (!modal.isClosed()) {
+        modal.markComplete(message);
+        modal.close();
+      }
+
+      new ReviewDiffModal(this.app, {
+        diffText,
+        file: context.file,
+        onApply: async () => {
+          const latestContent = await this.app.vault.read(context.file);
+          if (latestContent !== originalContent) {
+            throw new Error("The note changed after the review was generated. Please run AI review again.");
+          }
+
+          const patched = applyPatch(latestContent, diffText);
+          if (patched === false) {
+            throw new Error("Could not apply the generated diff to the current note.");
+          }
+
+          await this.app.vault.modify(context.file, patched);
+          new Notice(`Applied AI review changes to "${context.file.path}".`);
+        },
+      }).open();
+    } catch (error) {
+      console.error("Failed to review current note", error);
+      const message = this.isAbortError(error)
+        ? `AI review canceled for "${context.file.basename}".`
+        : `AI review failed for "${context.file.basename}": ${this.toErrorMessage(error)}`;
+      progress.fail(message);
+      if (!modal.isClosed()) {
+        if (this.isAbortError(error)) {
+          modal.markCanceled(message);
+        } else {
+          modal.markError(message);
+        }
+      }
+    }
+  }
+
   private getExistingDescription(file: TFile): string | null {
     const cache = this.app.metadataCache.getFileCache(file);
     const frontmatter = cache?.frontmatter;
@@ -655,7 +1030,7 @@ export default class OpenAISummaryHelperPlugin extends Plugin {
     };
   }
 
-  private async getActiveNoteContext(): Promise<{ content: string; file: TFile } | null> {
+  private async getActiveNoteContext(stripFrontmatter = true): Promise<{ content: string; file: TFile } | null> {
     const view = this.app.workspace.getActiveViewOfType(MarkdownView);
     const file = view?.file;
 
@@ -665,9 +1040,9 @@ export default class OpenAISummaryHelperPlugin extends Plugin {
     }
 
     const raw = await this.app.vault.read(file);
-    const content = this.stripFrontmatter(raw).trim();
+    const content = stripFrontmatter ? this.stripFrontmatter(raw).trim() : raw;
 
-    if (!content) {
+    if (!content.trim()) {
       new Notice("The current note is empty.");
       return null;
     }
@@ -823,6 +1198,41 @@ export default class OpenAISummaryHelperPlugin extends Plugin {
     }
 
     return `${trimmed.slice(0, this.settings.maxInputChars)}\n\n[Content truncated for summary]`;
+  }
+
+  private extractReviewContent(answer: string): string {
+    const normalized = answer.replace(/\r\n/g, "\n").trim();
+    const fencedBlock = normalized.match(/^```(?:markdown|md)?\n([\s\S]*?)\n```$/i);
+    if (fencedBlock) {
+      return fencedBlock[1];
+    }
+
+    const genericFence = [...normalized.matchAll(/```(?:markdown|md)?\n([\s\S]*?)\n```/gi)];
+    if (genericFence.length === 1) {
+      return genericFence[0][1];
+    }
+
+    return normalized;
+  }
+
+  private createReviewDiff(file: TFile, originalContent: string, revisedContent: string): string {
+    return createTwoFilesPatch(
+      file.path,
+      file.path,
+      originalContent,
+      revisedContent,
+      "original",
+      "reviewed",
+      {
+        context: REVIEW_DIFF_CONTEXT_LINES,
+      },
+    );
+  }
+
+  private hasMeaningfulDiff(diffText: string): boolean {
+    return diffText
+      .split("\n")
+      .some((line) => (line.startsWith("+") && !line.startsWith("+++")) || (line.startsWith("-") && !line.startsWith("---")));
   }
 
   private renderPrompt(
@@ -1412,7 +1822,7 @@ export default class OpenAISummaryHelperPlugin extends Plugin {
   }
 
   private setIdleStatus(): void {
-    this.statusBarEl?.setText("OpenAI Summary Helper: idle");
+    this.statusBarEl?.setText("Obsidian AI Helper: idle");
   }
 
   supportsSecureStorage(): boolean {
@@ -1438,7 +1848,7 @@ class OpenAISummarySettingTab extends PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
 
-    containerEl.createEl("h2", { text: "OpenAI Summary Helper" });
+    containerEl.createEl("h2", { text: "Obsidian AI Helper" });
 
     new Setting(containerEl)
       .setName("Base URL")
@@ -1560,6 +1970,20 @@ class OpenAISummarySettingTab extends PluginSettingTab {
             await this.plugin.saveSettings();
           });
         textArea.inputEl.rows = 10;
+        textArea.inputEl.style.width = "100%";
+      });
+
+    new Setting(containerEl)
+      .setName("AI review prompt template")
+      .setDesc("Available placeholders: {{title}}, {{path}}, {{content}}")
+      .addTextArea((textArea) => {
+        textArea
+          .setValue(this.plugin.settings.reviewPrompt)
+          .onChange(async (value) => {
+            this.plugin.settings.reviewPrompt = value;
+            await this.plugin.saveSettings();
+          });
+        textArea.inputEl.rows = 12;
         textArea.inputEl.style.width = "100%";
       });
 

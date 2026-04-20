@@ -1,5 +1,5 @@
 {
-  "name": "openai-summary-helper",
+  "name": "obsidian-ai-helper",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -13,5 +13,8 @@
     "esbuild": "^0.25.2",
     "obsidian": "latest",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "diff": "^9.0.0"
   }
 }
