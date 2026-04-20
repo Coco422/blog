@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-04-20T16:58:18+08:00
+lastmod: 2026-04-20T17:00:32+08:00
 showLastMod: true
 tags:
   - 服务器
@@ -47,7 +47,7 @@ categories:
 
 重连服务器～
 ok，完美
-这里安装完 codex 差价之后，选择登录什么的不用担心回调，因为在本地唤起的浏览器 回调的是本地的 vscode 会处理。所以这个登录没啥问题。
+这里安装完 codex 插件之后，选择登录什么的不用担心回调，因为在本地唤起的浏览器 回调的是本地的 vscode 会处理。所以这个登录没啥问题。
 
 
 ## 参考文章
