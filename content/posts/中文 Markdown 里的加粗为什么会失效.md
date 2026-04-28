@@ -1,12 +1,12 @@
 ---
-title: "中文 Markdown 里的 ** 为什么会失效"
+title: 中文 Markdown 里的 ** 为什么会失效
 description: 整理少数派文章《AI 输出中的 ** 是怎么来的：谈中文 Markdown 强调标记的渲染问题》，记录中文环境下 Markdown 强调失效的根因，以及几种实用修复方式。
 date: 2026-04-23T10:03:10+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-04-23T10:03:10+08:00
+lastmod: 2026-04-28T15:56:45+08:00
 showLastMod: true
 tags:
   - Markdown
@@ -104,7 +104,7 @@ categories:
 
 如果你能控制 Markdown 渲染链路，那么最彻底的办法不是教育编辑人员怎么绕规则，而是直接修规则。
 
-原文提到了 [markdown-cjk-friendly](https://github.com/azu/markdown-cjk-friendly) 这类补丁思路：在解析强调标记时，把 CJK 字符视作一种可以帮助判断边界的上下文，从而修复中文环境下的强调失效问题。
+原文提到了 [https://github.com/azu/markdown-cjk-friendly](https://github.com/tats-u/markdown-cjk-friendly) 这类补丁思路：在解析强调标记时，把 CJK 字符视作一种可以帮助判断边界的上下文，从而修复中文环境下的强调失效问题。
 
 这条路更适合站点、编辑器、知识库或 AI 产品的开发者。
 
@@ -124,4 +124,4 @@ categories:
 
 - 原文：[AI 输出中的 ** 是怎么来的：谈中文 Markdown 强调标记的渲染问题](https://sspai.com/post/108768)
 - 规范：[CommonMark Spec - Emphasis and strong emphasis](https://spec.commonmark.org/)
-- 项目：[markdown-cjk-friendly](https://github.com/azu/markdown-cjk-friendly)
+- 项目：[https://github.com/azu/markdown-cjk-friendly](https://github.com/tats-u/markdown-cjk-friendly)
