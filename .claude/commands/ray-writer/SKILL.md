@@ -150,6 +150,7 @@ categories:
 注意：
 - `title` 必须用双引号包裹
 - `date` 和 `lastmod` 使用 ISO 8601 格式（带时区 +08:00）
+- **`date` 和 `lastmod` 必须通过 `date` 命令真实获取系统时间，严禁凭感觉填写或估算。** Hugo 的 `buildFuture: false` 会拒绝渲染日期在未来的文章，时间写错文章就看不到。写入前先运行 `date '+%Y-%m-%dT%H:%M:%S+08:00'` 拿到真实时间再填入
 - `draft` 默认为 `true`（发布时由系统改为 false）
 - `license` 完整写为 `Licensed under CC BY-NC-SA 4.0`
 - `tags` 和 `categories` 使用多行列表格式（`- xxx`），不用内联数组
@@ -216,6 +217,7 @@ categories:
 - categories 已填写？
 - tags 是具体技术名？
 - description 一句话概括？
+- date 和 lastmod 是否通过 `date` 命令真实获取？（严禁估算）
 
 ## 绝对禁区
 
