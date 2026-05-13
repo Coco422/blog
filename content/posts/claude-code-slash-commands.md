@@ -1,12 +1,12 @@
 ---
 title: Claude Code 斜杠命令大全
 description: Claude Code 到目前为止所有斜杠命令的完整整理，附用法说明和参考链接，长期更新
-date: 2026-05-13T22:00:00+08:00
+date: 2026-05-13T13:00:00+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-05-13T22:00:00+08:00
+lastmod: 2026-05-13T13:00:00+08:00
 showLastMod: true
 tags:
   - Claude Code

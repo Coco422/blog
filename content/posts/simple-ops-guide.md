@@ -1,12 +1,12 @@
 ---
 title: 简易运维指北
 description: 不配叫指南的运维备忘录——Docker、网络、进程三个方向的常用命令
-date: 2026-05-13T23:00:00+08:00
+date: 2026-05-13T14:00:00+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-05-13T23:00:00+08:00
+lastmod: 2026-05-13T15:08:11+08:00
 showLastMod: true
 tags:
   - Docker
