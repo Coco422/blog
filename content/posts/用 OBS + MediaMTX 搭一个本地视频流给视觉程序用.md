@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-05-19T10:15:21+08:00
+lastmod: 2026-05-19T10:16:49+08:00
 showLastMod: true
 tags:
   - MediaMTX
