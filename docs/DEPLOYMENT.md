@@ -32,6 +32,8 @@ ERROR => hugo v0.146.0 or greater is required for hugo-PaperMod to build
 
 check the Preview environment variables first. The later `partial "google_analytics.html" not found` error can appear as a secondary render failure after the Hugo version check has already failed.
 
+If post comments do not load even though `comments: true` is set in front matter, check the Content Security Policy. Giscus needs `https://giscus.app` in `script-src` and `frame-src`, plus `https://giscus.app` and `https://api.github.com` in `connect-src`.
+
 ## Local Verification
 
 ```bash
