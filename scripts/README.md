@@ -72,7 +72,7 @@ python3 scripts/fix_current_links.py --yes
 ## 安装依赖
 
 ```bash
-cd /Users/ray/Documents/blog
+cd /path/to/blog
 pip3 install -r requirements.txt
 ```
 
@@ -228,7 +228,7 @@ python3 scripts/blog_image_manager.py upload \
 ### 缓存文件
 
 ```
-/Users/ray/Documents/blog/
+/path/to/blog/
 └── .image_cache.json                # 上传缓存（自动生成）
 ```
 
