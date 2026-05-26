@@ -1,0 +1,6 @@
+{{- $name := . | default "" | lower -}}
+{{- if $name -}}
+    {{- with resources.Get (printf "bak/icons/%s.svg" $name) -}}
+        {{- .Content | safeHTML -}}
+    {{- end -}}
+{{- end -}}

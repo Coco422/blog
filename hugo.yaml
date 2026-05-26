@@ -95,6 +95,9 @@ params:
   neko:
     enable: true
     onlyHome: true
+  navI18n:
+    defaultLang: zh
+    storageKey: anluoying-nav-language
 # --------------------未配置--------------------------
 
   ShowRssButtonInSectionTermList: true
@@ -136,30 +139,58 @@ menu:
       name: About
       url: /about/
       weight: 10
+      params:
+        icon: user
+        en: About
+        zh: 关于
     - identifier: Links
       name: Links
       url: /links/
       weight: 20
+      params:
+        icon: link
+        en: Links
+        zh: 友链
     - identifier: Search
       name: Search
       url: /search/
       weight: 30
+      params:
+        icon: search
+        en: Search
+        zh: 搜索
     - identifier: Archives
       name: Archives
       url: /archives/
       weight: 40
+      params:
+        icon: archives
+        en: Archives
+        zh: 归档
     - identifier: Categories
       name: Categories
       url: /categories/
       weight: 50
+      params:
+        icon: categories
+        en: Categories
+        zh: 分类
     - identifier: Tags
       name: Tags
       url: /tags/
       weight: 60
+      params:
+        icon: tag
+        en: Tags
+        zh: 标签
     - identifier: 安落滢
       name: Ray-Site
       url: https://anluoying.com/
       weight: 70
+      params:
+        icon: home
+        en: Ray-Site
+        zh: 主站
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
 markup:

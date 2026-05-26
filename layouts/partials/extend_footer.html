@@ -17,3 +17,13 @@
 <script defer crossorigin="anonymous" data-oneko-gif="/hugo-neko/oneko.gif" src="{{ $script.RelPermalink }}"></script>
   {{- end -}}
 {{- end -}}
+
+{{- with resources.Get "js/nav-i18n.js" -}}
+  {{- $script := . | js.Build (dict "minify" hugo.IsProduction) -}}
+  {{- if not site.Params.assets.disableFingerprinting -}}
+    {{- $script = $script | fingerprint -}}
+<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{- else -}}
+<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}"></script>
+  {{- end -}}
+{{- end -}}
