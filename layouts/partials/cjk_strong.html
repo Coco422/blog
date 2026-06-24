@@ -1,0 +1,38 @@
+{{- /* Fix literal CJK **...** left behind by Goldmark's CommonMark emphasis rules. */ -}}
+{{- $content := printf "%s" . -}}
+{{- $scratch := newScratch -}}
+{{- $scratch.Set "content" $content -}}
+
+{{- range $i, $block := findRE `(?s)<pre\b[^>]*>.*?</pre>` $content -}}
+  {{- $key := printf "<CJK_STRONG_BLOCK_%d>" $i -}}
+  {{- $scratch.SetInMap "blocks" $key $block -}}
+  {{- $scratch.Set "content" (replace ($scratch.Get "content") $block $key) -}}
+{{- end -}}
+
+{{- $content = $scratch.Get "content" -}}
+{{- range $i, $block := findRE `(?s)<(?:code|kbd|samp|script|style)\b[^>]*>.*?</(?:code|kbd|samp|script|style)>` $content -}}
+  {{- $key := printf "<CJK_STRONG_INLINE_%d>" $i -}}
+  {{- $scratch.SetInMap "blocks" $key $block -}}
+  {{- $scratch.Set "content" (replace ($scratch.Get "content") $block $key) -}}
+{{- end -}}
+
+{{- $content = $scratch.Get "content" -}}
+{{- range $i, $tag := findRE `<[^>]+>` $content -}}
+  {{- $key := printf "<CJK_STRONG_TAG_%d>" $i -}}
+  {{- $scratch.SetInMap "tags" $key $tag -}}
+  {{- $scratch.Set "content" (replace ($scratch.Get "content") $tag $key) -}}
+{{- end -}}
+
+{{- $content = $scratch.Get "content" -}}
+{{- $cjk := `\p{Han}\p{Hiragana}\p{Katakana}\p{Hangul}，。：；！？、”“‘’「」『』《》（）【】` -}}
+{{- $content = replaceRE (printf `\*\*\*([^*<>\n]*[%s][^*<>\n]*)\*\*\*` $cjk) `<strong><em>$1</em></strong>` $content -}}
+{{- $content = replaceRE (printf `\*\*([^*<>\n]*[%s][^*<>\n]*)\*\*` $cjk) `<strong>$1</strong>` $content -}}
+
+{{- range $key, $tag := ($scratch.Get "tags") -}}
+  {{- $content = replace $content $key $tag -}}
+{{- end -}}
+{{- range $key, $block := ($scratch.Get "blocks") -}}
+  {{- $content = replace $content $key $block -}}
+{{- end -}}
+
+{{- $content | safeHTML -}}

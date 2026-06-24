@@ -69,9 +69,10 @@
       {{- end }}
     {{- end }}
     
+    {{- $content := partial "cjk_strong.html" .Content -}}
     {{- if not (.Param "disableAnchoredHeadings") }}
-    {{- partial "anchored_headings.html" .Content -}}
-    {{- else }}{{ .Content }}{{ end }}
+    {{- partial "anchored_headings.html" $content -}}
+    {{- else }}{{ $content }}{{ end }}
   </div>
   {{- end }}
 

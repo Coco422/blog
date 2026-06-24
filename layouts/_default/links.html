@@ -19,9 +19,10 @@
     <h3 class="links-category-title">常用网站</h3>
     <div class="links-grid">
       {{ range $links.common }}
+      {{ $icon := .icon | default (printf "https://www.google.com/s2/favicons?sz=64&domain_url=%s" (.url | urlquery)) }}
       <a class="link-card" href="{{ .url }}" target="_blank" rel="noopener">
         <div class="link-icon-wrapper">
-          <img class="link-icon" src="{{ .icon }}" alt="{{ .name }} icon" loading="lazy" />
+          <img class="link-icon" src="{{ $icon }}" alt="{{ .name }} icon" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">{{ .name }}</div>
@@ -37,9 +38,10 @@
     <h3 class="links-category-title" style="margin-top: 2rem;">友情链接</h3>
     <div class="links-grid">
       {{ range $links.friends }}
+      {{ $icon := .icon | default (printf "https://www.google.com/s2/favicons?sz=64&domain_url=%s" (.url | urlquery)) }}
       <a class="link-card" href="{{ .url }}" target="_blank" rel="noopener">
         <div class="link-icon-wrapper">
-          <img class="link-icon" src="{{ .icon }}" alt="{{ .name }} icon" loading="lazy" />
+          <img class="link-icon" src="{{ $icon }}" alt="{{ .name }} icon" loading="lazy" />
         </div>
         <div class="link-info">
           <div class="link-title">{{ .name }}</div>
