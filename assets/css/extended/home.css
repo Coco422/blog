@@ -1,0 +1,87 @@
+/* Marginalia homepage + post-list: flat hairline rows instead of boxed cards */
+
+.home-info {
+    margin: calc(var(--gap) * 1.5) 0 calc(var(--gap) * 3);
+}
+
+.home-info .entry-header h1 {
+    font-size: 46px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.home-info .entry-content {
+    margin-top: 12px;
+    color: var(--secondary);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+@media (max-width: 480px) {
+    .home-info .entry-header h1 {
+        font-size: 34px;
+    }
+}
+
+.post-entry {
+    position: relative;
+    margin: 0;
+    padding: calc(var(--gap) * 0.85) 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    transition: none;
+}
+
+.post-entry:active {
+    transform: none;
+}
+
+.post-entry:first-of-type {
+    border-top: 1px solid var(--border);
+}
+
+.entry-eyebrow {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.entry-eyebrow a {
+    color: inherit;
+}
+
+.entry-eyebrow a:hover {
+    text-decoration: underline;
+}
+
+.entry-header h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+}
+
+:lang(zh) .entry-header h2 {
+    font-family: 'LXGW WenKai GB', var(--font-display);
+}
+
+.entry-content {
+    margin: 8px 0 0;
+    color: var(--secondary);
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.entry-footer {
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.01em;
+    color: var(--secondary);
+}

@@ -1,6 +1,6 @@
 ---
 title: OpenCode 初体验
-description: OpenCode 初体验
+description: 在 Codex、Claude Code、Cursor 之外试试 OpenCode，记录在 VSCode+WSL 里的安装和使用体验。
 date: 2026-01-09T00:32:49+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

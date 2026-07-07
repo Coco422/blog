@@ -21,7 +21,7 @@
   .github_description {
     margin-top: -0.3em;
     margin-bottom: 1em;
-    color: var(--color-contrast-high);
+    color: var(--secondary);
     text-align: justify;
     font-size: 90%;
     width: 95%;
@@ -31,7 +31,7 @@
     margin-top: -0.6em;
   }
   .github_language_name {
-    color: var(--color-contrast-high);
+    color: var(--secondary);
     font-size: 90%;
     margin-left: 0.5em;
     transition: all 0.5s;

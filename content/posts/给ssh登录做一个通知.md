@@ -9,8 +9,6 @@ comments: true
 draft: false
 ---
 
-# 给ssh登录做一个通知
-
 >钉钉创建一个群。然后创建一个普通机器人。
 >这个思路是自己想的，随手搜了一下 真有佬做了.下面是链接
 >[如何使用钉钉机器人通知接收服务器SSH登录提醒 - 阿豪运维笔记](https://www.ahaoyw.com/article/843.html)

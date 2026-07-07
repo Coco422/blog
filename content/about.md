@@ -2,6 +2,7 @@
 title: About
 layout: about
 url: /about/
+description: "关于 Ray：一名没有高校和大厂背景的全栈折腾工程师，在这里记录技术实践和生活思考。"
 summary: about
 lastmod: 2026-06-22T10:16:05+08:00
 ---

@@ -1,6 +1,6 @@
 ---
 title: Harbor 部署记录
-description: 部署 Harbor 管理镜像
+description: 用 offline 安装包在自己的服务器上部署 Harbor 私有镜像仓库，记录 harbor.yml 的关键配置和踩过的坑。
 date: 2025-05-12T15:42:36+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

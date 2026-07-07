@@ -1,6 +1,6 @@
 ---
 title: SLM-1-数据准备
-description: 从零训练一个小语言模型
+description: 从零实现一个 GPT 架构小语言模型的第一步，用 TinyStories 数据集做分词和批次准备。
 date: 2025-08-19T11:14:18+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

@@ -1,4 +1,6 @@
 baseurl: https://blog.anluoying.com/
+languageCode: zh-CN
+defaultContentLanguage: zh-cn
 title: 安落滢 Blog - 技术分享与生活记录
 pagination:
   pagerSize: 5
@@ -45,9 +47,7 @@ params:
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
-  # 这几个还没搞懂
-  images: ["<link or path of image for opengraph, twitter-cards>"]
-  # 到此为止
+  images: ["/og-default.png"]
 
   ShowReadingTime: true
   ShowShareButtons: false

@@ -2,6 +2,7 @@
 title: "Links"
 layout: "links"
 url: "/links/"
+description: "常用网站与友情链接合集，欢迎交换友链。"
 summary: links
 ---
 > 欢迎交换友链 🔗

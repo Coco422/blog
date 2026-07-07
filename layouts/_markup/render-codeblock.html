@@ -7,9 +7,18 @@
 {{ if $needCollapse }}
 <details class="code-details">
   <summary>
-      <span>{{ if .Type }}[{{ .Type }}] {{ end }}显示已折叠代码（{{ $lines }} 行）</span>
+      <span class="code-summary-left">
+          <span class="code-dots"><span></span><span></span><span></span></span>
+          <span>{{ if .Type }}[{{ .Type }}] {{ end }}显示已折叠代码（{{ $lines }} 行）</span>
+      </span>
   </summary>
   <div class="collapsible-content">
+{{ else }}
+<div class="code-block-wrap">
+  <div class="code-titlebar">
+      <span class="code-dots"><span></span><span></span><span></span></span>
+      {{ if .Type }}<span class="code-lang">{{ .Type }}</span>{{ end }}
+  </div>
 {{ end }}
 
 {{ $r := transform.HighlightCodeBlock . }}
@@ -18,4 +27,6 @@
 {{ if $needCollapse }}
   </div>
 </details>
+{{ else }}
+</div>
 {{ end }}

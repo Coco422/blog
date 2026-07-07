@@ -28,6 +28,12 @@ details.code-details > summary {
     transition: background 0.2s;
 }
 
+details.code-details > summary .code-summary-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 details.code-details > summary:hover {
     background: var(--entry);
 }
@@ -80,4 +86,55 @@ details.code-details[open] .collapsible-content {
 /* Fix for PaperMod code block padding */
 .post-content .highlight {
     margin: 0;
+}
+
+/* -----------------------------------------------------------------
+   2. macOS-style title bar (traffic-light dots)
+   ----------------------------------------------------------------- */
+.code-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.code-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.code-dots span:nth-child(1) { background: #EC6A5E; }
+.code-dots span:nth-child(2) { background: #F4BF4F; }
+.code-dots span:nth-child(3) { background: #61C554; }
+
+.code-block-wrap {
+    position: relative;
+    margin: 10px auto;
+    background: var(--code-block-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.code-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--code-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.code-lang {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--secondary);
+    text-transform: lowercase;
+}
+
+.code-block-wrap .highlight:not(table) {
+    margin: 0;
+    border-radius: 0;
 }

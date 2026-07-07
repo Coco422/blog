@@ -1,6 +1,6 @@
 ---
 title: obsidian+hugo
-description: 差不多优雅的工作流程
+description: 把 Obsidian 作为 Hugo 博客的写作和管理平台，理清从编辑到 GitHub 管理再到 Cloudflare 部署的一套流程。
 date: 2025-03-25T16:55:00+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

@@ -3,6 +3,9 @@
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 {{- /* Head custom content area end */ -}}
 
+{{- /* Preload the primary display font to avoid layout shift/flash */ -}}
+<link rel="preload" href="{{ "fonts/newsreader-variable.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+
 {{- /* Load custom TOC CSS via Hugo Pipes (ensures it’s included even if the default pipeline was overridden) */ -}}
 {{- $toc := resources.Get "css/extended/toc.css" | resources.Minify | resources.Fingerprint -}}
 <link rel="stylesheet" href="{{ $toc.RelPermalink }}" integrity="{{ $toc.Data.Integrity }}">
@@ -17,7 +20,7 @@
 
 {{- if or .Site.Params.fancybox (not (isset .Site.Params "fancybox")) }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script>
   // 等待 DOM 加载完成
   document.addEventListener("DOMContentLoaded", function() {

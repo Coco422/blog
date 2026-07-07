@@ -1,0 +1,69 @@
+/* Marginalia archives: ledger rows with a dotted leader between date and title */
+
+.archive-year {
+    margin-top: 44px;
+}
+
+.archive-year:not(:last-of-type) {
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.archive-year-header {
+    font-family: var(--font-display);
+    font-weight: 600;
+}
+
+:lang(zh) .archive-year-header {
+    font-family: 'LXGW WenKai GB', var(--font-display);
+}
+
+.archive-count {
+    color: var(--secondary);
+    font-family: var(--font-mono);
+    font-size: 14px;
+}
+
+.archive-ledger {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+}
+
+.archive-ledger-row + .archive-ledger-row {
+    border-top: 1px solid var(--border);
+}
+
+.archive-ledger-link {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 2px;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.archive-ledger-link:hover .archive-ledger-title {
+    color: var(--accent);
+}
+
+.archive-ledger-title {
+    flex: 0 1 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.archive-ledger-leader {
+    flex: 1 1 auto;
+    min-width: 12px;
+    border-bottom: 1px dotted var(--tertiary);
+    margin-bottom: 4px;
+}
+
+.archive-ledger-date {
+    flex: 0 0 auto;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--secondary);
+}

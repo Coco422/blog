@@ -16,7 +16,6 @@ tags:
 categories:
   - 杂技浅尝
 ---
-# 记录一次 Docker Registry Proxy 的 HTTPS 证书续期排查
 
 ## 背景
 
