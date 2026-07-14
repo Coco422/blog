@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-07-14T23:51:18+08:00
+lastmod: 2026-07-15T00:23:44+08:00
 showLastMod: true
 tags:
   - AI
@@ -34,7 +34,7 @@ categories:
 
 ---
 
-# **第一层：GPU Driver（最重要）**
+## **第一层：GPU Driver（最重要）**
 
 先理解一件事：GPU 本身不会执行 CUDA C++。
 
@@ -72,7 +72,7 @@ Java                CUDA
 
 ---
 
-# **第二层：CUDA Toolkit**
+## **第二层：CUDA Toolkit**
 
 很多人以为 CUDA 就是 Driver，其实不是。CUDA Toolkit 是开发工具，里面包括：
 
@@ -111,7 +111,7 @@ CUDA Toolkit 是给开发者的，Driver 是给运行程序的。
 
 ---
 
-# **第三层：为什么 Driver 和 Toolkit 可以分开**
+## **第三层：为什么 Driver 和 Toolkit 可以分开**
 
 这是 CUDA 最容易搞混的地方。例如下面这几种组合都完全没问题：
 
@@ -154,7 +154,7 @@ Java 17 的 class
 
 ---
 
-# **第四层：Toolkit 是什么时候需要安装？**
+## **第四层：Toolkit 是什么时候需要安装？**
 
 如果要自己开发 CUDA，就需要 CUDA Toolkit，因为要用到编译器 `nvcc`：
 
@@ -181,7 +181,7 @@ PyTorch 自己带 Runtime，只要求系统 Driver 足够新。
 
 ---
 
-# **第五层：PyTorch 到底是什么？**
+## **第五层：PyTorch 到底是什么？**
 
 很多人以为 PyTorch 就等于 CUDA，完全不是。PyTorch 是一个框架，就像 Java 世界里的 Spring Boot，内部会调用 CUDA：
 
@@ -201,7 +201,7 @@ GPU
 
 ---
 
-# **第六层：为什么 PyTorch 有这么多版本？**
+## **第六层：为什么 PyTorch 有这么多版本？**
 
 例如 `torch==2.7` 会有 `cu118`、`cu121`、`cu126` 好几个版本，很多新人看不懂。其实意思就是：这个 PyTorch 是拿哪个 Toolkit 编出来的。
 
@@ -221,7 +221,7 @@ cudnn     9.x
 
 ---
 
-# **第七层：Driver 为什么要求最低版本？**
+## **第七层：Driver 为什么要求最低版本？**
 
 例如官网写：
 
@@ -253,7 +253,7 @@ CUDA driver version is insufficient.
 
 ---
 
-# **第八层：Conda 到底管理什么？**
+## **第八层：Conda 到底管理什么？**
 
 很多人觉得 Conda 管 CUDA，其实它管理的是整个运行环境：
 
@@ -283,7 +283,7 @@ conda env
 
 ---
 
-# **第九层：真正安装顺序**
+## **第九层：真正安装顺序**
 
 假设一台新的 Ubuntu，实际安装顺序是这样的。
 
@@ -328,7 +328,7 @@ pip install torch --index-url https://download.pytorch.org/whl/cu126
 
 ---
 
-# **第十层：什么时候才需要 Toolkit？**
+## **第十层：什么时候才需要 Toolkit？**
 
 只有以下这些情况才需要 CUDA Toolkit：
 
