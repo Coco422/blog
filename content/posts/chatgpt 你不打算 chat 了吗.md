@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-07-14T21:44:05+08:00
+lastmod: 2026-07-14T21:45:40+08:00
 showLastMod: true
 tags:
   - AI
@@ -18,6 +18,12 @@ categories:
 
 openai 是不打算继续服务普通 chat 用户了吗，或者应该把那个功能恢复吧
 
+2026 年 7 月 14 日 21:35:28
+
 ---
 
-2026 年 7 月 14 日 21:45:28
+哦哦 找到解决方法了，mac 用户可以直接用 homebrew 安装回来
+
+`brew install --cask chatgpt-classic`
+
+2026 年 7 月 14 日 21:47:06
