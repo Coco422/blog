@@ -47,11 +47,7 @@
 {{- end -}}
 {{- $attributes := merge .Attributes $sizeAttributes (dict "alt" $alt "src" $src "title" (.Title | transform.HTMLEscape) "loading" "lazy") -}}
 
-<div class="post-img-view">
-    <!-- 
-       href: 指向图片大图的链接（Fancybox 需要知道点开后显示什么）
-       data-fancybox="gallery": 告诉 Fancybox JS 插件，这个链接要用灯箱打开，而不是跳转页面 
-    -->
+<span class="post-img-view">
     <a data-fancybox="gallery" href="{{ $src }}">
         <img
         {{- range $k, $v := $attributes -}}
@@ -60,4 +56,4 @@
             {{- end -}}
         {{- end -}}>
     </a>
-</div>
+</span>

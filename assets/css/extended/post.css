@@ -56,3 +56,46 @@
     background: var(--theme);
     border-radius: 50%;
 }
+
+/* Markdown 图片：单张居中，相邻图片自动组成紧凑画廊。 */
+.post-content .post-img-view {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    margin: 1rem auto;
+}
+
+.post-content .post-img-view > a {
+    display: block;
+    max-width: 100%;
+    line-height: 0;
+    box-shadow: none;
+}
+
+.post-content .post-img-view img {
+    margin: 0;
+}
+
+.post-content .post-image-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+}
+
+.post-content .post-image-row > .post-img-view {
+    flex: 0 1 auto;
+    margin: 0;
+}
+
+.post-content .post-image-row--multiple > .post-img-view {
+    max-width: calc(50% - 6px);
+}
+
+@media (max-width: 520px) {
+    .post-content .post-image-row--multiple > .post-img-view {
+        max-width: 100%;
+    }
+}
