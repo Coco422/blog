@@ -75,6 +75,10 @@ params:
       url: "https://x.com/@Anluoying"
     - name: github
       url: "https://github.com/coco422"
+    - name: linuxdo
+      title: "LinuxDO"
+      url: "https://linux.do/u/ray521980/summary"
+      icon: "bak/icons/brand-linuxdo.svg"
 
   # for search
   # https://fusejs.io/api/options.html
