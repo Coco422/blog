@@ -28,6 +28,9 @@ server:
         X-Frame-Options: "SAMEORIGIN"
         X-Content-Type-Options: "nosniff"
         Referrer-Policy: "strict-origin-when-cross-origin"
+    - for: /giscus-paper.css
+      values:
+        Access-Control-Allow-Origin: "https://giscus.app"
 
 
 outputs:
@@ -45,8 +48,8 @@ params:
   keywords: [Blog, Portfolio, PaperMod]
   author: Ray
   DateFormat: "January 2, 2006"
-  defaultTheme: auto # dark, light
-  disableThemeToggle: false
+  defaultTheme: light
+  disableThemeToggle: true
   images: ["/og-default.png"]
 
   ShowReadingTime: true

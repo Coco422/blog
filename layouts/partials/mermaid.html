@@ -7,7 +7,7 @@
     mermaid.init({
       theme,
       themeVariables: { // 这里设置字体跟正文一致
-        fontFamily: "Newsreader, LXGW WenKai GB, Noto Sans SC, sans-serif"
+        fontFamily: "Newsreader, LXGW WenKai GB, sans-serif"
       }}, document.querySelectorAll(elementCode));
   };
   const saveOriginalData = function () {
@@ -49,18 +49,6 @@
   };
 
   saveOriginalData().catch(console.error);
-  // 不要用 localStorage.getItem("pref-theme")，因为有些时候会为 null
-  let isdark = document.body.className.includes("dark");
-  if (isdark) {
-    resetProcessed().then(loadMermaid("dark")).catch(console.error);
-  } else {
-    resetProcessed().then(loadMermaid("neutral")).catch(console.error);
-  }
-  document.getElementById("theme-toggle").addEventListener("click", () => {
-    resetProcessed();
-    document.body.className.includes("dark")
-      ? loadMermaid("neutral")
-      : loadMermaid("dark").catch(console.error);
-  });
+  resetProcessed().then(loadMermaid("neutral")).catch(console.error);
 </script>
 {{ end }}

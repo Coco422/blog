@@ -41,22 +41,12 @@
     border-left-color: #3E6E7A;
     color: #274850;
 }
-.dark .markdown-alert-note {
-    background: #1D2D30;
-    border-left-color: #6FA8B4;
-    color: #A9CDD4;
-}
 
 /* ========== Abstract / Summary / TL;DR - Teal ========== */
 .markdown-alert-abstract {
     background: #DCE9E4;
     border-left-color: #3F7A68;
     color: #244F42;
-}
-.dark .markdown-alert-abstract {
-    background: #1A2B25;
-    border-left-color: #6EBBA0;
-    color: #A9D6C5;
 }
 
 /* ========== Info - Blue ========== */
@@ -65,22 +55,12 @@
     border-left-color: #3E6E7A;
     color: #274850;
 }
-.dark .markdown-alert-info {
-    background: #1D2D30;
-    border-left-color: #6FA8B4;
-    color: #A9CDD4;
-}
 
 /* ========== Todo - Blue ========== */
 .markdown-alert-todo {
     background: #DCE6E8;
     border-left-color: #3E6E7A;
     color: #274850;
-}
-.dark .markdown-alert-todo {
-    background: #1D2D30;
-    border-left-color: #6FA8B4;
-    color: #A9CDD4;
 }
 
 /* ========== Tip / Hint - Green ========== */
@@ -89,22 +69,12 @@
     border-left-color: #5C8A4A;
     color: #3B5C2E;
 }
-.dark .markdown-alert-tip {
-    background: #212B1B;
-    border-left-color: #8FB878;
-    color: #C0D8AE;
-}
 
 /* ========== Success / Check / Done - Green ========== */
 .markdown-alert-success {
     background: #E0EAD9;
     border-left-color: #5C8A4A;
     color: #3B5C2E;
-}
-.dark .markdown-alert-success {
-    background: #212B1B;
-    border-left-color: #8FB878;
-    color: #C0D8AE;
 }
 
 /* ========== Question / Help / FAQ - Ochre ========== */
@@ -113,22 +83,12 @@
     border-left-color: #A6801F;
     color: #6B5316;
 }
-.dark .markdown-alert-question {
-    background: #2E2513;
-    border-left-color: #D4AC4C;
-    color: #E4CB8E;
-}
 
 /* ========== Warning / Caution / Attention - Terracotta ========== */
 .markdown-alert-warning {
     background: #F1DFC9;
     border-left-color: #A23E2A;
     color: #6E2C1D;
-}
-.dark .markdown-alert-warning {
-    background: #33221A;
-    border-left-color: #E2895D;
-    color: #EAB894;
 }
 
 /* ========== Failure / Fail / Missing - Rust Red ========== */
@@ -137,22 +97,12 @@
     border-left-color: #9C3B2A;
     color: #6B2A1E;
 }
-.dark .markdown-alert-failure {
-    background: #302019;
-    border-left-color: #D97B62;
-    color: #E9B7A4;
-}
 
 /* ========== Danger / Error - Deep Red ========== */
 .markdown-alert-danger {
     background: #ECCECB;
     border-left-color: #8C2E22;
     color: #601E16;
-}
-.dark .markdown-alert-danger {
-    background: #2E1917;
-    border-left-color: #C96450;
-    color: #E4A796;
 }
 
 /* ========== Bug - Plum ========== */
@@ -161,11 +111,6 @@
     border-left-color: #8C4A63;
     color: #5F2F41;
 }
-.dark .markdown-alert-bug {
-    background: #2A1D22;
-    border-left-color: #C77E9B;
-    color: #DCA9BB;
-}
 
 /* ========== Example - Indigo/Slate ========== */
 .markdown-alert-example {
@@ -173,19 +118,9 @@
     border-left-color: #4F5A82;
     color: #303955;
 }
-.dark .markdown-alert-example {
-    background: #1D1F2A;
-    border-left-color: #8790BA;
-    color: #BEC4E0;
-}
 
 /* ========== Quote / Cite - Warm Gray ========== */
 .markdown-alert-quote {
-    background: var(--accent-subtle);
-    border-left-color: var(--secondary);
-    color: var(--secondary);
-}
-.dark .markdown-alert-quote {
     background: var(--accent-subtle);
     border-left-color: var(--secondary);
     color: var(--secondary);
@@ -196,11 +131,6 @@
     background: #E4DCEA;
     border-left-color: #6E4E86;
     color: #453059;
-}
-.dark .markdown-alert-important {
-    background: #221C2A;
-    border-left-color: #AB8CC4;
-    color: #D3C0E2;
 }
 
 /* ========== SVG icon color inheritance ========== */

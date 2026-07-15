@@ -45,12 +45,6 @@
     --chroma-gu: #61afef;       /* Generic Subheading - Blue */
 }
 
-/* Remove Dark Mode Override to enforce unified dark theme */
-.dark {
-    /* Optional: You can tweak background slightly darker for dark mode if desired, 
-       but for now we keep it consistent as requested. */
-}
-
 /* Apply Variables */
 .chroma { 
     color: var(--chroma-color);

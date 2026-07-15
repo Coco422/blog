@@ -1,0 +1,108 @@
+/*!
+ * Custom giscus theme matching the blog's "Marginalia" warm paper palette.
+ * Based on GitHub Primer color variables consumed by giscus's client UI.
+ * See: https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md
+ *
+ * Maintenance note: giscus's `.gsc-*` class names and this variable set are
+ * an internal implementation detail of giscus and may change between
+ * releases. If the comment widget looks broken after a giscus update,
+ * re-check https://github.com/giscus/giscus/blob/main/styles/themes/custom_example.css
+ */
+
+main {
+  --color-prettylights-syntax-comment: #6e7781;
+  --color-prettylights-syntax-constant: #0550ae;
+  --color-prettylights-syntax-entity: #8250df;
+  --color-prettylights-syntax-storage-modifier-import: #24292f;
+  --color-prettylights-syntax-entity-tag: #116329;
+  --color-prettylights-syntax-keyword: #cf222e;
+  --color-prettylights-syntax-string: #0a3069;
+  --color-prettylights-syntax-variable: #953800;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+  --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+  --color-prettylights-syntax-invalid-illegal-bg: #82071e;
+  --color-prettylights-syntax-carriage-return-text: #f6f8fa;
+  --color-prettylights-syntax-carriage-return-bg: #cf222e;
+  --color-prettylights-syntax-string-regexp: #116329;
+  --color-prettylights-syntax-markup-list: #3b2300;
+  --color-prettylights-syntax-markup-heading: #0550ae;
+  --color-prettylights-syntax-markup-italic: #24292f;
+  --color-prettylights-syntax-markup-bold: #24292f;
+  --color-prettylights-syntax-markup-deleted-text: #82071e;
+  --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+  --color-prettylights-syntax-markup-inserted-text: #116329;
+  --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+  --color-prettylights-syntax-markup-changed-text: #953800;
+  --color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+  --color-prettylights-syntax-markup-ignored-text: #eaeef2;
+  --color-prettylights-syntax-markup-ignored-bg: #0550ae;
+  --color-prettylights-syntax-meta-diff-range: #8250df;
+  --color-prettylights-syntax-brackethighlighter-angle: #57606a;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+  --color-prettylights-syntax-constant-other-reference-link: #0a3069;
+
+  --color-btn-text: #2a2420;
+  --color-btn-bg: #f1dfc9;
+  --color-btn-border: #e6dac0;
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #e6dac0;
+  --color-btn-hover-border: #a23e2a;
+  --color-btn-active-bg: #e6dac0;
+  --color-btn-active-border: #a23e2a;
+  --color-btn-selected-bg: #f1dfc9;
+  --color-btn-primary-text: #fbf6ec;
+  --color-btn-primary-bg: #a23e2a;
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-shadow: 0 0 transparent;
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: #8c3323;
+  --color-btn-primary-hover-border: transparent;
+  --color-btn-primary-selected-bg: #8c3323;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: rgb(42 36 32 / 50%);
+  --color-btn-primary-disabled-bg: rgb(162 62 42 / 40%);
+  --color-btn-primary-disabled-border: transparent;
+
+  --color-action-list-item-default-hover-bg: rgb(110 98 85 / 10%);
+  --color-segmented-control-bg: rgb(110 98 85 / 10%);
+  --color-segmented-control-button-bg: #fffdf7;
+  --color-segmented-control-button-selected-border: #e6dac0;
+
+  --color-fg-default: #2a2420;
+  --color-fg-muted: #6e6255;
+  --color-fg-subtle: #9a8e7d;
+
+  --color-canvas-default: #fffdf7;
+  --color-canvas-overlay: #fffdf7;
+  --color-canvas-inset: #fbf6ec;
+  --color-canvas-subtle: #f1dfc9;
+
+  --color-border-default: #e6dac0;
+  --color-border-muted: #efe4ce;
+  --color-neutral-muted: rgb(110 98 85 / 20%);
+
+  --color-accent-fg: #a23e2a;
+  --color-accent-emphasis: #a23e2a;
+  --color-accent-muted: rgb(162 62 42 / 30%);
+  --color-accent-subtle: #f1dfc9;
+
+  --color-success-fg: #1a7f37;
+  --color-attention-fg: #9a6700;
+  --color-attention-muted: rgb(154 103 0 / 30%);
+  --color-attention-subtle: #fff8c5;
+  --color-danger-fg: #a23e2a;
+  --color-danger-muted: rgb(162 62 42 / 30%);
+  --color-danger-subtle: #f0d8d2;
+
+  --color-primer-shadow-inset: 0 0 transparent;
+  --color-scale-gray-7: #e6dac0;
+  --color-scale-blue-8: #f1dfc9;
+
+  --color-social-reaction-bg-hover: var(--color-scale-gray-7);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
+}
+
+.gsc-homepage-bg {
+  background-color: #fbf6ec;
+}

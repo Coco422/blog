@@ -19,15 +19,6 @@
 }
 
 @font-face {
-    font-family: 'Noto Sans SC';
-    src: url('/fonts/noto-sans-sc-subset.woff2') format('woff2-variations'),
-         url('/fonts/noto-sans-sc-subset.woff2') format('woff2');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
     font-family: 'LXGW WenKai GB';
     src: url('/fonts/lxgw-wenkai-gb-standard.woff2') format('woff2');
     font-weight: 400;
@@ -46,8 +37,8 @@
 
 :root {
     /* type roles */
-    --font-display: 'Newsreader', 'LXGW WenKai GB', 'Noto Sans SC', serif;
-    --font-body: 'Newsreader', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Newsreader', 'LXGW WenKai GB', serif;
+    --font-body: 'Newsreader', 'LXGW WenKai GB', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
     /* paper palette - light */
@@ -66,23 +57,6 @@
     --sidenote-bg: #F1DFC9;
 }
 
-.dark {
-    /* paper palette - dark */
-    --theme: #1D1712;
-    --entry: #251E17;
-    --primary: #EFE6D6;
-    --secondary: #AC9C86;
-    --tertiary: #3A3123;
-    --content: #EFE6D6;
-    --code-block-bg: #17120E;
-    --code-bg: #3B2A1E;
-    --border: #3A3123;
-
-    --accent: #E2895D;
-    --accent-subtle: #3B2A1E;
-    --sidenote-bg: #3B2A1E;
-}
-
 body {
     font-family: var(--font-body);
 }
@@ -90,8 +64,7 @@ body {
 /* Stock PaperMod tints list-page bodies with --code-bg; keep list pages on
    the same paper tone as single pages instead (--code-bg is now a more
    saturated accent tan, not a near-invisible off-white like the stock theme). */
-.list,
-.dark.list {
+.list {
     background: var(--theme);
 }
 

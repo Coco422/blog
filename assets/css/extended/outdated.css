@@ -13,12 +13,6 @@
     line-height: 1.5;
 }
 
-.dark .outdated-warning {
-    background: var(--accent-subtle);
-    border-left-color: var(--accent);
-    color: var(--secondary);
-}
-
 .outdated-warning svg {
     flex-shrink: 0;
     opacity: 0.8;
