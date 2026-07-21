@@ -1,6 +1,6 @@
 ---
 title: "Hugo 配置waline"
-description: 惯例先放网址，我这里参考了 好多，但是终究没有能抄的作业 hugo-theme-stack/config.yaml at master · CaiJimmy/hugo-theme-stack · GitHub(https://github.
+description: "记录为 Hugo 博客独立部署 Waline 评论系统的过程，包括 Docker Compose、Cloudflare Pages、Nginx 反向代理与网络排查。"
 date: 2025-03-25T13:04:24+08:00
 image: 
 math: 

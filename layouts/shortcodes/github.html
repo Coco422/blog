@@ -1,6 +1,12 @@
 <div class="github">
     <div class="github_bar">
-        {{ replace $.Site.Data.SVG.repository "icon" "icon github-icon" | safeHTML }}
+        {{- $repositoryIcon := "" -}}
+        {{- if ge hugo.Version "0.159.0" -}}
+            {{- $repositoryIcon = hugo.Data.SVG.repository -}}
+        {{- else -}}
+            {{- $repositoryIcon = $.Site.Data.SVG.repository -}}
+        {{- end -}}
+        {{ replace $repositoryIcon "icon" "icon github-icon" | safeHTML }}
         <a class="github_name" href={{ .Get "link" }} target="_blank">{{ .Get "name" }}</a>
     </div>
     <div class="github_description">{{ .Get "description" }}</div>

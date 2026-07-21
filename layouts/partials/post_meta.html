@@ -21,7 +21,9 @@
 
 {{- if not (.Param "hideAuthor") -}}
 {{- with (partial "author.html" .) }}
-{{- $scratch.Add "meta" (slice .) }}
+{{- $authorURL := site.Params.schema.authorURL | default ("about/" | absURL) -}}
+{{- $authorLink := printf "<a href=%q rel=%q>%s</a>" $authorURL "author" . | safeHTML -}}
+{{- $scratch.Add "meta" (slice $authorLink) }}
 {{- end }}
 {{- end }}
 

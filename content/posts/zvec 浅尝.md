@@ -1,6 +1,6 @@
 ---
 title: zvec 浅尝
-description: 阿里巴巴开源向量数据库 zvec 初体验
+description: "实测阿里开源向量数据库 zvec，跑通本地建库、向量入库、Top-K 检索与命中评估，并记录多种 Embedding 接口的适配方式。"
 date: 2026-02-25T11:23:33+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -117,4 +117,3 @@ uv run python main.py --config-dir datasets --pattern "*.json" --default-topk 3 
 - 加 rerank（和纯向量召回分开看）
 - 记录 `recall@k`、延迟、不同 batch size 的变化
 - 再补一版偏业务文本的数据，不只测短句问答
-

@@ -1,6 +1,6 @@
 ---
 title: PG connect 字符串错误
-description: "PostgreSQL Documentation 17 32.1. Database Connection Control Functions(https//www.postgresql.org/docs/current/libpq"
+description: "排查 PostgreSQL 连接 URI 报 Invalid URL 的原因，说明密码中的 #、@、冒号等特殊字符为何需要百分号编码，并给出安全处理思路。"
 date: 2025-08-04T11:44:00+08:00
 lastmod: 2025-12-10T00:26:34+08:00
 showLastmod: true

@@ -1,0 +1,105 @@
+{{- $seo := partial "seo/data.html" . -}}
+{{- $language := site.Language.LanguageCode | default site.Language.Lang -}}
+{{- $websiteID := printf "%s#website" site.Home.Permalink -}}
+{{- $personID := printf "%s#person" site.Home.Permalink -}}
+{{- $schema := site.Params.schema | default dict -}}
+{{- $sameAs := $schema.sameAs | default slice -}}
+
+{{- $person := dict
+  "@type" "Person"
+  "@id" $personID
+  "name" ($schema.authorName | default site.Params.author)
+  "url" ($schema.authorURL | default ("about/" | absURL))
+  "image" ($schema.authorImage | default (site.Params.assets.apple_touch_icon | absURL))
+  "sameAs" $sameAs
+-}}
+{{- with $schema.authorAlternateName -}}
+  {{- $person = merge $person (dict "alternateName" .) -}}
+{{- end -}}
+
+{{- $website := dict
+  "@type" "WebSite"
+  "@id" $websiteID
+  "url" site.Home.Permalink
+  "name" $seo.siteName
+  "description" site.Params.description
+  "inLanguage" $language
+  "publisher" (dict "@id" $personID)
+-}}
+{{- with $schema.alternateName -}}
+  {{- $website = merge $website (dict "alternateName" .) -}}
+{{- end -}}
+
+{{- $graph := slice $website $person -}}
+
+{{- if not .IsHome -}}
+  {{- $items := slice (dict
+    "@type" "ListItem"
+    "position" 1
+    "name" $seo.siteName
+    "item" site.Home.Permalink
+  ) -}}
+  {{- $position := 2 -}}
+  {{- with .Parent -}}
+    {{- if not .IsHome -}}
+      {{- $parentName := .Title | default .LinkTitle | default "文章" -}}
+      {{- if eq .Section "posts" -}}{{- $parentName = "文章" -}}{{- end -}}
+      {{- $items = $items | append (dict
+        "@type" "ListItem"
+        "position" $position
+        "name" $parentName
+        "item" .Permalink
+      ) -}}
+      {{- $position = add $position 1 -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" $position
+    "name" (.Title | default $seo.siteName)
+    "item" $seo.canonical
+  ) -}}
+  {{- $graph = $graph | append (dict
+    "@type" "BreadcrumbList"
+    "@id" (printf "%s#breadcrumb" $seo.canonical)
+    "itemListElement" $items
+  ) -}}
+{{- end -}}
+
+{{- if $seo.isArticle -}}
+  {{- $article := dict
+    "@type" "BlogPosting"
+    "@id" (printf "%s#article" $seo.canonical)
+    "url" $seo.canonical
+    "headline" (.Title | plainify)
+    "description" $seo.description
+    "datePublished" (.PublishDate.Format "2006-01-02T15:04:05-07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05-07:00")
+    "wordCount" .WordCount
+    "inLanguage" $language
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" $seo.canonical)
+    "isPartOf" (dict "@id" $websiteID)
+    "author" (dict "@id" $personID)
+    "publisher" (dict "@id" $personID)
+  -}}
+  {{- with $seo.image -}}{{- $article = merge $article (dict "image" .) -}}{{- end -}}
+  {{- with .Params.tags -}}{{- $article = merge $article (dict "keywords" .) -}}{{- end -}}
+  {{- with .Params.categories -}}{{- $article = merge $article (dict "articleSection" .) -}}{{- end -}}
+  {{- $graph = $graph | append $article -}}
+{{- else if and (not $seo.noindex) (not .IsHome) -}}
+  {{- $pageType := "CollectionPage" -}}
+  {{- if .IsPage -}}{{- $pageType = "WebPage" -}}{{- end -}}
+  {{- if eq .RelPermalink "/about/" -}}{{- $pageType = "AboutPage" -}}{{- end -}}
+  {{- $page := dict
+    "@type" $pageType
+    "@id" (printf "%s#webpage" $seo.canonical)
+    "url" $seo.canonical
+    "name" (.Title | default $seo.siteName)
+    "description" $seo.description
+    "inLanguage" $language
+    "isPartOf" (dict "@id" $websiteID)
+  -}}
+  {{- $graph = $graph | append $page -}}
+{{- end -}}
+
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify | safeJS }}</script>

@@ -1,6 +1,6 @@
 ---
 title: lambda 引发的编程语言陈年知识回顾
-description: "这篇文章回顾了“lambda”相关的编程语言基础知识，主要包括以下几个方面：1. **什么是 Lambda** - Lambda（希腊字母 λ）源自 Alonzo Church 在1936年发明的 lambda 演算，所有函数都是匿名的。 "
+description: "从匿名函数出发回顾 Lambda 演算、Lisp、一等公民与闭包等概念，并用 Python 示例串起函数式编程的基础知识。"
 date: 2025-12-05T17:14:17+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

@@ -1,0 +1,27 @@
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+{{- $pages = where $pages "Params.hidden" "!=" true -}}
+{{- $pages = where $pages "Params.canonicalURL" "==" nil -}}
+{{- $excludedURLs := slice -}}
+{{- with $pages.Next . -}}{{- $excludedURLs = $excludedURLs | append .RelPermalink -}}{{- end -}}
+{{- with $pages.Prev . -}}{{- $excludedURLs = $excludedURLs | append .RelPermalink -}}{{- end -}}
+
+{{- $related := site.RegularPages.Related . -}}
+{{- $related = where $related "Params.hidden" "!=" true -}}
+{{- $related = where $related "Params.canonicalURL" "==" nil -}}
+{{- if $excludedURLs -}}
+  {{- $related = where $related "RelPermalink" "not in" $excludedURLs -}}
+{{- end -}}
+{{- $related = first 4 $related -}}
+{{- with $related }}
+<aside class="related-posts" aria-labelledby="related-posts-title">
+  <h2 id="related-posts-title">相关文章</h2>
+  <ul>
+    {{- range . }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+    </li>
+    {{- end }}
+  </ul>
+</aside>
+{{- end }}

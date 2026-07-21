@@ -1,6 +1,6 @@
 ---
 title: claude code配置
-description: windows使用cluade code 安装node，百度安装nvm。选择一个LTS的 node版本使用 之后 npm install -g @anthropic-ai/claude-code npm install -g @musist
+description: "记录 Windows 安装 Claude Code 与 claude-code-router 的简要流程，包括 Node.js、模型供应商配置和使用 ccr code 启动。"
 date: 2025-08-24T01:51:47+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

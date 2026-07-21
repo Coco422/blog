@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-07-15T00:23:44+08:00
+lastmod: 2026-07-21T21:31:24+08:00
 showLastMod: true
 tags:
   - AI
@@ -16,6 +16,8 @@ categories:
   - 什么是什么
 ---
 >AI 开发配置 conda / cuda / pytorch / nvidia-driver 很容易混淆，让人头疼，实际上踩过几次坑就能摸清它们的概念和关系了。本文尝试用 Java 开发者熟悉的语言，对照解释几个常见概念。
+
+**CUDA 是 NVIDIA 提供的 GPU 并行计算平台和编程生态。** 日常 AI 开发最容易混淆的是：Driver 负责让系统驱动 GPU，PyTorch 安装包通常自带所需的 CUDA Runtime，而 CUDA Toolkit 主要在编译 CUDA C++ 或扩展时使用；Conda 负责隔离项目环境。
 
 ![Java 与 CUDA 的概念类比|300](https://imgbed.anluoying.com/2026/07/68c98b6b0033f7ed63acd08f6c7df787.png)
 
@@ -29,6 +31,8 @@ categories:
 |cuBLAS/cuDNN|Netty、Apache Commons 等第三方库|提供高性能计算能力|
 |PyTorch|Spring Boot|应用框架|
 |conda|SDKMAN / Maven + 环境管理|管理版本|
+
+这张表只是帮助理解职责，不表示两边的 API、兼容规则和部署方式能够一一对应。
 
 下面一点一点讲。
 
@@ -314,6 +318,8 @@ conda create -n ai python=3.12
 
 第四步，安装 PyTorch，例如：
 
+下面命令是本文更新时的示例。PyTorch 与 CUDA Runtime 的可用组合会变化，正式安装前请以 [PyTorch 官方安装选择器](https://pytorch.org/get-started/locally/)为准。
+
 ```bash
 conda install pytorch torchvision pytorch-cuda=12.6 -c pytorch -c nvidia
 ```
@@ -346,6 +352,8 @@ pip install torch --index-url https://download.pytorch.org/whl/cu126
 ![需要 CUDA Toolkit 的两条使用路径|300](https://imgbed.anluoying.com/2026/07/0692c91b5176df6506bea25044ce72b9.png)
 
 ---
+
+## 结论：大多数 PyTorch 用户只需要 Driver
 
 最后，用一张完整的关系图总结：
 
@@ -386,3 +394,12 @@ CUDA Toolkit
 - 除非需要编译 CUDA 代码或 C++ 扩展，否则通常不安装 **CUDA Toolkit**。这样既省事，也避免了多个 Toolkit 版本之间的管理问题。
 
 ![CUDA、Driver、PyTorch、Toolkit 的完整关系|300](https://imgbed.anluoying.com/2026/07/b3983132c8317e8413300a1708385238.png)
+
+如果想看这些概念在超大 MoE 模型推理里怎样落到显存、内存和磁盘上，可以继续看我的 [RTX 3060 运行 GLM-5.2 744B 实测](/posts/25gb内存就能跑-glm5.2/)。
+
+## 参考资料
+
+- [NVIDIA CUDA Compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/)
+- [NVIDIA CUDA Installation Guide for Linux](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
+- [PyTorch：Start Locally](https://pytorch.org/get-started/locally/)
+- [PyTorch：Previous Versions](https://pytorch.org/get-started/previous-versions/)

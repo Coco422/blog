@@ -1,0 +1,44 @@
+{{- $page := .Page -}}
+{{- $paginator := .Paginator -}}
+{{- $current := $paginator.PageNumber -}}
+{{- $total := $paginator.TotalPages -}}
+{{- $previousVisible := 0 -}}
+
+<footer class="page-footer">
+  <nav class="pagination" aria-label="文章列表分页">
+    <div class="pagination-side pagination-side-prev">
+      {{- if $paginator.HasPrev }}
+      <a class="prev" href="{{ $paginator.Prev.URL | absURL }}" rel="prev">
+        «&nbsp;{{ i18n "prev_page" }}
+      </a>
+      {{- end }}
+    </div>
+
+    <div class="pagination-pages" aria-label="页码">
+      {{- range $paginator.Pagers }}
+        {{- $number := .PageNumber -}}
+        {{- $nearCurrent := and (ge $number (sub $current 2)) (le $number (add $current 2)) -}}
+        {{- $visible := or (eq $number 1) (eq $number $total) $nearCurrent -}}
+        {{- if $visible }}
+          {{- if gt (sub $number $previousVisible) 1 }}
+          <span class="pagination-ellipsis" aria-hidden="true">…</span>
+          {{- end }}
+          {{- if eq $number $current }}
+          <span class="page-number current" aria-current="page" aria-label="第 {{ $number }} 页">{{ $number }}</span>
+          {{- else }}
+          <a class="page-number" href="{{ .URL | absURL }}" aria-label="前往第 {{ $number }} 页">{{ $number }}</a>
+          {{- end }}
+          {{- $previousVisible = $number -}}
+        {{- end }}
+      {{- end }}
+    </div>
+
+    <div class="pagination-side pagination-side-next">
+      {{- if $paginator.HasNext }}
+      <a class="next" href="{{ $paginator.Next.URL | absURL }}" rel="next">
+        {{- i18n "next_page" }}&nbsp;»
+      </a>
+      {{- end }}
+    </div>
+  </nav>
+</footer>

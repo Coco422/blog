@@ -1,8 +1,8 @@
 ---
-title: "Links"
+title: "友链"
 layout: "links"
 url: "/links/"
-description: "常用网站与友情链接合集，欢迎交换友链。"
+description: "收录安落滢常用的开发工具、技术社区与友情链接，也欢迎独立博客作者交换链接和长期互访。"
 summary: links
 ---
 > 欢迎交换友链 🔗

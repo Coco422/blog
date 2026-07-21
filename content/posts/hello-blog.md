@@ -1,6 +1,6 @@
 ---
 title: "Hello Blog"
-description: Hi there.This is my first rambling note. 笔记工具决赛 其实我从小时候写日记本开始就非常挑工具，我字写的不咋地，但是家里有一堆很好看的小本子。每一本上面都稀稀疏疏都记录了几篇日记，不超过一个月。
+description: "博客开篇：回顾纸质本、Typora、语雀与 Obsidian 的笔记工具选择，说明为什么搭建个人博客，以及未来技术笔记、卡片和生活记录的内容结构。"
 date: 2025-02-05T15:31:17+08:00
 image: 
 math: true
@@ -8,8 +8,10 @@ license:
 hidden: false
 comments: true
 draft: false
+categories:
+  - 月下小札
 ---
-# Hi there.This is my first rambling note.
+## Hi there.This is my first rambling note.
 
 ## 笔记工具决赛
 

@@ -2,6 +2,26 @@
 
 博客图片管理工具 - 用于备份和迁移博客图片的 Python CLI 工具
 
+## SEO 检查
+
+先构建站点，再检查文章元数据、canonical、robots、H1、图片 alt、JSON-LD、sitemap、`llms.txt`、内部链接和页内锚点：
+
+```bash
+hugo --printI18nWarnings --printPathWarnings
+python3 scripts/seo_audit.py
+```
+
+## 文楷字体子集
+
+站点保留完整的 LXGW WenKai GB 源字体，同时实际页面加载由当前博客语料生成的较小子集。新增文章出现少见汉字后，可重新生成：
+
+```bash
+python3 -m pip install fonttools brotli
+python3 scripts/subset_wenkai_font.py
+```
+
+生成结果是 `static/fonts/lxgw-wenkai-gb-site-subset.woff2`。脚本会扫描文章、模板、中文翻译和前端资源，并按字体内容哈希自动更新 CSS 查询参数，避免浏览器长期复用旧子集；未包含的未来字符仍会回退到系统字体，不会显示为空白。
+
 ## 🚀 快速开始（推荐）
 
 ### 方式一：一键式自动化（最简单）

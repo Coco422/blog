@@ -85,3 +85,8 @@
     letter-spacing: 0.01em;
     color: var(--secondary);
 }
+
+.post-entry .entry-footer a {
+    position: relative;
+    z-index: 1;
+}

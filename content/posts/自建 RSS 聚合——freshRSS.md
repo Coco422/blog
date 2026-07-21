@@ -29,9 +29,9 @@ RSS 是一种用于**自动获取网站更新内容的订阅技术**，全称是
     - 里面包含最新文章、标题、摘要、链接等
 2. 用户用 RSS 阅读器订阅这个 Feed
     常见工具：
-    - [Feedly](chatgpt://generic-entity?number=0)
-    - [Inoreader](chatgpt://generic-entity?number=1)
-    - [FreshRSS](chatgpt://generic-entity?number=2)（自建）
+    - [Feedly](https://feedly.com/)
+    - [Inoreader](https://www.inoreader.com/)
+    - [FreshRSS](https://freshrss.org/)（自建）
 3. 阅读器定时拉取更新
     有新内容就显示给你
 

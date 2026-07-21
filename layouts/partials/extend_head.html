@@ -6,27 +6,64 @@
 {{- /* Preload the primary display font to avoid layout shift/flash */ -}}
 <link rel="preload" href="{{ "fonts/newsreader-variable.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 
-{{- /* Load custom TOC CSS via Hugo Pipes (ensures it’s included even if the default pipeline was overridden) */ -}}
-{{- $toc := resources.Get "css/extended/toc.css" | resources.Minify | resources.Fingerprint -}}
-<link rel="stylesheet" href="{{ $toc.RelPermalink }}" integrity="{{ $toc.Data.Integrity }}">
-
-{{- /* Load custom Outdated CSS */ -}}
-{{- $outdated := resources.Get "css/extended/outdated.css" | resources.Minify | resources.Fingerprint -}}
-<link rel="stylesheet" href="{{ $outdated.RelPermalink }}" integrity="{{ $outdated.Data.Integrity }}">
-
-{{- /* Load custom Alerts CSS */ -}}
-{{- $alerts := resources.Get "css/extended/alerts.css" | resources.Minify | resources.Fingerprint -}}
-<link rel="stylesheet" href="{{ $alerts.RelPermalink }}" integrity="{{ $alerts.Data.Integrity }}">
-
 {{- if or .Site.Params.fancybox (not (isset .Site.Params "fancybox")) }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
-<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script>
-  // 等待 DOM 加载完成
   document.addEventListener("DOMContentLoaded", function() {
-      Fancybox.bind('[data-fancybox="gallery"]', {
-        // Your custom options
+    var selector = '[data-fancybox="gallery"]';
+    var galleryLinks = Array.prototype.slice.call(document.querySelectorAll(selector));
+    if (!galleryLinks.length) return;
+    var loadingPromise = null;
+
+    function ensureFancybox() {
+      if (window.Fancybox) return Promise.resolve(window.Fancybox);
+      if (loadingPromise) return loadingPromise;
+
+      loadingPromise = new Promise(function(resolve, reject) {
+        var stylesheet = document.createElement("link");
+        stylesheet.rel = "stylesheet";
+        stylesheet.href = "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css";
+        document.head.appendChild(stylesheet);
+
+        var script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js";
+        script.onload = function() {
+          Fancybox.bind(selector, {});
+          resolve(Fancybox);
+        };
+        script.onerror = reject;
+        document.head.appendChild(script);
       });
+
+      return loadingPromise;
+    }
+
+    document.addEventListener("click", function(event) {
+      if (window.Fancybox || !(event.target instanceof Element)) return;
+      var link = event.target.closest(selector);
+      if (!link) return;
+
+      event.preventDefault();
+      ensureFancybox()
+        .then(function() {
+          var items = galleryLinks.map(function(galleryLink) {
+            return {
+              src: galleryLink.href,
+              type: "image",
+              caption: galleryLink.querySelector("img")?.alt || ""
+            };
+          });
+          Fancybox.show(items, { startIndex: galleryLinks.indexOf(link) });
+        })
+        .catch(function() {
+          window.location.assign(link.href);
+        });
+    }, true);
+
+    galleryLinks.forEach(function(link) {
+      link.addEventListener("pointerdown", ensureFancybox, { once: true });
+      link.addEventListener("pointerenter", ensureFancybox, { once: true });
+      link.addEventListener("focusin", ensureFancybox, { once: true });
+    });
   });
 </script>
 {{- end }}

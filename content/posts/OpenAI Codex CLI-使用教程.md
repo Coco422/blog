@@ -8,13 +8,18 @@ comments: true
 draft: false
 lastmod: 2026-06-28T19:37:30+08:00
 showLastMod: true
+canonicalURL: https://www.newapi.ai/zh/docs/apps/codex-cli
+sitemap:
+  disable: true
+build:
+  list: never
 tags:
   - AI编程
 categories:
   - 他山拾影
 ---
 原文地址：[OpenAI Codex CLI \| New API](https://www.newapi.ai/zh/docs/apps/codex-cli)
-# OpenAI Codex CLI
+## OpenAI Codex CLI
 
 **项目介绍**
 

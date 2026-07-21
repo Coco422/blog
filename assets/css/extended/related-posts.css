@@ -1,0 +1,45 @@
+.related-posts {
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+}
+
+.related-posts h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.15rem;
+}
+
+.related-posts ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related-posts li {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 0.45rem 0;
+}
+
+.related-posts a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.related-posts time {
+  flex: 0 0 auto;
+  color: var(--secondary);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 520px) {
+  .related-posts li {
+    display: block;
+  }
+
+  .related-posts time {
+    display: block;
+    margin-top: 0.15rem;
+  }
+}

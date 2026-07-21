@@ -11,8 +11,13 @@
 <div class="post-content">
   {{ .Content }}
 
-  {{ if .Site.Data.links }}
-    {{ $links := .Site.Data.links }}
+  {{ $links := dict }}
+  {{ if ge hugo.Version "0.159.0" }}
+    {{ $links = hugo.Data.links }}
+  {{ else }}
+    {{ $links = .Site.Data.links }}
+  {{ end }}
+  {{ if $links }}
     
     {{/* 1. 常用网站/论坛 (Common) */}}
     {{ if $links.common }}

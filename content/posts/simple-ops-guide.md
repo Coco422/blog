@@ -1,6 +1,6 @@
 ---
 title: 简易运维指北
-description: 不配叫指南的运维备忘录——Docker、网络、进程三个方向的常用命令
+description: "面向日常服务器排障整理一份运维命令备忘录，覆盖 Docker 资源与配置检查、端口连接、抓包、进程分析和高负载定位。"
 date: 2026-05-13T14:00:00+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

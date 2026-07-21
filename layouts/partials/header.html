@@ -4,7 +4,7 @@
     {{- $navDefaultLang = "zh" -}}
 {{- end -}}
 {{- $navStorageKey := $navI18n.storageKey | default "anluoying-nav-language" -}}
-{{- $navToggleLabel := cond (eq $navDefaultLang "zh") "Switch navigation to English" "切换导航到中文" -}}
+{{- $navToggleLabel := cond (eq $navDefaultLang "zh") "ZH · Switch navigation to English" "EN · 切换导航到中文" -}}
 
 <header class="header">
     <nav class="nav">
@@ -27,10 +27,10 @@
                             {{- $img = $img.Resize "x30" }}
                         {{- end }}
                     {{- end }}
-                    <img src="{{ $img.Permalink }}" alt="" aria-label="logo"
+                    <img src="{{ $img.Permalink }}" alt="{{ site.Params.label.iconAlt | default $label_text }}"
                         height="{{- site.Params.label.iconHeight | default "30" -}}">
                 {{- else }}
-                <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
+                <img src="{{- site.Params.label.icon | absURL -}}" alt="{{ site.Params.label.iconAlt | default $label_text }}"
                     height="{{- site.Params.label.iconHeight | default "30" -}}">
                 {{- end -}}
                 {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}

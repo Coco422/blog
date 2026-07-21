@@ -9,7 +9,6 @@ draft: false
 tags:
   - llm
 categories:
-  - ""
   - 杂技浅尝
 showLastmod: true
 ---
@@ -183,4 +182,3 @@ def get_batch(split):
         x, y = x.to(device), y.to(device)
     return x, y
 ```
-

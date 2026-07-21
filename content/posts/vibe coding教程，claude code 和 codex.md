@@ -1,6 +1,6 @@
 ---
 title: vibe coding教程，claude code 和 codex
-description: vibe coding教程，claude code 和 codex,claude code是anthropic家推出的 cli agent工具，个人心中排第一的 code agent
+description: "面向新手整理 Claude Code 与 OpenAI Codex 的安装和常用操作，介绍终端式 AI 编程工作流、核心功能与实际使用入口。"
 date: 2025-11-20T14:11:53+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -9,11 +9,12 @@ draft: false
 tags:
   - 教程
 categories:
+  - 杂技浅尝
 lastmod: 2026-01-24T10:29:52+08:00
 ---
 ![image.png](https://imgbed.anluoying.com/2025/11/94f41f82704abb8f3c4bc281cc97c1ee.png)
 
-# **迄今为止最先进的代码助手**：
+## **迄今为止最先进的代码助手**：
 
 claude，anthropic家最强垂直领域编码模型之王，三个系列，haiku、sonnet、opus
 截至写这个教程时模型全面更新到4.5版本了。
@@ -40,7 +41,7 @@ gemini3 发布接近一周了，从网上的反响和我的使用来讲。觉得
 - JetBrains IDEs（包括 PyCharm、WebStorm、IntelliJ 和 GoLand）
 
 > 以下是收集的一些教程，供参考
-# 一、ClaudeCode
+## 一、ClaudeCode
 
 
 > 操作系统: macOS 10.15+ / Ubuntu 20.04+/Debian 10+ / Windows
@@ -209,7 +210,7 @@ echo %ANTHROPIC_API_KEY%
 
 vscode中claudecode新版本插件强制登录解决方案： 新建 ~/.claude/config.json 内容： `{"primaryApiKey": "fox"}`
 
-# 二、CodeX安装教程
+## 二、CodeX安装教程
 
 ### **1、安装Codex**
 
@@ -222,13 +223,13 @@ npm install -g @openai/codex
 mac 直接使用brew进行安装。使用时登录chatgpt账号即可。当前team账号性价比很高，量大管饱，大项目debug很合适
   
 
-# 四、ClaudeCode官方中文文档
+## 四、ClaudeCode官方中文文档
 
 [claude-code/quickstart](https://docs.anthropic.com/zh-CN/docs/claude-code/quickstart)
 
 ---
 
-# 五、Claude Code功能
+## 五、Claude Code功能
 
 ## 1. 直接进行交互：
 

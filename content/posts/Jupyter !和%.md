@@ -1,6 +1,6 @@
 ---
 title: jupyter !和%
-description: 学习别人给到的 Jupyter 代码时，其中有安装依赖的代码 使用 Jupyter !pip install numpy 这里我看到 vscode 插件提示我 !image.png(https://imgbed.anluoying.com/
+description: "解释 Jupyter Notebook 中 !pip 与 %pip 的差异：前者调用外部 Shell，后者面向当前 Kernel，可减少依赖安装到错误 Python 环境的问题。"
 date: 2025-08-19T11:49:44+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

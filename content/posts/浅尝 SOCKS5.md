@@ -1,12 +1,12 @@
 ---
 title: 浅尝 SOCKS5
-description: "!NOTE socks5 是什么，是不是还有 1234，socks5 和 常见的 vless 等一样吗 ？和 vpn 一样吗？怎么用呢？怎么建立呢？假如我有一个服务器 A 在美国，还有一个服务器B 在香港。我要访问的服务不允许香港I"
+description: "从实际网络场景解释 SOCKS5 的作用，以及它与 VLESS、VPN 的区别，并记录双服务器转发和代理链路的基本实现思路。"
 date: 2025-12-16T17:57:46+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-12-20T11:38:51+08:00
+lastmod: 2026-03-26T17:00:17+08:00
 showLastMod: true
 tags:
   - network

@@ -1,6 +1,6 @@
 ---
 title: open-webui 迁移数据库
-description: 原因 我的 Open Web UI 最早的时候用的是 SQLite 数据库，用久了之后，发现性能总感觉跟不上。所以决定迁移到 Postgres 数据库里。 脚本 用 claude opus 4.6 分析了一圈 关键差异总结： 1. aut
+description: "记录 Open WebUI 从 SQLite 迁移到 PostgreSQL 的实践，重点处理布尔值、时间戳、表依赖与持久化文件，并说明脚本适用边界。"
 date: 2026-02-13T18:29:44+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -10,6 +10,7 @@ lastmod: 2026-02-13T21:21:48+08:00
 showLastMod: true
 tags:
 categories:
+  - 杂技浅尝
 ---
 ## 原因
 

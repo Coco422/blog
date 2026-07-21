@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-07-18T14:00:02+08:00
+lastmod: 2026-07-21T21:31:24+08:00
 showLastMod: true
 tags:
   - AI
@@ -19,6 +19,8 @@ categories:
 先说结论:能跑是真的，能不能用是另一回事，别抱太大期待。
 
 在我的 RTX 3060 开发机上，GLM-5.2 744B 最终跑到了约 **0.44 tok/s**。工程上挺有意思，但离正常聊天还差得远。
+
+这里的“25GB”是项目宣称的最低量级，不是我的整机占用。本次 Linux 可见约 39GiB，进程 RSS 约 27GB；它适合验证 MoE 路由、缓存和磁盘流式推理，不适合交互聊天或 Agent。
 
 最近看到一个挺吸引眼球的项目:[JustVugg/colibri](https://github.com/JustVugg/colibri)。
 
@@ -34,11 +36,11 @@ categories:
 
 我有一台常用的开发机，已经被我虚拟化，把一台已经跑 MC 的虚拟机清掉，把 CPU、内存和磁盘资源合并到主力虚拟机上，下载了接近 400GB 的模型，真的把它跑了起来。
 
-模型能正常对话，也有 OpenAI 兼容 API，仓库自带的 Brain Dashboard 还能看到 19，456 个专家在推理时不断闪烁。
+模型能正常对话，也有 OpenAI 兼容 API，仓库自带的 Brain Dashboard 还能看到 19,456 个专家在推理时不断闪烁。
 
 跑起来是一回事，好不好用是另一回事。文末有在我这个环境实测的 GIF 效果。
 
-![image.png|300|300](https://imgbed.anluoying.com/2026/07/303b67bb9f9ce4fd70ed423660a60588.png)
+![GLM-5.2 在 colibri Brain Dashboard 中成功运行并生成回答|300](https://imgbed.anluoying.com/2026/07/303b67bb9f9ce4fd70ed423660a60588.png)
 
 ---
 
@@ -55,11 +57,13 @@ categories:
 |模型盘|500GB QEMU SCSI 磁盘，ext4|
 |模型|GLM-5.2-colibri-int4-with-int8-mtp|
 |模型总大小|383.74GB，共 144 个分片|
-|路由专家|19，456 个，共 372.85GB|
+|路由专家|19,456 个，共 372.85GB|
 
 实际运行时，进程 RSS 大约在 **27GB** 左右。测试配置里的 8GB VRAM 和 7GB RAM，指的是固定给热门专家用的缓存层，不是整个程序的总内存占用。
 
 模型仅稠密部分就约有 10.88GB，再加上工作区、KV Cache、专家 LRU 和服务进程，整机只有 10GB RAM 基本跑不稳。
+
+文中会反复提到 Driver、CUDA Runtime 和 Toolkit；如果这些名字容易混在一起，可以先看我整理的[CUDA 与 Driver、Toolkit、PyTorch、Conda 关系](/posts/什么是-cuda用-java-世界的类比看懂/)。
 
 所以后文的"8GB VRAM + 7GB RAM"，实际是这么个构成:
 
@@ -105,11 +109,11 @@ Disk:其余绝大多数专家
 
 这就是这个项目的核心思路:模型可以不放进内存，但省下来的内存最终会变成磁盘带宽和延迟的账单。
 
-![image.png|300|300](https://imgbed.anluoying.com/2026/07/88786b1f8d02295914fae128e3fefd44.png)
+![colibri 将 GLM-5.2 路由专家分层放在 VRAM、RAM 与磁盘的示意图|300](https://imgbed.anluoying.com/2026/07/88786b1f8d02295914fae128e3fefd44.png)
 
 ---
 
-## 19，456 个专家全部加载是什么状态
+## 19,456 个专家全部加载是什么状态
 
 仓库截图里的 Brain Dashboard 把整个模型画成一个 76×256 的大脑，每个小格是一个专家:
 
@@ -117,18 +121,18 @@ Disk:其余绝大多数专家
 - 亮度表示历史使用热度。
 - 当前请求路由到的专家会闪白。
 
-![image.png|300|300](https://imgbed.anluoying.com/2026/07/2e13fd88348948a6d749077eac07aa7b.png)
+![colibri Brain Dashboard 的 76×256 路由专家状态网格|300](https://imgbed.anluoying.com/2026/07/2e13fd88348948a6d749077eac07aa7b.png)
 
 这台机器有 6 张 GPU，聚合显存约 202GB，同时还有约 264GB 系统内存，全部专家由 VRAM + RAM 一起扛，不是靠显存单独装下。
 
 我的机器启动时专家加载情况是:
 
-![0286a7fbaac7b146f79a60239f455cf8.png|300|300](https://imgbed.anluoying.com/2026/07/c2deb78751363a8500c9d4ddec5a24cc.png)
+![本机启动后仅少量专家进入 VRAM 和 RAM，大部分仍留在磁盘|300](https://imgbed.anluoying.com/2026/07/c2deb78751363a8500c9d4ddec5a24cc.png)
 
 ```text
 VRAM:422
 RAM:371
-Disk:18，663
+Disk:18,663
 ```
 
 跑完一次请求、LRU 被填充后:
@@ -136,7 +140,7 @@ Disk:18，663
 ```text
 VRAM:422
 RAM:896
-Disk:18，138
+Disk:18,138
 ```
 
 即便已经预热过，还是有约 **93.2%** 的专家留在磁盘上。
@@ -221,7 +225,7 @@ GPU 专家层把 CPU-only 的 0.35 tok/s 拉到了约 0.44 tok/s，提升约 26%
 |---|--:|--:|--:|
 |8GB VRAM，不额外固定 RAM|0.31 tok/s|56.4%|3|
 |8GB VRAM + 7GB RAM|0.33 tok/s|59.2%|6|
-|8GB VRAM + 18GB RAM|0.15 tok/s|63.3%|1，547，638|
+|8GB VRAM + 18GB RAM|0.15 tok/s|63.3%|1,547,638|
 
 最后一组命中率明明更高，速度却从 0.33 掉到了 0.15 tok/s。
 
@@ -252,7 +256,7 @@ GPU 专家层把 CPU-only 的 0.35 tok/s 拉到了约 0.44 tok/s，提升约 26%
 |--:|--:|--:|--:|--:|
 |0|0.45 tok/s|1.04|—|575.0|
 |1|0.38 tok/s|1.71|64%|707.7|
-|3|0.21 tok/s|1.71|24%|1，392.3|
+|3|0.21 tok/s|1.71|24%|1,392.3|
 
 `DRAFT=1` 这组短测里接受率有 64%，说明 MTP 不是瞎猜。问题是它虽然省了 Forward 次数，但读的专家种类反而更多了。
 
@@ -398,7 +402,7 @@ Brain Dashboard 在 `localhost` 上没问题，但通过内网 IP 走普通 HTTP
 
 我自己的感觉是，交互式生成怎么也得 3 tok/s 起步才算能用，5～8 tok/s 才算实用，10～15 tok/s 才接近日常聊天的手感。更别说现在的 Agent 场景，2000 tok/s 都嫌不够快，越快越好。
 
-仓库 README 里的 5～15 tok/s 是硬件推演出来的数字，不是小内存机器的实测成绩。社区目前公开的数据里，24～32GB RAM 的机器大多只有 0.07～0.11 tok/s，部分 121～128GB 的高端设备能到约 1～2 tok/s。
+仓库 README 里的 5～15 tok/s 是硬件推演出来的数字，不是小内存机器的实测成绩。按项目 README 的[公开硬件结果](https://github.com/JustVugg/colibri#what-it-achieves)，25GB 开发机冷启动约为 0.05～0.1 tok/s，128GB CPU-only 桌面机预热后约为 1.8 tok/s。
 
 真把全部专家塞进内存和显存以后，情况才会完全不一样。仓库记录的一台 6×RTX 5090、约 264GB RAM 的机器，在 `Disk 0` 下跑到了 6.28～6.84 tok/s。
 
@@ -412,12 +416,13 @@ Brain Dashboard 在 `localhost` 上没问题，但通过内网 IP 走普通 HTTP
 
 贴一下真实效果的 GIF
 
-![|300](https://imgbed.anluoying.com/2026/07/a4e2ce1eec958d6e79fa4a15861c5d32.gif)
+![GLM-5.2 在 RTX 3060 上以约 0.44 tok/s 生成文本的实际效果|300](https://imgbed.anluoying.com/2026/07/a4e2ce1eec958d6e79fa4a15861c5d32.gif)
 
 ---
 
 ## 相关资料
 
 - [JustVugg/colibri](https://github.com/JustVugg/colibri)
+- [colibri README：公开硬件结果](https://github.com/JustVugg/colibri#what-it-achieves)
 - [GLM-5.2 on 6×RTX 5090 实验记录](https://github.com/JustVugg/colibri/blob/main/docs/experiments/glm52-6x5090-2026-07-12.md)
 - [KTransformers](https://github.com/kvcache-ai/ktransformers)

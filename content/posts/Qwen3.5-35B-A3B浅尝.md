@@ -1,6 +1,6 @@
 ---
 title: Qwen3.5-35B-A3B浅尝
-description: Qwen3.5-35B-A3B !info Qwen3.5 系列终于发布了小杯模型，对应的在阿里云提供 API，Qwen3.5-Plus 即 Qwen3.5-397B-A17B，Qwen3.5-Flash 即 Qwen3.5-3
+description: "记录使用 vLLM 部署 Qwen3.5-35B-A3B 的过程，包括多卡并行、128K 上下文配置、并发测试、生成速度与初步使用体验。"
 date: 2026-02-25T16:06:16+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

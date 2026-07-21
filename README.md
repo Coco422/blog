@@ -36,6 +36,8 @@ The generated site is written to `public/`, which is ignored by git.
 - `static/` - files copied directly into the published site.
 - `docs/` - project docs and deployment notes.
 
+SEO implementation and Google Search Console steps are documented in `docs/SEO.md`.
+
 ## Deployment
 
 The site deploys on Cloudflare Pages. Keep `HUGO_VERSION` configured for both Production and Preview environments; see `docs/DEPLOYMENT.md`.

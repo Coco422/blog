@@ -1,0 +1,8 @@
+{{- $pages := union .RegularPages .Sections -}}
+{{- if .IsHome -}}
+  {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections -}}
+  {{- $pages = where $pages "Params.hiddenInHomeList" "!=" true -}}
+{{- end -}}
+{{- $pages = where $pages "Params.hidden" "!=" true -}}
+{{- $pages = where $pages "Params.canonicalURL" "==" nil -}}
+{{- return (.Paginate $pages) -}}

@@ -1,6 +1,6 @@
 ---
 title: weclone 跟风
-description: 基于微信聊天记录微调一个 qwen2.5-7B
+description: "使用 WeClone 和微信聊天记录微调 Qwen2.5-7B，记录聊天数据导出、清洗、单卡训练与效果验证，以及数据质量不足带来的问题。"
 date: 2025-05-19T18:08:30+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

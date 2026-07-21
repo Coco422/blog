@@ -76,6 +76,12 @@
   padding-bottom: 5px;
 }
 
+.toc li a {
+  display: block;
+  min-height: 24px;
+  padding-block: 3px;
+}
+
 .toc .active {
   font-size: 110%;
   font-weight: 600;

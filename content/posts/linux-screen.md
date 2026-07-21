@@ -9,6 +9,5 @@ draft: true
 tags:
   - linux
 categories:
-  - ""
   - 杂技浅尝
 ---

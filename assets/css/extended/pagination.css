@@ -2,7 +2,8 @@
    outlined button that matches the warm accent palette. */
 
 .pagination {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
     gap: 12px;
     margin-top: calc(var(--gap) * 0.5);
@@ -32,6 +33,67 @@
     color: var(--accent);
 }
 
-.pagination .next {
-    margin-inline-start: auto;
+.pagination-side {
+    display: flex;
+    min-width: 0;
+}
+
+.pagination-side-next {
+    justify-content: flex-end;
+}
+
+.pagination-pages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.pagination .page-number {
+    min-width: 32px;
+    justify-content: center;
+    padding: 9px 10px;
+}
+
+.pagination .page-number.current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    min-height: 32px;
+    color: var(--theme);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 20px;
+}
+
+.pagination-ellipsis {
+    color: var(--secondary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+@media screen and (max-width: 640px) {
+    .pagination {
+        grid-template-columns: 1fr;
+    }
+
+    .pagination-pages {
+        grid-column: 1;
+        grid-row: 2;
+        flex-wrap: wrap;
+    }
+
+    .pagination-side-prev {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .pagination-side-next {
+        grid-column: 1;
+        grid-row: 3;
+    }
 }

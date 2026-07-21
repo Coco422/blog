@@ -48,15 +48,14 @@
     });
 
     const nextLang = safeLang === "zh" ? "en" : "zh";
+    const currentText = safeLang.toUpperCase();
+    const actionLabel = safeLang === "zh" ? "Switch navigation to English" : "切换导航到中文";
     toggle.setAttribute("aria-pressed", safeLang === "zh" ? "true" : "false");
-    toggle.setAttribute(
-      "aria-label",
-      safeLang === "zh" ? "Switch navigation to English" : "切换导航到中文"
-    );
-    toggle.title = safeLang === "zh" ? "Switch navigation to English" : "切换导航到中文";
+    toggle.setAttribute("aria-label", `${currentText} · ${actionLabel}`);
+    toggle.title = actionLabel;
 
     if (currentLabel) {
-      currentLabel.textContent = safeLang.toUpperCase();
+      currentLabel.textContent = currentText;
       currentLabel.dataset.nextLang = nextLang;
     }
   }

@@ -2,7 +2,7 @@
 
 {{- $categoryTaxonomy := .Language.Params.Taxonomies.category | default "categories" }}
 {{- $categoryTerms := $.GetTerms $categoryTaxonomy }}
-{{- $dropCapCategories := slice "月下小札" "什么是什么" "人间报错" }}
+{{- $dropCapCategories := slice "月下小札" "什么是什么" "琐碎快记" }}
 {{- $isDropCap := false }}
 {{- range $categoryTerms }}
   {{- if in $dropCapCategories .LinkTitle }}
@@ -99,6 +99,8 @@
     {{- partial "share_icons.html" . -}}
     {{- end }}
   </footer>
+
+  {{- partial "related_posts.html" . }}
 
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}

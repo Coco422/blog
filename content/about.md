@@ -1,10 +1,10 @@
 ---
-title: About
+title: 关于 Ray
 layout: about
 url: /about/
 description: "关于 Ray：一名没有高校和大厂背景的全栈折腾工程师，在这里记录技术实践和生活思考。"
 summary: about
-lastmod: 2026-06-22T10:16:05+08:00
+lastmod: 2026-07-21T20:23:06+08:00
 ---
 ## Hi 👋, I'm Ray
 
@@ -12,7 +12,11 @@ lastmod: 2026-06-22T10:16:05+08:00
 
 折腾是当前能最小成本实现自我价值的方式了。什么价值，暂时是愉悦自我。
 
+除了这个博客，也可以在 [GitHub](https://github.com/coco422)、[X](https://x.com/Anluoying) 和 [LinuxDO](https://linux.do/u/ray521980/summary) 找到我。这里长期会写 AI 工具与模型实测、Linux 和网络运维、开发踩坑，也会留下一点生活观察。
+
 ## CHANGELOG
+
+[2026-07-21] “人间报错”恢复原名“琐碎快记”。
 
 [2026-06-22] 新增“人间报错”分类替代“琐碎快记”。
 

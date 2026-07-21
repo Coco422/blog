@@ -1,6 +1,6 @@
 ---
 title: 什么是AI反代，和反代什么区别
-description: 用借钱租房比喻记录正向代理、反向代理和 AI 反代这几个词到底差在哪
+description: "用租房比喻解释正向代理、反向代理与 AI 反代的区别，并说明 AI 反代为何逐渐演变为协议转换、多账号聚合和 API 网关。"
 date: 2026-06-22T16:38:39+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

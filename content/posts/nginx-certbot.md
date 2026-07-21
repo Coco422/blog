@@ -1,6 +1,6 @@
 ---
 title: "Nginx Certbot"
-description: Nginx and Let’s Encrypt with Docker 这篇主要都是来自 medium 的这篇文章 Nginx and Let’s Encrypt with Docker in Less Than 5 Minutes \|
+description: "使用 Docker 部署 Nginx 与 Certbot，为已解析域名申请并续期 Let’s Encrypt 证书，记录容器配置和常见解析遗漏。"
 date: 2025-03-25T13:00:59+08:00
 tags: ["nginx"]
 categories: ["杂技浅尝"]
@@ -9,7 +9,7 @@ hidden: false
 comments: true
 draft: false
 ---
-# Nginx and Let’s Encrypt with Docker
+## Nginx and Let’s Encrypt with Docker
 
 这篇主要都是来自 medium 的这篇文章
 [Nginx and Let’s Encrypt with Docker in Less Than 5 Minutes \| by Philipp \| Medium](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71)
@@ -18,4 +18,3 @@ draft: false
 配完后确保域名解析到服务器即可（一直忘记改 cf，懵了好一会儿）
 
 主要是为了下一篇文章 配置评论系统
-

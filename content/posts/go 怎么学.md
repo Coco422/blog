@@ -1,6 +1,6 @@
 ---
 title: go 怎么学
-description: "!NOTE 突发奇想，想做一个镜像站，不想用 Java，觉得 go 可以试试，问问 gpt 速学 go可不可能。让他给我安排 28 天的计划如下。后续开启 go-learn 进行学习 🗓 Go 学习每日任务清单（28 天 × 每天 2"
+description: "为有编程基础的开发者设计一套 28 天 Go 学习路线，覆盖语法、并发、网络编程、工程实践和一个可落地的小项目。"
 date: 2025-12-16T11:32:37+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -10,12 +10,13 @@ lastmod: 2025-12-16T11:40:29+08:00
 showLastMod: true
 tags:
 categories:
+  - go-learn
 ---
 >[!NOTE]
 >突发奇想，想做一个镜像站，不想用 Java，觉得 go 可以试试，问问 gpt 速学 go可不可能。让他给我安排 28 天的计划如下。后续开启 go-learn 进行学习
 
 
-# 🗓 Go 学习每日任务清单（28 天 × 每天 2 小时）
+## 🗓 Go 学习每日任务清单（28 天 × 每天 2 小时）
 
 ---
 

@@ -4,6 +4,13 @@ description: 记录 IntelliJ IDEA 激活方法和相关工具使用说明
 date: 2025-08-24T01:50:07+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: true
+hiddenInHomeList: true
+searchHidden: true
+robotsNoIndex: true
+sitemap:
+  disable: true
+build:
+  list: never
 comments: true
 draft: false
 tags:

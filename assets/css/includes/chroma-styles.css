@@ -9,7 +9,7 @@
     --chroma-color: #abb2bf;    /* Light Grey Foreground */
     --chroma-err: #f44747;      /* Red for Errors */
     --chroma-line-hl: #3e4451;  /* Slightly lighter grey for line highlight */
-    --chroma-line-num: #636d83; /* Blue-grey for line numbers */
+    --chroma-line-num: #8f99ad; /* Accessible blue-grey for line numbers */
     
     /* Syntax Tokens */
     --chroma-k: #c678dd;        /* Keyword - Purple */

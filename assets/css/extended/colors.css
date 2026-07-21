@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: 'LXGW WenKai GB';
-    src: url('/fonts/lxgw-wenkai-gb-standard.woff2') format('woff2');
+    src: url('/fonts/lxgw-wenkai-gb-site-subset.woff2?v=6b089e5cc15a') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -91,4 +91,10 @@ code, pre, kbd, samp {
 .term-name,
 .tag-cloud-item {
     color: var(--accent);
+}
+
+.post-content a {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
 }

@@ -1,6 +1,6 @@
 ---
 title: C盘被wsl吃干抹净
-description: wsl在C盘上占据空间太多怎么迁移默认盘符
+description: "记录 Windows C 盘被 WSL 虚拟磁盘占满后的抢救过程，演示导出、注销并重新导入 Ubuntu 到其他磁盘，以及恢复默认用户的方法。"
 date: 2026-02-02T21:35:02+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

@@ -1,0 +1,77 @@
+{{- $siteName := site.Params.schema.siteName | default site.Title -}}
+{{- $pageNumber := 1 -}}
+{{- $paginator := false -}}
+{{- if in (slice "home" "section" "term") .Kind -}}
+  {{- $paginator = partial "seo/paginator.html" . -}}
+  {{- $pageNumber = $paginator.PageNumber -}}
+{{- end -}}
+
+{{- $baseTitle := .Title | default $siteName -}}
+{{- $title := printf "%s | %s" $baseTitle $siteName -}}
+{{- if .IsHome -}}
+  {{- $baseTitle = "文章列表" -}}
+  {{- $title = site.Params.seo.homeTitle | default $siteName -}}
+{{- else if eq .Kind "term" -}}
+  {{- $baseTitle = printf "%s 相关文章" .Title -}}
+  {{- $title = printf "%s | %s" $baseTitle $siteName -}}
+{{- end -}}
+{{- if gt $pageNumber 1 -}}
+  {{- $title = printf "%s - 第 %d 页 | %s" $baseTitle $pageNumber $siteName -}}
+{{- end -}}
+
+{{- $description := site.Params.description -}}
+{{- if and (not .IsHome) .Description -}}
+  {{- $description = .Description -}}
+{{- else if and (not .IsHome) .IsPage .Summary -}}
+  {{- $description = .Summary -}}
+{{- end -}}
+{{- $description = $description | plainify | htmlUnescape | strings.TrimSpace | truncate 160 -}}
+{{- if gt $pageNumber 1 -}}
+  {{- $description = printf "%s 当前为第 %d 页。" $description $pageNumber | truncate 160 -}}
+{{- end -}}
+
+{{- $canonical := .Permalink -}}
+{{- $canonicalOverride := false -}}
+{{- with .Params.canonicalURL -}}
+  {{- $canonical = strings.TrimSpace . -}}
+  {{- $canonicalOverride = true -}}
+{{- else -}}
+  {{- if gt $pageNumber 1 -}}
+    {{- $canonical = $paginator.URL | absURL -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $prev := "" -}}
+{{- $next := "" -}}
+{{- with $paginator -}}
+  {{- with .Prev -}}{{- $prev = .URL | absURL -}}{{- end -}}
+  {{- with .Next -}}{{- $next = .URL | absURL -}}{{- end -}}
+{{- end -}}
+
+{{- $image := "" -}}
+{{- if .Params.cover.image -}}
+  {{- if .Params.cover.relative -}}
+    {{- $image = path.Join .RelPermalink .Params.cover.image | absURL -}}
+  {{- else -}}
+    {{- $image = .Params.cover.image | absURL -}}
+  {{- end -}}
+{{- else -}}
+  {{- with partial "templates/_funcs/get-page-images" . -}}
+    {{- with index . 0 -}}{{- $image = .Permalink -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $noindex := or (not hugo.IsProduction) (.Param "robotsNoIndex") (.Param "hidden") (eq .Kind "404") -}}
+{{- return (dict
+  "canonical" $canonical
+  "canonicalOverride" $canonicalOverride
+  "description" $description
+  "image" $image
+  "isArticle" (and .IsPage (eq .Section "posts"))
+  "next" $next
+  "noindex" $noindex
+  "pageNumber" $pageNumber
+  "prev" $prev
+  "siteName" $siteName
+  "title" $title
+) -}}

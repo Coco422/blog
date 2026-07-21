@@ -1,6 +1,6 @@
 ---
 title: 安装 Ubuntu
-description: 在 windows 主机上替换安装 Ubuntu
+description: "记录将 Windows 主机改装为 Ubuntu Desktop 的完整过程，包括 Ventoy 启动盘、数据备份、系统安装，以及 NVIDIA 显卡卡在启动界面的处理。"
 date: 2025-04-22T18:24:43+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -8,7 +8,7 @@ comments: true
 draft: false
 tags: 
 categories:
-  - ""
+  - 杂技浅尝
 ---
 
 > 其实有想过保留两个系统，但是备份完之后觉得没这个必要了，主要是不需要 windows 做什么，公司也还有 win 电脑

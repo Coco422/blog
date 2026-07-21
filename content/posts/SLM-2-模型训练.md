@@ -1,6 +1,6 @@
 ---
 title: SLM-2-模型训练
-description: 接上篇，定义 SLM 的模型架构 代码如下 python import torch import torch.nn as nn import torch.nn.functional as F import math from datacl
+description: "从零训练小语言模型的第二篇，拆解自回归注意力、MLP、Transformer Block、配置类、训练循环、混合精度、断点保存与日志记录。"
 date: 2025-08-19T12:35:53+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -9,11 +9,10 @@ draft: false
 tags:
   - llm
 categories:
-  - ""
   - 杂技浅尝
 showLastmod: true
 ---
-# 接上篇，定义 SLM 的模型架构
+## 接上篇，定义 SLM 的模型架构
 
 代码如下
 

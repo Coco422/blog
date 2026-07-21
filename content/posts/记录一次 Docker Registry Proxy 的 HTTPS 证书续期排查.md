@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-06-02T19:12:50+08:00
+lastmod: 2026-07-21T21:31:24+08:00
 showLastMod: true
 tags:
   - network
@@ -17,9 +17,11 @@ categories:
   - 杂技浅尝
 ---
 
+> **先说结论：** 服务没有开放 80/443 端口时，不能直接走依赖 80 端口的 HTTP-01 验证。这次我改用 acme.sh + Cloudflare DNS Challenge 申请泛域名证书，再通过 `--install-cert` 写回 Nginx 挂载目录，并在续期后自动重启容器。
+
 ## 背景
 
-我有一套自建的 Docker Registry Proxy 服务 可看这篇博客[docker自建镜像加速 \| 安落滢 Blog - 技术分享与生活记录](https://blog.anluoying.com/posts/docker%E8%87%AA%E5%BB%BA%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/)，用来代理 Docker Hub、GHCR、Quay、GCR、K8S、MCR、NVCR 等镜像源。
+我有一套自建的 Docker Registry Proxy 服务，可看这篇博客：[docker 自建镜像加速](/posts/docker自建镜像加速/)，用来代理 Docker Hub、GHCR、Quay、GCR、K8S、MCR、NVCR 等镜像源。
 
 服务整体跑在 Debian 服务器上，Nginx 运行在 Docker 容器中，由于没有 80、443 端口。对外统一暴露 `5050` 端口。
 
@@ -741,3 +743,11 @@ crontab -l
 ```bash
 docker restart registry-nginx
 ```
+
+如果 TLS 已经恢复，但向 Harbor 推送镜像仍报 `unauthorized`，可以继续看 [Harbor push unauthorized](/posts/harbor-push-unauthorized/) 的代理层鉴权排查。
+
+## 相关资料
+
+- [Let's Encrypt：Challenge Types](https://letsencrypt.org/docs/challenge-types/)
+- [acme.sh：DNS API](https://github.com/acmesh-official/acme.sh/wiki/dnsapi)
+- [Cloudflare：创建 API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)

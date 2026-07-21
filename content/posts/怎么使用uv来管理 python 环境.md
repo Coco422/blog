@@ -1,6 +1,6 @@
 ---
 title: 怎么使用uv来管理 python 环境
-description: 用用 uv这个所谓的 超高速python工具链
+description: "面向 Python 初学者整理 uv 的安装与常用流程，包括项目初始化、指定 Python 版本、虚拟环境、依赖增删、锁定与同步。"
 date: 2026-01-07T22:58:50+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

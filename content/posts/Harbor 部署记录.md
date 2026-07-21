@@ -11,7 +11,6 @@ tags:
   - docker
   - harbor
 categories:
-  - ""
   - 杂技浅尝
 ---
 ![image.png](https://imgbed.anluoying.com/2025/05/0baf05570b0301265a092637e6003fba.png)

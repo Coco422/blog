@@ -28,9 +28,13 @@
 </header>
 
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hidden" "!=" true }}
+{{- $pages = where $pages "Params.canonicalURL" "==" nil }}
 
 {{- if site.Params.ShowAllPagesInArchive }}
 {{- $pages = site.RegularPages }}
+{{- $pages = where $pages "Params.hidden" "!=" true }}
+{{- $pages = where $pages "Params.canonicalURL" "==" nil }}
 {{- end }}
 
 {{- range $pages.GroupByPublishDate "2006" }}

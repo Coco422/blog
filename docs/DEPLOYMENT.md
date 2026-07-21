@@ -18,6 +18,13 @@ Set the following variable in both Production and Preview environments:
 | --- | --- |
 | `HUGO_VERSION` | `0.148.2` |
 
+另外分别设置 Hugo 环境，避免 Preview 被搜索引擎索引：
+
+| Scope | Name | Value |
+| --- | --- | --- |
+| Production | `HUGO_ENVIRONMENT` | `production` |
+| Preview | `HUGO_ENVIRONMENT` | `preview` |
+
 Cloudflare Pages treats Production and Preview as separate environment scopes. A successful `main` deployment only proves the Production scope is configured. Pull request and non-production branch checks use the Preview scope.
 
 ## Failure Pattern
@@ -42,3 +49,5 @@ hugo --printI18nWarnings --printPathWarnings
 ```
 
 Use Hugo Extended `0.146.0` or newer locally so local results match Cloudflare.
+
+SEO、Search Console 与 sitemap 操作见 [SEO.md](SEO.md)。

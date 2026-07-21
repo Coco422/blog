@@ -1,6 +1,6 @@
 ---
 title: "给ssh登录做一个通知"
-description: 有人 ssh 登录服务器时发送消息给我的钉钉
+description: "通过 /etc/ssh/sshrc 与钉钉机器人实现服务器 SSH 登录通知，记录 Dash 兼容、重复触发、锁文件去重和定时清理方案。"
 date: 2025-03-13T18:14:31+08:00
 tags: ["linux","ssh"]
 categories: ["杂技浅尝"]

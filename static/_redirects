@@ -1,0 +1,3 @@
+/posts/观李开复访谈之胡思乱想/ /posts/观李开复访谈有感/ 301
+/categories/人间报错/ /categories/琐碎快记/ 301
+/categories/人间报错/* /categories/琐碎快记/:splat 301

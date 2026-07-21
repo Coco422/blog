@@ -1,6 +1,6 @@
 ---
 title: vite-press 食用指南
-description: 前几天给同事分享文档的时候一直在用 语雀啥的。突然想到，如果要维护一个像 vue 或者vite 那一类的文档给用户看该怎么快速搭建的。理应有前辈完成这种工作。让 grok 搜了一下。顺便解惑原来对于 wiki doc 等的认识，有兴趣的
+description: "使用 Bun 初始化 VitePress 文档站，并通过 GitHub Actions 部署到 GitHub Pages，记录目录、outDir 与 base 路径配置。"
 date: 2025-04-10T14:43:10+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -10,7 +10,7 @@ tags:
   - github
   - docs
 categories:
-  - ""
+  - 杂技浅尝
 ---
 > 前几天给同事分享文档的时候一直在用 语雀啥的。突然想到，如果要维护一个像 vue 或者vite 那一类的文档给用户看该怎么快速搭建的。理应有前辈完成这种工作。让 grok 搜了一下。顺便解惑原来对于 wiki doc 等的认识，有兴趣的小伙伴们自己搜搜，我这里就不贴 grok 的长篇大论了
 

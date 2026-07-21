@@ -10,7 +10,6 @@ tags:
   - hugo
   - obsidian
 categories:
-  - ""
   - 杂技浅尝
 toc: true
 ---

@@ -1,6 +1,6 @@
 ---
 title: Harbor push unauthorized
-description: 自建 harbor 配置域名之后非公司局域网无法完全正常使用
+description: "排查 Windows 与 WSL 向 Harbor 推送镜像时的 unauthorized 错误，通过 Registry 和 Nginx 日志定位代理层丢失鉴权头的问题。"
 date: '2025-10-29T15:41:55.000Z'
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -11,7 +11,7 @@ tags:
   - Harbor
   - Linux
 categories:
-  - ''
+  - 杂技浅尝
 ---
 
 我真的快没招了，这个东西折磨了我很久了 具体是什么情况
