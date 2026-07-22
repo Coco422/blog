@@ -42,7 +42,7 @@ Hugo 的 Production 与 Preview 必须使用不同环境值：
 - `llms.txt` 目前是社区提案，不是 Google 或主流 AI 搜索公开确认的排名因素；只把它当作低成本、可回滚的实验。
 - 不生成 `llms-full.txt` 或重复全站正文的知识包，避免内容过期和维护两套事实源。
 - AI 引用优化优先放在正文：开头直接回答、注明实测环境与日期、给出可核验来源、明确结论适用边界。
-- FAQ schema 只在页面确实存在可见 FAQ 时使用，不为 GEO 批量制造问答。
+- Google Search 已不再展示 FAQ rich result，不为 SEO/GEO 默认生成 `FAQPage` schema。正文只在真实问题能帮助读者时保留可见 FAQ；若其他消费者需要结构化数据，先核对其最新官方要求。
 
 ## 发布内容检查
 
