@@ -1,3 +1,14 @@
 /posts/观李开复访谈之胡思乱想/ /posts/观李开复访谈有感/ 301
+/posts/openclaw食用小结/ /posts/openclaw-summary/ 301
+/posts/在博客养了只小猫/ /posts/blog-neko-cat/ 301
+
 /categories/人间报错/ /categories/琐碎快记/ 301
 /categories/人间报错/* /categories/琐碎快记/:splat 301
+/categories/月下小札/ /categories/moonlight-notes/ 301
+/categories/月下小札/* /categories/moonlight-notes/:splat 301
+/categories/杂技浅尝/ /categories/tech-exploration/ 301
+/categories/杂技浅尝/* /categories/tech-exploration/:splat 301
+/categories/他山拾影/ /categories/insights/ 301
+/categories/他山拾影/* /categories/insights/:splat 301
+/categories/什么是什么/ /categories/what-is-what/ 301
+/categories/什么是什么/* /categories/what-is-what/:splat 301
