@@ -154,11 +154,11 @@ DHCP 设置唯一授权
 ## todesk rustdesk 无法连接
 
 
-![image.png|300](https://imgbed.anluoying.com/2026/03/776b9c44a670a7953f3bf3aaee3c2bbc.png)
+![PassWall2 fakeDNS 设置界面](https://imgbed.anluoying.com/2026/03/776b9c44a670a7953f3bf3aaee3c2bbc.png)
 打开passwall2 开启fakeDNS
 分流规则China组增加todesk域名
-![image.png|300](https://imgbed.anluoying.com/2026/03/e944c2db2ec61c4ee5350d8bcf30c343.png)
+![PassWall2 中国分流规则设置](https://imgbed.anluoying.com/2026/03/e944c2db2ec61c4ee5350d8bcf30c343.png)
 转发配置TCP代理方式选择 TPROXY
-![image.png|300](https://imgbed.anluoying.com/2026/03/22c8aebcca7700456588b71356f0186a.png)
+![PassWall2 TPROXY 转发设置](https://imgbed.anluoying.com/2026/03/22c8aebcca7700456588b71356f0186a.png)
 
 除此之外，暂时没搞懂为什么，但是rustdesk能连上了。todesk似乎还不稳定，还是接着留问题在这吧。

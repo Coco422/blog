@@ -84,7 +84,7 @@ $ tmux
 
 > 这里我很不要脸的替换截图，不然照抄多没意思，我用我的wsl来做演示
 
-![image.png](https://imgbed.anluoying.com/2026/01/4c5ea2d5c0d313e52f44b5ba4e5dd782.png)
+![Tmux 新建会话窗口及状态栏](https://imgbed.anluoying.com/2026/01/4c5ea2d5c0d313e52f44b5ba4e5dd782.png)
 
 按下`Ctrl+d`或者显式输入`exit`命令，就可以退出 Tmux 窗口。
 
@@ -96,7 +96,7 @@ Tmux 窗口有大量的快捷键。所有快捷键都要通过前缀键唤起。
 
 然后，按下 ESC 键或`q`键，就可以退出帮助。
 
-![image.png](https://imgbed.anluoying.com/2026/01/ccaf9d2d92d137252320b4a7f272ac72.png)
+![Tmux 快捷键帮助界面](https://imgbed.anluoying.com/2026/01/ccaf9d2d92d137252320b4a7f272ac72.png)
 
 > 这些应该都是指 按下 Ctrl+b 之后再按什么的意思
 
@@ -114,7 +114,7 @@ $ tmux new -s <session-name>
 
 上面命令新建一个指定名称的会话。
 
-![image.png](https://imgbed.anluoying.com/2026/01/fc4d5dd19ec0aaec473c2cd91c28c297.png)
+![创建指定名称的 Tmux 会话](https://imgbed.anluoying.com/2026/01/fc4d5dd19ec0aaec473c2cd91c28c297.png)
 
 ### 3.2 分离会话
 
@@ -136,7 +136,7 @@ $ tmux ls
 $ tmux list-session
 ```
 
-![image.png](https://imgbed.anluoying.com/2026/01/1cfdc540a667fbb9639c580643e631ac.png)
+![tmux ls 会话列表](https://imgbed.anluoying.com/2026/01/1cfdc540a667fbb9639c580643e631ac.png)
 
 ### 3.3 接入会话
 
@@ -179,7 +179,7 @@ $ tmux rename-session -t 0 <new-name>
 - `Ctrl+b s`：列出所有会话。
 - `Ctrl+b $`：重命名当前会话。
 
-![image.png](https://imgbed.anluoying.com/2026/01/1f83f87a376ce678554c66789e43b2c9.png)
+![Tmux 会话快捷键操作界面](https://imgbed.anluoying.com/2026/01/1f83f87a376ce678554c66789e43b2c9.png)
 
 ## 四、最简操作流程
 
@@ -208,7 +208,7 @@ $ tmux split-window
 $ tmux split-window -h
 ```
 
-![image.png](https://imgbed.anluoying.com/2026/01/afbfcb1ab87d1c76bfd7c8bd7d6fc750.png)
+![Tmux 分割后的多个窗格](https://imgbed.anluoying.com/2026/01/afbfcb1ab87d1c76bfd7c8bd7d6fc750.png)
 
 ### 5.2 移动光标
 
@@ -286,7 +286,7 @@ $ tmux select-window -t <window-number>
 $ tmux select-window -t <window-name>
 ```
 
-![image.png](https://imgbed.anluoying.com/2026/01/5445932247892efb211e5d7f018023b2.png)
+![Tmux 多窗口切换界面](https://imgbed.anluoying.com/2026/01/5445932247892efb211e5d7f018023b2.png)
 
 > 可以看到右下角，0,1,2 都是我刚刚建立的几个窗口
 ### 6.3 重命名窗口

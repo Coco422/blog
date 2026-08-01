@@ -44,7 +44,7 @@ tiktoken
 ```
 
 
-![image.png](https://imgbed.anluoying.com/2025/08/5306bca1bbbb57b7bddc976f1357cf10.png)
+![TinyStories 数据集文件](https://imgbed.anluoying.com/2025/08/5306bca1bbbb57b7bddc976f1357cf10.png)
 
 这里我直接拿到的是 txt 文件。如果网络方便的话可以直接
 ```python

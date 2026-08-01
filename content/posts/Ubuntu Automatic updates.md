@@ -16,7 +16,7 @@ categories:
 ## 起因
 
 上午醒来看到邮件里面有一封 netdata 发的警告
-![image.png|300](https://imgbed.anluoying.com/2026/03/5166a6f8bddc71000885d021a616a06b.png)
+![Netdata 重启警告邮件截图|300](https://imgbed.anluoying.com/2026/03/5166a6f8bddc71000885d021a616a06b.png)
 
 netdata 我只部署了少量的服务器，本文和这次警告没有太大关系，而是让我想到了一个很苦恼的事情。
 

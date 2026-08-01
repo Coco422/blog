@@ -259,7 +259,7 @@ sudo ln -s /data/home/liz /home/liz
     sudo lsof | grep delete | sort -k7 -rn | more
     ```
     
-    输出第7列为文件大小（单位Byte），累加可计算未释放空间总量。![image](https://imgbed.anluoying.com/2026/03/98f0b96ed2bc0c1565e8ff0b5a1a824c.png)
+    输出第7列为文件大小（单位Byte），累加可计算未释放空间总量。![lsof 查找未释放文件的输出](https://imgbed.anluoying.com/2026/03/98f0b96ed2bc0c1565e8ff0b5a1a824c.png)
     
 3.  记录占用进程的名称和PID。
     

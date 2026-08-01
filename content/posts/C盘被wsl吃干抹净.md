@@ -41,7 +41,7 @@ categories:
 WSL 的“默认盘符”本质上是 **发行版的 ext4.vhdx 所在位置**。  
 只要 ext4.vhdx 在 D 盘，本质就已经迁移完成。
 
-![image.png](https://imgbed.anluoying.com/2026/02/f48d06d5bd05c7269da0c4c9d3af3451.png)
+![WSL ext4.vhdx 文件位置](https://imgbed.anluoying.com/2026/02/f48d06d5bd05c7269da0c4c9d3af3451.png)
 
 他已经来到了8G，对于这台118GB的 C盘，之前又装了 Epic 开发UE5，爆满在意料之中
 

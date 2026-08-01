@@ -26,10 +26,10 @@ mac 安装命令
 curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh
 ```
 
-![image.png|300](https://imgbed.anluoying.com/2026/06/9a72a059bebe62222b1b0e1311d9b527.png)
+![codegraph 安装命令执行结果|300](https://imgbed.anluoying.com/2026/06/9a72a059bebe62222b1b0e1311d9b527.png)
 ## 安装 MCP 配置
 
-![image.png|300](https://imgbed.anluoying.com/2026/06/55540450efc31d2700dc723f243ff3bd.png)
+![Claude Code 的 CodeGraph MCP 配置|300](https://imgbed.anluoying.com/2026/06/55540450efc31d2700dc723f243ff3bd.png)
 
 ## 初始化项目
 
@@ -67,12 +67,12 @@ Tree-sitter 解析源码
 
 官方文档里提到，CodeGraph 会把符号、调用图、文件结构等信息存到 SQLite（FTS5）数据库中，并把项目数据放在 .codegraph/ 目录下。
 
-![image.png|300](https://imgbed.anluoying.com/2026/06/8dd32b7c3691582ba2ac2cdd38678874.png)
+![CodeGraph 项目数据与 .codegraph 目录|300](https://imgbed.anluoying.com/2026/06/8dd32b7c3691582ba2ac2cdd38678874.png)
 
 codegraph 以 mcp 形式接入，我这里先拿 Claude code 试试
 
-![image.png|300](https://imgbed.anluoying.com/2026/06/12891fd9aa5770d22d8f77646ddd80d5.png)
-![image.png|300](https://imgbed.anluoying.com/2026/06/f4b3cb973f42ed38004660517cad876a.png)
+![Claude Code 中调用 CodeGraph MCP|300](https://imgbed.anluoying.com/2026/06/12891fd9aa5770d22d8f77646ddd80d5.png)
+![CodeGraph 查询结果示例|300](https://imgbed.anluoying.com/2026/06/f4b3cb973f42ed38004660517cad876a.png)
 
 简单尝试目前还看不出很明显的差距，本项目有一些本地记忆处于Claude 配置里面 所以也许会有干扰，但是按照他的设计理论来讲是有帮助的，我也看了一些网友的使用案例所以相信这一点。
 

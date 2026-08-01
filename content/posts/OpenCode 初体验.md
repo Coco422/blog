@@ -53,13 +53,13 @@ nix run nixpkgs#opencode           # or github:anomalyco/opencode for latest dev
 Vscode插件市场可以直接找到Opencode 的插件，安装一下，(ok 我以为这个就是完全体，原来只是个类似之前的 cc for vscode一样的东西)
 那还是执行 `curl -fsSL https://opencode.ai/install | bash`，在点击运行。
 
-![image.png](https://imgbed.anluoying.com/2026/01/db09dae0d98c1ac6efd5d5354a52b4d5.png)
+![OpenCode 初始 TUI 界面](https://imgbed.anluoying.com/2026/01/db09dae0d98c1ac6efd5d5354a52b4d5.png)
 
 > 嘶，没看到哪里有配置的入口，我一发消息就能用了，啊这？
 
 但是几个亮点用的时候就震惊到我了。这个TUI可以和鼠标交互的含金量让我感到爽！点击一条message的时候 居然可以进行 revert、copy、fork，惊呼了要。先研究一下怎么配置模型。
 
-![image.png](https://imgbed.anluoying.com/2026/01/093a1b59c12b1b73806db035cb343bb5.png)
+![OpenCode 消息操作菜单](https://imgbed.anluoying.com/2026/01/093a1b59c12b1b73806db035cb343bb5.png)
 
 ok，[Intro \| OpenCode](https://opencode.ai/docs#configure)
 文档写着运行 `/connect` 命令来选择 Provider，那么可以看到其实刚刚应该是OpenCode给我提供了一个 free model ”big-pickle“
@@ -72,7 +72,7 @@ ok，[Intro \| OpenCode](https://opencode.ai/docs#configure)
 
 准备好环境运行`pnpx oh-my-opencode install`即可
 
-![image.png](https://imgbed.anluoying.com/2026/01/8be56ce86f59b862425b65856cc6e21d.png)
+![Oh-my-opencode 安装界面](https://imgbed.anluoying.com/2026/01/8be56ce86f59b862425b65856cc6e21d.png)
 
 我由于有google pro，嫖上这个gemini后就没有探索过别的内容了。
 这两天用的不多，留给以后更新。如果好用的话。

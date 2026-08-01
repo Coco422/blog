@@ -30,11 +30,11 @@ categories:
 
 写文时想到使用飞书、此时尚未有人做适配，我也为了浅尝就不折腾太多了，配置 tg bot 试试，
 
-![](https://imgbed.anluoying.com/2026/02/ae21a40c3ebdc00b6f9eb2226f938157.png)
+![Telegram 机器人配置界面](https://imgbed.anluoying.com/2026/02/ae21a40c3ebdc00b6f9eb2226f938157.png)
 
 效果图：
 
-![image.png](https://imgbed.anluoying.com/2026/03/52ffeb67c2e01179d91a93b0ca8f98ad.png)
+![ClawdBot Telegram 对话效果图](https://imgbed.anluoying.com/2026/03/52ffeb67c2e01179d91a93b0ca8f98ad.png)
 
 叫上同事进来试了一下，没想到还真的能用。功能一切正常，简单试了一下，模型能力挺重要的，如果没有定时提醒之类的能力，agent 还是比较鸡肋，但是如果未来接入飞书、配合适当的 skills、做好持久 memory，那么个人秘书就在眼前了。
 

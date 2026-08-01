@@ -71,12 +71,12 @@ vllm serve /data/huggingface_model/Qwen/Qwen3.5-35B-A3B --served-model-name qwen
 
 单请求输出速度 200+Tokens/S ，且原生支持多模态
 
-![|500](https://imgbed.anluoying.com/2026/02/cd3241e5e91f465785f96683b1444266.png)
+![Qwen3.5-35B-A3B 单请求输出速度](https://imgbed.anluoying.com/2026/02/cd3241e5e91f465785f96683b1444266.png)
 
 之前写的小脚本测一下32个并发下简单问题输出情况
 
-![|300](https://imgbed.anluoying.com/2026/02/37981da04956014be7c36c00baed3856.png)
+![Qwen3.5-35B-A3B 32 并发测试结果](https://imgbed.anluoying.com/2026/02/37981da04956014be7c36c00baed3856.png)
 
-![image.png|300](https://imgbed.anluoying.com/2026/02/77a9d9a6b1b18e72ce70fadfe5d6f90b.png)
+![Qwen3.5-35B-A3B 并发生成结果](https://imgbed.anluoying.com/2026/02/77a9d9a6b1b18e72ce70fadfe5d6f90b.png)
 
 符合预期，MOE 模型的吞吐还是很满意的，但是这个思考不知道是否可开关，以及还有一个 27B 的 Dense 模型理论上应该更聪明。打算后续接入 openClaw 测试一下效果。

@@ -17,7 +17,7 @@ categories:
   - 杂技浅尝
 ---
 先上图，当前效果
-![image.png|300](https://imgbed.anluoying.com/2026/03/e489b2cfe72961fb6f75143717e037e2.png)
+![Ghostty 终端配置效果图](https://imgbed.anluoying.com/2026/03/e489b2cfe72961fb6f75143717e037e2.png)
 
 > [!info] 
 >  刚换这个 mac 的时候，我用的是原生的 terminal，因为很多 remote 开发任务都是使用 vscode 来进行连接，所以当时找了个不知名教程简单配了下 oh my zsh。

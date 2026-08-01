@@ -36,8 +36,8 @@ categories:
 2. 进 bios，我不知道这个主板用的啥 直接常用按键一把搂
 3. 使用 u 盘启动，这个bios 略有区别，可以自行搜索相关资料
 4. 很开心的看到了（这里用的官方截图，选择 Ubuntu 系统）
-5. ![image.png](https://imgbed.anluoying.com/2025/04/a9312e8ff46cd88bbfd59e5fb4950047.png)
-6. ![image.png](https://imgbed.anluoying.com/2025/04/c4c9ddc4c9be41237ad9e46cd9df8a3b.png)
+5. ![Ubuntu 启动或安装界面截图](https://imgbed.anluoying.com/2025/04/a9312e8ff46cd88bbfd59e5fb4950047.png)
+6. ![Ubuntu 安装选项界面截图](https://imgbed.anluoying.com/2025/04/c4c9ddc4c9be41237ad9e46cd9df8a3b.png)
 7. 这里我的界面和这个略有差别，但是基本一致。选择了try Ubuntu or install Ubuntu
 
 结果就卡在了一个 LOGO 界面了

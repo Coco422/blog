@@ -278,7 +278,7 @@ source ~/.bashrc
 
 我这里直接把这个域名下的 DNS$Zone 权限都给他放开了，然后只允许改 IP 调用请求。
 
-![image.png|300](https://imgbed.anluoying.com/2026/06/a9c7f90fa4785ef4c9c3bf44ccda6c23.png)
+![Cloudflare API Token 权限配置页面|300](https://imgbed.anluoying.com/2026/06/a9c7f90fa4785ef4c9c3bf44ccda6c23.png)
 
 ## acme.sh 默认 CA 的坑
 
@@ -332,7 +332,7 @@ ARI suggestedWindow: 2026-07-31T10:51:25Z to 2026-08-02T06:02:15Z
 Next renewal time picked from ARI window: 2026-07-31T17:03:09Z
 ```
 
-![image.png|300](https://imgbed.anluoying.com/2026/06/91f737f26e6b30600b2113a32b1c3f1e.png)
+![acme.sh 成功签发证书的终端输出|300](https://imgbed.anluoying.com/2026/06/91f737f26e6b30600b2113a32b1c3f1e.png)
 
 
 这里生成的是 ECC 证书，所以目录名是：
@@ -426,7 +426,7 @@ notAfter=Aug 31 08:07:20 2026 GMT
 
 这说明宿主机上的证书已经更新成功。
 
-![image.png|300](https://imgbed.anluoying.com/2026/06/aefb8fee9d7acebcf7e1c5d937f718d2.png)
+![本地证书有效期检查结果|300](https://imgbed.anluoying.com/2026/06/aefb8fee9d7acebcf7e1c5d937f718d2.png)
 
 再检查线上服务实际返回的证书：
 
@@ -598,7 +598,7 @@ Nginx 根据 Host 头判断后端 upstream
 
 证书更新后，浏览器里仍然出现了 `Not Secure` 提示。
 
-![image.png|300|300](https://imgbed.anluoying.com/2026/06/2ed1dd7b997b22c1944f58e8f607ed87.png)
+![浏览器显示证书不安全的提示|300|300](https://imgbed.anluoying.com/2026/06/2ed1dd7b997b22c1944f58e8f607ed87.png)
 但点开详情后可以看到：
 
 ```text

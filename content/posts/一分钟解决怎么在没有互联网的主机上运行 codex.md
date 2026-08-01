@@ -29,19 +29,19 @@ categories:
 1. 在本机的 VS Code 上打开命令面板（ `Ctrl+Shift+P` (Mac 上是 `Cmd+Shift+P`)）
 2. 输入 `SSH: Open SSH Configuration File` 找到你的配置文件（通常是 `~/.ssh/config` 或 `C:\Users\你的用户名\.ssh\config`）
 3. 在你需要配置的服务器上添加如下操作：
-![image.png|300](https://imgbed.anluoying.com/2026/04/c517ba7fd1c2f7b999c2670f2ff1f086.png)
+![SSH 配置反向端口转发示例|300](https://imgbed.anluoying.com/2026/04/c517ba7fd1c2f7b999c2670f2ff1f086.png)
 > Clash 默认是 7890，如果使用的是 Clash Verge 默认的是 7897
 
 ## **第二步：告诉远程 VS Code 使用这个代理**
 
 1. 重新连接现在的远程服务器，打开 VS Code 设置（ `Ctrl + ,` 或 `Cmd + ,`）
 2. **注意**： 在设置页面的顶部标签栏，点击 **"远程 [你的服务器名]" (Remote)**。如下图：  
-![image.png|300](https://imgbed.anluoying.com/2026/04/2d21c68defc919955c325f846029d9ee.png)
+![VS Code 远程设置页面|300](https://imgbed.anluoying.com/2026/04/2d21c68defc919955c325f846029d9ee.png)
 
 3. 在搜索框中输入 `http.proxy`，输入`http://127.0.0.1:7890`， 也就是默认的代理
 4. 取消勾选 `http.proxyStrictSSL`，具体如下图：  
 
-![image.png|300](https://imgbed.anluoying.com/2026/04/caf627809a4f457a3d3ffa8a8ab45046.png)
+![VS Code 代理与严格 SSL 设置|300](https://imgbed.anluoying.com/2026/04/caf627809a4f457a3d3ffa8a8ab45046.png)
 
 ## 第三步：使用
 

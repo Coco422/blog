@@ -26,7 +26,7 @@ Openclaw 爆火的原因主要在于做足了周边适配，一个agent配置了
 
 **AI Agent从来不是一个全新的概念。**但OpenClaw本身并不是人工智能——它只是一个“翻译官”和“执行官”。**真正聪明的，是它背后接入的语言模型**（比如GPT、Claude、Gemini等）。
 
-![](https://imgbed.anluoying.com/2026/03/1b116a93403e25b06b9a8988561b5986.png)
+![OpenClaw 与语言模型关系示意图](https://imgbed.anluoying.com/2026/03/1b116a93403e25b06b9a8988561b5986.png)
 
 由于context window 的存在，所以LLM的输入、输出长度是有限的，每个模型的上限不同、现在比较好的模型基本上是 1M上下文
 
@@ -162,7 +162,7 @@ OpenClaw有一个叫**“记忆压缩”的机制。**当上下文快满时，�
 
 最近比较有名的**“****Meta****研究员删邮件事件”。**一位AI安全研究员让OpenClaw帮他整理邮件，还特意叮嘱“删除前要经过同意”。但后来他发现，OpenClaw在没有经过他同意的情况下，开始疯狂删邮件。他不断发消息说“停下”，但OpenClaw完全不理。最后他只能物理拔掉电源。
 
-![](https://imgbed.anluoying.com/2026/03/3766fe6cdc0d53753ff3abe385ded804.png)
+![OpenClaw 擅自删除邮件事件示意图](https://imgbed.anluoying.com/2026/03/3766fe6cdc0d53753ff3abe385ded804.png)
 
 ## 应用场景举例
 
@@ -174,7 +174,7 @@ OpenClaw有一个叫**“记忆压缩”的机制。**当上下文快满时，�
 
 ## 直接搭建应用程序
 
-![](https://imgbed.anluoying.com/2026/03/26ba9dfd22a695da60fd88ca44d93223.png)
+![OpenClaw 自动搭建应用程序示例](https://imgbed.anluoying.com/2026/03/26ba9dfd22a695da60fd88ca44d93223.png)
 
 ### 通过SSH+cron实现服务器自愈
 
@@ -190,21 +190,21 @@ OpenClaw有一个叫**“记忆压缩”的机制。**当上下文快满时，�
 
 ### 查询当日天气
 
-![](https://imgbed.anluoying.com/2026/03/09f4499329500628df3dd2c7704cf18f.png)
+![OpenClaw 查询天气示例](https://imgbed.anluoying.com/2026/03/09f4499329500628df3dd2c7704cf18f.png)
 
 ### 定时每日总结头条新闻——晨间早报
 
-![](https://imgbed.anluoying.com/2026/03/fce71df82d47607df48023072d161acf.png)
+![OpenClaw 生成晨间新闻摘要示例](https://imgbed.anluoying.com/2026/03/fce71df82d47607df48023072d161acf.png)
 
 ### 联网搜索总结简报
 
-![](https://imgbed.anluoying.com/2026/03/94af876347bc3cf48c510f0ddb60afd4.png)
+![OpenClaw 联网搜索总结示例](https://imgbed.anluoying.com/2026/03/94af876347bc3cf48c510f0ddb60afd4.png)
 
-![image.png](https://imgbed.anluoying.com/2026/03/4286e4820eaecf4e253c3b5bb7e1a846.png)
+![OpenClaw 联网搜索结果截图](https://imgbed.anluoying.com/2026/03/4286e4820eaecf4e253c3b5bb7e1a846.png)
 
 
 ### 获得浏览器权限截图页面
 
-![](https://imgbed.anluoying.com/2026/03/55cb20e600139ef134dabedf066cc19c.png)
+![OpenClaw 浏览器页面截图](https://imgbed.anluoying.com/2026/03/55cb20e600139ef134dabedf066cc19c.png)
 
-![](https://imgbed.anluoying.com/2026/03/af1d94f373a05733b646f495fab4e053.png)
+![OpenClaw 浏览器操作结果截图](https://imgbed.anluoying.com/2026/03/af1d94f373a05733b646f495fab4e053.png)

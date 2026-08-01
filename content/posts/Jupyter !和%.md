@@ -18,7 +18,7 @@ lastmod: 2025-12-10T00:26:00+08:00
 !pip install numpy
 ```
 这里我看到 vscode 插件提示我
-![image.png](https://imgbed.anluoying.com/2025/08/f7c91c81c5093e0171ad3a8cf3e8c15f.png)
+![Jupyter 中使用 !pip 安装依赖](https://imgbed.anluoying.com/2025/08/f7c91c81c5093e0171ad3a8cf3e8c15f.png)
 但是据我测试，%pip 和 !pip 都是能正常执行的，我不是很明白 py note所以搜索了一下，盲猜和 python 环境是有关的
 
 相关链接

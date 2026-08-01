@@ -369,9 +369,9 @@ if __name__ == "__main__":
 
 ## 执行
 
-![image.png](https://imgbed.anluoying.com/2026/03/5865c55f8e8333f5b1e4f8f5ef02ce14.png)
+![数据库迁移脚本执行截图](https://imgbed.anluoying.com/2026/03/5865c55f8e8333f5b1e4f8f5ef02ce14.png)
 执行完之后 再运行
-![image.png](https://imgbed.anluoying.com/2026/03/dc54e61d130f42cc3d035679ac3e9d21.png)
+![数据库迁移结果验证输出](https://imgbed.anluoying.com/2026/03/dc54e61d130f42cc3d035679ac3e9d21.png)
 即可
 
 > [!important] 

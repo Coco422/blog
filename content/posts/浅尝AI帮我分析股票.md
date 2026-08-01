@@ -107,6 +107,6 @@ config加上
 
 随后按照指示运行代码后，过一会就能看到报告发给了我的飞书
 
-![image.png](https://imgbed.anluoying.com/2026/01/b48dde4a6190f1723a83ac15d94eb31b.png)
+![飞书收到的股票分析报告](https://imgbed.anluoying.com/2026/01/b48dde4a6190f1723a83ac15d94eb31b.png)
 
 分析一下我套牢的股票，可以，比我厉害。周一开盘拿他分析一下然后操作操作[Doge]

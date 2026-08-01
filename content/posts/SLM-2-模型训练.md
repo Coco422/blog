@@ -536,7 +536,7 @@ y = model.generate(context, 200)
 print(enc.decode(y.squeeze().tolist()))
 ```
 
-![image.png](https://imgbed.anluoying.com/2025/08/be4efe5f0b13eed0d24294f371e05317.png)
+![模型生成文本结果](https://imgbed.anluoying.com/2025/08/be4efe5f0b13eed0d24294f371e05317.png)
 看推理结果可以判断，应该是我切数据集切出问题了。失误了，但是本次学习已经学到一些皮毛，足矣，暂时不重新搞了。以后有机会自己训练一个小 BERT 模型 看看有什么用
 
-![image.png](https://imgbed.anluoying.com/2025/08/eb737087c188eae8dfead54a903ee1a1.png)
+![另一组模型推理输出](https://imgbed.anluoying.com/2025/08/eb737087c188eae8dfead54a903ee1a1.png)

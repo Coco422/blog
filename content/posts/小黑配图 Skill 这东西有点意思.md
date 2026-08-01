@@ -21,7 +21,7 @@ categories:
 
 截止写本文，作者在群里分享，它在这周 GitHub 新仓库搜索结果里排第二。
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/ee3c9b8514f091ce6d8a42d6e63c2df4.png)
+![GitHub 热门仓库中的小黑配图 Skill](https://imgbed.anluoying.com/2026/05/ee3c9b8514f091ce6d8a42d6e63c2df4.png)
 
 这个仓库名字很直白，就是 Ian（作者） 风格的小黑怪诞正文配图生成 Skill。
 

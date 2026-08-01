@@ -68,7 +68,7 @@ SRT    :8890
 
 本地调试足够用了，不用改 yml。后面需要鉴权、固定路径、改端口的时候再配。
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/019dd7eef6469436e434d6404c33659b.png)
+![MediaMTX 启动终端及默认端口|300](https://imgbed.anluoying.com/2026/05/019dd7eef6469436e434d6404c33659b.png)
 
 ## OBS 推流
 
@@ -101,7 +101,7 @@ ffplay rtsp://127.0.0.1:8554/mystream
 
 跑起来的话，整个链路就通了：OBS → RTMP → MediaMTX → RTSP → ffplay。
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/b4b6a269d94419b9e2ad148765d7d0d7.png)
+![ffplay 播放 RTSP 视频流的效果|300](https://imgbed.anluoying.com/2026/05/b4b6a269d94419b9e2ad148765d7d0d7.png)
 
 
 后续目标检测程序也可以读同一个地址 `rtsp://127.0.0.1:8554/mystream`，跟 ffplay 互不影响。

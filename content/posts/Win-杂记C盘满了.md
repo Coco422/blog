@@ -23,17 +23,17 @@ bb太多有点偏题，解决方案很简单。
 
 - **右键我的电脑。有一个计算机管理（Manage）**
 
-![image.png](https://imgbed.anluoying.com/2025/12/c51f061a19d3980d7d190f5c53901b58.png)
+![Windows 计算机管理入口](https://imgbed.anluoying.com/2025/12/c51f061a19d3980d7d190f5c53901b58.png)
 
 - **打开存储->磁盘管理**
 
-![image.png](https://imgbed.anluoying.com/2025/12/ea03daaf96d320b4f58107fdf4fb7b43.png)
+![Windows 磁盘管理界面](https://imgbed.anluoying.com/2025/12/ea03daaf96d320b4f58107fdf4fb7b43.png)
 
 可以看到下面是我的SSD 此时C盘右侧邻近的是我的D盘.F盘是从D盘压缩出来的
 
 - **右键D盘**
 
-![image.png](https://imgbed.anluoying.com/2025/12/f085631be848d12900d140cacde72b95.png)
+![D 盘右键菜单中的压缩卷选项](https://imgbed.anluoying.com/2025/12/f085631be848d12900d140cacde72b95.png)
 
 - **点击压缩卷(Shrink Volume).**
 

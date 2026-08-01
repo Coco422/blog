@@ -15,7 +15,7 @@ categories:
 ---
 > 这个工具是 boss 推荐的，尽管他想到的使用场景是大炮打蚊子（指 在 windows wsl 安装 mitmproxy 来抓宿主机 web 页面的 restful 接口，而实际 console 的 network 足矣）但是也不去纠正了，我来试试这个工具的真实能力。
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/d79b074ccbc5b14ff4fe946d2b962d9e.png)
+![mitmproxy 项目界面|300](https://imgbed.anluoying.com/2026/05/d79b074ccbc5b14ff4fe946d2b962d9e.png)
 
 [GitHub - mitmproxy/mitmproxy: An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers. · GitHub](https://github.com/mitmproxy/mitmproxy)
 
@@ -82,8 +82,8 @@ mitmweb \
 
 这样分工就很清楚了，`mitmproxy` 负责看包，clash 继续负责出站。启动后会自动打开 web 页面。
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/d7f7f1c0e713118a434f3b8ad1edd1dc.png)
-![image.png|300](https://imgbed.anluoying.com/2026/05/0807b5a051e1586f3408ea1994b957b1.png)
+![mitmweb 启动后的终端界面|300](https://imgbed.anluoying.com/2026/05/d7f7f1c0e713118a434f3b8ad1edd1dc.png)
+![mitmweb 流量列表页面|300](https://imgbed.anluoying.com/2026/05/0807b5a051e1586f3408ea1994b957b1.png)
 
 ### 2. 只让 Claude Code 走 mitmproxy
 
@@ -98,7 +98,7 @@ claude
 
 这里 `NODE_EXTRA_CA_CERTS` 是 G 老师让我加的，我保持怀疑。他的解释是：即使系统已经信任过证书，Node 系工具也不一定会老老实实吃这套 CA。
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/5547338eaf4b1ef01b7c886838b82d78.png)
+![Claude Code 代理环境变量配置|300](https://imgbed.anluoying.com/2026/05/5547338eaf4b1ef01b7c886838b82d78.png)
 
 ### 3. 在 mitmweb 里看请求
 
@@ -109,10 +109,10 @@ claude
 - 请求头里有没有值得观察的字段
 - 返回状态码和耗时是不是正常
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/00b0d2a2e900ff7f77f874c0c89de305.png)
+![mitmweb 请求列表|300](https://imgbed.anluoying.com/2026/05/00b0d2a2e900ff7f77f874c0c89de305.png)
 
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/c507b0dc28e38746840a23d710816424.png)
+![Claude Code 请求详情|300](https://imgbed.anluoying.com/2026/05/c507b0dc28e38746840a23d710816424.png)
 
 
 可以看到抓到的包里面，我原先 claude code 内部配置的 走向 cc-switch 的配置生效，他请求的是 127.0.0.1:15721 的地址，HTTPS_PROXY 也生效了，所以我们的 mitmproxy 抓到了包，这一句 hello 的请求体和 response 就看的一清二楚了

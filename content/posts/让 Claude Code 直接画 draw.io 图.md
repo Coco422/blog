@@ -112,13 +112,13 @@ MCP Tool Server 那边可以打开 XML / CSV / Mermaid。也就是说你可以�
 
 简单让他画了一个架构图，回头测一个复杂架构
 
-![image.png](https://imgbed.anluoying.com/2026/05/69a54c792556035574be0a26a7a391cf.png)
+![draw.io 生成的博客部署架构图](https://imgbed.anluoying.com/2026/05/69a54c792556035574be0a26a7a391cf.png)
 
 
 ---
 
 ok，复杂结构测试效果如下
 
-![image.png](https://imgbed.anluoying.com/2026/05/2e4c8167e526279a56214dddd21ba625.png)
+![draw.io 生成的复杂架构图](https://imgbed.anluoying.com/2026/05/2e4c8167e526279a56214dddd21ba625.png)
 
 丑了点，但是逻辑还是可以的，整体来讲 做一个可迭代的架构图是没问题了，而且 drawio 的特性保存文件在本地，也很有安全感

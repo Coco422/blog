@@ -27,12 +27,12 @@ lastmod: 2025-12-10T00:26:46+08:00
 
 ## 2. 洗数据
 这里用的 7B 模型 vllm 推理进行打分，我都没看导出来一些啥数据。。洗完再看看
-![image.png](https://imgbed.anluoying.com/2025/05/5c9512caac0aa70127a1b24399e748cc.png)
+![清洗后的聊天数据示例](https://imgbed.anluoying.com/2025/05/5c9512caac0aa70127a1b24399e748cc.png)
 
-![image.png](https://imgbed.anluoying.com/2025/05/0779d2884b6f9a4bf239a7ad224b0b8e.png)
+![聊天数据评分结果](https://imgbed.anluoying.com/2025/05/0779d2884b6f9a4bf239a7ad224b0b8e.png)
 ## 开始训练
 
-![image.png](https://imgbed.anluoying.com/2025/05/d050a68070c3a858454fdbd267e135a4.png)
+![模型训练过程截图](https://imgbed.anluoying.com/2025/05/d050a68070c3a858454fdbd267e135a4.png)
 
 这里想用多卡来着。但是我的 23 卡和 01 卡链接似乎有问题，干脆单卡跑算了
 
@@ -42,6 +42,6 @@ lastmod: 2025-12-10T00:26:46+08:00
 
 果然。这样默认跑出来一个智障，基本上只会回几个字，倒是很符合我的回复习惯
 
-![image.png](https://imgbed.anluoying.com/2025/05/3fb77553f5134efd107d2d6a2a5c2fff.png)
+![微调模型回复效果](https://imgbed.anluoying.com/2025/05/3fb77553f5134efd107d2d6a2a5c2fff.png)
 
 后面整理个干净点的数据再训练一个

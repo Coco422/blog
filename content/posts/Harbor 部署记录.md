@@ -13,7 +13,7 @@ tags:
 categories:
   - 杂技浅尝
 ---
-![image.png](https://imgbed.anluoying.com/2025/05/0baf05570b0301265a092637e6003fba.png)
+![Harbor 镜像仓库架构图](https://imgbed.anluoying.com/2025/05/0baf05570b0301265a092637e6003fba.png)
 
 直接一幅图说明白 Harbor 干嘛用的
 
@@ -31,7 +31,7 @@ categories:
 
 `tar -xzvf 安装包.tgz`
 
-![image.png](https://imgbed.anluoying.com/2025/05/f6846010e8d77b567239ba5cfce6b0d4.png)
+![Harbor 解压后的目录结构](https://imgbed.anluoying.com/2025/05/f6846010e8d77b567239ba5cfce6b0d4.png)
 
 解压后目录结构如上。 其中 docker-compose.yml，common目录。是脚本后续生成的，nginx 目录是我创建的。大概就是这样
 
@@ -43,7 +43,7 @@ categories:
 - https
 - external_url
 如下图所示
-![image.png](https://imgbed.anluoying.com/2025/05/f81666a57445eee3bac786b28eef8164.png)
+![harbor.yml 关键配置](https://imgbed.anluoying.com/2025/05/f81666a57445eee3bac786b28eef8164.png)
 
 因为我是需要另外一台服务器的 nginx 做反代，但是刚开始部署我想简单测试一下（就是这个不灵清的想法折腾我一个多小时）
 
@@ -61,7 +61,7 @@ categories:
 [私有镜像仓库 Harbor 安装和使用 - 冯威的博客](https://www.fwhyy.com/2024/01/private-image-warehouse-harbor-installation-and-use/)
 
 结论配置就是这样
-![image.png](https://imgbed.anluoying.com/2025/05/8b5267a083529e19111087f839551846.png)
+![Harbor 反向代理配置结果](https://imgbed.anluoying.com/2025/05/8b5267a083529e19111087f839551846.png)
 
 另外反代 nginx 的配置如下
 
@@ -171,13 +171,13 @@ docker info | grep -A 5 "Insecure Registries"
 
 最后测试一下 新建一个项目 test1
 
-![image.png](https://imgbed.anluoying.com/2025/05/18ada143d1f0cd75ff97330b10c487a1.png)
+![Harbor test1 项目页面](https://imgbed.anluoying.com/2025/05/18ada143d1f0cd75ff97330b10c487a1.png)
 
 `docker login hub.test.cn`
 
 输入用户名密码，成功可以看到如下
 
-![image.png](https://imgbed.anluoying.com/2025/05/d42186966e829012ca1dbb6b34656c0d.png)
+![docker login 登录成功输出](https://imgbed.anluoying.com/2025/05/d42186966e829012ca1dbb6b34656c0d.png)
 
 tag 我的本地nginx 镜像试试
 
@@ -187,6 +187,6 @@ tag 我的本地nginx 镜像试试
 
 `docker push hub.test.cn/test1/nginx:latest`
 
-![image.png](https://imgbed.anluoying.com/2025/05/c7f424b9ebe14582f85b51a4a0b6a0e5.png)
+![docker push 推送成功输出](https://imgbed.anluoying.com/2025/05/c7f424b9ebe14582f85b51a4a0b6a0e5.png)
 
 ok 完成。后续就可以使用它来管理用户 分发镜像，配置 webhook 实现 CI/CD等

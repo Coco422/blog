@@ -24,13 +24,13 @@ categories:
 这里我使用他的 sh 脚本访问不到，于是使用 pnpm 安装，然后 onboard
 
 
-![image.png|300](https://imgbed.anluoying.com/2026/02/6de7d07bb00cb146cf390c9fea81b60d.png)
+![OpenClaw 初始化界面](https://imgbed.anluoying.com/2026/02/6de7d07bb00cb146cf390c9fea81b60d.png)
 
-![image.png|300](https://imgbed.anluoying.com/2026/02/08264248fcc549fa8e29e429ecf54553.png)
+![OpenClaw 模型配置界面](https://imgbed.anluoying.com/2026/02/08264248fcc549fa8e29e429ecf54553.png)
 
 这次多了不少配置，我们选择 vLLM 并且输入我对应的信息
 
-![image.png|300](https://imgbed.anluoying.com/2026/02/b434f49e3715ea7cc18abed74c3c95dd.png)
+![OpenClaw 飞书渠道选项](https://imgbed.anluoying.com/2026/02/b434f49e3715ea7cc18abed74c3c95dd.png)
 这次有飞书可以选择了
 
 ## 配置飞书
@@ -66,16 +66,16 @@ categories:
 }
 ```
 
-![image.png|300](https://imgbed.anluoying.com/2026/02/3c1283bf724db015a58c7a24382ba1f1.png)
+![飞书应用权限配置页面](https://imgbed.anluoying.com/2026/02/3c1283bf724db015a58c7a24382ba1f1.png)
 
 接下来没有踩坑。按照文档，发布版本->设置长连接->在 openclaw 配置 APPID 和 Secret -> 然后飞书里审核过了找机器人发一句话
 
 然后把拿到的 Code 配置一下
-![image.png|300](https://imgbed.anluoying.com/2026/02/6729403aa9c1a2cd4fa2dedb5a33c1f1.png)
+![OpenClaw 飞书配对验证码](https://imgbed.anluoying.com/2026/02/6729403aa9c1a2cd4fa2dedb5a33c1f1.png)
 
 `openclaw pairing approve feishu {code}`
 这样子之后就可以正常问答了
 
-![image.png|300](https://imgbed.anluoying.com/2026/02/94b36f94e369ae9e7fc3ed44a339be93.png)
+![OpenClaw 飞书对话效果](https://imgbed.anluoying.com/2026/02/94b36f94e369ae9e7fc3ed44a339be93.png)
 
 模型整体能力不是很强，后面配一下对应的 skills 看看怎么用它

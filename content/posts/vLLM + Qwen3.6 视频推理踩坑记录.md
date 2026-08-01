@@ -321,7 +321,7 @@ must have the same length
 
 这个 AssertionError 最终没有复现，因此没有定位到根因。我重启 vllm 之后就正常了，口头描述一下重启后的现状，运行脚本后很久 vllm 都没有响应，当时 GPU Util 基本保持在 0%，vLLM 进程仍然存活，HTTP Ping 正常，因此更像是请求卡在推理前的某个阶段，而不是服务已经崩溃。一个比较奇怪的现象是，在普通文本请求进入后，原本一直没有响应的视频请求随后开始执行，TTFT 也明显偏长。目前还没有确认这是 Scheduler、Prefix Cache，还是多模态预处理导致的问题。
 
-![image.png|300](https://imgbed.anluoying.com/2026/07/e8823bab2016865db0410c898cd155b3.png)
+![视频推理结果画面|300](https://imgbed.anluoying.com/2026/07/e8823bab2016865db0410c898cd155b3.png)
 
 结果基本准确，因为广告是渐进式出现的，严格来讲在05:30 秒左右就开始一部分广告内容，但是一直到37 秒才是非常明确的广告画面出现。
 

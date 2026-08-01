@@ -24,22 +24,22 @@ categories:
 
 打开网站反正左右都是个download
 
-![](https://imgbed.anluoying.com/2025/12/b73fbe81308d98d1ba1058bba2d8d679.png)
+![Go 官网下载页面](https://imgbed.anluoying.com/2025/12/b73fbe81308d98d1ba1058bba2d8d679.png)
 
 找个适合的下载吧（感觉这个都能单开一篇来写，这里没写是因为之前已经装过了）
 完成之后terminal里可以看到版本号
 
-![image.png](https://imgbed.anluoying.com/2025/12/fd3579fa0e5b0412169cfa99d71977ee.png)
+![终端显示 Go 版本](https://imgbed.anluoying.com/2025/12/fd3579fa0e5b0412169cfa99d71977ee.png)
 
 > [!note] 
 > 如果暂时不装环境。官方有一个 A Tour of Go，可以直接在这里学最基础的一些语法
 > [A Tour of Go](https://go.dev/tour/welcome/1)
 > 
-![image.png](https://imgbed.anluoying.com/2025/12/35e48233ce4bcadd9b0506aa7ddb3778.png)
+![A Tour of Go 入门页面](https://imgbed.anluoying.com/2025/12/35e48233ce4bcadd9b0506aa7ddb3778.png)
 
 这里有个很有意思的事情，可以看到他的那句 打印居然是 `Hello，世界`，而不是咱们熟知的hello world，我还特意检查了一下是不是我的翻译插件又出bug了
 那么grok小助手帮我搜一下吧（最近弄了个小号池）
-![image.png](https://imgbed.anluoying.com/2025/12/5d744599f5c308eba2bbb12da5222a52.png)
+![Grok 关于 Hello 世界与 Unicode 的回答](https://imgbed.anluoying.com/2025/12/5d744599f5c308eba2bbb12da5222a52.png)
 
 主要是为了展示 Go对Unicode和UTF-8的完美支持
 

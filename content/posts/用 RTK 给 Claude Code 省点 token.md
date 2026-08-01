@@ -33,7 +33,7 @@ Token 已成为新型货币！！！
 
 看一下这个原理图就明白了：
 
-![image.png](https://imgbed.anluoying.com/2026/05/0871f4fc957319ced56a2e6ea237dfea.png)
+![RTK 四种压缩策略原理图](https://imgbed.anluoying.com/2026/05/0871f4fc957319ced56a2e6ea237dfea.png)
 
 
 它支持四种压缩策略：智能过滤（去掉注释、空行这些噪音）、分组聚合（把同类文件按目录归拢）、截断保留（只留关键上下文）、去重折叠（重复的日志行显示为计数）。
@@ -88,11 +88,11 @@ rtk gain
 ```
 
 可以看到每个命令省了多少 token、平均压缩率多少、总执行时间多少。
-![image.png|300](https://imgbed.anluoying.com/2026/05/8636eda6ee736803476b63463e84cb08.png)
+![RTK 命令节省 token 的统计界面|300](https://imgbed.anluoying.com/2026/05/8636eda6ee736803476b63463e84cb08.png)
 > 我才刚装十分钟 哈哈
 
 今日未安装前使用统计
-![image.png|300](https://imgbed.anluoying.com/2026/05/38d129e1709708ac94baaa367cc40bdc.png)
+![安装 RTK 前的 token 使用统计|300](https://imgbed.anluoying.com/2026/05/38d129e1709708ac94baaa367cc40bdc.png)
 
 按这个比例，一天能省不少
 
@@ -103,7 +103,7 @@ rtk gain
 rtk discover
 ```
 
-![image.png|300](https://imgbed.anluoying.com/2026/05/4fdc95c2be6df213d915b82520217e2f.png)
+![rtk discover 命令输出界面|300](https://imgbed.anluoying.com/2026/05/4fdc95c2be6df213d915b82520217e2f.png)
 
 这个暂时就没收集到信息
 

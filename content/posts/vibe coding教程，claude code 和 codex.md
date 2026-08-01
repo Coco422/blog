@@ -12,7 +12,7 @@ categories:
   - 杂技浅尝
 lastmod: 2026-01-24T10:29:52+08:00
 ---
-![image.png](https://imgbed.anluoying.com/2025/11/94f41f82704abb8f3c4bc281cc97c1ee.png)
+![Claude Code 与 Codex 使用示意图](https://imgbed.anluoying.com/2025/11/94f41f82704abb8f3c4bc281cc97c1ee.png)
 
 ## **迄今为止最先进的代码助手**：
 
@@ -277,38 +277,38 @@ mac 直接使用brew进行安装。使用时登录chatgpt账号即可。当前te
 
 | **序号** | **操作**                                                    | **图例**                                                                                                                                                                                                                                                                                                |
 | ------ | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1      | 打开cursor                                                  | ![image.png](https://imgbed.anluoying.com/2025/11/e9ab936a89fce3f4d5cdef4828f2bdba.png)<br>                                                                                                                                                                                                           |
-| 2      | 点击左下角终端图标                                                 | ![image (1).png](https://imgbed.anluoying.com/2025/11/47f3b494336cfd972a32b84d2bc0064b.png)<br>                                                                                                                                                                                                       |
-| 3      | 在弹出来的选项框里点击第三个；在弹出来的新选项框里点击Ubuntu选项，cursor就会自动连接Ubuntu系统。 | ![image (2).png](https://imgbed.anluoying.com/2025/11/f98a236881ad65ddaaec56cf0e20d45c.png)<br><br>![image (3).png](https://imgbed.anluoying.com/2025/11/27a59f035b3e3fdc5f0301314502a272.png)<br><br>![image (4).png](https://imgbed.anluoying.com/2025/11/30b674a5b5c0340b68a19deb7e7cb5ae.png)<br> |
-|        | 连接完成后显示                                                   | ![image (5).png](https://imgbed.anluoying.com/2025/11/8baacc08503dfe4030577534def193b0.png)<br>                                                                                                                                                                                                       |
+| 1      | 打开cursor                                                  | ![Cursor 主界面](https://imgbed.anluoying.com/2025/11/e9ab936a89fce3f4d5cdef4828f2bdba.png)<br>                                                                                                                                                                                                           |
+| 2      | 点击左下角终端图标                                                 | ![Cursor 左下角终端入口](https://imgbed.anluoying.com/2025/11/47f3b494336cfd972a32b84d2bc0064b.png)<br>                                                                                                                                                                                                       |
+| 3      | 在弹出来的选项框里点击第三个；在弹出来的新选项框里点击Ubuntu选项，cursor就会自动连接Ubuntu系统。 | ![Cursor 远程连接选项菜单](https://imgbed.anluoying.com/2025/11/f98a236881ad65ddaaec56cf0e20d45c.png)<br><br>![选择 Ubuntu 发行版的菜单](https://imgbed.anluoying.com/2025/11/27a59f035b3e3fdc5f0301314502a272.png)<br><br>![Cursor 正在连接 Ubuntu](https://imgbed.anluoying.com/2025/11/30b674a5b5c0340b68a19deb7e7cb5ae.png)<br> |
+|        | 连接完成后显示                                                   | ![Cursor 连接 Ubuntu 后的界面](https://imgbed.anluoying.com/2025/11/8baacc08503dfe4030577534def193b0.png)<br>                                                                                                                                                                                                       |
 
 没有Connect to WSL using Distro选项
 
 若打开只有2个选项，没有五个选项，原因是没有安装扩展，安装扩展之后重启即可。
 
-![image (6).png](https://imgbed.anluoying.com/2025/11/6f42239b0ccbbca3206fbc3ffbf31c10.png)
+![未安装扩展时的连接选项](https://imgbed.anluoying.com/2025/11/6f42239b0ccbbca3206fbc3ffbf31c10.png)
 
 
 按下图依次点击，进入扩展界面。
 
-![image (7).png](https://imgbed.anluoying.com/2025/11/78f31099c28e303c9fa2be7a598d713f.png)
+![进入 Cursor 扩展界面的操作](https://imgbed.anluoying.com/2025/11/78f31099c28e303c9fa2be7a598d713f.png)
 
 扩展详情页
 
-![image (8).png](https://imgbed.anluoying.com/2025/11/522e56ea8a05ab57ebdb948cbd26e9b1.png)
+![WSL 扩展详情页](https://imgbed.anluoying.com/2025/11/522e56ea8a05ab57ebdb948cbd26e9b1.png)
 
 
 在搜索框里搜索WSL，找到图示这个扩展，不要选错，点击安装。安装过程需要翻墙，不然可能会因为网络安装失败。
 
-![image (9).png](https://imgbed.anluoying.com/2025/11/a593667bb2e398635b9caa5d599075dd.png)
+![搜索 WSL 扩展的结果](https://imgbed.anluoying.com/2025/11/a593667bb2e398635b9caa5d599075dd.png)
 
 
-![image (10).png](https://imgbed.anluoying.com/2025/11/ea1ba1ab2a7c75766ec9c9def6fbfea8.png)
+![WSL 扩展安装完成后的界面](https://imgbed.anluoying.com/2025/11/ea1ba1ab2a7c75766ec9c9def6fbfea8.png)
 
 
 此时再点击就有5个选项，选择第三个就行！
 
-![](https://imgbed.anluoying.com/2025/11/ea1ba1ab2a7c75766ec9c9def6fbfea8.png)
+![WSL 扩展安装完成后的连接选项](https://imgbed.anluoying.com/2025/11/ea1ba1ab2a7c75766ec9c9def6fbfea8.png)
 
 ## 4. 切换模型 Claude 4 Opus 与 Claude 4 Sonnet：
 
@@ -323,7 +323,7 @@ mac 直接使用brew进行安装。使用时登录chatgpt账号即可。当前te
 ```
 
 使用 `/context` 查看当前上下文情况
-![image.png](https://imgbed.anluoying.com/2025/11/148d79d559b16cfdb07c0d3e4a15aac1.png)
+![Codex 上下文使用情况截图](https://imgbed.anluoying.com/2025/11/148d79d559b16cfdb07c0d3e4a15aac1.png)
 
 ## 6. 恢复以前的对话：
 
@@ -377,7 +377,7 @@ mac 直接使用brew进行安装。使用时登录chatgpt账号即可。当前te
 ## 8. 深入思考：
 
 - 您需要通过自然语言要求其进行深入思考，或者使用tab键打开think模式
-![image.png](https://imgbed.anluoying.com/2025/11/b7a599272aa31f68a26cee2dbef2f818.png)
+![Claude Code 深入思考模式示例](https://imgbed.anluoying.com/2025/11/b7a599272aa31f68a26cee2dbef2f818.png)
 
 ```Bash
     > 我需要使用OAuth2为我们的API实现一个新的身份验证系统。深入思考在我们的代码库中实现这一点的最佳方法。

@@ -30,7 +30,7 @@ categories:
 
 由于我的粗心大意，作者 README 中提到的安装Hub-cm-ui 的安装过程被我误认为是全部的安装过程。
 
-![image.png|300](https://imgbed.anluoying.com/2026/03/0845d077160812217a8c7a480577f059.png)
+![Hub-cm-ui 安装页面|300](https://imgbed.anluoying.com/2026/03/0845d077160812217a8c7a480577f059.png)
 
 正当我感慨作者大大做了一个很好的集成时开开心心把这个 ui 的地址配置了域名反代并且直接加入我的 docker 配置中，pull 了一下。
 
@@ -46,11 +46,11 @@ categories:
 
 重要的事情说三遍
 
-![image.png|300](https://imgbed.anluoying.com/2026/03/c8519a3fdb442eba4d33d685f8b65159.png)
+![Docker Proxy 配置页面|300](https://imgbed.anluoying.com/2026/03/c8519a3fdb442eba4d33d685f8b65159.png)
 
 舒服了,全部配置完后，这里搜索想要的镜像，会生成对应的加速命令
 
 当然，也可以直接在常用的服务器上配置一下 registry-mirrors，如图所示
 修改/etc/docker/daemon.json
 
-![image.png|300](https://imgbed.anluoying.com/2026/03/9f241c981a69f12375804ef64e7cd6fc.png)
+![daemon.json 中的 registry-mirrors 配置|300](https://imgbed.anluoying.com/2026/03/9f241c981a69f12375804ef64e7cd6fc.png)

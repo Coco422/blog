@@ -81,7 +81,7 @@ param.extend_param.enabled_cpus_mask = (1 << 4) | (1 << 5) | (1 << 6) | (1 << 7)
 
 这一步之后，速度明显上去了。禁用 CPU idle 是一个很小但有效的点：decode 是很多小步串起来的，每 token 之间 CPU 如果频繁进出低功耗状态，尾延迟会抖。
 
-![image.png|300](https://imgbed.anluoying.com/2026/06/dcc530cdaa590ec81e3bb5fabaabfea8.png)
+![RK3588 性能优化后的运行效果截图|300](https://imgbed.anluoying.com/2026/06/dcc530cdaa590ec81e3bb5fabaabfea8.png)
 
 除此之外的一些改动其实没什么太大的提升，以及，我自己的统计逻辑也优化一下哈哈哈
 ## Web 层：一个“进程包装版”的 ChatWeb
@@ -101,7 +101,7 @@ FastAPI /api/chat
 这版的好处是简单、稳定、容易复现。坏处也很明显：每次请求都会重新加载 LLM 和 vision encoder，所以首 token 延迟大概 5 到 6 秒。
 
 页面如下
-![image.png](https://imgbed.anluoying.com/2026/06/c9003911711a0555cca40403507e9826.png)
+![Qwen3-VL Web 识图页面截图](https://imgbed.anluoying.com/2026/06/c9003911711a0555cca40403507e9826.png)
 
 ## 最后的速度
 

@@ -34,11 +34,11 @@ error from registry: unauthorized to access repository: hotpotcat/perm-check, ac
 
 甚至他是个公开仓库啊
 
-![image.png](https://imgbed.anluoying.com/2025/10/5af07164d59ff3259f7829789c032d1b.png)
+![Harbor 项目权限设置页面](https://imgbed.anluoying.com/2025/10/5af07164d59ff3259f7829789c032d1b.png)
 
 ## 怀疑系统，用wsl试试
 
-![image.png](https://imgbed.anluoying.com/2025/10/1a5ea19c863328e12f952c762aba60b6.png)
+![WSL 中推送 Harbor 镜像仍报错](https://imgbed.anluoying.com/2025/10/1a5ea19c863328e12f952c762aba60b6.png)
 
 还是这样
 
@@ -48,7 +48,7 @@ error from registry: unauthorized to access repository: hotpotcat/perm-check, ac
 
 ## gpt叫我搞个机器人账号试试
 
-![image.png](https://imgbed.anluoying.com/2025/10/f4e6bbc436ada3c238d93648c026b597.png)
+![Harbor 机器人账号权限设置](https://imgbed.anluoying.com/2025/10/f4e6bbc436ada3c238d93648c026b597.png)
 
 我都拉满权限了还是这样
 

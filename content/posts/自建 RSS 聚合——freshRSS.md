@@ -96,10 +96,10 @@ linux.do 的 Rss [论坛无处不在的RSS - 搞七捻三 - LINUX DO](https://li
 
 只能之后再研究了
 
-![image.png|300](https://imgbed.anluoying.com/2026/03/02515a728d0eab3f0bc58d44df429ea9.png)
+![FreshRSS 订阅源配置页面|300](https://imgbed.anluoying.com/2026/03/02515a728d0eab3f0bc58d44df429ea9.png)
 
 订阅后效果如下
-![image.png|300](https://imgbed.anluoying.com/2026/03/1950f219cdb07755840e073c5ee3ba39.png)
+![FreshRSS 订阅内容列表|300](https://imgbed.anluoying.com/2026/03/1950f219cdb07755840e073c5ee3ba39.png)
 
 在 PC web 端用这个阅读也没啥毛病了，但是手机还得找个单独的阅读器
 
@@ -115,7 +115,7 @@ linux.do 的 Rss [论坛无处不在的RSS - 搞七捻三 - LINUX DO](https://li
 
 这里唯一一个配置的坑就是选择 FreshRSS 之后要输入 api 和 账号密码
 
-![image.png|300](https://imgbed.anluoying.com/2026/03/a6b240c65e30c17bd1ca351df333907e.png)
+![FeedMe 中配置 FreshRSS API 和账号密码|300](https://imgbed.anluoying.com/2026/03/a6b240c65e30c17bd1ca351df333907e.png)
 
 api 从我箭头处查看，我直接复制了 第一个 Google Reader compatible API
 密码这里设置后用的这个密码

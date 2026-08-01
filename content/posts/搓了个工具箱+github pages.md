@@ -24,16 +24,16 @@ gemini3 目前我两个用的地方，一个在 ai studio 里面直接用，另�
 
 ## 开搓
 
-![image.png](https://imgbed.anluoying.com/2025/12/3c2f73d3a6e3d68f5fdf7c09ceeaf1c5.png)
+![工具箱首页初版界面](https://imgbed.anluoying.com/2025/12/3c2f73d3a6e3d68f5fdf7c09ceeaf1c5.png)
 
 接一杯水的功夫出来了。这个设计很符合我的概念（但是我本能的觉得性能影响很大，以后堆积越来越多的工具，一打开我的网站，啪的一下要下载好几十MB 的内容。）
 
 编译预览一下，这期间有一点小问题，反正我也不是很懂前端，他给修好了
 随后上点强度，一口气提了 9 个比较常见的网页工具，一次性完成。
 
-![image.png](https://imgbed.anluoying.com/2025/12/17e023ef35f88a22e9121867d71e9dfe.png)
+![工具箱网页工具列表界面](https://imgbed.anluoying.com/2025/12/17e023ef35f88a22e9121867d71e9dfe.png)
 
-![image.png](https://imgbed.anluoying.com/2025/12/87b4b231261aa9c660f3e6e3e13f6f0d.png)
+![工具箱九个工具的展示界面](https://imgbed.anluoying.com/2025/12/87b4b231261aa9c660f3e6e3e13f6f0d.png)
 
 可以，很满意哦，回头做个深色浅色模式随系统切换
 
@@ -89,11 +89,11 @@ jobs:
           publish_dir: ./frontend/dist
 ```
 
-![image.png](https://imgbed.anluoying.com/2025/12/d5e712cdfa88d645d4cd46bdbd6022fe.png)
-![image.png](https://imgbed.anluoying.com/2025/12/ae2b6bc04e502d4a9a0c070d5f86a4c0.png)
+![GitHub Actions 构建与部署界面](https://imgbed.anluoying.com/2025/12/d5e712cdfa88d645d4cd46bdbd6022fe.png)
+![GitHub Pages 发布配置界面](https://imgbed.anluoying.com/2025/12/ae2b6bc04e502d4a9a0c070d5f86a4c0.png)
 [GitHub Pages 文档 - GitHub 文档](https://docs.github.com/zh/pages)
 [关于自定义域名和 GitHub 页面 - GitHub 文档](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
-![image.png](https://imgbed.anluoying.com/2025/12/6919cfc80fc3a6508148a964e156f078.png)
+![GitHub Pages 部署完成后的工具箱页面](https://imgbed.anluoying.com/2025/12/6919cfc80fc3a6508148a964e156f078.png)
 
 ok 耐心等个几分钟。之后就可以愉快的访问我自己的工具箱啦
 

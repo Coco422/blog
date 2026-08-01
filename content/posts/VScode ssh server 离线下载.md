@@ -19,7 +19,7 @@ categories:
 > 微软大战代码的 SSH 工具挺好用，一直用它连接远程服务器进行开发，控制文件或者直接 terminal 运行命令都很方便。
 > 但是当remote server 网络不好以及系统太老就歇菜了，那么如果下载 server 很久都没解决，我觉得应该可以离线下载并上传这个 server 
 
-![image.png](https://imgbed.anluoying.com/2025/12/59349a63a7621b6d2852624a70cd2882.png)
+![VS Code Remote SSH 连接界面](https://imgbed.anluoying.com/2025/12/59349a63a7621b6d2852624a70cd2882.png)
 
 主要参考文章 [知乎](https://zhuanlan.zhihu.com/p/294933020)
 
@@ -32,19 +32,19 @@ categories:
 安装 remote-ssh 插件，我这里由于现在在用 cursor 就直接用 cursor 做例子截图
 ### 方法 1：直接在 vscode 中的 sidebar 中 Extentions 下载
 
-![](https://imgbed.anluoying.com/2025/12/c1e081d18e05c05a0151a25f1f26b30a.png)
+![Cursor 扩展侧边栏中的 Remote SSH](https://imgbed.anluoying.com/2025/12/c1e081d18e05c05a0151a25f1f26b30a.png)
 我这里是已经下载的样子
 ### 方法2：从网页下载离线插件包
 
 [vscode market](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
-![image.png](https://imgbed.anluoying.com/2025/12/006023527faeb72bcc39e70effbd2145.png)
-![image.png](https://imgbed.anluoying.com/2025/12/88c80c81dec9c13c7107a4e7cafa7efb.png)
+![Remote SSH 扩展网页详情](https://imgbed.anluoying.com/2025/12/006023527faeb72bcc39e70effbd2145.png)
+![Remote SSH VSIX 下载页面](https://imgbed.anluoying.com/2025/12/88c80c81dec9c13c7107a4e7cafa7efb.png)
 vscode 应该有 UI 可以点到，但是我这里就用命令行表达一下意思。install from VSIX 然后选择刚刚下载的插件包就可以了
 
 ## 重点，在远程服务器安装vscode server
 
 在装完插件之后 重启 vscode 就可以看到界面有变化
-![image.png](https://imgbed.anluoying.com/2025/12/3add89a447079052bd28262956067b8c.png)
+![Remote SSH 重启后的连接入口](https://imgbed.anluoying.com/2025/12/3add89a447079052bd28262956067b8c.png)
 如果顺利的话 新建连接，连接上去后会自动下载 vscode-ssh-server。
 
 ```
@@ -55,11 +55,11 @@ bin目录下面存放的是VS Code Server程序，extensions目录下是VS Code 
 ```
 
 这里由于知乎的文章是 21 年的，所以有一些变动了，我截图看一下，这是 25 年 8 月 7 日安装的，有些许不一样。但是套路一样
-![image.png](https://imgbed.anluoying.com/2025/12/0d3983266e08fc23fbcf97cc89ec7ecf.png)
+![VS Code Server 文件目录结构](https://imgbed.anluoying.com/2025/12/0d3983266e08fc23fbcf97cc89ec7ecf.png)
 
 我刚刚遇到问题的服务器由于是 cursor，他换了个名字，汤药不变
-![image.png](https://imgbed.anluoying.com/2025/12/7726aae9a790ea9d38a6c5bc2143a39e.png)
-![image.png](https://imgbed.anluoying.com/2025/12/09434a074bb3cb5de10b2846e9e4ecff.png)
+![Cursor 远程服务端目录结构](https://imgbed.anluoying.com/2025/12/7726aae9a790ea9d38a6c5bc2143a39e.png)
+![Cursor 服务端 Commit ID 信息](https://imgbed.anluoying.com/2025/12/09434a074bb3cb5de10b2846e9e4ecff.png)
 
 可以看到 CommitID 和服务端的 ID 一致
 
