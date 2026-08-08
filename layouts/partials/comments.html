@@ -2,7 +2,7 @@
  * @Author: Ray
  * @Date: 2025-08-13 00:10:33
  * @LastEditors: Ray
- * @Description: Giscus Comments with a custom theme matching the blog's paper palette
+ * @Description: Giscus Comments with the blog's custom paper theme
 -->
 <div id="giscus-container"></div>
 <script>
@@ -17,7 +17,8 @@
         "data-reactions-enabled": "1",
         "data-emit-metadata": "0",
         "data-input-position": "top",
-        "data-theme": "{{ "giscus-paper.css" | absURL }}",
+        // Dooki blocks CSS requests whose Origin is giscus.app; jsDelivr serves the same repository file with CORS.
+        "data-theme": "https://cdn.jsdelivr.net/gh/Coco422/blog@main/static/giscus-paper.css",
         "data-lang": "zh-CN",
         "data-loading": "lazy",
         "crossorigin": "anonymous",
