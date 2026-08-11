@@ -58,21 +58,26 @@ details.code-details[open] > summary::after {
     transform: rotate(45deg);
 }
 
-/* 
-   Animation Trick:
-   We can't animate height: auto directly.
-   We'll use max-height on the inner content.
-   Note: This requires the inner content to be wrapped.
+/*
+   Animate the content wrapper without imposing a fixed max-height.
+   A fixed cap clips long code blocks when they are expanded.
 */
 details.code-details .collapsible-content {
-    max-height: 0;
+    display: grid;
+    grid-template-rows: 0fr;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    transition: grid-template-rows 0.4s cubic-bezier(0, 1, 0, 1);
+}
+
+details.code-details .collapsible-content > * {
+    min-height: 0;
+    min-width: 0;
+    margin: 0;
 }
 
 details.code-details[open] .collapsible-content {
-    max-height: 3000px; /* Enough for most code blocks */
-    transition: max-height 0.4s ease-in-out;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.4s ease-in-out;
 }
 
 /* Ensure full width code blocks */
