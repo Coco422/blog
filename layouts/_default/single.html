@@ -10,6 +10,13 @@
   {{- end }}
 {{- end }}
 
+{{- if eq .Type "posts" }}
+<div class="reading-progress" aria-hidden="true">
+  <div class="reading-progress-fill"></div>
+  <span class="reading-progress-paw"></span>
+</div>
+{{- end }}
+
 <article class="post-single">
   <header class="post-header">
     {{ partial "breadcrumbs.html" . }}

@@ -1,0 +1,51 @@
+.reading-progress {
+    --progress: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* 容器加高到 20px 给爪印留位置，本体透明，轨道线用 ::before 画在顶边 */
+    height: 20px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.reading-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--border);
+}
+
+.reading-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--progress) * 100%);
+    height: 2px;
+    background: var(--accent);
+}
+
+.reading-progress-paw {
+    position: absolute;
+    /* 爪印整个挂在轨道线下方，避免被视口顶边裁掉 */
+    top: 3px;
+    left: calc(var(--progress) * 100%);
+    width: 16px;
+    height: 16px;
+    transform: translateX(-50%);
+    background-color: var(--accent);
+    /* 与 .post-content hr::after 同款爪印；进度为 0 时隐藏 */
+    opacity: clamp(0, calc(var(--progress) * 1000), 1);
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><ellipse cx='32' cy='40' rx='16' ry='13'/><ellipse cx='14' cy='22' rx='7' ry='8.5'/><ellipse cx='30' cy='12' rx='6.5' ry='8'/><ellipse cx='47' cy='16' rx='6.5' ry='8'/><ellipse cx='55' cy='32' rx='6' ry='7.5'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><ellipse cx='32' cy='40' rx='16' ry='13'/><ellipse cx='14' cy='22' rx='7' ry='8.5'/><ellipse cx='30' cy='12' rx='6.5' ry='8'/><ellipse cx='47' cy='16' rx='6.5' ry='8'/><ellipse cx='55' cy='32' rx='6' ry='7.5'/></svg>");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+}

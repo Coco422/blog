@@ -38,6 +38,18 @@
   {{- end -}}
 {{- end -}}
 
+{{- if and .IsPage (eq .Type "posts") -}}
+  {{- with resources.Get "js/reading-progress.js" -}}
+    {{- $script := . | js.Build (dict "minify" hugo.IsProduction) -}}
+    {{- if not site.Params.assets.disableFingerprinting -}}
+      {{- $script = $script | fingerprint -}}
+<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+    {{- else -}}
+<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}"></script>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
 {{- with resources.Get "js/image-layout.js" -}}
   {{- $script := . | js.Build (dict "minify" hugo.IsProduction) -}}
   {{- if not site.Params.assets.disableFingerprinting -}}
