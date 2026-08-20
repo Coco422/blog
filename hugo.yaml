@@ -149,7 +149,7 @@ params:
   hideSummary: false
 
   assets:
-    favicon: "/favicon.ico"
+    favicon: "/favicon-32x32.png"
     favicon16x16: "/favicon-16x16.png"
     favicon32x32: "/favicon-32x32.png"
     apple_touch_icon: "/apple-touch-icon.png"
@@ -157,7 +157,7 @@ params:
 
   label:
     text: "Home"
-    icon: /apple-touch-icon.png
+    icon: /logo-64.png
     iconHeight: 35
     iconAlt: "安落滢 Blog Logo"
 

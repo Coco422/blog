@@ -1,4 +1,7 @@
 {{- $neko := site.Params.neko | default dict -}}
+{{- $scripts := slice -}}
+{{- $nekoScript := resources.Get "js/neko.js" -}}
+{{- $nekoEnabled := false -}}
 {{- $enabled := true -}}
 {{- if isset $neko "enable" -}}
   {{- $enabled = $neko.enable -}}
@@ -9,53 +12,46 @@
 {{- end -}}
 
 {{- if and $enabled (or (not $onlyHome) .IsHome) -}}
-  {{- $script := resources.Get "js/neko.js" | js.Build (dict "minify" hugo.IsProduction) -}}
+  {{- $nekoEnabled = true -}}
+  {{- $nekoScript = $nekoScript | js.Build (dict "targetPath" "js/neko-runtime.js" "minify" hugo.IsProduction) -}}
   {{- if not site.Params.assets.disableFingerprinting -}}
-    {{- $script = $script | fingerprint -}}
-<script defer crossorigin="anonymous" data-oneko-gif="/hugo-neko/oneko.gif" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
-  {{- else -}}
-<script defer crossorigin="anonymous" data-oneko-gif="/hugo-neko/oneko.gif" src="{{ $script.RelPermalink }}"></script>
+    {{- $nekoScript = $nekoScript | fingerprint -}}
   {{- end -}}
+  {{- $scripts = $scripts | append (resources.Get "js/neko-loader.js") -}}
 {{- end -}}
 
 {{- with resources.Get "js/nav-i18n.js" -}}
-  {{- $script := . | js.Build (dict "minify" hugo.IsProduction) -}}
-  {{- if not site.Params.assets.disableFingerprinting -}}
-    {{- $script = $script | fingerprint -}}
-<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
-  {{- else -}}
-<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}"></script>
-  {{- end -}}
+  {{- $scripts = $scripts | append . -}}
 {{- end -}}
 
 {{- with resources.Get "js/nav-mobile.js" -}}
-  {{- $script := . | js.Build (dict "minify" hugo.IsProduction) -}}
-  {{- if not site.Params.assets.disableFingerprinting -}}
-    {{- $script = $script | fingerprint -}}
-<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
-  {{- else -}}
-<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}"></script>
-  {{- end -}}
+  {{- $scripts = $scripts | append . -}}
 {{- end -}}
 
 {{- if and .IsPage (eq .Type "posts") -}}
   {{- with resources.Get "js/reading-progress.js" -}}
-    {{- $script := . | js.Build (dict "minify" hugo.IsProduction) -}}
-    {{- if not site.Params.assets.disableFingerprinting -}}
-      {{- $script = $script | fingerprint -}}
-<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
-    {{- else -}}
-<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}"></script>
-    {{- end -}}
+    {{- $scripts = $scripts | append . -}}
   {{- end -}}
 {{- end -}}
 
 {{- with resources.Get "js/image-layout.js" -}}
-  {{- $script := . | js.Build (dict "minify" hugo.IsProduction) -}}
+  {{- $scripts = $scripts | append . -}}
+{{- end -}}
+
+{{- if gt (len $scripts) 0 -}}
+  {{- $bundleName := "js/site.js" -}}
+  {{- if .IsHome -}}
+    {{- $bundleName = "js/home.js" -}}
+  {{- else if and .IsPage (eq .Type "posts") -}}
+    {{- $bundleName = "js/post.js" -}}
+  {{- else if .IsPage -}}
+    {{- $bundleName = "js/page.js" -}}
+  {{- end -}}
+  {{- $script := $scripts | resources.Concat $bundleName | js.Build (dict "minify" hugo.IsProduction) -}}
   {{- if not site.Params.assets.disableFingerprinting -}}
     {{- $script = $script | fingerprint -}}
-<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+<script defer crossorigin="anonymous"{{ if $nekoEnabled }}{{ printf ` data-oneko-script="%s" data-oneko-gif="/hugo-neko/oneko.gif"` $nekoScript.RelPermalink | safeHTMLAttr }}{{ end }} src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
   {{- else -}}
-<script defer crossorigin="anonymous" src="{{ $script.RelPermalink }}"></script>
+<script defer crossorigin="anonymous"{{ if $nekoEnabled }}{{ printf ` data-oneko-script="%s" data-oneko-gif="/hugo-neko/oneko.gif"` $nekoScript.RelPermalink | safeHTMLAttr }}{{ end }} src="{{ $script.RelPermalink }}"></script>
   {{- end -}}
 {{- end -}}
