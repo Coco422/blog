@@ -2,7 +2,7 @@
 
 .post-content.drop-cap > p:first-of-type::first-letter {
     float: left;
-    font-family: 'LXGW WenKai GB', var(--font-display);
+    font-family: var(--font-zh);
     font-size: 3.4em;
     line-height: 0.85;
     font-weight: 600;

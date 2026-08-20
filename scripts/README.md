@@ -7,9 +7,11 @@
 先构建站点，再检查文章元数据、canonical、robots、H1、图片 alt、JSON-LD、sitemap、`llms.txt`、内部链接和页内锚点：
 
 ```bash
-hugo --printI18nWarnings --printPathWarnings
+hugo --environment production --cleanDestinationDir --printI18nWarnings --printPathWarnings
 python3 scripts/seo_audit.py
 ```
+
+策略和巡检约定见 `docs/SEO.md`。必须用干净的 production 输出，不要在陈旧 `public/` 上审计。
 
 ## 文楷字体子集
 

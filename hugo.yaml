@@ -157,7 +157,7 @@ params:
 
   label:
     text: "Home"
-    icon: /logo-64.png
+    icon: /image2vector1color.svg
     iconHeight: 35
     iconAlt: "安落滢 Blog Logo"
 

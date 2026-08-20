@@ -27,3 +27,10 @@ This is a Hugo static blog using the PaperMod theme as a git submodule.
 - PaperMod requires Hugo Extended `0.146.0` or newer.
 - Cloudflare Pages uses separate Production and Preview environment scopes. Set `HUGO_VERSION=0.148.2` in both scopes or use an all-environments variable.
 - If a PR Preview build logs `hugo@extended_0.144.2`, the Preview environment is not using the expected Hugo version even if Production succeeds.
+
+## SEO / GEO
+
+- 唯一说明是 `docs/SEO.md`。不要另写平行清单。
+- 本地检查：`hugo --environment production --cleanDestinationDir --printI18nWarnings --printPathWarnings`，再跑 `python3 scripts/seo_audit.py`。
+- 模板改动放在 `layouts/partials/seo/` 和 `layouts/partials/templates/` 覆盖里，不要改 `themes/PaperMod`。
+- Codex 自动化 `seo-geo` 是每周只读巡检；策略变更写回 `docs/SEO.md`。

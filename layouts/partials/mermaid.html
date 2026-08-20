@@ -1,54 +1,32 @@
 {{ if .Page.Store.Get "hasMermaid" }}
-<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>
-  const elementCode = ".mermaid";
-  const loadMermaid = function (theme) {
-    mermaid.initialize({ theme });
-    mermaid.init({
-      theme,
-      themeVariables: { // 这里设置字体跟正文一致
-        fontFamily: "Newsreader, LXGW WenKai GB, sans-serif"
-      }}, document.querySelectorAll(elementCode));
-  };
-  const saveOriginalData = function () {
-    return new Promise((resolve, reject) => {
-      try {
-        var els = document.querySelectorAll(elementCode),
-          count = els.length;
-        els.forEach((element) => {
-          element.setAttribute("data-original-code", element.innerHTML);
-          count--;
-          if (count == 0) {
-            resolve();
-          }
-        });
-      } catch (error) {
-        reject(error);
-      }
-    });
-  };
-  const resetProcessed = function () {
-    return new Promise((resolve, reject) => {
-      try {
-        var els = document.querySelectorAll(elementCode),
-          count = els.length;
-        els.forEach((element) => {
-          if (element.getAttribute("data-original-code") != null) {
-            element.removeAttribute("data-processed");
-            element.innerHTML = element.getAttribute("data-original-code");
-          }
-          count--;
-          if (count == 0) {
-            resolve();
-          }
-        });
-      } catch (error) {
-        reject(error);
-      }
-    });
-  };
+  (function lazyLoadMermaid() {
+    const diagrams = document.querySelectorAll(".mermaid");
+    if (!diagrams.length) return;
+    diagrams.forEach((element) => element.setAttribute("data-original-code", element.innerHTML));
 
-  saveOriginalData().catch(console.error);
-  resetProcessed().then(loadMermaid("neutral")).catch(console.error);
+    const load = () => {
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
+      script.async = true;
+      script.onload = () => {
+        mermaid.initialize({
+          theme: "neutral",
+          themeVariables: { fontFamily: "system-ui, sans-serif" }
+        });
+        mermaid.run({ nodes: diagrams });
+      };
+      document.head.appendChild(script);
+    };
+
+    const schedule = () => {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(load, { timeout: 3000 });
+      } else {
+        window.setTimeout(load, 1500);
+      }
+    };
+    window.addEventListener("load", schedule, { once: true });
+  })();
 </script>
 {{ end }}

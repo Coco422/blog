@@ -68,7 +68,7 @@
 }
 
 :lang(zh) .entry-header h2 {
-    font-family: 'LXGW WenKai GB', var(--font-display);
+    font-family: var(--font-zh);
 }
 
 .entry-content {

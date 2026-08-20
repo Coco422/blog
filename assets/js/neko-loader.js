@@ -16,9 +16,17 @@
         document.body.appendChild(script);
     };
 
-    if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(load, { timeout: 1500 });
+    const schedule = () => {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(load, { timeout: 1500 });
+        } else {
+            window.setTimeout(load, 1000);
+        }
+    };
+
+    if (document.readyState === "complete") {
+        schedule();
     } else {
-        window.addEventListener("load", load, { once: true });
+        window.addEventListener("load", schedule, { once: true });
     }
 })();

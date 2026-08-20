@@ -3,10 +3,7 @@
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 {{- /* Head custom content area end */ -}}
 
-{{- /* Preload the primary display font to avoid layout shift/flash */ -}}
-<link rel="preload" href="{{ "fonts/newsreader-variable.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-
-{{- if or .Site.Params.fancybox (not (isset .Site.Params "fancybox")) }}
+{{- if and .IsPage (or .Site.Params.fancybox (not (isset .Site.Params "fancybox"))) }}
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     var selector = '[data-fancybox="gallery"]';

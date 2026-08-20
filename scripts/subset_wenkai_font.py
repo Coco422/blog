@@ -18,7 +18,7 @@ except ImportError as exc:  # pragma: no cover - dependency guidance
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_FONT = ROOT / "static/fonts/lxgw-wenkai-gb-standard.woff2"
+SOURCE_FONT = ROOT / "assets/font-sources/lxgw-wenkai-gb-standard.woff2"
 OUTPUT_FONT = ROOT / "static/fonts/lxgw-wenkai-gb-site-subset.woff2"
 COLORS_CSS = ROOT / "assets/css/extended/colors.css"
 FONT_URL_PATTERN = re.compile(

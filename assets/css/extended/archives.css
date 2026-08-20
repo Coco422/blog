@@ -15,7 +15,7 @@
 }
 
 :lang(zh) .archive-year-header {
-    font-family: 'LXGW WenKai GB', var(--font-display);
+    font-family: var(--font-zh);
 }
 
 .archive-count {

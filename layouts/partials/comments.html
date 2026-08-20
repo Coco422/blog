@@ -6,7 +6,11 @@
 -->
 <div id="giscus-container"></div>
 <script>
-    let giscusAttributes = {
+  (function lazyLoadGiscus() {
+    const container = document.getElementById("giscus-container");
+    if (!container) return;
+
+    const giscusAttributes = {
         "src": "https://giscus.app/client.js",
         "data-repo": "Coco422/discus",
         "data-repo-id": "R_kgDOPczXuQ",
@@ -25,7 +29,31 @@
         "async": "",
     };
 
-    let giscusScript = document.createElement("script");
-    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
-    document.getElementById("giscus-container").appendChild(giscusScript);
+    const loadGiscus = () => {
+      if (container.dataset.loaded) return;
+      container.dataset.loaded = "true";
+      const giscusScript = document.createElement("script");
+      Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+      container.appendChild(giscusScript);
+    };
+
+    const observe = () => {
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          observer.disconnect();
+          loadGiscus();
+        }, { rootMargin: "800px 0px" });
+        observer.observe(container);
+      } else {
+        loadGiscus();
+      }
+    };
+
+    if (document.readyState === "complete") {
+      observe();
+    } else {
+      window.addEventListener("load", observe, { once: true });
+    }
+  })();
 </script>

@@ -53,22 +53,34 @@
 {{- $reset := (resources.Get "css/core/reset.css") }}
 {{- $media := (resources.Get "css/core/zmedia.css") }}
 {{- $license_css := (resources.Get "css/core/license.css") }}
-{{- $common := (resources.Match "css/common/*.css") | resources.Concat "assets/css/common.css" }}
+{{- $stylesheet := $license_css -}}
 
-{{- $chroma_styles := (resources.Get "css/includes/chroma-styles.css") }}
-{{- $chroma_mod := (resources.Get "css/includes/chroma-mod.css") }}
+{{- if .IsHome -}}
+  {{- $homeStyles := slice
+    $theme_vars
+    $reset
+    (resources.Get "css/common/main.css")
+    (resources.Get "css/common/header.css")
+    (resources.Get "css/common/footer.css")
+    (resources.Get "css/common/post-entry.css")
+    $media
+    (resources.Get "css/extended/colors.css")
+    (resources.Get "css/extended/home.css")
+    (resources.Get "css/extended/nav-i18n.css")
+    (resources.Get "css/extended/pagination.css")
+  -}}
+  {{- $stylesheet = (slice $license_css ($homeStyles | resources.Concat "assets/css/home-critical.css" | resources.Minify)) | resources.Concat "assets/css/home.css" -}}
+{{- else -}}
+  {{- $common := (resources.Match "css/common/*.css") | resources.Concat "assets/css/common.css" -}}
+  {{- $chroma_styles := (resources.Get "css/includes/chroma-styles.css") -}}
+  {{- $chroma_mod := (resources.Get "css/includes/chroma-mod.css") -}}
+  {{- $core := (slice $theme_vars $reset $common $chroma_styles $chroma_mod $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify -}}
+  {{- $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" | resources.Minify -}}
+  {{- $stylesheet = (slice $license_css $core $extended) | resources.Concat "assets/css/stylesheet.css" -}}
+{{- end -}}
 
-{{- $core := (slice $theme_vars $reset $common $chroma_styles $chroma_mod $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify }}
-{{- $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" | resources.Minify }}
-
-{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat "assets/css/stylesheet.css" }}
-
-{{- if not site.Params.assets.disableFingerprinting }}
-{{- $stylesheet = $stylesheet | fingerprint }}
-<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
-{{- else }}
-<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
-{{- end }}
+{{- /* Keep first paint to a single HTML request. The stylesheet is small enough to inline and Brotli-compress with the document. */}}
+<style>{{ $stylesheet.Content | safeCSS }}</style>
 
 {{- if (eq .Layout `search`) -}}
 <link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">

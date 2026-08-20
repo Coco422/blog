@@ -40,4 +40,4 @@ SEO implementation and Google Search Console steps are documented in `docs/SEO.m
 
 ## Deployment
 
-The site deploys on Cloudflare Pages. Keep `HUGO_VERSION` configured for both Production and Preview environments; see `docs/DEPLOYMENT.md`.
+The site uses Cloudflare Pages as its origin and Dooki as the production CDN. Build settings, cache rules, font loading, smoke checks, and the CDN migration checklist live in `docs/DEPLOYMENT.md`.
