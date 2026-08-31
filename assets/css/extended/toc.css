@@ -30,8 +30,12 @@
     backdrop-filter: saturate(140%) blur(6px);
   }
 
-  .toc .inner a { text-decoration: none; opacity: .9; transition: opacity .15s ease, color .15s ease; }
-  .toc .inner a:hover { opacity: 1; color: var(--secondary); }
+  .toc .inner a {
+    text-decoration: none;
+    opacity: .82;
+    transition: opacity 220ms cubic-bezier(.4, 0, .2, 1), color 220ms cubic-bezier(.4, 0, .2, 1);
+  }
+  .toc .inner li:not(.toc-active) > a:hover { opacity: 1; color: var(--secondary); }
   .toc ul { list-style: none; padding-left: .2rem; }
   .toc li { position: relative; padding-left: .75rem; }
   .toc li::before { content: ""; position: absolute; left: 0; top: .65em; width: .35rem; height: .35rem; border-radius: 50%; background: var(--tertiary); opacity: .6; }
@@ -82,14 +86,19 @@
   padding-block: 3px;
 }
 
-.toc .active {
-  font-size: 110%;
-  font-weight: 600;
+.toc li.toc-active > a {
+  opacity: 1;
   color: var(--accent);
-  text-decoration: underline;
 }
 
-.toc li a:hover {
+.toc li.toc-current > a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.toc li:not(.toc-active) > a:hover {
   color: var(--secondary);
 }
 
@@ -103,6 +112,12 @@
 @media (max-width: 1239px) {
   .toc { position: relative; left: auto; top: auto; max-height: none; box-shadow: none; backdrop-filter: none; }
   .toc .inner { max-height: none; overflow-y: visible; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toc .inner a {
+    transition: none;
+  }
 }
 @media (min-width: 1240px) and (max-width: 1360px) {
   .toc { left: max(12px, calc(50% - (var(--article-width) / 2) - var(--toc-width) - (var(--toc-gap) + 5rem))); }

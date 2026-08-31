@@ -42,6 +42,9 @@
   {{- with resources.Get "js/reading-progress.js" -}}
     {{- $scripts = $scripts | append . -}}
   {{- end -}}
+  {{- with resources.Get "js/toc-scrollspy.js" -}}
+    {{- $scripts = $scripts | append . -}}
+  {{- end -}}
 {{- end -}}
 
 {{- if .IsPage -}}
