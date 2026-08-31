@@ -1,0 +1,11 @@
+HTTP/2 200 
+server: nginx
+date: Sun, 30 Aug 2026 17:24:52 GMT
+content-type: text/x-sh
+content-length: 29455
+last-modified: Wed, 15 Apr 2026 11:58:01 GMT
+etag: "730f-64f7e6d732440"
+content-security-policy: upgrade-insecure-requests
+x-debug-proxy: proxy_to=216.234.143.78:38085
+accept-ranges: bytes
+

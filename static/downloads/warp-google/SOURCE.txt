@@ -1,0 +1,9 @@
+File: warp-google.sh
+Version: 1.0.0
+Archived: 2026-08-31
+Source: https://vpszdm.com/warp-google.sh
+Documentation: https://vpszdm.com/warp-google.html
+Author shown in source: VPS值得买
+SHA-256: 4c45421ad25eac15bf09dda25d6296cfef01e111e086f2f02001531bdd4fc52a
+
+The source page describes the script as open source but does not provide an explicit license.

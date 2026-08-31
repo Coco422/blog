@@ -1,0 +1,117 @@
+---
+description: Install and configure WARP on Linux.
+title: Linux
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index  
+> Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt  
+> Use this file to discover all available pages before exploring further.
+
+# Linux
+
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/warp-client/get-started/linux/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Looking for Zero Trust?
+
+This documentation is for the consumer version of WARP (1.1.1.1 with WARP). If you are using WARP for Zero Trust security, refer to the [Cloudflare One Client documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).
+
+You have two ways of installing WARP on Linux, depending on the distro you are using:
+
+* Find the latest WARP client in the [package repository ↗](https://pkg.cloudflareclient.com/).
+* Install the `cloudflare-warp` package that suits your distro:  
+  * **apt-based OS** (like Ubuntu): `sudo apt install cloudflare-warp`.
+  * **yum-based OS** (like CentOS or RHEL): `sudo yum install cloudflare-warp`.
+
+Note
+
+If you get an error message when trying to install via the terminal, download the package that suits your distro from the [package repository ↗](https://pkg.cloudflareclient.com/).
+
+## Using WARP
+
+The command line interface is the primary way to use WARP.
+
+### Initial connection
+
+To connect for the very first time:
+
+1. Register the client `warp-cli registration new`.
+2. Connect `warp-cli connect`.
+3. Run `curl https://www.cloudflare.com/cdn-cgi/trace` and verify that `warp=on`.
+
+### Switch modes
+
+You can use `warp-cli mode --help` to get a list of modes to switch between. For example:
+
+* **DNS only mode via DoH:** `warp-cli mode doh`
+* **WARP with DoH:** `warp-cli mode warp+doh`
+
+### Switch tunnel protocol
+
+You can switch the protocol that WARP uses to route traffic from the device to Cloudflare.
+
+* **WireGuard:** `warp-cli tunnel protocol set WireGuard`
+* **MASQUE:** (default) `warp-cli tunnel protocol set MASQUE`
+
+Note
+
+The protocol values are case-sensitive.
+
+For information on WireGuard versus MASQUE, refer to our [blog post ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque).
+
+### Using 1.1.1.1 for Families
+
+The Linux client supports all 1.1.1.1 for Families modes, in either WARP on DNS-only mode:
+
+* **Families mode off:** `warp-cli dns families off`
+* **Malware protection:** `warp-cli dns families malware`
+* **Malware and adult content:** `warp-cli dns families full`
+
+### Enable WARP+ Unlimited
+
+To enable [WARP+ Unlimited](https://developers.cloudflare.com/warp-client/warp-modes/#warp-unlimited) on Linux, you will need an iOS or Android device that has an existing WARP+ Unlimited subscription.
+
+1. On your iOS or Android device, launch the **1.1.1.1 Faster Internet** app.
+2. Go to **Settings** \> **Account** and copy the **Key** value.
+3. On your Linux device, run the following command:  
+```sh  
+warp-cli registration license <KEY>  
+```
+4. Verify the new registration:  
+```sh  
+warp-cli registration show  
+```  
+```sh  
+Account type: Unlimited  
+...  
+```
+
+Your WARP+ Unlimited subscription is now active on this device.
+
+### Additional commands
+
+A complete list of all supported commands can be found by running:
+
+```sh
+warp-cli --help
+```
+
+## Feedback
+
+You can find logs required to debug WARP issues by running `sudo warp-diag`. This will place a `warp-debugging-info.zip` file in the path from which you ran the command.
+
+To report bugs or provide feedback to the team use the command `sudo warp-diag feedback`. This will submit a support ticket.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/get-started/linux/#page","headline":"Linux desktop client · Cloudflare WARP client docs","description":"Install and configure WARP on Linux.","url":"https://developers.cloudflare.com/warp-client/get-started/linux/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux","CLI"]}
+```

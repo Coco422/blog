@@ -1,0 +1,12 @@
+HTTP/2 200 
+server: nginx
+date: Sun, 30 Aug 2026 17:26:56 GMT
+content-type: text/html; charset=UTF-8
+content-length: 7552
+x-powered-by: PHP/8.3.33
+vary: Accept-Encoding,Cookie
+cache-control: max-age=3, must-revalidate
+content-encoding: gzip
+content-security-policy: upgrade-insecure-requests
+x-debug-proxy: proxy_to=216.234.143.78:38085
+

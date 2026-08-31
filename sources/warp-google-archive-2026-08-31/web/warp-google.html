@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPS值得买 · WARP 一键安装 + Google 解锁</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:        #050a0f;
+            --surface:   #0b1520;
+            --card:      #0f1e2e;
+            --border:    rgba(0, 200, 130, 0.15);
+            --accent:    #00c882;
+            --accent2:   #00a3ff;
+            --accent3:   #ff6b35;
+            --text:      #e2f0e8;
+            --muted:     #5a7a68;
+            --mono:      'JetBrains Mono', monospace;
+            --sans:      'Sora', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── 噪声纹理背景 ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(ellipse 80% 50% at 10% 20%, rgba(0,200,130,.07) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 90% 80%, rgba(0,163,255,.06) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        /* ── 顶部导航链接 ── */
+        .topbar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px 0 0;
+        }
+
+        .topbar a {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: .05em;
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid rgba(90,122,104,.3);
+            border-radius: 4px;
+            padding: 5px 12px;
+            transition: color .2s, border-color .2s;
+        }
+        .topbar a:hover { color: var(--accent); border-color: var(--accent); }
+
+        /* ── Hero ── */
+        .hero {
+            text-align: center;
+            padding: 64px 0 48px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 2px;
+            padding: 4px 12px;
+            margin-bottom: 24px;
+            animation: fadeUp .6s ease both;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -.02em;
+            animation: fadeUp .6s .1s ease both;
+        }
+
+        .hero h1 .hl {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            margin-top: 16px;
+            font-size: 1rem;
+            color: var(--muted);
+            font-weight: 300;
+            animation: fadeUp .6s .2s ease both;
+        }
+
+        /* ── 特性标签 ── */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 32px;
+            animation: fadeUp .6s .3s ease both;
+        }
+        .chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--accent);
+            background: rgba(0,200,130,.07);
+            border: 1px solid rgba(0,200,130,.2);
+            border-radius: 100px;
+            padding: 5px 14px;
+        }
+        .chip span { color: var(--muted); }
+
+        /* ── 区块通用 ── */
+        .section {
+            margin-top: 48px;
+            animation: fadeUp .5s ease both;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* ── 命令卡 ── */
+        .cmd-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            transition: border-color .25s;
+        }
+        .cmd-card:hover { border-color: rgba(0,200,130,.35); }
+
+        .cmd-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: rgba(0,200,130,.04);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cmd-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: .08em;
+        }
+
+        .dot-row { display: flex; gap: 5px; }
+        .dot {
+            width: 9px; height: 9px;
+            border-radius: 50%;
+        }
+        .dot-r { background: #ff5f57; }
+        .dot-y { background: #febc2e; }
+        .dot-g { background: #28c840; }
+
+        .cmd-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 18px;
+        }
+
+        .cmd-body code {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--accent);
+            line-height: 1.6;
+            word-break: break-all;
+            flex: 1;
+        }
+
+        .copy-btn {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0,200,130,.1);
+            border: 1px solid rgba(0,200,130,.25);
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 11px;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background .2s, transform .1s;
+            letter-spacing: .05em;
+        }
+        .copy-btn:hover { background: rgba(0,200,130,.18); }
+        .copy-btn:active { transform: scale(.96); }
+        .copy-btn.copied {
+            background: rgba(0,200,130,.25);
+            border-color: var(--accent);
+        }
+
+        /* ── 分栏方法卡 ── */
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 600px) { .method-grid { grid-template-columns: 1fr; } }
+
+        .method-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px;
+            transition: border-color .25s, transform .2s;
+        }
+        .method-card:hover {
+            border-color: rgba(0,200,130,.35);
+            transform: translateY(-2px);
+        }
+
+        .method-icon { font-size: 1.6rem; margin-bottom: 10px; }
+        .method-name {
+            font-weight: 600;
+            font-size: .95rem;
+            margin-bottom: 6px;
+        }
+        .method-desc {
+            font-size: .82rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ── 功能特性网格 ── */
+        .feat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 14px;
+        }
+        .feat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            transition: border-color .25s;
+        }
+        .feat-card:hover { border-color: rgba(0,200,130,.3); }
+        .feat-icon { font-size: 1.5rem; margin-bottom: 10px; }
+        .feat-name {
+            font-size: .88rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .feat-desc {
+            font-size: .78rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ── 参数说明表格 ── */
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .84rem;
+        }
+        .param-table thead tr {
+            background: rgba(0,200,130,.06);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table th {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 10px 14px;
+            text-align: left;
+        }
+        .param-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(0,200,130,.06);
+            vertical-align: top;
+        }
+        .param-table tr:last-child td { border-bottom: none; }
+        .param-table tr:hover td { background: rgba(0,200,130,.025); }
+        .param-table .key {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--accent2);
+        }
+        .param-table .val {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--accent3);
+        }
+        .param-table .note { color: var(--muted); line-height: 1.5; }
+
+        /* ── 步骤列表 ── */
+        .step-list { display: flex; flex-direction: column; gap: 14px; }
+        .step {
+            display: flex;
+            gap: 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+        }
+        .step-num {
+            flex-shrink: 0;
+            width: 28px; height: 28px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 700;
+            color: #050a0f;
+        }
+        .step-content { flex: 1; }
+        .step-title {
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .step-note {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+        .step-note code {
+            font-family: var(--mono);
+            color: var(--accent3);
+            font-size: .85em;
+        }
+
+        /* ── 分隔线 ── */
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(0,200,130,.1);
+            margin: 48px 0 0;
+        }
+
+        /* ── 警告框 ── */
+        .alert {
+            display: flex;
+            gap: 14px;
+            background: rgba(255,107,53,.06);
+            border: 1px solid rgba(255,107,53,.2);
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+        }
+        .alert-icon { font-size: 1.2rem; flex-shrink: 0; padding-top: 2px; }
+        .alert-body { font-size: .85rem; color: rgba(255,107,53,.9); line-height: 1.6; }
+        .alert-body strong { color: #ff8f6a; }
+
+        /* ── 下载按钮 ── */
+        .dl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: .05em;
+            color: var(--bg);
+            background: linear-gradient(135deg, var(--accent), #00a36e);
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 14px;
+            transition: opacity .2s, transform .15s;
+        }
+        .dl-btn:hover { opacity: .9; transform: translateY(-1px); }
+
+        /* ── 管理命令参考 ── */
+        .mgmt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .mgmt-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            transition: border-color .25s;
+        }
+        .mgmt-card:hover { border-color: rgba(0,200,130,.3); }
+        .mgmt-cmd {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+        .mgmt-desc {
+            font-size: .78rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            margin-top: 72px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(0,200,130,.1);
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .footer-link {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: .05em;
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid rgba(90,122,104,.3);
+            border-radius: 4px;
+            padding: 6px 14px;
+            transition: color .2s, border-color .2s;
+        }
+        .footer-link:hover { color: var(--accent); border-color: var(--accent); }
+        .footer-copy {
+            font-size: .78rem;
+            color: var(--muted);
+            letter-spacing: .03em;
+        }
+
+        /* ── 动画 ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .section { animation-fill-mode: both; }
+        .section:nth-child(2)  { animation-delay: .15s; }
+        .section:nth-child(3)  { animation-delay: .22s; }
+        .section:nth-child(4)  { animation-delay: .28s; }
+        .section:nth-child(5)  { animation-delay: .34s; }
+
+        /* ── 终端光标闪烁 ── */
+        .cursor {
+            display: inline-block;
+            width: 8px; height: 14px;
+            background: var(--accent);
+            margin-left: 3px;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* ── 滚动条美化 ── */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <!-- 顶部导航 -->
+    <nav class="topbar">
+        <a href="https://t.me/bwh82" target="_blank">📢 搬瓦工传奇频道</a>
+        <a href="https://t.me/BWH81" target="_blank">💬 搬瓦工交流群</a>
+        <a href="https://bwh91.com" target="_blank">🌐 搬瓦工精品网</a>
+        <a href="https://DMITEA.com" target="_blank">🔥 DMIT精品网</a>
+        <a href="https://vpszdm.com" target="_blank">🛒 VPS值得买</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">vpszdm.com · 开源脚本</div>
+        <h1>WARP <span class="hl">一键安装</span><br>破解 Google 中国定位<span class="cursor"></span></h1>
+        <p class="hero-sub">Cloudflare 官方客户端 · 透明代理 · Google 流量自动走 WARP · 无需手动配置</p>
+        <div class="chips">
+            <div class="chip">✓ <span>Cloudflare 官方 WARP</span></div>
+            <div class="chip">✓ <span>Google 流量透明代理</span></div>
+            <div class="chip">✓ <span>IPv6 防泄漏</span></div>
+            <div class="chip">✓ <span>开机自动生效</span></div>
+            <div class="chip">✓ <span>一条命令管理</span></div>
+            <div class="chip">✓ <span>代码完全开源</span></div>
+        </div>
+    </section>
+
+    <!-- 一键执行 -->
+    <section class="section">
+        <div class="section-label">// 快速开始</div>
+        <h2 class="section-title">⚡ 一键执行（推荐）</h2>
+        <div class="cmd-card">
+            <div class="cmd-header">
+                <div class="dot-row">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="cmd-label">root@vps ~ $</span>
+            </div>
+            <div class="cmd-body">
+                <code id="cmd-quick">bash &lt;(curl -fsSL https://vpszdm.com/warp-google.sh)</code>
+                <button class="copy-btn" onclick="copy(this,'cmd-quick')">⧉ 复制</button>
+            </div>
+        </div>
+
+        <div class="method-grid">
+            <div class="method-card">
+                <div class="method-icon">📥</div>
+                <div class="method-name">下载后执行</div>
+                <div class="method-desc">先下载脚本审查内容，确认无误后再手动运行，适合高安全要求场景。</div>
+            </div>
+            <div class="method-card">
+                <div class="method-icon">🔁</div>
+                <div class="method-name">wget 备用方式</div>
+                <div class="method-desc">如果 curl 不可用，可用 wget 下载，功能完全相同。</div>
+            </div>
+        </div>
+
+        <div class="cmd-card" style="margin-top:16px">
+            <div class="cmd-header">
+                <div class="dot-row">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="cmd-label">curl 方式</span>
+            </div>
+            <div class="cmd-body">
+                <code id="cmd-curl">curl -fsSL https://vpszdm.com/warp-google.sh -o warp-google.sh && chmod +x warp-google.sh && bash warp-google.sh</code>
+                <button class="copy-btn" onclick="copy(this,'cmd-curl')">⧉ 复制</button>
+            </div>
+        </div>
+
+        <div class="cmd-card">
+            <div class="cmd-header">
+                <div class="dot-row">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="cmd-label">wget 方式</span>
+            </div>
+            <div class="cmd-body">
+                <code id="cmd-wget">wget -qO warp-google.sh https://vpszdm.com/warp-google.sh && chmod +x warp-google.sh && bash warp-google.sh</code>
+                <button class="copy-btn" onclick="copy(this,'cmd-wget')">⧉ 复制</button>
+            </div>
+        </div>
+
+        <a href="warp-google.sh" class="dl-btn" download>↓ 直接下载脚本</a>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 功能特性 -->
+    <section class="section">
+        <div class="section-label">// 核心功能</div>
+        <h2 class="section-title">🛠 脚本包含哪些功能</h2>
+        <div class="feat-grid">
+            <div class="feat-card">
+                <div class="feat-icon">🌏</div>
+                <div class="feat-name">Google 中国定位解锁</div>
+                <div class="feat-desc">通过 WARP 将 Google 流量出口定位为中国 IP，解锁相关功能限制。</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🔀</div>
+                <div class="feat-name">透明代理（无感知）</div>
+                <div class="feat-desc">iptables + redsocks 自动将 Google IP 段导入 WARP，无需改代理设置。</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🛡️</div>
+                <div class="feat-name">IPv6 防泄漏</div>
+                <div class="feat-desc">自动添加 Google IPv6 黑洞路由，防止 IPv4/IPv6 定位不一致被检测。</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">⚙️</div>
+                <div class="feat-name">Cloudflare 官方客户端</div>
+                <div class="feat-desc">使用 Cloudflare 官方 warp-cli，稳定可靠，从官方源安装。</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🔄</div>
+                <div class="feat-name">开机自动启动</div>
+                <div class="feat-desc">注册 systemd 服务，重启后 WARP 及透明代理自动恢复，无需手动操作。</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🗑️</div>
+                <div class="feat-name">一键完整卸载</div>
+                <div class="feat-desc">完整清理 WARP 客户端、redsocks、iptables 规则及 systemd 服务。</div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 工作原理 -->
+    <section class="section">
+        <div class="section-label">// 工作原理</div>
+        <h2 class="section-title">📐 原理说明</h2>
+        <div class="cmd-card">
+            <table class="param-table">
+                <thead>
+                    <tr>
+                        <th>组件</th>
+                        <th>作用</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="key">cloudflare-warp</td>
+                        <td class="val">WARP 客户端</td>
+                        <td class="note">在本机 40000 端口建立 SOCKS5 代理，出口 IP 为 Cloudflare WARP 分配的中国 IP</td>
+                    </tr>
+                    <tr>
+                        <td class="key">redsocks</td>
+                        <td class="val">透明代理转发</td>
+                        <td class="note">监听本机 12345 端口，将收到的 TCP 流量转发至 WARP SOCKS5</td>
+                    </tr>
+                    <tr>
+                        <td class="key">iptables NAT</td>
+                        <td class="val">流量劫持规则</td>
+                        <td class="note">将目标地址属于 Google IP 段的 TCP 流量 REDIRECT 到 redsocks 的 12345 端口</td>
+                    </tr>
+                    <tr>
+                        <td class="key">IPv6 黑洞路由</td>
+                        <td class="val">防 IPv6 泄漏</td>
+                        <td class="note">添加 2607:f8b0::/32 黑洞路由，阻止 Google IPv6 直连导致定位偏移</td>
+                    </tr>
+                    <tr>
+                        <td class="key">gai.conf</td>
+                        <td class="val">优先 IPv4</td>
+                        <td class="note">设置系统 DNS 解析优先返回 IPv4 地址，配合 IPv6 黑洞路由生效</td>
+                    </tr>
+                    <tr>
+                        <td class="key">warp-google.service</td>
+                        <td class="val">开机自启</td>
+                        <td class="note">systemd 服务，网络启动后自动拉起 redsocks 和 iptables 规则</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 管理命令 -->
+    <section class="section">
+        <div class="section-label">// 日常管理</div>
+        <h2 class="section-title">🖥 warp 管理命令一览</h2>
+
+        <div class="cmd-card" style="margin-bottom:20px">
+            <div class="cmd-header">
+                <div class="dot-row">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                </div>
+                <span class="cmd-label">安装完成后可用</span>
+            </div>
+            <div class="cmd-body">
+                <code id="cmd-mgmt">warp {status|start|stop|restart|test|ip|uninstall}</code>
+                <button class="copy-btn" onclick="copy(this,'cmd-mgmt')">⧉ 复制</button>
+            </div>
+        </div>
+
+        <div class="mgmt-grid">
+            <div class="mgmt-card">
+                <div class="mgmt-cmd">warp status</div>
+                <div class="mgmt-desc">查看 WARP 客户端连接状态与透明代理运行状态</div>
+            </div>
+            <div class="mgmt-card">
+                <div class="mgmt-cmd">warp start</div>
+                <div class="mgmt-desc">启动 WARP 连接并重新加载 iptables 规则</div>
+            </div>
+            <div class="mgmt-card">
+                <div class="mgmt-cmd">warp stop</div>
+                <div class="mgmt-desc">停止 WARP 连接并清除所有透明代理规则</div>
+            </div>
+            <div class="mgmt-card">
+                <div class="mgmt-cmd">warp restart</div>
+                <div class="mgmt-desc">重启整个 WARP + 透明代理服务</div>
+            </div>
+            <div class="mgmt-card">
+                <div class="mgmt-cmd">warp test</div>
+                <div class="mgmt-desc">测试 Google 连通性，返回 HTTP 状态码</div>
+            </div>
+            <div class="mgmt-card">
+                <div class="mgmt-cmd">warp ip</div>
+                <div class="mgmt-desc">对比显示直连 IP 与 WARP 出口 IP 的归属地</div>
+            </div>
+            <div class="mgmt-card">
+                <div class="mgmt-cmd">warp uninstall</div>
+                <div class="mgmt-desc">完整卸载 WARP 客户端、redsocks、规则及服务</div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 验证生效 -->
+    <section class="section">
+        <div class="section-label">// 验证生效</div>
+        <h2 class="section-title">🔎 如何确认 WARP 已正常工作</h2>
+
+        <div class="step-list">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <div class="step-title">查看 WARP 客户端连接状态</div>
+                    <div class="cmd-card">
+                        <div class="cmd-body">
+                            <code id="cmd-check1">warp-cli status</code>
+                            <button class="copy-btn" onclick="copy(this,'cmd-check1')">⧉ 复制</button>
+                        </div>
+                    </div>
+                    <div class="step-note">输出应包含 <code>Status update: Connected</code></div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <div class="step-title">确认 WARP 出口 IP 归属为非中国</div>
+                    <div class="cmd-card">
+                        <div class="cmd-body">
+                            <code id="cmd-check2">curl -x socks5://127.0.0.1:40000 -s ip.sb && curl -s http://ip-api.com/json/$(curl -x socks5://127.0.0.1:40000 -s ip.sb)?lang=zh-CN | grep country</code>
+                            <button class="copy-btn" onclick="copy(this,'cmd-check2')">⧉ 复制</button>
+                        </div>
+                    </div>
+                    <div class="step-note">WARP 分配的 IP 归属地应显示为 <code>非China</code></div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <div class="step-title">测试 Google 透明代理连通性</div>
+                    <div class="cmd-card">
+                        <div class="cmd-body">
+                            <code id="cmd-check3">curl -s -o /dev/null -w "%{http_code}" https://www.google.com</code>
+                            <button class="copy-btn" onclick="copy(this,'cmd-check3')">⧉ 复制</button>
+                        </div>
+                    </div>
+                    <div class="step-note">返回 <code>200</code> 表示透明代理已生效，Google 流量正常走 WARP</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <div class="step-title">确认 iptables 规则已加载</div>
+                    <div class="cmd-card">
+                        <div class="cmd-body">
+                            <code id="cmd-check4">iptables -t nat -L WARP_GOOGLE -n | head -10</code>
+                            <button class="copy-btn" onclick="copy(this,'cmd-check4')">⧉ 复制</button>
+                        </div>
+                    </div>
+                    <div class="step-note">有多条 <code>REDIRECT</code> 规则输出，说明 Google IP 劫持规则已就绪</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 撤销 -->
+    <section class="section">
+        <div class="section-label">// 撤销操作</div>
+        <h2 class="section-title">🔄 卸载 / 完整清理</h2>
+
+        <div class="alert">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-body">
+                <strong>注意：</strong>卸载时脚本会自动清除 iptables 规则、redsocks 进程、systemd 服务及
+                <code style="color:#ff8f6a">cloudflare-warp</code> 软件包。如需保留 WARP 客户端本身，
+                请手动执行下方步骤而非一键卸载。
+            </div>
+        </div>
+
+        <div class="step-list">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <div class="step-title">一键完整卸载（推荐）</div>
+                    <div class="cmd-card">
+                        <div class="cmd-body">
+                            <code id="cmd-rm1">warp uninstall</code>
+                            <button class="copy-btn" onclick="copy(this,'cmd-rm1')">⧉ 复制</button>
+                        </div>
+                    </div>
+                    <div class="step-note">自动清理所有组件，包括软件包、规则、服务文件。</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <div class="step-title">仅停止透明代理（保留 WARP）</div>
+                    <div class="cmd-card">
+                        <div class="cmd-body">
+                            <code id="cmd-rm2">warp stop</code>
+                            <button class="copy-btn" onclick="copy(this,'cmd-rm2')">⧉ 复制</button>
+                        </div>
+                    </div>
+                    <div class="step-note">清除 iptables 规则并断开 WARP，不删除软件包。</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <div class="step-title">手动清除 iptables 规则</div>
+                    <div class="cmd-card">
+                        <div class="cmd-body">
+                            <code id="cmd-rm3">iptables -t nat -D OUTPUT -j WARP_GOOGLE; iptables -t nat -F WARP_GOOGLE; iptables -t nat -X WARP_GOOGLE</code>
+                            <button class="copy-btn" onclick="copy(this,'cmd-rm3')">⧉ 复制</button>
+                        </div>
+                    </div>
+                    <div class="step-note">如需单独删除 iptables 规则而不影响其他组件，可手动执行此命令。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://t.me/bwh82" class="footer-link" target="_blank">📢 搬瓦工传奇频道</a>
+            <a href="https://t.me/BWH81" class="footer-link" target="_blank">💬 搬瓦工交流群</a>
+            <a href="https://bwh91.com" class="footer-link" target="_blank">🌐 搬瓦工精品网</a>
+            <a href="https://DMITEA.com" class="footer-link" target="_blank">🔥 DMIT精品网</a>
+            <a href="https://vpszdm.com" class="footer-link" target="_blank">🛒 VPS值得买</a>
+        </div>
+        <p class="footer-copy">VPS值得买 © 2026 · 代码完全开源，无任何后门 ❤️</p>
+    </footer>
+
+</div>
+
+<script>
+    function copy(btn, id) {
+        const text = document.getElementById(id).textContent
+            .replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        navigator.clipboard.writeText(text).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = '✓ 已复制';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = orig;
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+</script>
+</body>
+</html>

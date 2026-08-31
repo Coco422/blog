@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/html" class="personal">
+<head>
+    <meta name="theme-color" content="#ffffff"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	        <title>🚀一键开启WARP，傻瓜式解决Google全家桶IP定位中国问题(含Gemini)－技术性文章－VPS值得买</title>
+        <meta name="keywords" content="值得买vps"/>
+        <meta name="description" content="新手购买VPS后，最头疼的就是IP送中（Google全家桶IP定位中国） 送中有好处也有弊端，好处就是看youtube完全没有广告！ 弊端就是无法使用Gemini（其他ai都可以用） Racknerd CCS这类厂家的VPS是没有锁区，如果使用它的中国用户数量达到一定数量级，如果用户打开了定位，那么google会错误的将这些IP及它的IP段都定位在中国，导致google全家桶的服务都会被阉割。 而 "/>
+			<meta name='robots' content='max-image-preview:large' />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='swiper-styles-css' href='https://vpszdm.com/wp-content/themes/theme-document-1.2.108/assets/theme/swiper-bundle.css?ver=6.9.4' type='text/css' media='all' />
+<link rel='stylesheet' id='main-styles-css' href='https://vpszdm.com/wp-content/themes/theme-document-1.2.108/style.css?ver=1753432882' type='text/css' media='all' />
+<style id='main-styles-inline-css' type='text/css'>
+.personal{--theme-color:#00af57;--theme-header-bg-color:#fff;--theme-header-font-color:#262626;--theme-sub-menu-bg-color:#fff;--theme-sub-menu-font-color:rgba(0,0,0,0.65);--theme-header-border-color:#dbdbdb;--theme-header-shadow-color:hsl(230deg 68% 14% / 1%);--theme-footer-bg-color: transparent;--theme-footer-font-color: #00af57;--theme-bg-color: #f2f3f5;}
+/*# sourceURL=main-styles-inline-css */
+</style>
+<link rel='stylesheet' id='prism-css' href='https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/prism/prism.css?ver=1753432882' type='text/css' media='all' />
+<link rel='stylesheet' id='viewercss-css' href='https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/viewer/viewer.min.css?ver=1753432882' type='text/css' media='all' />
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/assets/theme/swiper-bundle.js?ver=6.9.4" id="swiper-js"></script>
+<script type="text/javascript" src="https://vpszdm.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://vpszdm.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="jquery-js-after">
+/* <![CDATA[ */
+window.$ = jQuery;
+//# sourceURL=jquery-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/assets/theme/enquire.js?ver=6.9.4" id="enquire-js"></script>
+<script type="text/javascript" id="main-sub-js-before">
+/* <![CDATA[ */
+window._ts=1788043297;window.Current="2211";
+window.ROOT="https://vpszdm.com/wp-content/themes/theme-document-1.2.108";window.HOME="https://vpszdm.com";
+//# sourceURL=main-sub-js-before
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/inline/main.js?ver=1753432882" id="main-sub-js"></script>
+<script type="text/javascript" id="main-js-before">
+/* <![CDATA[ */
+const DYNAMIC=false;const IN_HOME=false;
+//# sourceURL=main-js-before
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/main.js?ver=1753432882" id="main-js"></script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/inline/monitor.js?ver=1753432882" id="main-monitor-js"></script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/inline/swiper.js?ver=1753432882" id="page-swiper-js"></script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/viewer/viewer.min.js?ver=1753432882" id="viewerjs-js"></script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/prism/prism.js?ver=1753432882" id="prism-js"></script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/inline/emoji.js?ver=1753432882" id="main-emoji-js"></script>
+<script type="text/javascript" src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/common/inline/view.js?ver=1753432882" id="single-view-js"></script>
+<link rel="icon" href="https://vpszdm.com/wp-content/uploads/2026/05/vpszdm-blue-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://vpszdm.com/wp-content/uploads/2026/05/vpszdm-blue-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://vpszdm.com/wp-content/uploads/2026/05/vpszdm-blue-300x300.png" />
+<meta name="msapplication-TileImage" content="https://vpszdm.com/wp-content/uploads/2026/05/vpszdm-blue-300x300.png" />
+		<style type="text/css" id="wp-custom-css">
+			/* 内联标签 - 紧贴文字显示 */
+.stock-tag-inline {
+    display: inline-block;
+    background: linear-gradient(45deg, #fa709a, #fee140);
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: wiggle 2s ease-in-out infinite;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+/* 内联弹跳标签 - 紧贴文字显示 */
+.stock-tag-bounce-inline {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff9a9e, #fecfef);
+    color: #333;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: bounce 1s ease-in-out infinite;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
+/* 内联发光标签 - 紧贴文字显示 */
+.stock-tag-glow-inline {
+    display: inline-block;
+    background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: glow 2s ease-in-out infinite;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(0, 210, 255, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 210, 255, 0.8), 0 0 30px rgba(0, 210, 255, 0.6);
+        transform: scale(1.05);
+    }
+}
+.stock-tag-blink-top-custom {
+    position: relative;
+    display: inline-block;
+}
+
+.stock-tag-blink-top-custom::before {
+    content: attr(data-text);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: -8px; /* 非常贴近文字 */
+    animation: blink-soft 2s ease-in-out infinite;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.route-tag-normal,
+.route-tag-cn2gia,
+.route-tag-9929,
+.route-tag-cmi,
+.route-tag-cmin2 {
+    display: inline-block;
+    font-size: 9px;
+    padding: 1px 4px;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* 普通线路 - 灰色 */
+.route-tag-normal {
+    background: linear-gradient(45deg, #6c757d, #495057);
+    color: white;
+}
+
+/* CN2GIA - 金色（高端线路） */
+.route-tag-cn2gia {
+    background: linear-gradient(45deg, #ffd700, #ffb347);
+    color: #333;
+    animation: subtle-glow 3s ease-in-out infinite;
+}
+
+/* 9929 - 紫色（优质线路） */
+.route-tag-9929 {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    color: white;
+}
+
+/* CMI - 蓝色（移动线路） */
+.route-tag-cmi {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+}
+
+/* CMIN2 - 深蓝色（移动优化） */
+.route-tag-cmin2 {
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    color: white;
+    border: 1px solid #3498db;
+}
+
+/* CN2GIA 的微光效果 */
+@keyframes subtle-glow {
+    0%, 100% {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    50% {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 0 6px rgba(255, 215, 0, 0.4);
+    }
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .route-tag-normal {
+        background: linear-gradient(45deg, #495057, #343a40);
+    }
+    
+    .route-tag-cn2gia {
+        background: linear-gradient(45deg, #f39c12, #e67e22);
+        color: #2c3e50;
+    }
+    
+    .route-tag-9929 {
+        background: linear-gradient(45deg, #a569bd, #9b59b6);
+    }
+    
+    .route-tag-cmi {
+        background: linear-gradient(45deg, #5dade2, #3498db);
+    }
+    
+    .route-tag-cmin2 {
+        background: linear-gradient(45deg, #34495e, #2c3e50);
+        border-color: #5dade2;
+    }
+}
+
+/* 多标签错开位置辅助类 */
+.route-tag-second {
+    margin-left: 5px;
+}
+
+.route-tag-newline {
+    display: block;
+    margin-top: 2px;
+}
+/* 基础标签样式 */
+.stock-tag-base {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-left: 4px;
+    vertical-align: middle;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 绿色标签 */
+.stock-tag-green {
+    background: #28a745;
+    color: white;
+}
+
+/* 红色标签 */
+.stock-tag-red {
+    background: #dc3545;
+    color: white;
+}
+
+/* 灰色标签 */
+.stock-tag-gray {
+    background: #6c757d;
+    color: white;
+}
+
+/* 紫色标签 */
+.stock-tag-purple {
+    background: #6f42c1;
+    color: white;
+}
+
+/* 橙色标签 */
+.stock-tag-orange {
+    background: #fd7e14;
+    color: white;
+}
+
+/* 蓝色标签 */
+.stock-tag-blue {
+    background: #007bff;
+    color: white;
+}
+
+/* 黄色标签 */
+.stock-tag-yellow {
+    background: #ffc107;
+    color: #212529;
+}
+
+/* 青色标签 */
+.stock-tag-cyan {
+    background: #17a2b8;
+    color: white;
+}
+
+/* 粉色标签 */
+.stock-tag-pink {
+    background: #e83e8c;
+    color: white;
+}		</style>
+		</head>
+<body>
+<!--顶部导航栏-->
+<header class="main-header">
+    <!--  顶部左侧标题 和 logo -->
+    <div class="left">
+        <a href="https://vpszdm.com" class="logo" title="返回首页">
+
+			<img src="https://vpszdm.com/wp-content/uploads/2026/03/vpszdm.png" title="logo"/><h2 class="title tooltip"
+                data-hint="VPS值得买">VPS值得买</h2>
+
+        </a>
+    </div>
+    <!--移动端展开导航栏-->
+    <div class="daohang iconfont icon-daohangmoren"></div>
+    <!--  右边导航栏  -->
+    <div class="right">
+        <!--菜单栏-->
+		<!--  搜索图标  -->
+<div class="menu-left">
+    <div class="search-div">
+        <!--  搜索图标  -->
+        <div class="search-icon iconfont icon-sousuo"></div>
+        <!--  搜索框  -->
+        <input id="search" class="search" type="text" placeholder="输入关键词回车搜索"/>
+    </div>
+</div>
+		
+<ul id="menu-menu-1" class="menu"><li class="menu-item read-mode"><i class="iconfont icon-baitian-qing"></i></li><li id="menu-item-2269" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2269"><a href="https://vpszdm.com/vmrack.html">🎯VMRack实时库存</a></li>
+<li id="menu-item-1963" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1963"><a href="https://dmitea.com">🔥DMIT精品网</a></li>
+<li id="menu-item-2053" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2053"><a href="https://bwh91.com">⚡搬瓦工精品网</a></li>
+<li id="menu-item-2203" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2203"><a href="https://t.me/bwh81">搬瓦工/DMIT/VMRack/RN交流群</a></li>
+</ul>
+    </div>
+</header>
+    <main class="main-container">
+        <!--  侧边目录  -->
+		        <div id="space">
+            <aside class="main-left" id="navigator">
+                <div class="main-top">
+                    <ul>
+                        <li class="active">🗂️ 文章目录</li>
+                        <!-- <li>修改记录</li>-->
+                    </ul>
+                    <i class="iconfont icon-daohang-caidan"></i>
+                </div>
+                <div class="scroll">
+                    <div class="line"></div>
+                    <!--文章导航-->
+                    <ul>
+						<li data-pid="h31" data-parent="">
+							<div class="secondary-index">
+								<div><a href="#h31" title="项目地址：<a href="https://vpszdm.com/warp">https://vpszdm.com/warp</a>">项目地址：<a href="https://vpszdm.com/warp">https://vpszdm.com/warp</a></a></div>
+							</div>
+						</li><li data-pid="h32" data-parent="">
+							<div class="secondary-index">
+								<div><a href="#h32" title="⚡️只需要一键命令：">⚡️只需要一键命令：</a></div>
+							</div>
+						</li><li data-pid="h33" data-parent="">
+							<div class="secondary-index">
+								<div><a href="#h33" title="安装的时候选择 1. 安装WARP+解锁Google">安装的时候选择 1. 安装WARP+解锁Google</a></div>
+							</div>
+						</li>                    </ul>
+                </div>
+
+                <div class="icp-beian">
+                    <div>
+                        <span class="number">0</span>
+                        <img src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/assets/images/zan.svg" title="点赞"/>
+                    </div>
+                    <div>
+                        <span class="number">0</span>
+                        <img src="https://vpszdm.com/wp-content/themes/theme-document-1.2.108/assets/images/cai.svg" title="踩"/>
+                    </div>
+                </div>
+            </aside>
+        </div>
+		        <!--  文章  -->
+        <div class="main-main">
+            <article class="main-content">
+                <!-- 面包屑导航 -->
+				    <div class="breadcrumb">
+        现在位置: <a href="/" title="首页">首页</a>
+		            /
+            <a href="https://vpszdm.com/category/%e6%8a%80%e6%9c%af%e6%80%a7%e6%96%87%e7%ab%a0/" title=" 技术性文章"> 技术性文章</a>
+		            /
+            <a href="https://vpszdm.com/tag/google/" title=" google"> google</a>
+		        / 正文
+    </div>
+	                <!-- 文章顶部 -->
+				
+    <!--  标题  -->
+    <h1>
+		🚀一键开启WARP，傻瓜式解决Google全家桶IP定位中国问题(含Gemini)    </h1>
+
+    <!--  文章信息  -->
+    <!--  仅在文章页面展示 -->
+    <div class="article-info">
+        <ul>
+            <li id="author"><i class="iconfont icon-chuangzuozhejieshao"></i>z</li>
+            <li id="category"><i class="iconfont icon-fenlei"></i><a href="https://vpszdm.com/category/%e6%8a%80%e6%9c%af%e6%80%a7%e6%96%87%e7%ab%a0/"
+                                                                     title=" 技术性文章">技术性文章</a>
+            </li>
+            <li>
+                <i class="iconfont icon-shijian"></i>2026-04-12            </li>
+            <li><i class="iconfont icon-icon-test"></i>1235热度</li>
+            <li style="border:none"><i class="iconfont icon-pinglun"></i>0评论</li>
+        </ul>
+    </div>
+	                <!--  文章内容  -->
+                <div class="main-article">
+					<p><img decoding="async" class="alignleft size-medium wp-image-2230" src="https://vpszdm.com/wp-content/uploads/2026/04/rn-warp-300x71.png" alt="" width="300" height="71" srcset="https://vpszdm.com/wp-content/uploads/2026/04/rn-warp-300x71.png 300w, https://vpszdm.com/wp-content/uploads/2026/04/rn-warp-1024x241.png 1024w, https://vpszdm.com/wp-content/uploads/2026/04/rn-warp-768x181.png 768w, https://vpszdm.com/wp-content/uploads/2026/04/rn-warp.png 1090w" sizes="(max-width: 300px) 100vw, 300px" /><br />
+新手购买VPS后，最头疼的就是IP送中（Google全家桶IP定位中国）</p>
+<p>送中有好处也有弊端，好处就是看youtube完全没有广告！<br />
+弊端就是无法使用Gemini（其他ai都可以用）</p>
+<p>Racknerd CCS这类厂家的VPS是没有锁区，如果使用它的中国用户数量达到一定数量级，如果用户打开了定位，那么google会错误的将这些IP及它的IP段都定位在中国，导致google全家桶的服务都会被阉割。<br />
+而搬瓦工，dmit或者zgo没有这个困扰，他们是锁区的，asn固定。</p>
+<p>今天手把手教小白用户，在vps送中的情况下，如何使用未阉割的google服务，包括Gemini<br />
+<img decoding="async" src="https://boat.vpszdm.com/warp.png" alt="image" /></p>
+<h2><h3 id="h31">项目地址：<a href="https://vpszdm.com/warp">https://vpszdm.com/warp</a></h3></h2>
+<h2><h3 id="h32">⚡️只需要一键命令：</h3></h2>
+<pre class="line-numbers language-markdown"><code class="language-markdown">bash &lt;(curl -fsSL https://vpszdm.com/warp-google.sh)
+</code></pre>
+<p>&nbsp;</p>
+<p>脚本会自动判断系统内核，自动安装warp达到透明代理的功效，当然，也可以完全100%卸载，绿色开源，按以下步骤喂饭教程：</p>
+<h2><h3 id="h33">安装的时候选择 1. 安装WARP+解锁Google</h3></h2>
+<p><img decoding="async" src="https://boat.vpszdm.com/warp1.png" alt="image" /></p>
+<h2>同意cloudflare的条款，选择 y</h2>
+<p><img decoding="async" src="https://boat.vpszdm.com/warp2.png" alt="image" /></p>
+<h2>服务及透明代理安装成功，可以看到warp安装成功，归属于亚特兰大</h2>
+<p><img decoding="async" src="https://boat.vpszdm.com/warp3.png" alt="image" /></p>
+<h2>回到主界面，可以看到安装成功了</h2>
+<p><img decoding="async" src="https://boat.vpszdm.com/warp4.png" alt="image" /></p>
+<p>后续如果需要卸载可以选择2，即可100%完全卸载</p>
+                </div>
+                <!-- 文章底部 -->
+				
+<footer>
+    <div class="article-footer">
+
+
+        <!--版权-->
+		            <div class="copyright">
+				vps值得买            </div>
+		        <!--赞赏-->
+		        <!--标签-->
+        <div class="label">
+            <i class="iconfont icon-biaoqian"></i>
+            <ul>
+				<li><a title='google' href='https://vpszdm.com/tag/google/'>google</a></li><li><a title='warp' href='https://vpszdm.com/tag/warp/'>warp</a></li>            </ul>
+        </div>
+    </div>
+
+	
+
+    <div class="footer-nav">
+        <div class="to">
+            <span class="text">上一篇</span>
+			                <a href="https://vpszdm.com/report/"
+                   title="✨百闻不如一测，Racknerd服务器自助测试报告">✨百闻不如一测，Racknerd服务器自助测试报告</a>
+			        </div>
+        <div class="to right">
+            <span class="text">下一篇</span>
+			                <a href="https://vpszdm.com/dmit-lax_pro_tiny/"
+                   title="DMIT LAX AN5 PRO TINY测评">DMIT LAX AN5 PRO TINY测评</a>
+			        </div>
+    </div>
+</footer>
+            </article>
+
+			
+<div class="div-info recent">
+    <div class="header">
+        <ul>
+            <li class="active"><div class="mark"></div>最新文章</li>
+            <!-- <li>修改记录</li>-->
+        </ul>
+    </div>
+    <ul class="ul">
+
+		<li>
+                <a href="https://vpszdm.com/dmit-one_article/" title="✨DMIT 一文（图）读懂大妈 所有机型（正价+特价），所有线路（Pro EB T1)，所有运营区域（洛杉矶 日本 中国香港）" target="_blank">
+                     <div class="thumnbnail">
+                        <img loading="lazy" src="https://boat.vpszdm.com/DMIT-LAX-BAREBONE.png" alt="✨DMIT 一文（图）读懂大妈 所有机型（正价+特价），所有线路（Pro EB T1)，所有运营区域（洛杉矶 日本 中国香港）" />
+                    </div>
+                    <div class="article">
+                        <div class="caption">
+                        ✨DMIT 一文（图）读懂大妈 所有机型（正价+特价），所有线路（Pro EB T1)，所有运营区域（洛杉矶 日本 中国香港）
+                        </div> 
+                        <div class="datetime">
+                        2026-04-20
+                        </div> 
+                    </div>
+                </a>
+            </li><li>
+                <a href="https://vpszdm.com/racknerd_all/" title="🔥Racknerd使用大全集合（全新排版，方便阅读）| ①开启BBR+TCP加速| ②一键Warp解决谷歌送中困扰| ③5大机房测评| ④动态测速GIF| ⑤在售套餐购买指引 （库存看板）【下单后私聊机器人订单号，可代为申请流量翻倍（长期有效）】" target="_blank">
+                     <div class="thumnbnail">
+                        <img loading="lazy" src="https://boat.vpszdm.com/racknerd.png" alt="🔥Racknerd使用大全集合（全新排版，方便阅读）| ①开启BBR+TCP加速| ②一键Warp解决谷歌送中困扰| ③5大机房测评| ④动态测速GIF| ⑤在售套餐购买指引 （库存看板）【下单后私聊机器人订单号，可代为申请流量翻倍（长期有效）】" />
+                    </div>
+                    <div class="article">
+                        <div class="caption">
+                        🔥Racknerd使用大全集合（全新排版，方便阅读）| ①开启BBR+TCP加速| ②一键Warp解决谷歌送中困扰| ③5大机房测评| ④动态测速GIF| ⑤在售套餐购买指引 （库存看板）【下单后私聊机器人订单号，可代为申请流量翻倍（长期有效）】
+                        </div> 
+                        <div class="datetime">
+                        2026-04-18
+                        </div> 
+                    </div>
+                </a>
+            </li><li>
+                <a href="https://vpszdm.com/rndc3/" title="🔥Racknerd洛杉矶DC3机房测评 轻松跑小龙虾，部署CPA，反代AI 可代申请流量翻倍，长期有效" target="_blank">
+                     <div class="thumnbnail">
+                        <img loading="lazy" src="https://vpszdm.com/wp-content/uploads/2026/03/racknerd-300x110.png" alt="🔥Racknerd洛杉矶DC3机房测评 轻松跑小龙虾，部署CPA，反代AI 可代申请流量翻倍，长期有效" />
+                    </div>
+                    <div class="article">
+                        <div class="caption">
+                        🔥Racknerd洛杉矶DC3机房测评 轻松跑小龙虾，部署CPA，反代AI 可代申请流量翻倍，长期有效
+                        </div> 
+                        <div class="datetime">
+                        2026-03-31
+                        </div> 
+                    </div>
+                </a>
+            </li><li>
+                <a href="https://vpszdm.com/zgo-gem/" title="🛍️ZgoCloud上新德国三网9929机器，上游Netlab，，非常适合北方联通用户" target="_blank">
+                     <div class="thumnbnail">
+                        <img loading="lazy" src="https://boat.vpszdm.com/20260728-zgo-ge-hardware.png" alt="🛍️ZgoCloud上新德国三网9929机器，上游Netlab，，非常适合北方联通用户" />
+                    </div>
+                    <div class="article">
+                        <div class="caption">
+                        🛍️ZgoCloud上新德国三网9929机器，上游Netlab，，非常适合北方联通用户
+                        </div> 
+                        <div class="datetime">
+                        2026-07-28
+                        </div> 
+                    </div>
+                </a>
+            </li><li>
+                <a href="https://vpszdm.com/vmiss/" title="🔥Vmiss US.LA.TRI 全线补货了（测评的是10CAD/月 的机器）最便宜的三网各自优化 CN2GIA 9929 CMIN2" target="_blank">
+                     <div class="thumnbnail">
+                        <img loading="lazy" src="https://boat.vpszdm.com/20260723-vmiss-product.png" alt="🔥Vmiss US.LA.TRI 全线补货了（测评的是10CAD/月 的机器）最便宜的三网各自优化 CN2GIA 9929 CMIN2" />
+                    </div>
+                    <div class="article">
+                        <div class="caption">
+                        🔥Vmiss US.LA.TRI 全线补货了（测评的是10CAD/月 的机器）最便宜的三网各自优化 CN2GIA 9929 CMIN2
+                        </div> 
+                        <div class="datetime">
+                        2026-07-23
+                        </div> 
+                    </div>
+                </a>
+            </li><li>
+                <a href="https://vpszdm.com/dedirock_la/" title="🎉最便宜的机器，DediRock洛杉矶补货，无优化线路，感觉上像是ccs的子品牌，上游是colocrossing" target="_blank">
+                     <div class="thumnbnail">
+                        <img loading="lazy" src="https://boat.vpszdm.com/20260628-dedirock-info.png" alt="🎉最便宜的机器，DediRock洛杉矶补货，无优化线路，感觉上像是ccs的子品牌，上游是colocrossing" />
+                    </div>
+                    <div class="article">
+                        <div class="caption">
+                        🎉最便宜的机器，DediRock洛杉矶补货，无优化线路，感觉上像是ccs的子品牌，上游是colocrossing
+                        </div> 
+                        <div class="datetime">
+                        2026-06-28
+                        </div> 
+                    </div>
+                </a>
+            </li><li>
+                <a href="https://vpszdm.com/gomami-lax/" title="✨都在说Gomami好，贵就真的是好，三网各自优化速度快 | 测评狗妈洛杉矶 🗻LAX.Pulse.Nano $29/月" target="_blank">
+                     <div class="thumnbnail">
+                        <img loading="lazy" src="https://boat.vpszdm.com/20260619-gomami-lax-hardware.png" alt="✨都在说Gomami好，贵就真的是好，三网各自优化速度快 | 测评狗妈洛杉矶 🗻LAX.Pulse.Nano $29/月" />
+                    </div>
+                    <div class="article">
+                        <div class="caption">
+                        ✨都在说Gomami好，贵就真的是好，三网各自优化速度快 | 测评狗妈洛杉矶 🗻LAX.Pulse.Nano $29/月
+                        </div> 
+                        <div class="datetime">
+                        2026-06-20
+                        </div> 
+                    </div>
+                </a>
+            </li><li>
+                <a href="https://vpszdm.com/gomami-sg/" title="✨都在说Gomami好，贵就真的是好，三网各自优化速度快 | 测评狗妈新加坡 🗻SIN.Pulse.Nano $29/月" target="_blank">
+                     <div class="thumnbnail">
+                        <img loading="lazy" src="https://boat.vpszdm.com/20260619-gomami-sg-hardware.png" alt="✨都在说Gomami好，贵就真的是好，三网各自优化速度快 | 测评狗妈新加坡 🗻SIN.Pulse.Nano $29/月" />
+                    </div>
+                    <div class="article">
+                        <div class="caption">
+                        ✨都在说Gomami好，贵就真的是好，三网各自优化速度快 | 测评狗妈新加坡 🗻SIN.Pulse.Nano $29/月
+                        </div> 
+                        <div class="datetime">
+                        2026-06-19
+                        </div> 
+                    </div>
+                </a>
+            </li>    </ul>
+
+</div>
+            <!-- 文章评论 -->
+			        </div>
+		<!--  右边相关信息  -->
+    </main>
+    <!--角标-->
+	
+<!--  底部区域  -->
+<div class="fixed">
+    <!--  回到顶部  -->
+    <button class="toTop" data-text="回到顶部"><i class="iconfont icon-you-copy-copy-copy"></i></button>
+
+	    <!--  阅读进度  -->
+    <button id="progress" data-text="阅读进度">0%</button>
+</div>
+
+	<div class="main-bottom">
+    <span>友情链接: <a href="https://bwh91.com" target="_blank" rel="nofollow" title="bwh91.com">搬瓦工精品网 </a><a href="https://dmitea.com" target="_blank" rel="nofollow" title="dmitea.com">| DMIT精品网 </a> <a href="https://990599.xyz" target="_blank" rel="nofollow" title="VPS精选">| 990599.xyz</a>  Host by <a href="https://bwh81.net" target="_blank" rel="noopener noreferrer">
+    <img src="https://boat.vpszdm.com/bandwagonhost_logo.png" alt="BandwagonHost" width="150" height="auto"> ICP备案号 </span>
+    <a href="https://beian.miit.gov.cn/" title="工信部ICP备案" target="_blank" rel="nofollow" style="color:"> ICP备10086号</a></div>
+<script type="application/ld+json">
+    {
+        "@context": {
+            "@context": {
+                "images": {
+                  "@id": "http://schema.org/image",
+                  "@type": "@id",
+                  "@container": "@list"
+                },
+                "title": "http://schema.org/headline",
+                "description": "http://schema.org/description",
+                "pubDate": "http://schema.org/DateTime"
+            }
+        },
+        "@id": "https://vpszdm.com/warp1/",
+        "title": "🚀一键开启WARP，傻瓜式解决Google全家桶IP定位中国问题(含Gemini) ",
+        "images": ["https://vpszdm.com/wp-content/uploads/2026/04/rn-warp-300x71.png"],
+        "description": "新手购买VPS后，最头疼的就是IP送中（Google全家桶IP定位中国） 送中有好处也有弊端，好处就是看youtube完全没有广告！ 弊端就是无法使用Gemini（其他ai都可以用） Racknerd CCS这类厂家的VPS是没有锁区，如果使用它的中国用户数量达到一定数量级，如果用户打开了定位，那么google会错误的将这些IP及它的IP段都定位在中国，导致google全家桶的服务都会被阉割。 而  ",
+        "pubDate": "2026-04-12 09:05:26 ",
+        "upDate": "2026-04-18 21:05:48 "
+    }
+</script>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/theme-document-1.2.108/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+</body>
+</html>
+
+
+
+<!-- Dynamic page generated in 0.063 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2026-08-30 06:41:37 -->
+
+<!-- super cache -->
