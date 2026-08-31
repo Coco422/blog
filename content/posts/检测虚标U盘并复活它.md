@@ -6,10 +6,13 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-08-30T14:29:13+08:00
+lastmod: 2026-08-31T15:27:17+08:00
 showLastMod: true
-tags: []
-categories: []
+tags:
+  - U盘
+  - diskgenius
+categories:
+  - 杂技浅尝
 ---
 > [!info] 
 >  上个月为了身体健康，我去参加了免费的国民体质检测。体测结束后，主办方让我们在水杯、沐浴露、雨伞和 U 盘里选一份礼品。我一看 U 盘标着 32G，作为程序员，几乎没有犹豫就选了它。
