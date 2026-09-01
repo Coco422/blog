@@ -15,6 +15,13 @@ This is a Hugo static blog using the PaperMod theme as a git submodule.
 - Keep secrets out of files. API keys used for asset generation or uploads must stay in environment variables.
 - Prefer existing SVGs in `assets/bak/icons/` for navigation/UI icons before generating bitmap assets.
 
+## Sources and Downloads
+
+- Keep research inputs, fetched pages, audit notes, and source archives under root-level `sources/`. This directory is working material and must not be linked as a public site path.
+- Put public downloadable scripts, configurations, archives, and similar attachments only under `static/downloads/<artifact>/`; link them as `/downloads/<artifact>/<filename>`.
+- Do not create `static/files/`, `static/sources/`, `/files/`, or `/sources/` for new public attachments.
+- A mirrored third-party download must include provenance beside it, such as `SOURCE.txt` with the original URL, version or retrieval date, and integrity hash when available.
+
 ## Navigation
 
 - Main navigation labels and icon names live in `hugo.yaml` under `menu.main[].params`.
