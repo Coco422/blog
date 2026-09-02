@@ -19,3 +19,8 @@ friends:
   - name: "小公主的博客"
     url: "https://princessbaby.cc"
     description: "小公主的博客"
+
+  - name: "赵培州"
+    url: "https://heaven-1314.github.io"
+    icon: "https://github.com/heaven-1314.png"
+    description: "AI 应用研发 · Agent 工作流 · 全栈实践"
