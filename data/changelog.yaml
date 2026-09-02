@@ -1,4 +1,10 @@
 entries:
+  - date: "2026-09-02"
+    type: "功能"
+    title: "站点更新日志有了自己的页面"
+    description: "把原本挤在 About 里的更新记录搬到独立时间线，顶部导航也多了一个“更新”入口。"
+    commit: "02a1aba"
+
   - date: "2026-08-31"
     type: "功能"
     title: "目录会跟着文章走了"
