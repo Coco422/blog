@@ -1,0 +1,165 @@
+.changelog-page {
+    max-width: 760px;
+    margin-inline: auto;
+}
+
+.changelog-page .page-header {
+    margin-bottom: 0;
+}
+
+.changelog-intro {
+    max-width: 42rem;
+    margin-top: 18px;
+    color: var(--secondary);
+}
+
+.changelog-intro p {
+    margin-bottom: 0;
+}
+
+.changelog-timeline {
+    margin-top: 48px;
+}
+
+.changelog-year {
+    margin: 48px 0 24px 120px;
+    color: var(--primary);
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
+}
+
+.changelog-year:first-child {
+    margin-top: 0;
+}
+
+.changelog-entry {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: 24px;
+}
+
+.changelog-date {
+    padding-top: 4px;
+    color: var(--secondary);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    text-align: right;
+}
+
+.changelog-body {
+    position: relative;
+    min-width: 0;
+    padding: 0 0 36px 28px;
+    border-left: 1px solid var(--border);
+}
+
+.changelog-marker {
+    position: absolute;
+    top: 6px;
+    left: -5px;
+    width: 9px;
+    height: 9px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    background: var(--entry);
+}
+
+.changelog-entry.is-latest .changelog-marker {
+    top: 2px;
+    left: -9px;
+    width: 17px;
+    height: 17px;
+    border: 0;
+    border-radius: 0;
+    background: var(--accent);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><ellipse cx='32' cy='40' rx='16' ry='13'/><ellipse cx='14' cy='22' rx='7' ry='8.5'/><ellipse cx='30' cy='12' rx='6.5' ry='8'/><ellipse cx='47' cy='16' rx='6.5' ry='8'/><ellipse cx='55' cy='32' rx='6' ry='7.5'/></svg>") center / contain no-repeat;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><ellipse cx='32' cy='40' rx='16' ry='13'/><ellipse cx='14' cy='22' rx='7' ry='8.5'/><ellipse cx='30' cy='12' rx='6.5' ry='8'/><ellipse cx='47' cy='16' rx='6.5' ry='8'/><ellipse cx='55' cy='32' rx='6' ry='7.5'/></svg>") center / contain no-repeat;
+}
+
+.changelog-heading {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+}
+
+.changelog-heading h3 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.12rem;
+    line-height: 1.45;
+}
+
+.changelog-type {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--accent-subtle);
+    color: var(--accent);
+    font-size: 0.72rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.changelog-body > p {
+    margin: 8px 0 0;
+    color: var(--secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+}
+
+.changelog-commit {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--secondary);
+    font-size: 0.78rem;
+    text-decoration: none;
+    transition: color 160ms cubic-bezier(.25, .46, .45, .94);
+}
+
+.changelog-commit code {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+}
+
+.changelog-commit:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 600px) {
+    .changelog-timeline {
+        margin-top: 36px;
+    }
+
+    .changelog-year {
+        margin: 40px 0 20px 20px;
+        font-size: 1.5rem;
+    }
+
+    .changelog-entry {
+        display: block;
+        padding-left: 20px;
+    }
+
+    .changelog-date {
+        display: block;
+        padding: 0 0 7px 24px;
+        text-align: left;
+    }
+
+    .changelog-body {
+        padding: 0 0 32px 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .changelog-commit {
+        transition: none;
+    }
+}

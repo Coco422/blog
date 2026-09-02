@@ -1,0 +1,50 @@
+{{- define "main" }}
+<article class="changelog-page">
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}
+    <p class="post-description">{{ . }}</p>
+    {{- end }}
+  </header>
+
+  {{- with .Content }}
+  <div class="changelog-intro post-content">{{ . }}</div>
+  {{- end }}
+
+  {{- $changelog := dict -}}
+  {{- if ge hugo.Version "0.159.0" -}}
+    {{- $changelog = hugo.Data.changelog -}}
+  {{- else -}}
+    {{- $changelog = .Site.Data.changelog -}}
+  {{- end -}}
+
+  {{- with $changelog.entries }}
+  <div class="changelog-timeline" aria-label="站点更新记录">
+    {{- $currentYear := "" -}}
+    {{- range $index, $entry := . }}
+      {{- $year := substr $entry.date 0 4 -}}
+      {{- if ne $year $currentYear }}
+      <h2 class="changelog-year" id="year-{{ $year }}">{{ $year }}</h2>
+        {{- $currentYear = $year -}}
+      {{- end }}
+      <article class="changelog-entry{{ if eq $index 0 }} is-latest{{ end }}">
+        <time class="changelog-date" datetime="{{ $entry.date }}">{{ substr $entry.date 5 5 }}</time>
+        <div class="changelog-body">
+          <span class="changelog-marker" aria-hidden="true"></span>
+          <div class="changelog-heading">
+            <span class="changelog-type">{{ $entry.type }}</span>
+            <h3>{{ $entry.title }}</h3>
+          </div>
+          <p>{{ $entry.description }}</p>
+          {{- with $entry.commit }}
+          <a class="changelog-commit" href="https://github.com/Coco422/blog/commit/{{ . }}" target="_blank" rel="noopener">
+            查看提交 <code>{{ . }}</code><span aria-hidden="true"> ↗</span>
+          </a>
+          {{- end }}
+        </div>
+      </article>
+    {{- end }}
+  </div>
+  {{- end }}
+</article>
+{{- end }}

@@ -176,6 +176,14 @@ menu:
         icon: user
         en: About
         zh: 关于
+    - identifier: Changelog
+      name: Changelog
+      url: /changelog/
+      weight: 15
+      params:
+        icon: date
+        en: Updates
+        zh: 更新
     - identifier: Links
       name: Links
       url: /links/
