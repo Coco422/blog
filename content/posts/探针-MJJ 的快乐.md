@@ -16,7 +16,7 @@ tags:
 categories:
   - 杂技浅尝
 ---
-![image.png|300](https://imgbed.szmckj.cn/uploads/2026/09/02/6a97a0edacd05.png)
+![CF-Server-Monitor 世界地图模式显示 6 台服务器在线|300](https://imgbed.szmckj.cn/uploads/2026/09/02/6a97a0edacd05.png)
 
 > 最近好多个 oneman 云的灵车都死光光了，剩下这几个都是 3-8$左右的月付
 
