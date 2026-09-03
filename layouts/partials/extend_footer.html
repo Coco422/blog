@@ -17,7 +17,12 @@
   {{- if not site.Params.assets.disableFingerprinting -}}
     {{- $nekoScript = $nekoScript | fingerprint -}}
   {{- end -}}
-  {{- $scripts = $scripts | append (resources.Get "js/neko-loader.js") -}}
+{{- end -}}
+
+{{- /* Keep one shared bundle across home, list, regular and post pages so a
+      navigation never has to download a second copy of the common scripts. */ -}}
+{{- with resources.Get "js/neko-loader.js" -}}
+  {{- $scripts = $scripts | append . -}}
 {{- end -}}
 
 {{- with resources.Get "js/nav-i18n.js" -}}
@@ -32,36 +37,24 @@
   {{- $scripts = $scripts | append . -}}
 {{- end -}}
 
-{{- if .IsHome -}}
-  {{- with resources.Get "js/navigation-prefetch.js" -}}
-    {{- $scripts = $scripts | append . -}}
-  {{- end -}}
+{{- with resources.Get "js/navigation-prefetch.js" -}}
+  {{- $scripts = $scripts | append . -}}
 {{- end -}}
 
-{{- if and .IsPage (eq .Type "posts") -}}
-  {{- with resources.Get "js/reading-progress.js" -}}
-    {{- $scripts = $scripts | append . -}}
-  {{- end -}}
-  {{- with resources.Get "js/toc-scrollspy.js" -}}
-    {{- $scripts = $scripts | append . -}}
-  {{- end -}}
+{{- with resources.Get "js/reading-progress.js" -}}
+  {{- $scripts = $scripts | append . -}}
 {{- end -}}
 
-{{- if .IsPage -}}
-  {{- with resources.Get "js/image-layout.js" -}}
-    {{- $scripts = $scripts | append . -}}
-  {{- end -}}
+{{- with resources.Get "js/toc-scrollspy.js" -}}
+  {{- $scripts = $scripts | append . -}}
+{{- end -}}
+
+{{- with resources.Get "js/image-layout.js" -}}
+  {{- $scripts = $scripts | append . -}}
 {{- end -}}
 
 {{- if gt (len $scripts) 0 -}}
   {{- $bundleName := "js/site.js" -}}
-  {{- if .IsHome -}}
-    {{- $bundleName = "js/home.js" -}}
-  {{- else if and .IsPage (eq .Type "posts") -}}
-    {{- $bundleName = "js/post.js" -}}
-  {{- else if .IsPage -}}
-    {{- $bundleName = "js/page.js" -}}
-  {{- end -}}
   {{- $script := $scripts | resources.Concat $bundleName | js.Build (dict "minify" hugo.IsProduction) -}}
   {{- if not site.Params.assets.disableFingerprinting -}}
     {{- $script = $script | fingerprint -}}

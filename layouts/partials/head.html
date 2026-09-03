@@ -2,6 +2,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script>document.documentElement.classList.add("fonts-loading");document.documentElement.setAttribute("aria-busy","true");</script>
+<link rel="preload" href="/fonts/newsreader-variable.woff2?v=01817351be3e" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/newsreader-variable-italic.woff2?v=a99fb127682b" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/lxgw-wenkai-gb-site-subset.woff2?v=8c0f8ae3755a" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-variable.woff2?v=2c32b9b3ee35" as="font" type="font/woff2" crossorigin>
 {{- if $seo.noindex }}
 <meta name="robots" content="noindex, follow">
 {{- else }}
@@ -111,6 +116,8 @@
 {{ end -}}
 <noscript>
     <style>
+        html.fonts-loading body > * { visibility: visible; }
+        html.fonts-loading body::before { content: none; }
         #theme-toggle,
         .top-link {
             display: none;

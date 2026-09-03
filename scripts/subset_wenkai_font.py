@@ -20,7 +20,10 @@ except ImportError as exc:  # pragma: no cover - dependency guidance
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_FONT = ROOT / "assets/font-sources/lxgw-wenkai-gb-standard.woff2"
 OUTPUT_FONT = ROOT / "static/fonts/lxgw-wenkai-gb-site-subset.woff2"
-COLORS_CSS = ROOT / "assets/css/extended/colors.css"
+FONT_REFERENCE_FILES = (
+    ROOT / "assets/css/extended/colors.css",
+    ROOT / "layouts/partials/head.html",
+)
 FONT_URL_PATTERN = re.compile(
     r"/fonts/lxgw-wenkai-gb-site-subset\.woff2(?:\?v=[0-9a-f]+)?"
 )
@@ -84,21 +87,22 @@ def main() -> int:
     temporary.replace(OUTPUT_FONT)
 
     version = hashlib.sha256(OUTPUT_FONT.read_bytes()).hexdigest()[:12]
-    css = COLORS_CSS.read_text(encoding="utf-8")
     versioned_url = f"/fonts/lxgw-wenkai-gb-site-subset.woff2?v={version}"
-    updated_css, replacements = FONT_URL_PATTERN.subn(versioned_url, css)
-    if replacements != 1:
-        raise SystemExit(
-            f"Expected one LXGW WenKai subset URL in {COLORS_CSS.relative_to(ROOT)}, "
-            f"found {replacements}."
-        )
-    COLORS_CSS.write_text(updated_css, encoding="utf-8")
+    for reference_file in FONT_REFERENCE_FILES:
+        contents = reference_file.read_text(encoding="utf-8")
+        updated_contents, replacements = FONT_URL_PATTERN.subn(versioned_url, contents)
+        if replacements != 1:
+            raise SystemExit(
+                f"Expected one LXGW WenKai subset URL in {reference_file.relative_to(ROOT)}, "
+                f"found {replacements}."
+            )
+        reference_file.write_text(updated_contents, encoding="utf-8")
 
     print(
         f"Wrote {OUTPUT_FONT.relative_to(ROOT)} from {len(paths)} text files, "
         f"covering {len(characters)} unique characters "
         f"({OUTPUT_FONT.stat().st_size / 1024:.0f} KiB); "
-        f"updated CSS cache key to {version}."
+        f"updated font cache keys to {version}."
     )
     return 0
 

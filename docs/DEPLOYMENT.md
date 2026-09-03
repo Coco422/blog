@@ -94,13 +94,12 @@ One minute is the safety ceiling without an automatic purge hook. After a deploy
 
 ### Fonts and first paint
 
-Fonts are self-hosted under `/fonts/`, so they use the same Dooki → Pages path as the rest of the site. All custom fonts remain outside the critical rendering path:
+Fonts are self-hosted under `/fonts/`, so they use the same Dooki → Pages path as the rest of the site. Typography is now treated as part of the first-view experience:
 
-- The initial render uses system serif, sans-serif and monospace fonts.
-- `assets/js/font-loader.js` enables Newsreader, LXGW WenKai and JetBrains Mono only after the page `load` event and an idle callback.
-- Custom faces use `font-display: optional`; a slow first visit keeps system fonts instead of producing a late disruptive swap.
-- Data Saver and 2G connections do not request custom fonts.
-- Do not preload custom fonts.
+- Newsreader, LXGW WenKai and JetBrains Mono are self-hosted and preloaded on every page. The Chinese font is a current-site corpus subset, not the complete upstream typeface.
+- The page starts with a lightweight branded loading state. `assets/js/font-loader.js` reveals content when all four font faces are ready, or after a five-second safety timeout.
+- Custom faces use `font-display: optional`, so the timeout path stays on fallback fonts for that page instead of producing a disruptive late swap.
+- Cache-key query strings keep the preload and CSS request URLs identical. `scripts/subset_wenkai_font.py` updates both references when the Chinese subset changes.
 - Keep font sources and unused experiments under `assets/font-sources/`, which Hugo does not publish directly. Only runtime WOFF2 files belong in `static/fonts/`.
 - After publishing text with new rare characters, regenerate the subset with `python3 scripts/subset_wenkai_font.py` as documented in `scripts/README.md`.
 
@@ -112,13 +111,20 @@ Page visibility has priority over typography and interaction enhancements:
 
 - The homepage receives a dedicated critical stylesheet containing only the base layout, header, footer, post list, navigation, pagination and design tokens. Other pages retain the complete stylesheet. Both are inlined in `<head>`, so first paint does not wait for a second CDN request.
 - The first-render path is HTML plus its inline CSS. The deferred page bundle does not block parsing.
+- Home, list, regular and post pages share one fingerprinted `site.js` bundle. Page-specific behaviors already exit when their target DOM is absent, so navigation reuses the cached script instead of fetching a new `home.js`, `page.js` or `post.js`.
 - The cat animation waits until the page `load` event and an idle callback.
 - Giscus waits for the page `load` event, then does not request its client or iframe until the comment container is within 800 px of the viewport.
 - Mermaid waits until the page `load` event and an idle callback before downloading from jsDelivr.
 - Fancybox is omitted from the homepage and loads on content pages only after image-gallery intent such as hover, focus, pointer down or click.
-- After `load` and an idle callback, the homepage prefetches the first visible article and the next pagination page at low priority. Data Saver and 2G connections skip this work.
+- Every page immediately prefetches its same-origin top navigation destinations at low priority. After `load` and an idle callback, list pages also prefetch the first visible article and next pagination page. Data Saver and 2G connections skip this work.
 
-Do not add font preloads, synchronous third-party scripts, render-blocking external CSS or eager comments without measuring the first-render impact.
+Do not add synchronous third-party scripts, render-blocking external CSS or eager comments without measuring the first-render impact.
+
+## EdgeOne Makers Test
+
+An EdgeOne Makers direct-upload project was tested on 2026-09-03 with the `Global (MLC excluded)` region. The static build and immutable caching worked, but the platform-provided `edgeone.dev` project/deployment domains are not valid Chinese-mainland test endpoints for this region: mainland requests return `401`, while non-mainland requests can access them directly. This behavior is documented by EdgeOne and is not a site build failure.
+
+To evaluate EdgeOne from the Chinese mainland without an ICP filing, bind a disposable custom subdomain to the Makers project and keep the project in `Global (MLC excluded)`. Do not compare providers using the bare deployment domain. The test project has not been attached to `blog.anluoying.com` and no production DNS record was changed.
 
 ## CDN Migration Checklist
 

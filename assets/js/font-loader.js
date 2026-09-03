@@ -1,24 +1,23 @@
-(function scheduleCustomFonts() {
-    const connection = navigator.connection;
-    if (connection && (connection.saveData || /(^|-)2g$/.test(connection.effectiveType))) {
+(function waitForCustomFonts() {
+    const root = document.documentElement;
+    const reveal = () => {
+        root.classList.remove("fonts-loading");
+        root.removeAttribute("aria-busy");
+    };
+
+    if (!document.fonts || typeof document.fonts.load !== "function") {
+        reveal();
         return;
     }
 
-    const enableFont = () => {
-        document.documentElement.classList.add("font-custom-enabled");
-    };
+    const fonts = [
+        '400 1em "Newsreader"',
+        'italic 400 1em "Newsreader"',
+        '400 1em "LXGW WenKai GB"',
+        '400 1em "JetBrains Mono"',
+    ];
+    const timeout = new Promise((resolve) => window.setTimeout(resolve, 5000));
+    const loaded = Promise.all(fonts.map((font) => document.fonts.load(font)));
 
-    const schedule = () => {
-        if ("requestIdleCallback" in window) {
-            window.requestIdleCallback(enableFont, { timeout: 3000 });
-        } else {
-            window.setTimeout(enableFont, 1500);
-        }
-    };
-
-    if (document.readyState === "complete") {
-        schedule();
-    } else {
-        window.addEventListener("load", schedule, { once: true });
-    }
+    Promise.race([loaded, timeout]).then(reveal, reveal);
 })();
