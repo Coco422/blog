@@ -1,0 +1,112 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - navigation [ref=f1e3]:
+      - generic [ref=f1e4]:
+        - link "安落滢 Blog Logo Home" [ref=f1e5] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/
+          - img "安落滢 Blog Logo"
+          - text: Home
+        - button "ZH · Switch navigation to English" [pressed] [ref=f1e7] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f1e14]: ZH
+      - list [ref=f1e15]:
+        - listitem [ref=f1e16]:
+          - link "关于" [ref=f1e17] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/about/
+        - listitem [ref=f1e25]:
+          - link "更新" [ref=f1e26] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/changelog/
+        - listitem [ref=f1e35]:
+          - link "友链" [ref=f1e36] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/links/
+        - listitem [ref=f1e44]:
+          - link "搜索 (Alt + /)" [ref=f1e45] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/search/
+            - generic [ref=f1e46]: 搜索
+        - listitem [ref=f1e53]:
+          - link "归档" [ref=f1e54] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/archives/
+        - listitem [ref=f1e62]:
+          - link "分类" [ref=f1e63] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/categories/
+        - listitem [ref=f1e71]:
+          - link "标签" [ref=f1e72] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/tags/
+        - listitem [ref=f1e80]:
+          - link "主站" [ref=f1e81] [cursor=pointer]:
+            - /url: https://anluoying.com/
+  - main [ref=f1e95]:
+    - article [ref=f1e96]:
+      - generic [ref=f1e97]:
+        - link "主页" [ref=f1e99] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/
+        - heading "关于 Ray" [level=1] [ref=f1e100]
+        - generic [ref=f1e101]:
+          - generic "2026-09-02 15:24:28 +0800 +0800" [ref=f1e102]: 2026-09-02
+          - text: · 3 分钟 · 1087 字 ·
+          - link "Ray" [ref=f1e103] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/about/
+      - group [ref=f1e105]:
+        - generic "目录" [ref=f1e106]
+        - navigation [ref=f1e108]:
+          - list [ref=f1e109]:
+            - listitem [ref=f1e110]:
+              - link "Hi 👋, I’m Ray" [ref=f1e111] [cursor=pointer]:
+                - /url: "#hi--im-ray"
+            - listitem [ref=f1e112]:
+              - link "关于”琐碎快记“和”杂技浅尝“" [ref=f1e113] [cursor=pointer]:
+                - /url: "#关于琐碎快记和杂技浅尝"
+            - listitem [ref=f1e114]:
+              - link "关于”他山拾影“" [ref=f1e115] [cursor=pointer]:
+                - /url: "#关于他山拾影"
+            - listitem [ref=f1e116]:
+              - link "关于“月下小扎”" [ref=f1e117] [cursor=pointer]:
+                - /url: "#关于月下小扎"
+            - listitem [ref=f1e118]:
+              - link "关于“什么是什么”" [ref=f1e119] [cursor=pointer]:
+                - /url: "#关于什么是什么"
+      - generic [ref=f1e120]:
+        - heading "Hi 👋, I’m Ray" [level=2] [ref=f1e121]
+        - paragraph [ref=f1e122]: 自诩全沾工程师，作为程序员一枚，我没有高校背景，没有大厂背景，我也许是普通的 NPC，却有着很多梦想，想在世界上留下关于自己一丝的痕迹久远于自己的生命哪怕在某个角落于尘埃中存在着，那也是存在过的证明，是我能想到最终极的意义，也算是不虚此行。
+        - paragraph [ref=f1e123]: 折腾是当前能最小成本实现自我价值的方式了。什么价值，暂时是愉悦自我。
+        - paragraph [ref=f1e124]:
+          - text: 除了这个博客，也可以在
+          - link "GitHub" [ref=f1e125] [cursor=pointer]:
+            - /url: https://github.com/coco422
+          - text: 、
+          - link "X" [ref=f1e126] [cursor=pointer]:
+            - /url: https://x.com/Anluoying
+          - text: 和
+          - link "LinuxDO" [ref=f1e127] [cursor=pointer]:
+            - /url: https://linux.do/u/ray521980/summary
+          - text: 找到我。这里长期会写 AI 工具与模型实测、Linux 和网络运维、开发踩坑，也会留下一点生活观察。
+        - paragraph [ref=f1e128]:
+          - text: 这个博客本身也一直在折腾。主题、功能和分类怎样一点点变成现在这样，都记在
+          - link "站点更新日志" [ref=f1e129] [cursor=pointer]:
+            - /url: /changelog/
+          - text: 里。
+        - heading "关于”琐碎快记“和”杂技浅尝“" [level=2] [ref=f1e130]
+        - paragraph [ref=f1e131]: 这是本站最早的两个分类了，刚开始写的时候也忘了这俩分类从何处借鉴而来，但是显然边界不清晰，所以很长一段时间乱用，现在重新分类，博客大部分技术向的都归于杂技浅尝，除非是特殊系列的，倾向于探索。
+        - paragraph [ref=f1e132]: 而日常、灵光、小碎片、快记就属于琐碎快记。但是现在写博客的形式还被困在Obsidian+git中，所以这些灵光都只能随风飘散，来日做个网兜都兜回来。
+        - heading "关于”他山拾影“" [level=2] [ref=f1e133]
+        - paragraph [ref=f1e134]: 之前引用的文章还不错，结果原作者不维护或者换域名了，那真是难受，所以干脆抄过来，直接抄显得没有诚意，偶尔叫AI帮忙抄，但终归是抄，所以新增这个分类表明转载
+        - heading "关于“月下小扎”" [level=2] [ref=f1e135]
+        - paragraph [ref=f1e136]: 熬夜不好，可是静谧之夜充满诗意。
+        - heading "关于“什么是什么”" [level=2] [ref=f1e137]
+        - paragraph [ref=f1e138]: 由于平时的时间实在是被各种加班和个人懒惰挤压的丝毫不剩，导致不容易能静下心来写写日记或者博客。我内心向往的，写日记的场景必须得是在 闲、雅、散的状态进行的，简单描述下：雨天，微风，室内，夜晚，一盏灯一杯茶一点香一支笔一个人一篇日记，哇哦，简直了，文人雅士的最终状态。哈哈 这当然只是理想所在，事实是雨天，微风，室内，夜晚，一盏灯，两杯奶茶两支手机两把王者把把 MVP。所以和同事聊天之时突然意识到，天天写博客那是为难自己了，不如给自己硬性规定一下，每周一篇，写什么都行，那既然每周一篇了，就像周刊一样，便开始寻找选题。翻开之前的个人笔记，有一块地方我命名为“小卡”，这是从语雀笔记里面带过来的思想，旨在随时随地记下灵感，之后再进行总结归档。小卡里记了不少名词概念之类的快查，我就想到，不如写一个系列，叫“什么是什么“。
+        - paragraph [ref=f1e139]: 这个系列里面每一片都是一个简单的概念。积累这些点开始，等点多了一次次回顾串成线再成网，哈哈哈，每想到这种宏大的场景 内心便是激动不已，自觉快哉，况且这种简单的概念可以给自己或网友提供一些帮助，一搜就能搜到，也算是有点贡献（增加点击率就更美好了）
+        - paragraph [ref=f1e140]: 所以，这周开始便会周更该系列，希望早日突破个位数的阅读数（现在都是朋友在读）。
+      - generic:
+        - list
+  - contentinfo [ref=f1e141]:
+    - generic [ref=f1e142]:
+      - text: © 2026
+      - link "安落滢 Blog" [ref=f1e143] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/
+    - text: ·
+    - generic [ref=f1e144]:
+      - text: Powered by
+      - link "Hugo" [ref=f1e145] [cursor=pointer]:
+        - /url: https://gohugo.io/
+      - text: "&"
+      - link "PaperMod" [ref=f1e146] [cursor=pointer]:
+        - /url: https://github.com/adityatelange/hugo-PaperMod/

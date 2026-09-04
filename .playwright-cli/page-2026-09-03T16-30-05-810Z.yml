@@ -1,0 +1,136 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "安落滢 Blog Logo Home" [ref=e5] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/
+          - img "安落滢 Blog Logo"
+          - text: Home
+        - button "ZH · Switch navigation to English" [pressed] [ref=e7] [cursor=pointer]:
+          - generic [aria-hidden] [ref=e14]: ZH
+      - list [ref=e15]:
+        - listitem [ref=e16]:
+          - link "关于" [ref=e17] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/about/
+        - listitem [ref=e25]:
+          - link "更新" [ref=e26] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/changelog/
+        - listitem [ref=e35]:
+          - link "友链" [ref=e36] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/links/
+        - listitem [ref=e44]:
+          - link "搜索 (Alt + /)" [ref=e45] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/search/
+            - generic [ref=e46]: 搜索
+        - listitem [ref=e53]:
+          - link "归档" [ref=e54] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/archives/
+        - listitem [ref=e62]:
+          - link "分类" [ref=e63] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/categories/
+        - listitem [ref=e71]:
+          - link "标签" [ref=e72] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/tags/
+        - listitem [ref=e80]:
+          - link "主站" [ref=e81] [cursor=pointer]:
+            - /url: https://anluoying.com/
+  - main [ref=e95]:
+    - article [ref=e96]:
+      - heading "安落滢 Blog" [level=1] [ref=e98]
+      - generic [ref=e99]: 我是 Ray，一名喜欢折腾的开发者。这里记录 AI 工具与模型实践、Linux 与网络运维、开发踩坑，也写一点生活与思考。
+      - generic [ref=e101]:
+        - link "x" [ref=e102] [cursor=pointer]:
+          - /url: https://x.com/Anluoying
+        - link "github" [ref=e105] [cursor=pointer]:
+          - /url: https://github.com/coco422
+        - link [ref=e108] [cursor=pointer]:
+          - /url: https://linux.do/u/ray521980/summary
+          - img "LinuxDO" [ref=e109]
+    - article [ref=e116]:
+      - generic [ref=e117]:
+        - link "杂技浅尝" [ref=e119] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/categories/tech-exploration/
+        - heading "探针——MJJ 的快乐" [level=2] [ref=e120]
+      - paragraph [ref=e122]: 最近好多个 oneman 云的灵车都死光光了，剩下这几个都是 3-8$左右的月付 MJJ 的快乐其实很朴素。 服务器买回来，不一定真有什么业务，但是最好整整齐齐摆在一个面板里。看它们全绿，看 CPU、内存和流量轻轻跳动，就很舒服。[Doge] ...
+      - generic [ref=e123]:
+        - text: 2026-09-02 · 3 分钟 · 1365 字 ·
+        - link "Ray" [ref=e124] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/about/
+      - link "post link to 探针——MJJ 的快乐" [ref=e125] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/posts/%E6%8E%A2%E9%92%88-mjj-%E7%9A%84%E5%BF%AB%E4%B9%90/
+    - article [ref=e126]:
+      - generic [ref=e127]:
+        - link "杂技浅尝" [ref=e129] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/categories/tech-exploration/
+        - heading "VPS + WireGuard + OpenWrt：固定中转访问家庭局域网实验记录" [level=2] [ref=e130]
+      - paragraph [ref=e132]: 本实验使用一台带公网 IPv4 的 VPS 作为固定 WireGuard 中转节点，使 Mac、手机等终端能够稳定访问 NAT 后面的家庭局域网。家庭侧最终由 OpenWrt 旁路由承载 WireGuard，主路由只增加一条静态路由，家庭服务器本身不再需要运行 WireGuard。 实验最终跑通，但过程中遇到了三个容易混淆的问题：OpenClash 将 WireGuard Endpoint 解析为 Fake-IP、OpenWrt 防火墙主动拒绝 WireGuard 到 LAN 的转发，以及 wg-quick 重载配置后没有自动增加新的系统路由。本文按实际排查顺序记录配置、现象、判断依据和结果。 ...
+      - generic [ref=e133]:
+        - text: 2026-09-01 · 14 分钟 · 6657 字 ·
+        - link "Ray" [ref=e134] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/about/
+      - link "post link to VPS + WireGuard + OpenWrt：固定中转访问家庭局域网实验记录" [ref=e135] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/posts/vps-wireguard-openwrt-%E5%9B%BA%E5%AE%9A%E4%B8%AD%E8%BD%AC%E8%AE%BF%E9%97%AE%E5%AE%B6%E5%BA%AD%E5%B1%80%E5%9F%9F%E7%BD%91%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/
+    - article [ref=e136]:
+      - generic [ref=e137]:
+        - link "杂技浅尝" [ref=e139] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/categories/tech-exploration/
+        - heading "Camoufox、Patchright、Nodriver 本地实测：个人信息中心如何少被反爬拦截" [level=2] [ref=e140]
+      - paragraph [ref=e142]: 最近想做一个的信息中心，把平时会刷的几个平台聚合到一起。 其实是想搞个 AIHOT MAX，虽然卡兹克的 AIHOT 已经挺好用了，但是我的信息源不只有 AI 圈子，所以我还想扩充一下，也许（也能挣点，你说是不是） 有 RSS 的站当然好办，我之前已经搭过 FreshRSS。问题是，不是所有平台都有 RSS，也不是所有平台都愿意提供公开 API。剩下的路似乎只有模拟我平时浏览网页的行为，结果普通爬虫和 Playwright 又经常被拦。 ...
+      - generic [ref=e143]:
+        - text: "2026-08-31 · 7 分钟 · 3387 字 · Updated: 2026-09-01 ·"
+        - link "Ray" [ref=e144] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/about/
+      - link "post link to Camoufox、Patchright、Nodriver 本地实测：个人信息中心如何少被反爬拦截" [ref=e145] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/posts/camoufoxpatchrightnodriver-%E6%9C%AC%E5%9C%B0%E5%AE%9E%E6%B5%8B/
+    - article [ref=e146]:
+      - generic [ref=e147]:
+        - link "杂技浅尝" [ref=e149] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/categories/tech-exploration/
+        - heading "两个 Codex 怎么跨机器通信：从 HTTP 留言板到 A2A" [level=2] [ref=e150]
+      - paragraph [ref=e152]: 上一篇已经记录了两台 Mac 排查通用控制故障的完整过程，这篇不再重复故障本身，只补上当时没有展开的一段：分别运行在 MacBook Air 和 Mac mini 上的两个 Codex，是怎么交换信息的？ 当时的方案很简单。Mac mini 上的 Codex 临时启动了一个 HTTP 留言板，Air 端定时读取新消息，处理后再把结果发回去。 没有 Agent 框架，也没有真正实现 A2A。只有一个地址、一个 token 和两三个接口。 ...
+      - generic [ref=e153]:
+        - text: 2026-08-31 · 4 分钟 · 1535 字 ·
+        - link "Ray" [ref=e154] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/about/
+      - link "post link to 两个 Codex 怎么跨机器通信：从 HTTP 留言板到 A2A" [ref=e155] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/posts/%E4%B8%A4%E4%B8%AA-codex-%E6%80%8E%E4%B9%88%E8%B7%A8%E6%9C%BA%E5%99%A8%E5%8D%8F%E4%BD%9C%E4%BB%8E%E5%B1%80%E5%9F%9F%E7%BD%91%E7%95%99%E8%A8%80%E6%9D%BF%E5%88%B0-a2a/
+    - article [ref=e156]:
+      - generic [ref=e157]:
+        - link "他山拾影" [ref=e159] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/categories/insights/
+        - heading "WARP Google 解锁脚本备份与使用说明" [level=2] [ref=e160]
+      - paragraph [ref=e162]: 本文备份 VPS值得买发布的 WARP Google 解锁脚本及使用流程，方便原页面或脚本失效后继续查阅。 原脚本使用 Cloudflare 官方 cloudflare-warp 客户端，在本机建立 SOCKS5 代理，再通过 redsocks 和 iptables 将部分 Google IPv4 流量转入 WARP。脚本同时屏蔽指定的 Google IPv6 网段，避免 IPv4 与 IPv6 出口地区不一致。 Warning ...
+      - generic [ref=e163]:
+        - text: 2026-08-31 · 3 分钟 · 1101 字 ·
+        - link "Ray" [ref=e164] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/about/
+      - link "post link to WARP Google 解锁脚本备份与使用说明" [ref=e165] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/posts/%E6%8A%8A-warp-google-%E8%A7%A3%E9%94%81%E8%84%9A%E6%9C%AC%E5%AD%98%E4%B8%8B%E6%9D%A5/
+    - navigation "文章列表分页" [ref=e167]:
+      - generic "页码" [ref=e168]:
+        - generic "第 1 页" [ref=e169]: "1"
+        - link "前往第 2 页" [ref=e170] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/page/2/
+          - text: "2"
+        - link "前往第 3 页" [ref=e171] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/page/3/
+          - text: "3"
+        - generic [aria-hidden] [ref=e172]: …
+        - link "前往第 22 页" [ref=e173] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/page/22/
+          - text: "22"
+      - link "下一页 »" [ref=e175] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/page/2/
+  - contentinfo [ref=e176]:
+    - generic [ref=e177]:
+      - text: © 2026
+      - link "安落滢 Blog" [ref=e178] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/
+    - text: ·
+    - generic [ref=e179]:
+      - text: Powered by
+      - link "Hugo" [ref=e180] [cursor=pointer]:
+        - /url: https://gohugo.io/
+      - text: "&"
+      - link "PaperMod" [ref=e181] [cursor=pointer]:
+        - /url: https://github.com/adityatelange/hugo-PaperMod/

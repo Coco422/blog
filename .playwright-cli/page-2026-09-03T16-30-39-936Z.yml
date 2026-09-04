@@ -1,0 +1,282 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - navigation [ref=f3e3]:
+      - generic [ref=f3e4]:
+        - link "安落滢 Blog Logo Home" [ref=f3e5] [cursor=pointer]:
+          - /url: https://blog.anluoying.com/
+          - img "安落滢 Blog Logo"
+          - text: Home
+        - button "ZH · Switch navigation to English" [pressed] [ref=f3e7] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f3e14]: ZH
+      - list [ref=f3e15]:
+        - listitem [ref=f3e16]:
+          - link "关于" [ref=f3e17] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/about/
+        - listitem [ref=f3e25]:
+          - link "更新" [ref=f3e26] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/changelog/
+        - listitem [ref=f3e35]:
+          - link "友链" [ref=f3e36] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/links/
+        - listitem [ref=f3e44]:
+          - link "搜索 (Alt + /)" [ref=f3e45] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/search/
+            - generic [ref=f3e46]: 搜索
+        - listitem [ref=f3e53]:
+          - link "归档" [ref=f3e54] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/archives/
+        - listitem [ref=f3e62]:
+          - link "分类" [ref=f3e63] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/categories/
+        - listitem [ref=f3e71]:
+          - link "标签" [ref=f3e72] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/tags/
+        - listitem [ref=f3e80]:
+          - link "主站" [ref=f3e81] [cursor=pointer]:
+            - /url: https://anluoying.com/
+  - main [ref=f3e95]:
+    - article [ref=f3e96]:
+      - generic [ref=f3e97]:
+        - generic [ref=f3e98]:
+          - link "主页" [ref=f3e99] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/
+          - text: »
+          - link "全部文章" [ref=f3e100] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/posts/
+        - heading "探针——MJJ 的快乐" [level=1] [ref=f3e101]
+        - generic [ref=f3e102]:
+          - generic "2026-09-02 02:10:41 +0800 +0800" [ref=f3e103]: 2026-09-02
+          - text: · 3 分钟 · 1365 字 ·
+          - link "Ray" [ref=f3e104] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/about/
+          - generic [ref=f3e105]:
+            - text: ·
+            - link "杂技浅尝" [ref=f3e106] [cursor=pointer]:
+              - /url: https://blog.anluoying.com/categories/tech-exploration/
+      - group [ref=f3e108]:
+        - generic "目录" [ref=f3e109]
+        - navigation [ref=f3e111]:
+          - list [ref=f3e112]:
+            - listitem [ref=f3e113]:
+              - link "主控直接扔给 Cloudflare" [ref=f3e114] [cursor=pointer]:
+                - /url: "#主控直接扔给-cloudflare"
+            - listitem [ref=f3e115]:
+              - link "部署大概就是这些" [ref=f3e116] [cursor=pointer]:
+                - /url: "#部署大概就是这些"
+            - listitem [ref=f3e117]:
+              - link "探针更简单" [ref=f3e118] [cursor=pointer]:
+                - /url: "#探针更简单"
+            - listitem [ref=f3e119]:
+              - link "最后的效果" [ref=f3e120] [cursor=pointer]:
+                - /url: "#最后的效果"
+      - generic [ref=f3e121]:
+        - paragraph [ref=f3e122]:
+          - link [ref=f3e124] [cursor=pointer]:
+            - /url: https://imgbed.szmckj.cn/uploads/2026/09/02/6a97a0edacd05.png
+            - img "CF-Server-Monitor 世界地图模式显示 6 台服务器在线" [ref=f3e125]
+        - blockquote [ref=f3e126]:
+          - paragraph [ref=f3e127]: 最近好多个 oneman 云的灵车都死光光了，剩下这几个都是 3-8$左右的月付
+        - paragraph [ref=f3e128]: MJJ 的快乐其实很朴素。
+        - paragraph [ref=f3e129]: 服务器买回来，不一定真有什么业务，但是最好整整齐齐摆在一个面板里。看它们全绿，看 CPU、内存和流量轻轻跳动，就很舒服。[Doge]
+        - paragraph [ref=f3e130]: 我以前也用过哪吒、Beszel 之类的监控面板。功能都不少，问题是它们通常还要先找一台服务器当主控。为了看其他服务器活没活，我得先养一台专门负责「看服务器」的服务器，多少有点套娃。
+        - paragraph [ref=f3e131]: 另外我对主控和 Agent 之间长期保持通信这件事一直有点心里没底。未必真的不安全，但只要各台机器还需要给主控留一个可达入口，我就容易多想。
+        - paragraph [ref=f3e132]: 我的需求其实没那么复杂：
+        - list [ref=f3e133]:
+          - listitem [ref=f3e134]: 机器还活着没有
+          - listitem [ref=f3e135]: CPU、内存、磁盘大概用了多少
+          - listitem [ref=f3e136]: 当前网速和累计流量
+          - listitem [ref=f3e137]: 延迟、丢包有没有突然抽风
+          - listitem [ref=f3e138]: VPS 什么时候到期
+        - paragraph [ref=f3e139]: 告警、自动化运维、远程执行命令这些暂时都不是刚需。能看，够轻，界面顺眼，就可以了。
+        - paragraph [ref=f3e140]:
+          - text: 然后我找到了
+          - link "CF-Server-Monitor" [ref=f3e141] [cursor=pointer]:
+            - /url: https://github.com/huilang-me/CF-Server-Monitor
+          - text: 。
+        - heading "主控直接扔给 Cloudflare" [level=2] [ref=f3e142]
+        - paragraph [ref=f3e143]: 这个项目把面板、API 和数据存储都放到了 Cloudflare：
+        - generic [ref=f3e144]:
+          - generic [ref=f3e145]: text
+          - table [ref=f3e153]:
+            - rowgroup [ref=f3e154]:
+              - row [ref=f3e155]:
+                - cell "1 2 3 4 5 6 7 8" [ref=f3e156]:
+                  - code [ref=f3e158]:
+                    - generic [ref=f3e159]: "1"
+                    - generic [ref=f3e160]: "2"
+                    - generic [ref=f3e161]: "3"
+                    - generic [ref=f3e162]: "4"
+                    - generic [ref=f3e163]: "5"
+                    - generic [ref=f3e164]: "6"
+                    - generic [ref=f3e165]: "7"
+                    - generic [ref=f3e166]: "8"
+                - cell "服务器上的 Agent │ │ HTTPS / WSS 单向上报 ▼ Cloudflare Worker ├── D1 保存服务器和历史数据 ├── Durable Objects 做实时推送 └── 静态资源提供监控面板" [ref=f3e167]:
+                  - code [ref=f3e169]:
+                    - generic [ref=f3e170]: 服务器上的 Agent
+                    - generic [ref=f3e171]: │
+                    - generic [ref=f3e172]: │ HTTPS / WSS 单向上报
+                    - generic [ref=f3e173]: ▼
+                    - generic [ref=f3e174]: Cloudflare Worker
+                    - generic [ref=f3e175]: ├── D1 保存服务器和历史数据
+                    - generic [ref=f3e176]: ├── Durable Objects 做实时推送
+                    - generic [ref=f3e177]: └── 静态资源提供监控面板
+        - paragraph [ref=f3e178]: 也就是说，我不需要再拿一台 VPS 跑主控，不用额外维护数据库、反代和主控进程。Agent 主动往 Cloudflare 上报，服务器本身也不用为了监控再开放一个入站端口。
+        - paragraph [ref=f3e179]:
+          - text: 单向上报不等于绝对安全，
+          - code [ref=f3e180]: API_SECRET
+          - text: 还是得好好保存，后台也得换强密码。但从我的使用习惯来说，这种结构明显更省心。
+        - paragraph [ref=f3e181]: Cloudflare 这一侧用到 Worker、D1 和 Durable Objects。项目本身就是按免费额度设计的，少量个人服务器先拿来玩完全够用。真把上报频率拉得很高、机器数量堆得很多，还是要自己盯一下 Cloudflare 的用量。
+        - heading "部署大概就是这些" [level=2] [ref=f3e182]
+        - paragraph [ref=f3e183]: 仓库提供了 Cloudflare 一键部署，也可以直接用 Wrangler。我的做法是先创建 D1，再构建并部署 Worker：
+        - generic [ref=f3e184]:
+          - generic [ref=f3e185]: bash
+          - table [ref=f3e193]:
+            - rowgroup [ref=f3e194]:
+              - row [ref=f3e195]:
+                - cell "1 2 3 4" [ref=f3e196]:
+                  - code [ref=f3e198]:
+                    - generic [ref=f3e199]: "1"
+                    - generic [ref=f3e200]: "2"
+                    - generic [ref=f3e201]: "3"
+                    - generic [ref=f3e202]: "4"
+                - cell "npm install npm run build:frontend npx wrangler d1 create server-monitor-db npx wrangler deploy" [ref=f3e203]:
+                  - code [ref=f3e205]:
+                    - generic [ref=f3e206]: npm install
+                    - generic [ref=f3e207]: npm run build:frontend
+                    - generic [ref=f3e208]: npx wrangler d1 create server-monitor-db
+                    - generic [ref=f3e209]: npx wrangler deploy
+        - paragraph [ref=f3e210]:
+          - text: D1 创建完成后，需要把返回的
+          - code [ref=f3e211]: database_id
+          - text: 写进
+          - code [ref=f3e212]: wrangler.toml
+          - text: 。然后再设置一个随机的
+          - code [ref=f3e213]: API_SECRET
+          - text: ：
+        - generic [ref=f3e214]:
+          - generic [ref=f3e215]: bash
+          - table [ref=f3e223]:
+            - rowgroup [ref=f3e224]:
+              - row [ref=f3e225]:
+                - cell "1" [ref=f3e226]:
+                  - code [ref=f3e228]:
+                    - generic [ref=f3e229]: "1"
+                - cell "openssl rand -hex 32 | npx wrangler secret put API_SECRET" [ref=f3e230]:
+                  - code [ref=f3e232]:
+                    - generic [ref=f3e233]: openssl rand -hex 32 | npx wrangler secret put API_SECRET
+        - paragraph [ref=f3e235]: 这里不要把真实 Secret 写进仓库，记得用强密码。
+        - paragraph [ref=f3e236]: 最后给 Worker 绑定一个自己的子域名，例如：
+        - generic [ref=f3e237]:
+          - generic [ref=f3e238]: text
+          - table [ref=f3e246]:
+            - rowgroup [ref=f3e247]:
+              - row [ref=f3e248]:
+                - cell "1" [ref=f3e249]:
+                  - code [ref=f3e251]:
+                    - generic [ref=f3e252]: "1"
+                - cell "monitor.example.com" [ref=f3e253]:
+                  - code [ref=f3e255]:
+                    - generic [ref=f3e256]: monitor.example.com
+        - paragraph [ref=f3e257]: Cloudflare 端就差不多了。没有 docker compose，没有数据库容器，也没有「主控机挂了以后我该去哪看主控机」这种哲学问题。
+        - heading "探针更简单" [level=2] [ref=f3e258]
+        - paragraph [ref=f3e259]: 后台新增一台服务器后，会生成独立的 Server ID 和安装命令。脱敏以后大概长这样：
+        - generic [ref=f3e260]:
+          - generic [ref=f3e261]: bash
+          - table [ref=f3e269]:
+            - rowgroup [ref=f3e270]:
+              - row [ref=f3e271]:
+                - cell "1 2 3 4 5 6" [ref=f3e272]:
+                  - code [ref=f3e274]:
+                    - generic [ref=f3e275]: "1"
+                    - generic [ref=f3e276]: "2"
+                    - generic [ref=f3e277]: "3"
+                    - generic [ref=f3e278]: "4"
+                    - generic [ref=f3e279]: "5"
+                    - generic [ref=f3e280]: "6"
+                - cell "curl -fsSL https://raw.githubusercontent.com/huilang-me/cfsm-agent/main/install.sh \\ | sh -s -- install \\ -id=<SERVER_ID> \\ -secret=<API_SECRET> \\ -url=https://monitor.example.com/update \\ -auto_update=0" [ref=f3e281]:
+                  - code [ref=f3e283]:
+                    - generic [ref=f3e284]: curl -fsSL https://raw.githubusercontent.com/huilang-me/cfsm-agent/main/install.sh \
+                    - generic [ref=f3e286]: "| sh -s -- install \\"
+                    - generic [ref=f3e288]: "-id=<SERVER_ID> \\"
+                    - generic [ref=f3e290]: "-secret=<API_SECRET> \\"
+                    - generic [ref=f3e292]: "-url=https://monitor.example.com/update \\"
+                    - generic [ref=f3e294]: "-auto_update=0"
+        - paragraph [ref=f3e296]:
+          - text: Linux 上安装后是一个
+          - code [ref=f3e297]: cf-probe
+          - text: systemd 服务，常用检查命令也就两个：
+        - generic [ref=f3e298]:
+          - generic [ref=f3e299]: bash
+          - table [ref=f3e307]:
+            - rowgroup [ref=f3e308]:
+              - row [ref=f3e309]:
+                - cell "1 2" [ref=f3e310]:
+                  - code [ref=f3e312]:
+                    - generic [ref=f3e313]: "1"
+                    - generic [ref=f3e314]: "2"
+                - cell "systemctl status cf-probe journalctl -u cf-probe -f" [ref=f3e315]:
+                  - code [ref=f3e317]:
+                    - generic [ref=f3e318]: systemctl status cf-probe
+                    - generic [ref=f3e319]: journalctl -u cf-probe -f
+        - paragraph [ref=f3e320]: 看到 WSS connected，回面板刷新一下，机器就出现了。
+        - paragraph [ref=f3e321]: 可以，成功了。
+        - heading "最后的效果" [level=2] [ref=f3e322]
+        - paragraph:
+          - generic:
+            - link "CF-Server-Monitor 多服务器监控面板效果":
+              - /url: https://imgbed.szmckj.cn/uploads/2026/09/02/6a9715091fe99.png
+              - img "CF-Server-Monitor 多服务器监控面板效果"
+        - paragraph [ref=f3e323]: 这个界面其实也能换肤，但是懒得弄了，现在这个还行。深色终端风格，服务器可以按地区和分组展示，CPU、RAM、磁盘、网速、总流量、月流量、价格和到期时间都有，当然 后面几个信息自己配置的。延迟和丢包也不是只放一个数字，而是直接给一排小色块，看着很直观。
+        - paragraph [ref=f3e324]: 条形图、环形图、列表和地图几种视图都能切。中英文、亮暗主题也有。至少在「现代」「好看」「打开就知道机器有没有死」这几个需求上，已经完全满足我了。
+        - paragraph [ref=f3e325]: 现在没有打算把它变成多复杂的监控系统。资源告警、通知渠道、主题这些功能以后有需要再配。先把手里的 VPS 一个个挂上去，看着一排绿色在线状态就已经很快乐。
+        - paragraph [ref=f3e326]: 也许，我是末法时代入门的垃圾佬吧
+      - generic [ref=f3e327]:
+        - list [ref=f3e328]:
+          - listitem [ref=f3e329]:
+            - link "Cloudflare" [ref=f3e330] [cursor=pointer]:
+              - /url: https://blog.anluoying.com/tags/cloudflare/
+          - listitem [ref=f3e331]:
+            - link "服务器监控" [ref=f3e332] [cursor=pointer]:
+              - /url: https://blog.anluoying.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%91%E6%8E%A7/
+          - listitem [ref=f3e333]:
+            - link "VPS" [ref=f3e334] [cursor=pointer]:
+              - /url: https://blog.anluoying.com/tags/vps/
+          - listitem [ref=f3e335]:
+            - link "CF-Server-Monitor" [ref=f3e336] [cursor=pointer]:
+              - /url: https://blog.anluoying.com/tags/cf-server-monitor/
+        - navigation "文章前后篇" [ref=f3e337]:
+          - link "下一页 » VPS + WireGuard + OpenWrt：固定中转访问家庭局域网实验记录" [ref=f3e338] [cursor=pointer]:
+            - /url: https://blog.anluoying.com/posts/vps-wireguard-openwrt-%E5%9B%BA%E5%AE%9A%E4%B8%AD%E8%BD%AC%E8%AE%BF%E9%97%AE%E5%AE%B6%E5%BA%AD%E5%B1%80%E5%9F%9F%E7%BD%91%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/
+            - text: 下一页 »VPS + WireGuard + OpenWrt：固定中转访问家庭局域网实验记录
+      - complementary [ref=f3e339]:
+        - heading "相关文章" [level=2] [ref=f3e340]
+        - list [ref=f3e341]:
+          - listitem [ref=f3e342]:
+            - link "Camoufox、Patchright、Nodriver 本地实测：个人信息中心如何少被反爬拦截" [ref=f3e343] [cursor=pointer]:
+              - /url: /posts/camoufoxpatchrightnodriver-%E6%9C%AC%E5%9C%B0%E5%AE%9E%E6%B5%8B/
+            - time [ref=f3e344]: 2026-08-31
+          - listitem [ref=f3e345]:
+            - link "两个 Codex 怎么跨机器通信：从 HTTP 留言板到 A2A" [ref=f3e346] [cursor=pointer]:
+              - /url: /posts/%E4%B8%A4%E4%B8%AA-codex-%E6%80%8E%E4%B9%88%E8%B7%A8%E6%9C%BA%E5%99%A8%E5%8D%8F%E4%BD%9C%E4%BB%8E%E5%B1%80%E5%9F%9F%E7%BD%91%E7%95%99%E8%A8%80%E6%9D%BF%E5%88%B0-a2a/
+            - time [ref=f3e347]: 2026-08-31
+          - listitem [ref=f3e348]:
+            - link "检测虚标U盘并复活它" [ref=f3e349] [cursor=pointer]:
+              - /url: /posts/%E6%A3%80%E6%B5%8B%E8%99%9A%E6%A0%87u%E7%9B%98%E5%B9%B6%E5%A4%8D%E6%B4%BB%E5%AE%83/
+            - time [ref=f3e350]: 2026-08-30
+          - listitem [ref=f3e351]:
+            - link "通用控制看得到 Mac，就是连不上：两台 Codex 排查 IDS 注册故障" [ref=f3e352] [cursor=pointer]:
+              - /url: /posts/%E9%80%9A%E7%94%A8%E6%8E%A7%E5%88%B6%E7%9C%8B%E5%BE%97%E5%88%B0-mac%E5%B0%B1%E6%98%AF%E8%BF%9E%E4%B8%8D%E4%B8%8A/
+            - time [ref=f3e353]: 2026-08-28
+  - contentinfo [ref=f3e354]:
+    - generic [ref=f3e355]:
+      - text: © 2026
+      - link "安落滢 Blog" [ref=f3e356] [cursor=pointer]:
+        - /url: https://blog.anluoying.com/
+    - text: ·
+    - generic [ref=f3e357]:
+      - text: Powered by
+      - link "Hugo" [ref=f3e358] [cursor=pointer]:
+        - /url: https://gohugo.io/
+      - text: "&"
+      - link "PaperMod" [ref=f3e359] [cursor=pointer]:
+        - /url: https://github.com/adityatelange/hugo-PaperMod/
