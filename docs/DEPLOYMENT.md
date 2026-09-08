@@ -98,7 +98,7 @@ Fonts are self-hosted under `/fonts/`, so they use the same Dooki → Pages path
 
 - Newsreader, LXGW WenKai and JetBrains Mono are self-hosted and preloaded on every page. The Chinese font is a current-site corpus subset, not the complete upstream typeface.
 - The page starts with a lightweight branded loading state. `assets/js/font-loader.js` reveals content when all four font faces are ready, or after a five-second safety timeout.
-- Custom faces use `font-display: optional`, so the timeout path stays on fallback fonts for that page instead of producing a disruptive late swap.
+- Custom faces use `font-display: swap`, so a first visit applies downloaded fonts without requiring a refresh. If the five-second safety timeout reveals fallback text first, each custom face still takes effect when it finishes loading. Do not use `optional`: it can keep the current page on fallback fonts even after `document.fonts.load()` resolves.
 - Cache-key query strings keep the preload and CSS request URLs identical. `scripts/subset_wenkai_font.py` updates both references when the Chinese subset changes.
 - Keep font sources and unused experiments under `assets/font-sources/`, which Hugo does not publish directly. Only runtime WOFF2 files belong in `static/fonts/`.
 - After publishing text with new rare characters, regenerate the subset with `python3 scripts/subset_wenkai_font.py` as documented in `scripts/README.md`.
