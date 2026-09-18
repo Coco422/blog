@@ -8,3 +8,9 @@ __pycache__/
 fix_descriptions.sh
 
 _draft-images/
+
+# Local research inputs, downloads, screenshots, and test results
+/sources/
+
+# Browser automation snapshots and logs
+/.playwright-cli/
