@@ -63,3 +63,13 @@
 <script defer crossorigin="anonymous"{{ if $nekoEnabled }}{{ printf ` data-oneko-script="%s" data-oneko-gif="/hugo-neko/oneko.gif"` $nekoScript.RelPermalink | safeHTMLAttr }}{{ end }} src="{{ $script.RelPermalink }}"></script>
   {{- end -}}
 {{- end -}}
+
+{{- with resources.Get "js/nav-icon-motion.js" -}}
+  {{- $motion := . | js.Build (dict "targetPath" "js/nav-icon-motion.js" "minify" hugo.IsProduction) -}}
+  {{- if not site.Params.assets.disableFingerprinting -}}
+    {{- $motion = $motion | fingerprint -}}
+<script defer crossorigin="anonymous" src="{{ $motion.RelPermalink }}" integrity="{{ $motion.Data.Integrity }}"></script>
+  {{- else -}}
+<script defer crossorigin="anonymous" src="{{ $motion.RelPermalink }}"></script>
+  {{- end -}}
+{{- end -}}

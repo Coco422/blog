@@ -1,0 +1,5 @@
+Package: morphicons 1.7.1
+Source: https://registry.npmjs.org/morphicons/-/morphicons-1.7.1.tgz
+Integrity: sha512-q5ylxy5/d7vBg0OAzanlooXf05PekovMYDuuQVpr6vAQZxl99lrJbaIi+jJ32PXQf9WEEaDO2pbNBsx1ZhEnFQ==
+Files: dist/dom.js, dist/adapters.js, dist/spring-CFHloqPP.js, dist/normalize-CYnN3Npw.js
+License: MIT; deployed copy at /licenses/morphicons.txt
