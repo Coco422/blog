@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-03-27T00:18:13+08:00
+lastmod: 2026-10-17T13:52:33+08:00
 showLastMod: true
 tags:
   - network
@@ -22,7 +22,7 @@ categories:
 ## 环境情况
 
 至今，我家里的网络拓扑如下
-![2d6eb5680b619bd928496d3bc2bb990d.png|300](https://imgbed.anluoying.com/2026/03/b386f2852d32c31b10d7e89dcb1fa409.png)
+![家庭网络拓扑示意图：英特网经光猫、Wi-Fi 路由器接到 iStoreOS 设备|300](https://imgbed.anluoying.com/2026/03/b386f2852d32c31b10d7e89dcb1fa409.png)
 这里直接用 iStoreOS 的图表示了
 
 其中 WIFI-路由器是我的主路由，入网用以及担任 zerotier 组网 还有无线 AP
@@ -42,25 +42,25 @@ R2S IP：`192.168.6.80`
 那我就想找到新的 passwall2 来手动更新整个服务
 [Releases · Openwrt-Passwall/openwrt-passwall2](https://github.com/Openwrt-Passwall/openwrt-passwall2/releases)
 
-![80415191ba2da0709fa33a9786f0d28d.jpg|300](https://imgbed.anluoying.com/2026/03/69742b8c62ed6755e9ebf0cb375ecd15.jpg)
+![路由器终端里用 opkg 装 passwall2 依赖包，一堆依赖解析不了、下载也失败|300](https://imgbed.anluoying.com/2026/03/69742b8c62ed6755e9ebf0cb375ecd15.jpg)
 
 结果是完全不行，okpg 似乎非常落后，到处都不兼容，所以没研究太多。我就决定直接升级整个 wrt
 
 按照 G 老师的推荐，我找到了[iStoreOS download \| SourceForge.net](https://sourceforge.net/projects/istoreos/) ，不得不说（AI 万岁）
 配合[balenaEtcher - Flash OS images to SD cards & USB drives](https://etcher.balena.io/#download-etcher)进行刷机，断电拔掉内存卡
 
-![Screenshot 2026-03-25 222859.png|300](https://imgbed.anluoying.com/2026/03/7cd3f1d7dbb000c496e86fbfe5b220e7.png)
+![balenaEtcher 刷机界面：选择镜像文件、选择目标设备、点 Flash|300](https://imgbed.anluoying.com/2026/03/7cd3f1d7dbb000c496e86fbfe5b220e7.png)
 下载好的系统镜像传入 Etcher
 插入读卡器，选择读卡器
-![Screenshot 2026-03-25 222819.png|300](https://imgbed.anluoying.com/2026/03/563f076fb1569bd7d22e1feab9805de6.png)
+![balenaEtcher 正在写入内存卡，进度 69%，右侧显示写入速度|300](https://imgbed.anluoying.com/2026/03/563f076fb1569bd7d22e1feab9805de6.png)
 开始刷
-![Screenshot 2026-03-25 222853.png|300](https://imgbed.anluoying.com/2026/03/150f05e8028672345f519669b3a3b663.png)
+![balenaEtcher 提示 Flash Completed，1 个目标设备刷写成功|300](https://imgbed.anluoying.com/2026/03/150f05e8028672345f519669b3a3b663.png)
 
 刷完之后插上内存卡，等待灯闪烁平稳后，访问 `192.168.100.1` 默认密码 password
 进入页面后一看服务啥都木有，先装个 passwall2，我在市场里没找到，所以就用.run 自己安装
 [Are-u-ok/apps/all/PassWall2\_26.2.14\_aarch64\_a53\_all\_sdk\_22.03.7.run at main · AUK9527/Are-u-ok · GitHub](https://github.com/AUK9527/Are-u-ok/blob/main/apps/all/PassWall2_26.2.14_aarch64_a53_all_sdk_22.03.7.run)
 安装 .run
-![Screenshot 2026-03-25 at 22.53.25.png|361](https://imgbed.anluoying.com/2026/03/cc22ff204115812860c2606a9f1b7e6a.png)
+![iStoreOS 离线安装页面的日志，逐个装 passwall2 依赖，中间有几个包 Unknown package|361](https://imgbed.anluoying.com/2026/03/cc22ff204115812860c2606a9f1b7e6a.png)
 
 安装完成后看日志有几个包没成功
 几个老的 shadowsocksr-libev-ssr-xxx 包（SSR 协议的旧实现），因为它们依赖 libopenssl1.1，而 iStoreOS 24.10 系列已经切换到 OpenSSL 3.x，不再提供 libopenssl1.1。
@@ -91,7 +91,7 @@ IP 地址还是设置成 `192.168.6.80`，网关指向主路由：`192.168.6.1`
 - 保存并应用
 
 这样主路由就不再发放 IP 了，所有设备都会向旁路由请求 IP。
-![9092901c54bb8190d9df44b89b4e862f.png|300](https://imgbed.anluoying.com/2026/03/14febcb8c59a6ebe9040a458ec69afd2.png)
+![iStoreOS 的 LAN 接口设置页，IPv4 网关填的 192.168.6.1|300](https://imgbed.anluoying.com/2026/03/14febcb8c59a6ebe9040a458ec69afd2.png)
 
 #### 2. 在旁路由 B（iStoreOS）上配置 DHCP（关键部分）
 
@@ -104,15 +104,15 @@ IP 地址还是设置成 `192.168.6.80`，网关指向主路由：`192.168.6.1`
 - IPv4 地址：192.168.6.80
 - 子网掩码：255.255.255.0
 - IPv4 网关：**192.168.6.1**（指向主路由 A，让所有流量先经过主路由拨号）
-![67eeb25eada532c0a831851fac61d3ef.png|300](https://imgbed.anluoying.com/2026/03/76a78bd2ccab6d0a00ba310e955803de.png)
+![DHCP 服务器常规设置：起始地址 100、最大租约数 150、租约时间 12h|300](https://imgbed.anluoying.com/2026/03/76a78bd2ccab6d0a00ba310e955803de.png)
 
 DHCP 设置唯一授权
-![911a5bf1762183b330a4313ac5065b47.png|300|300](https://imgbed.anluoying.com/2026/03/04affdee4e0c22c7e33534e2c638da04.png)
+![dnsmasq 的 DHCP/DNS 常规设置页，勾上唯一授权并改了本地域名|300|300](https://imgbed.anluoying.com/2026/03/04affdee4e0c22c7e33534e2c638da04.png)
 **DHCP 服务器 → 高级设置**（给普通设备用）： 在 **DHCP 选项** 中添加两行：
 
 - 3,192.168.6.1 （网关指向主路由）
 - 6,192.168.6.1 （DNS 也指向主路由）
-![9205e12e83a284a3e7c9f54aeb56c93a.png|300](https://imgbed.anluoying.com/2026/03/2ed58f786c0126491751826ab0d314b5.png)
+![DHCP 选项里添加两行 option 6 记录，指定网关和 DNS 地址|300](https://imgbed.anluoying.com/2026/03/2ed58f786c0126491751826ab0d314b5.png)
 
 > [!tip] 
 > 注意是两行，我刚开始写在同一行也不报错，苦恼了很久
@@ -126,7 +126,7 @@ DHCP 设置唯一授权
     - 3,192.168.6.80
     - 6,192.168.6.80 （网关和 DNS 都指向自己）
 
-![7fde1f5ab79e1e0a349741432ad35b2a.png|300](https://imgbed.anluoying.com/2026/03/7454e1ec8d34c1f4d5fdf2c358772278.png)
+![dnsmasq 标签页里给 normal 和 proxy 两组设备分别指定 DHCP 选项|300](https://imgbed.anluoying.com/2026/03/7454e1ec8d34c1f4d5fdf2c358772278.png)
 
 
 **静态地址分配（绑定 MAC）**：
@@ -139,7 +139,7 @@ DHCP 设置唯一授权
     - **标签**：选择刚才的 proxy
 - 保存并应用
 
-![22928a5b1cc6d43a92ac1fe33668c94e.png|300](https://imgbed.anluoying.com/2026/03/ee2c1a07d14eaa90b7da90e5292b51f1.png)
+![静态地址分配里给两台 Mac 绑了 MAC 和固定 IP，下面是已分配的 DHCP 租约|300](https://imgbed.anluoying.com/2026/03/ee2c1a07d14eaa90b7da90e5292b51f1.png)
 这里我的 macbook 有 保护 MAC 地址的功能。所以我把真假两个都填上去了。
 
 - 在需要翻墙的电脑上：断开网络 → 重新连接（或 ipconfig /release + /renew）

@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-04-20T15:54:31+08:00
+lastmod: 2026-10-17T13:52:33+08:00
 showLastMod: true
 tags:
   - network
@@ -66,17 +66,17 @@ categories:
 
 大功告成
 
-![Screenshot 2026-03-25 at 16.31.24.png|300|300](https://imgbed.anluoying.com/2026/03/b2cd7e000388f86cfed0790e89b2fdfa.png)
+![CDN 后台的流量看板：加速网站 1 个、本月总流量 1.84 MiB，下面是近 30 日流量和带宽趋势|300|300](https://imgbed.anluoying.com/2026/03/b2cd7e000388f86cfed0790e89b2fdfa.png)
 
 ## 给大家看看效果
 
 ### 加速前
 
-![9db7b2c1-a1b8-41e0-9558-bb396d8ea805.png|300](https://imgbed.anluoying.com/2026/03/db6c021603b835cdb9f027a2ad4ebdb4.png)
+![加速前的全国 Ping 测试：85 个节点，最快 68ms，平均 209.9ms|300](https://imgbed.anluoying.com/2026/03/db6c021603b835cdb9f027a2ad4ebdb4.png)
 
 ### 加速后
 
-![adf729c2-783e-4ec9-b98a-048aa8cdfb00.png|300|300](https://imgbed.anluoying.com/2026/03/f90b40c99fee6fa168f82390f7bfb57d.png)
+![开上 CDN 后再测一次：地图基本全绿，58 个节点平均响应 0.626s|300|300](https://imgbed.anluoying.com/2026/03/f90b40c99fee6fa168f82390f7bfb57d.png)
 ## 什么叫端口跟随
 
 这里是我的疑问，就是用户访问 http的时候 理论走的是CDN的80端口，那么他回源到服务器要访问 80还是443就由这个配置指定
