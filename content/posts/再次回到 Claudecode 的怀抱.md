@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-10-16T00:41:01+08:00
+lastmod: 2026-10-17T12:50:13+08:00
 showLastMod: true
 tags:
   - AI
@@ -21,7 +21,7 @@ categories:
 
 直到这个水温持续升高。用户量达到OpenAI的预期后，reset god开始减少福利策略——额度变紧、模型变懒、reset从慷慨变成稀有，降智、断流，种种手段陆续出现。到此时此刻，也就是十天前，我从ChatGPT首次公众亮相时（2022年底）注册的老号也遭到了砍杀。
 
-![image.png|300|300](https://imgbed.anluoying.com/2026/10/baa28949e2ee174fe10ecfdae6bcb0d8.png)
+![Codex 桌面客户端界面：左侧会话列表，中间是任务列表，底部可以看到当前使用的模型|300|300](https://imgbed.anluoying.com/2026/10/baa28949e2ee174fe10ecfdae6bcb0d8.png)
 
 所有诉权邮件全是人机回复，像在跟空气说话。而此时封号斗罗（A/）那边，Opus 5.5的表现屡屡受到网友称赞。驳斥自己是一件很痛苦的事情，但我知道，可能不得不低头转向这恶心的公司了。一边骂自己一边还是点开了充值页面。
 

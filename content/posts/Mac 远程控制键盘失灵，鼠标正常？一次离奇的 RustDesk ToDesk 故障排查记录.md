@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-10-14T11:13:54+08:00
+lastmod: 2026-10-17T12:50:13+08:00
 showLastMod: true
 tags:
   - mac
@@ -14,7 +14,6 @@ tags:
 categories:
   - 杂技浅尝
 ---
-# Mac 远程控制键盘失灵，鼠标正常？一次离奇的 RustDesk / ToDesk 故障排查记录
 
 最近遇到一个比较奇葩的问题：
 
