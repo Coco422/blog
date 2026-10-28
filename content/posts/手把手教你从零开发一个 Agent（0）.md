@@ -405,9 +405,13 @@ history.push({
 
 到这里，多轮对话的记忆问题算是解决了。但前面埋下的问题还在：历史会越滚越长，Token 越烧越多，迟早撞上上下文上限。这个留到“上下文管理”再收拾。
 
-下一篇，先让 AI 长出手来——function calling。
+下一篇，先让 AI 长出手来——[function calling]({{< relref "posts/模型到底是怎么调用工具的.md" >}})。
 
-如果想先看整个 Agent runtime 的架构草图，也可以继续看[从 0 开发一个 agent（1）]({{< relref "posts/从 0 开发一个 agent（1）.md" >}})。
+## 继续阅读
+
+- [模型到底是怎么调用工具的：从 Chat Template 到 Function Calling]({{< relref "posts/模型到底是怎么调用工具的.md" >}})
+- [Agent Loop 怎么写：并行工具调用、停止条件与最小执行循环]({{< relref "posts/Agent-Loop-怎么写.md" >}})
+- [从 0 开发一个 agent（1）：Agent Runtime 的架构草图]({{< relref "posts/从 0 开发一个 agent（1）.md" >}})
 
 ## 参考资料
 
