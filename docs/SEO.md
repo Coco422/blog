@@ -49,6 +49,26 @@ Codex 每周巡检配置在本机 `$CODEX_HOME/automations/seo-geo/`，记忆文
 
 Search Console 是判断 Google 是否抓取、选择 canonical 和拒绝收录原因的主要官方入口；服务器日志可补充确认爬虫访问，`site:` 查询只能作为粗略参考。
 
+## Bing Webmaster 与 IndexNow
+
+- Bing Webmaster 的博客资源使用 `https://blog.anluoying.com/`，通过根目录的 `static/BingSiteAuth.xml` 验证所有权，避免修改全域 DNS 或授权读取全部 GSC 资源。
+- 验证后提交 `https://blog.anluoying.com/sitemap.xml`。完成验证与提交站点地图不代表已收录。
+- IndexNow 使用根目录 `static/<32 位公钥>.txt` 证明网站所有权。这是协议要求公开的验证材料，不是图床、Cloudflare 或 Bing 的私密 API 凭据；不要把其他服务的密钥放进 `static/`。
+- 验证文件允许抓取，但通过 `X-Robots-Tag: noindex` 避免成为搜索结果。不要在 robots.txt 中禁止访问验证文件。
+- 先构建和审计，再预览需要通知的 URL；正式发布并确认线上公钥正确后才执行提交：
+
+```bash
+hugo --environment production --cleanDestinationDir --printI18nWarnings --printPathWarnings
+python3 scripts/seo_audit.py
+python3 scripts/indexnow_submit.py --sitemap public/sitemap.xml
+# 首次接入可通知当前 sitemap；后续只通知实际新增或更新的 URL。
+python3 scripts/indexnow_submit.py --submit https://blog.anluoying.com/posts/example/
+```
+
+最后一行的示例地址必须换成当前 production sitemap 中的真实 canonical URL。脚本默认 dry-run，会拒绝站外、查询参数、锚点及不在 sitemap 中的 URL；`--submit` 先核对线上验证文件，网络或 HTTP 错误不会自动重试。首次全量通知可显式使用 `--submit --sitemap public/sitemap.xml`，后续不要反复提交未变化的全站页面。
+
+IndexNow 的 200 代表收到通知，202 代表收到且仍待验证公钥，都不保证抓取或收录。协议与接收端见 [IndexNow 官方文档](https://www.indexnow.org/documentation)及 [官方 FAQ](https://www.indexnow.org/faq)。不额外创建定时全量提交任务。
+
 ## Cloudflare Pages 环境
 
 Hugo 的 Production 与 Preview 必须使用不同环境值：
@@ -169,6 +189,16 @@ Codex 自动化 `seo-geo` 每周六运行，只读。报告应包含：
 - 补充 SLM、DeepSeek、软考和 Nginx 共 8 篇文章的上下文内链；Agent（0）/（1）已有相互引用，不重复堆链接。
 - `llms.txt` 保持 5 个核心条目，更新为两篇 DeepSeek 实测、Qwen3.8、浏览器自动化对比和 Agent 教程入口。
 - 为现有 343 张正文图补齐宽高；DeepSeek 硬件对比文章的 4 张图从约 8.54 MB 缩至 1.55 MB，动画保留全部 75 帧和时长。原图、转换记录和上传校验保存在不公开的 `sources/seo/2026-11-10/`。
-- Dooki 的内容压缩已开启，现场实测文章返回 Brotli，约 25.7 KB；未复现此前“86 KB 且未压缩”的结果，不重复切换已生效配置。
-- 本轮未重新读取 GSC 或 CrUX，也未完成 Bing Webmaster / IndexNow 接入；后续需以账号内实际报告补齐，不能从仓库缺少验证文件推断站点未验证。
+- 晚间复现并处理了 Dooki 的压缩缓存差异：首页和文章的 1 分钟缓存键增加 `Accept-Encoding` 维度，避免 identity、Brotli、gzip 共用同一份回源表示，并追加 `Vary: Accept-Encoding`。文章 identity 约 86.2 KB，Brotli 约 25.7 KB，gzip 约 25.1 KB；连续命中仍保持各自编码。最小压缩长度仍为 1 KiB，最大 32 MiB，算法保持默认；门槛和重新压缩选项的试验未改善现象，均已恢复。具体缓存契约和回滚见 `docs/DEPLOYMENT.md`。
+- 晚间已登录 GSC 核对最新报告；具体口径和数据见下方基线。Bing / IndexNow 使用独立的博客资源和公开所有权验证文件接入，不能从仓库缺少验证文件推断历史账号状态。
 - 保留现有字体加载方案。文楷 preload 与字体就绪后展示逻辑有关，性能调整应结合真实首屏数据一起验证，不能单独移除 preload。
+
+生产发布核验（2026-11-10，提交 `286e5e5`）：正式首页和 DeepSeek 对比文为 200 且可索引，源站同路径返回 `X-Robots-Tag: noindex, follow`；正式 `/index.json` 仍是 `noindex`，标签与搜索页的 meta noindex 保留；sitemap 136 条，精选目录与新分享图已生效，Googlebot / GPTBot / ClaudeBot 均取得 200。晚间继续完成压缩缓存处理和 GSC 基线核验，并接入 Bing / IndexNow；其状态见相应章节。
+
+### 2026-11-10 晚间 GSC 基线
+
+- 资源为 `sc-domain:anluoying.com`。域名级索引报告更新于 11 月 6 日：165 已编入、234 未编入；未编入原因为 noindex 188、404 2、重定向 1、已抓取未收录 35、已发现未收录 8。该范围包含主域及子域、历史和非 sitemap URL，不能直接当作博客文章总数。
+- 按博客 `https://blog.anluoying.com/sitemap.xml` 筛选后：136 个 URL 中，119 已编入、9 已抓取未收录、8 已发现未收录；没有 noindex / 404 / 重定向排除项。sitemap 状态成功，上次读取 11 月 7 日。
+- 近 7 天按网页 URL 包含 `https://blog.anluoying.com/` 筛选：11 月 2–8 日，29 次点击、834 次曝光、CTR 3.5%、平均排名 7.0，搜索类型为网页（文本）。页面过滤后的聚合口径与未过滤的域名总计不同；本次优化发生在 11 月 10 日，这些是优化前的基线。
+- 9 个已抓取未收录样本包含 OpenClaw 飞书集成、VS Code Server 离线下载、SLM-2、Harbor 鉴权等，不应简单归因于正文不足 500 字。8 个已发现未收录样本包括 10 月发布的 Go 基础、Linux 用户管理、screen、Nginx 两篇及 QQ 接入大肥鱼；先观察抓取，再按具体网页判断内容问题。
+- 域名概览中的移动端和桌面 Core Web Vitals 均无数据，暂不能给出真实用户 LCP/CLS/INP 的改善结论。截图、样本 URL 和结构化基线保存在 `sources/seo/2026-11-10/`，不作为公共站点路径。

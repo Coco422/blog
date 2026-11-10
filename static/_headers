@@ -31,3 +31,10 @@ https://blog-dc5.pages.dev/*
 
 https://:deployment.blog-dc5.pages.dev/*
   X-Robots-Tag: noindex, follow
+
+# Search ownership verification files stay crawlable but out of search results.
+/BingSiteAuth.xml
+  X-Robots-Tag: noindex
+
+/776d95cff915e5d44420eaf8566481b6.txt
+  X-Robots-Tag: noindex

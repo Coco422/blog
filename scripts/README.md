@@ -13,6 +13,10 @@ python3 scripts/seo_audit.py
 
 策略和巡检约定见 `docs/SEO.md`。必须用干净的 production 输出，不要在陈旧 `public/` 上审计。
 
+## IndexNow 通知
+
+先按 `docs/SEO.md` 构建和审计，再运行 `python3 scripts/indexnow_submit.py <已发布的 canonical URL>` 预览。添加 `--submit` 才会核对线上公钥并发送通知；首次接入可显式用 `--sitemap public/sitemap.xml` 选择当前站点地图。脚本只允许正式域名、当前 sitemap 中的 URL，并且不会在日志中输出验证公钥。
+
 ## 远程图片尺寸
 
 新增图床图片后，先缓存原始宽高，再构建：

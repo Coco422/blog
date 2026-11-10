@@ -84,13 +84,16 @@ The current Dooki rules are deliberately narrow:
 - `首页: /` → 1 minute, ignore URI parameters.
 - `URL正则匹配: ^/.+/$` → 1 minute, ignore URI parameters. This covers Hugo's trailing-slash article, taxonomy, pagination and section URLs without matching files such as JavaScript, fonts, feeds or `index.json`.
 
+Both HTML rules use `${scheme}://${host}${requestPath}|ae=${header.Accept-Encoding}` as their cache key. The `Accept-Encoding` variant is required: a response cached after an identity request must not displace the Brotli or gzip representation. Keep the one-minute TTL and query-string behavior when editing this key. To roll back the variant change, restore `${scheme}://${host}${requestPath}` in both rules; performance will return to the previous behavior.
+
 One minute is the safety ceiling without an automatic purge hook. After a deploy, either wait for that TTL or invalidate the affected HTML URLs when immediate visibility matters. Do not use a long "cache everything" HTML rule.
 
 ### Compression
 
 - Enable Brotli with gzip fallback for HTML, CSS, JavaScript, JSON, XML, SVG and text responses.
 - Do not recompress content that is already compressed. In particular, WOFF2, PNG, JPEG and WebP normally gain nothing from another compression pass.
-- Preserve `Vary: Accept-Encoding` when the CDN stores compressed variants.
+- Preserve `Vary: Accept-Encoding` when the CDN stores compressed variants. Dooki appends this response header so existing `Vary` values are retained.
+- Verify a sequence of identity → Brotli → gzip → identity → Brotli → gzip requests on the same homepage/article URL. Repeat after one HTML TTL. Confirm the requested encoding, an identical decoded body, and cache hits; seeing one compressed response during a cache refresh is insufficient.
 
 ### Fonts and first paint
 
