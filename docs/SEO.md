@@ -60,7 +60,15 @@ Hugo 的 Production 与 Preview 必须使用不同环境值：
 
 `HUGO_VERSION=0.148.2` 仍需同时配置在 Production 和 Preview。
 
-生产构建允许索引；非生产构建会输出 `noindex, follow`。如果默认 `*.pages.dev` 域名仍能公开访问，建议在 Cloudflare 配置 301 重定向到 `https://blog.anluoying.com/`，避免长期保留第二套可访问域名。
+生产构建允许索引；非生产构建会输出 `noindex, follow`。Dooki 以 `blog-dc5.pages.dev` 为回源 Host，因此不能把这个源站直接 301 到正式域名，否则会造成回源循环。
+
+源站索引隔离由两端配合完成：
+
+- `static/_headers` 为 `blog-dc5.pages.dev` 及其部署子域名返回 `X-Robots-Tag: noindex, follow`。
+- Dooki 仅在 `blog.anluoying.com` 的响应报头中，对 `X-Robots-Tag` 启用内容替换：`noindex, follow` → `index, follow`，报头默认值留空。不删除整个报头，也不把所有值一律改成 `index`。
+- `/index.json` 仍有独立的 `noindex`。Cloudflare 合并同名头后，CDN 替换源站指令仍须保留这个 `noindex`；标签、搜索等 HTML 页也继续由 meta robots 控制。
+- 两端必须一起维护。更换 CDN 前先配好同样的精确替换，再切流；回滚时先移除源站隔离规则并部署，再移除 CDN 替换，避免正式域名继承源站 `noindex`。
+- 每次发布验证源站首页/文章为 `noindex`、正式首页/文章无 `noindex`、正式 `/index.json` 仍为 `noindex`。规则写法遵循 [Cloudflare Pages headers 文档](https://developers.cloudflare.com/pages/configuration/headers/)。
 
 ## 当前索引策略
 
@@ -112,10 +120,15 @@ Hugo 的 Production 与 Preview 必须使用不同环境值：
 
 ## 发布内容检查
 
-- `description` 写 50–90 个中文字符，直接说明问题、方法和结论，不放 Markdown、URL、代码或图片语法。
+- `description` 以 50–90 个字符为编辑目标，直接说明问题、方法和结论，不放 Markdown、URL、代码或图片语法。脚本按 Unicode 字符计数并提示超限；这不是搜索引擎的硬性长度门槛，见 [Google 摘要说明](https://developers.google.com/search/docs/appearance/snippet)。
+- 文章 `<title>` 不再附加站名；必要时用 `seoTitle` 提供简短搜索标题，正文 H1 保留 `title`，不改文章 URL。不用固定字符数判定标题质量，见 [Google 标题说明](https://developers.google.com/search/docs/appearance/title-link)。
 - 模板已经输出文章标题 H1，正文从 H2（`##`）开始。
 - 图片使用描述内容的 alt；`image.png`、`图片`和空 alt 只会得到兜底文本。
+- 分享图依次使用 `cover.image`、文章 `images` / featured 资源、正文第一张 PNG/JPEG/WebP，最后才回退站点默认图；GIF 不自动作为分享图。Open Graph、Twitter Card 和 JSON-LD 共用同一来源。
+- 新图上传前限制到合适的显示宽度，照片/插画优先 WebP，文字截图优先无损压缩；动图保留必要演示，优先更小的动画 WebP 或视频。不要为换格式牺牲文本可读性。
+- 新增图床图片后运行 `python3 scripts/image_metadata.py`，再构建。`data/remote_images.json` 缓存原始宽高，图片模板按文中显示尺寸补齐比例；构建不联网取图。用法见 `scripts/README.md`。
 - `lastmod` 必须是真实更新时间，不能晚于当前时间。
+- 不为补齐字段而批量重写历史 `lastmod`，不因正文不足 500 字就扩写、合并或 noindex。判断文章是否完整回答问题；Google [没有偏好的固定字数](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)。
 - 高度转载或重复内容应补充原创分析，或设置 `canonicalURL` 并从 sitemap 移除。
 - 已发布文章不要随意修改 URL；确需改名时必须保留永久重定向。
 
@@ -148,4 +161,14 @@ Codex 自动化 `seo-geo` 每周六运行，只读。报告应包含：
 
 把“旧 URL 被 301”记为正常。P0 只留给线上不可抓取、错误 noindex、错误 canonical 或审计回归。
 
-最近一次巡检记忆（2026-08-15）：技术面通过；GSC 约 129 已编入、110 未编入，其中 noindex / 历史 URL / 外部 canonical 占多数；近 7 天展示仍是个位数。未编入项不要直接改 robots。
+历史 GSC 快照（2026-08-15）：约 129 已编入、110 未编入，其中 noindex / 历史 URL / 外部 canonical 占多数；近 7 天展示仍是个位数。这不是当前索引数据，未编入项不要直接改 robots。
+
+### 2026-11-10 定向优化
+
+- 干净 production 构建和 SEO 审计通过；补齐《QQ接入大肥鱼》的 4 个描述性 alt、41 篇摘要，优化 5 个含糊标题及 4 个长标题的搜索展示，文章 URL 保持不变。
+- 补充 SLM、DeepSeek、软考和 Nginx 共 8 篇文章的上下文内链；Agent（0）/（1）已有相互引用，不重复堆链接。
+- `llms.txt` 保持 5 个核心条目，更新为两篇 DeepSeek 实测、Qwen3.8、浏览器自动化对比和 Agent 教程入口。
+- 为现有 343 张正文图补齐宽高；DeepSeek 硬件对比文章的 4 张图从约 8.54 MB 缩至 1.55 MB，动画保留全部 75 帧和时长。原图、转换记录和上传校验保存在不公开的 `sources/seo/2026-11-10/`。
+- Dooki 的内容压缩已开启，现场实测文章返回 Brotli，约 25.7 KB；未复现此前“86 KB 且未压缩”的结果，不重复切换已生效配置。
+- 本轮未重新读取 GSC 或 CrUX，也未完成 Bing Webmaster / IndexNow 接入；后续需以账号内实际报告补齐，不能从仓库缺少验证文件推断站点未验证。
+- 保留现有字体加载方案。文楷 preload 与字体就绪后展示逻辑有关，性能调整应结合真实首屏数据一起验证，不能单独移除 preload。

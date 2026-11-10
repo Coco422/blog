@@ -1,6 +1,6 @@
 ---
 title: QQ接入大肥鱼
-description: ""
+description: "以 Windows、DSH、SnowLuma 与 qq-bridge 为例，记录将大肥鱼接入 QQ 的安装、双 Token 配置和白名单排障要点。"
 date: 2026-10-28T22:01:03+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -24,7 +24,7 @@ categories:
 
 DSH（DeepSeek harness）
 
-![image.png|300](https://imgbed.szmckj.cn/uploads/2026/10/28/6ae21a66bffe3.png)
+![DSH 安装后的桌面界面|300](https://imgbed.anluoying.com/2026/10/561d0130aa5c041c4b356f71d9a03a9c.png)
 
 直接来到官网下载安装即可，接下来你的大肥鱼就会住在这里。如果你能找到个不关机的电脑（服务器），你也可以让它住在那里，24小时响应你的需求。
 
@@ -38,7 +38,7 @@ Derpyu520/qq-bridge（Stars 挺高 截止本文3.2k，社交仿真“群友”�
 
 下载启动后控制台会输出密码
 
-![image.png|300](https://imgbed.szmckj.cn/uploads/2026/10/28/6ae21a7e078e6.png)
+![SnowLuma 登录与 QQ 进程注入界面|300](https://imgbed.anluoying.com/2026/10/0a39bcc29608903b010afb89b92e0e48.png)
 
 在该页面填写密码后，会要求修改密码，之后就可以成功进入页面。
 此时我系统登录着我的QQ小号，他检测到了进程，于是我点击注入进程
@@ -115,7 +115,7 @@ npm start
 
 浏览器打开 `http://127.0.0.1:3100/` → 粘贴令牌 → 进控制台。
 
-![image.png|300](https://imgbed.szmckj.cn/uploads/2026/10/28/6ae21b05eab47.png)
+![qq-bridge 控制台首页|300](https://imgbed.anluoying.com/2026/10/39a7b2eea774ec776905ae0a840bf926.png)
 
 
 不要头疼怎么安装的问题，你刚刚已经下载了DSH了，这些直接叫他帮你安装就行了。
@@ -124,7 +124,7 @@ npm start
 
 这是最重要的一步，给你的大肥鱼装入灵魂，来到左侧的 人格与角色，可以看到系统已经默认带了一个 小鲸鱼人格和傲娇助手人格
 
-![image.png|300](https://imgbed.szmckj.cn/uploads/2026/10/28/6ae21b5d0c135.png)
+![qq-bridge 人格与角色配置|300](https://imgbed.anluoying.com/2026/10/5058e9f04c866aa757f3bd79c2f6c948.png)
 
 选择后点击保存并在下面设置。
 
@@ -132,7 +132,7 @@ npm start
 
 然后来到访问与安全。在白名单里输入允许的群和允许的QQ号，点击保存，此时来到群里开始发消息，
 
-![de06ceb5827c5a26cb59808196b4b6a2_720.png|300](https://imgbed.szmckj.cn/uploads/2026/10/29/6ae21c042aa48.png)
+![de06ceb5827c5a26cb59808196b4b6a2_720.png|300](https://imgbed.anluoying.com/2026/10/ceaca6a9506c36084352e1fb9e68d748.jpg)
 
 这里我打完招呼后，想让他给我新开的88dog中转站做些广告，结果这大肥鱼尽惹我生气了。
 

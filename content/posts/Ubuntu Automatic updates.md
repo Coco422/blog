@@ -1,6 +1,6 @@
 ---
 title: Ubuntu Automatic updates
-description: 本文介绍 Ubuntu 自动更新导致系统重启及驱动不兼容问题。提供两种方案：推荐保留安全更新但黑名单内核与 NVIDIA 包，或完全关闭自动更新。指导修改配置文件，避免生产服务器意外重启影响业务。
+description: "Ubuntu 自动更新触发重启并影响显卡驱动后，记下保留安全更新、排除内核和 NVIDIA 包的方法，以及关闭自动更新的备选配置。"
 date: 2026-03-18T14:29:51+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

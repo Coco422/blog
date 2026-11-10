@@ -1,6 +1,6 @@
 ---
 title: VScode ssh server 离线下载
-description: 微软大战代码的 SSH 工具挺好用，一直用它连接远程服务器进行开发，控制文件或者直接 terminal 运行命令都很方便。但是当remote server 网络不好以及系统太老就歇菜了，那么如果下载 server 很久都没解决，我觉得应该可以离线下载并上传这个 server
+description: "VS Code 远程 SSH 连接卡在下载 Server 时，按客户端提交号离线下载对应版本，再上传到服务器安装，记录网络不畅时的处理方法。"
 date: 2025-12-19T15:05:25+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

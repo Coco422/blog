@@ -1,6 +1,6 @@
 ---
 title: Claude Code 斜杠命令大全
-description: Claude Code 到目前为止所有斜杠命令的完整整理，附用法说明和参考链接，长期更新
+description: "整理 Claude Code 的会话、模型、工具和诊断斜杠命令，记录各项用途、别名及官方参考链接，作为使用时随手查阅的备忘。"
 date: 2026-05-13T13:00:00+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

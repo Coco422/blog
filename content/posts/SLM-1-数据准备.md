@@ -1,6 +1,6 @@
 ---
 title: SLM-1-数据准备
-description: 从零实现一个 GPT 架构小语言模型的第一步，用 TinyStories 数据集做分词和批次准备。
+description: "从零训练 GPT 架构小语言模型的第一步，加载 TinyStories 本地数据，用 tiktoken 分词，再准备训练和验证批次。"
 date: 2025-08-19T11:14:18+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -11,6 +11,7 @@ tags:
 categories:
   - 杂技浅尝
 showLastmod: true
+lastmod: 2026-11-10T10:24:15Z
 ---
 ## 流程
 
@@ -182,3 +183,5 @@ def get_batch(split):
         x, y = x.to(device), y.to(device)
     return x, y
 ```
+
+数据准备好之后，接着看[第二篇：模型架构和训练]({{< relref "posts/SLM-2-模型训练.md" >}})。

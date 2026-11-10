@@ -1,6 +1,6 @@
 ---
 title: 后训练gemma4的说白话模型初尝
-description: 记录在12GB显存的4070 Super上运行Q4_K_M量化版Baihua-Gemma4-E4B的初步体验，介绍其多风格白话改写效果、23秒加载时间与35—84 tokens/s生成速度，并说明后续测试计划。
+description: "在 12GB 显存的显卡上运行白话改写模型，记录量化版的加载时间、生成速度和几种改写风格，这次先看能不能跑起来。"
 date: 2026-10-13T01:09:19+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

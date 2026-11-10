@@ -1,6 +1,6 @@
 ---
 title: code graph浅尝
-description: 本文实测codegraph工具，记录其利用Tree-sitter解析源码、构建本地代码知识图谱并存入SQLite的流程。涵盖安装初始化及通过MCP接入Claude Code的步骤，并分享初步体验。
+description: "在 Mac 安装 CodeGraph，索引项目源码并通过 MCP 接入 Claude Code，看看本地代码知识图谱如何保存和查询。"
 date: 2026-06-02T14:46:41+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

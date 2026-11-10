@@ -153,6 +153,7 @@ def html_audit(errors: list[str], warnings: list[str]) -> tuple[int, int]:
     indexable_files = 0
     fallback_alt_count = 0
     fallback_alt_pages = 0
+    missing_image_sizes = 0
     for path in sorted(PUBLIC.rglob("*.html")):
         parser = parse_html(path)
         if parser.is_redirect:
@@ -211,6 +212,22 @@ def html_audit(errors: list[str], warnings: list[str]) -> tuple[int, int]:
             fallback_alt_count += fallback_alts
             fallback_alt_pages += 1
 
+        for image in parser.images:
+            for dimension in ("width", "height"):
+                value = image.get(dimension)
+                if value is not None and (not value.isdigit() or int(value) <= 0):
+                    errors.append(f"{label}: image has invalid {dimension} {value!r}")
+            if urlparse(str(image.get("src") or "")).netloc == "imgbed.anluoying.com":
+                if not image.get("width") or not image.get("height"):
+                    missing_image_sizes += 1
+
+        og_images = [str(item.get("content") or "") for item in parser.metas
+                     if item.get("property") == "og:image"]
+        if len(og_images) != 1 or not og_images[0].startswith("https://"):
+            errors.append(f"{label}: expected one HTTPS Open Graph image")
+        elif parser.meta("twitter:image") != og_images:
+            errors.append(f"{label}: Twitter and Open Graph images differ")
+
         for block in parser.json_ld:
             try:
                 data = json.loads(block)
@@ -232,6 +249,12 @@ def html_audit(errors: list[str], warnings: list[str]) -> tuple[int, int]:
         warnings.append(
             f"generated output uses {fallback_alt_count} fallback image alt texts "
             f"across {fallback_alt_pages} pages; replace them with descriptive source alt text"
+        )
+
+    if missing_image_sizes:
+        warnings.append(
+            f"generated output has {missing_image_sizes} image-bed images without width/height; "
+            "run python3 scripts/image_metadata.py before building"
         )
 
     return html_files, indexable_files
@@ -488,6 +511,8 @@ def source_audit(errors: list[str], warnings: list[str]) -> int:
             errors.append(f"{label}: missing title")
         if not scalar(metadata, "description"):
             errors.append(f"{label}: published post has empty description")
+        elif not 50 <= len(scalar(metadata, "description")) <= 90:
+            warnings.append(f"{label}: description is outside the editorial 50–90 character target")
         lastmod = parse_iso(scalar(metadata, "lastmod"))
         if lastmod and lastmod > now:
             errors.append(f"{label}: lastmod is in the future")

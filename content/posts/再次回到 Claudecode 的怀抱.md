@@ -1,6 +1,6 @@
 ---
 title: 再次回到 Claudecode 的怀抱
-description: 回顾从Claude Code转向Codex，又因额度收紧、模型降智、断流及老号被封而重返Claude Code；认可Claude Opus 5.5，反思对vibe coding的依赖，并期待DeepSeek、GLM、Kimi、Qwen在长任务与稳定性上追赶。
+description: "从 Codex 切回 Claude Code 的一次记录，聊聊额度、断流、账号被封和长任务体验，也反思自己对 AI 编程的依赖。"
 date: 2026-10-16T00:17:18+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

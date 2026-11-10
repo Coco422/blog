@@ -1,7 +1,7 @@
 ---
 title: 自建 RSS 聚合——freshRSS
 slug: freshrss-self-hosted
-description: 本文介绍如何使用 FreshRSS 自建 RSS 聚合系统，通过 Docker 快速部署，支持多设备同步阅读。文章详细讲解了部署流程、订阅源配置及手机端阅读器选择，帮助用户高效管理信息源，提升阅读体验。
+description: "用 Docker 自建 FreshRSS，把分散的订阅放在一起，再选一个手机阅读器同步阅读，记录部署配置和自己的使用习惯。"
 date: 2026-03-19T13:18:45+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

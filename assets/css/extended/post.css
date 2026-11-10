@@ -75,6 +75,7 @@
 
 .post-content .post-img-view img {
     margin: 0;
+    height: auto;
 }
 
 .post-content .post-image-row {

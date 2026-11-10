@@ -6,8 +6,11 @@
   {{- $pageNumber = $paginator.PageNumber -}}
 {{- end -}}
 
-{{- $baseTitle := .Title | default $siteName -}}
+{{- $baseTitle := .Params.seoTitle | default .Title | default $siteName -}}
 {{- $title := printf "%s | %s" $baseTitle $siteName -}}
+{{- if and .IsPage (eq .Section "posts") -}}
+  {{- $title = $baseTitle -}}
+{{- end -}}
 {{- if .IsHome -}}
   {{- $baseTitle = "文章列表" -}}
   {{- $title = site.Params.seo.homeTitle | default $siteName -}}
@@ -56,9 +59,22 @@
     {{- $image = .Params.cover.image | absURL -}}
   {{- end -}}
 {{- else -}}
+  {{- if and .IsPage (eq .Section "posts") (not .Params.images) (not (.Resources.GetMatch "{*feature*,*cover*,*thumbnail*}")) -}}
+    {{- range findRE `<img\s[^>]*>` .Content -}}
+      {{- if not $image -}}
+        {{- $src := replaceRE `^.*?\ssrc="([^"]+)".*$` "$1" . | htmlUnescape -}}
+        {{- $url := urls.Parse $src -}}
+        {{- if and (in (slice "" "https" "http") $url.Scheme) (findRE `(?i)\.(png|jpe?g|webp)$` $url.Path) -}}
+          {{- $image = $src | absURL -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- if not $image -}}
   {{- with partial "templates/_funcs/get-page-images" . -}}
     {{- with index . 0 -}}{{- $image = .Permalink -}}{{- end -}}
   {{- end -}}
+{{- end -}}
 {{- end -}}
 
 {{- $noindex := or (not hugo.IsProduction) (.Param "robotsNoIndex") (.Param "hidden") (eq .Kind "404") -}}

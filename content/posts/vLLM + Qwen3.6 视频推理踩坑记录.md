@@ -1,6 +1,6 @@
 ---
 title: vLLM + Qwen3.6 视频推理踩坑记录
-description: 记录使用 vLLM 0.19.1 部署 Qwen3.6-27B 做视频理解时遇到的 AV1 解码、OpenCV 读帧、timestamps 报错与 file:// 路径问题，并整理转码和分段采样建议。
+description: "部署 Qwen3.6 做视频理解时，遇到解码、读帧、时间戳和本地文件路径问题，记下 vLLM 排错、转码与分段采样过程。"
 date: 2026-07-16T17:47:03+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

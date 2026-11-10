@@ -1,6 +1,6 @@
 ---
 title: "Qwen3.8-27B 本地部署实测：vLLM、SGLang、单卡 Q4 与 DSH"
-description: "在四张 RTX 3090 上部署 Qwen3.8-27B BF16，比较 vLLM 与 SGLang 的长上下文、Prefix Cache 和多模态表现，再测试单卡 Q4、WorkBuddy 与 DeepSeek Harness。"
+description: "四张 RTX 3090 部署 Qwen3.8-27B，比较两种推理框架的长上下文与缓存，再试单卡 Q4、视觉输入和 DSH。"
 date: 2026-08-18T02:15:52+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -19,7 +19,7 @@ categories:
   - 杂技浅尝
 ---
 
-![Qwen3.8-27B 本地部署实测题图](https://imgbed.szmckj.cn/uploads/2026/08/18/6a8342a5567ff.png)
+![Qwen3.8-27B 本地部署实测题图](https://imgbed.anluoying.com/2026/10/52d6da58957e30d0cf3c05fa631ef6bf.png)
 
 Qwen3.8-27B 这个尺寸我等了挺久：27B 稠密模型还保留了足够的能力，量化后又能塞进单张 24GB 显卡，正好落在本地 Agent 比较实用的一档。
 
@@ -46,17 +46,17 @@ Qwen3.8-27B 延续 Qwen3.5 的架构。官方模型卡给出的 64 层布局是�
 
 ### Prefix Cache 为什么变复杂了
 
-![全注意力 KV Cache 与线性注意力循环状态的区别](https://imgbed.szmckj.cn/uploads/2026/08/18/6a8349827f24c.png)
+![全注意力 KV Cache 与线性注意力循环状态的区别](https://imgbed.anluoying.com/2026/10/2eb096a7d0e1ef0f4784d2b014869f26.png)
 
 第一个变量来自对话模板。Qwen3.8 官方提供 `preserve_thinking` 控制历史 reasoning 是否保留；如果客户端或模板没有把上一轮 reasoning 带进下一轮 Prompt，两轮原始 Token 流就会从这里分叉，分叉后的部分无法命中 Prefix Cache。这是命中率问题，不应该造成回答错误。
 
 第二个变量是快照粒度。线性注意力状态会原地更新，不能像普通 KV 块那样随便回退。vLLM 的 `align` 模式只在对齐边界保存可恢复状态；在我的 vLLM 0.27.1 环境里，每个边界是 784 Token。命中位置差一个 Token，也只能退到更早的快照，短前缀甚至可能零命中。
 
-![vLLM align 模式以 784 Token 为边界恢复 Prefix Cache](https://imgbed.szmckj.cn/uploads/2026/08/18/6a83498c083cc.png)
+![vLLM align 模式以 784 Token 为边界恢复 Prefix Cache](https://imgbed.anluoying.com/2026/10/f5b107bdacc4e5519937f998081873eb.png)
 
 第三个变量是 MTP 投机解码。草稿 Token 被拒绝时，普通 KV Cache 可以删除多出来的块；线性注意力状态却已经被更新，不能直接把那几个 Token “吐出来”。快照恢复、前缀缓存恢复和投机回滚叠在一起，如果状态路径没有完全对齐，就可能从性能问题升级为正确性问题。
 
-![混合线性注意力模型中 MTP 投机解码的状态回滚问题](https://imgbed.szmckj.cn/uploads/2026/08/18/6a83498e3aebc.png)
+![混合线性注意力模型中 MTP 投机解码的状态回滚问题](https://imgbed.anluoying.com/2026/10/9e1fd88593d34401db72a4732f6a700d.png)
 
 SGLang 为混合模型设计了 `MambaRadixCache`，把循环状态快照挂到 Radix 树节点，并为投机解码的草稿 Token 分配独立状态槽。vLLM 则提供 `none/align/all` 三种 Mamba Cache 模式；我这轮使用的是仍标为实验性的 `align`，没有开启 MTP。
 
@@ -277,7 +277,7 @@ llm-pi-ai:
 
 普通文本、`off` 关闭 thinking、`low` 分离 reasoning、Bash 工具调用和工具续轮都正常。DSH 的 `read_image` 也会把图片作为原生 Image Block 交给 Qwen，不是先偷偷换成外部 OCR 文本。
 
-![DeepSeek Harness 调用 read_image 读取四张测试发票图片](https://imgbed.szmckj.cn/uploads/2026/08/18/6a8346da3c25b.png)
+![DeepSeek Harness 调用 read_image 读取四张测试发票图片](https://imgbed.anluoying.com/2026/10/55ec7bfa3df13aac2c9f38da3db34c97.png)
 
 如果不熟悉 Harness 里的 Tool Call 和工具结果续轮，可以先看[模型到底是怎么调用工具的]({{< relref "posts/模型到底是怎么调用工具的.md" >}})。
 
@@ -300,7 +300,7 @@ PDF 的字体编码导致 pypdf 无法抽取文本，WorkBuddy 没有卡死，�
 
 全新上下文带来的 Prefill 很可能是耗时因素之一，但不是唯一能从这次测试证明的原因；子 Agent 的任务拆分、工具文档读取和停止条件同样会影响交付。
 
-![WorkBuddy 完成发票去重并生成带公式的 Excel](https://imgbed.szmckj.cn/uploads/2026/08/18/6a83489a18db0.png)
+![WorkBuddy 完成发票去重并生成带公式的 Excel](https://imgbed.anluoying.com/2026/10/e7b202bf1262a999b8f9ee1897895637.png)
 
 ### DSH：过度分析可以靠约束缓解，但识别错误还在
 

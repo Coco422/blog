@@ -1,6 +1,6 @@
 ---
 title: R2S复活记
-description: 作者分享R2S路由器复活经历，从固件升级到iStoreOS，安装passwall2，解决魔法失效问题。通过配置旁路由DHCP服务，实现设备自动分流，普通设备走主路由，需要魔法的设备自动指向R2S，解决了网络切换配置失效的困扰。
+description: "把闲置的 R2S 升级到 iStoreOS，重新配置旁路由和 DHCP，让需要代理的设备自动分流，顺便记下远程控制连接问题。"
 date: 2026-03-25T23:25:22+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

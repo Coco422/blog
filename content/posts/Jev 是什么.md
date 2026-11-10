@@ -1,5 +1,5 @@
 ---
-title: Jev 是什么
+title: "Jev 是什么：System One 决策模型与浏览器实测"
 description: Jev 像个会读自然语言的分类器，能帮 Agent 分任务、审动作、选按钮。我接上真实 API，试了查航班和飞机漏油，用几个例子看看这种便宜的判断能做什么。
 date: 2026-09-18T18:28:25+08:00
 license: Licensed under CC BY-NC-SA 4.0

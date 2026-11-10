@@ -6,7 +6,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-10-17T02:39:45+08:00
+lastmod: 2026-11-10T10:24:15Z
 showLastMod: true
 tags:
   - nginx
@@ -181,3 +181,5 @@ upstream: "http://127.0.0.1:8000/", host: "api.test"
 - [WebSocket proxying](https://nginx.org/en/docs/http/websocket.html)
 
 收工。
+
+要给反代接上 HTTPS，可以接着看 [Nginx 与 Certbot 的容器配置]({{< relref "posts/nginx-certbot.md" >}})；没有开放 80/443 端口时，我后来改用了 [DNS 验证续期]({{< relref "posts/记录一次 Docker Registry Proxy 的 HTTPS 证书续期排查.md" >}})。

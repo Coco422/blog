@@ -23,7 +23,7 @@ categories:
 
 没有 Agent 框架，也没有真正实现 A2A。只有一个地址、一个 token 和两三个接口。
 
-![两个 Agent 通过 HTTP 留言板交换消息并分别读取两台 Mac 的本机日志](https://imgbed.szmckj.cn/uploads/2026/08/31/6a9553864e322.png)
+![两个 Agent 通过 HTTP 留言板交换消息并分别读取两台 Mac 的本机日志](https://imgbed.anluoying.com/2026/10/c87d568374d62ce137002b685bba0e25.png)
 
 ## 一个最小的跨机器通信通道
 
@@ -72,7 +72,7 @@ A2A 1.0 把核心数据模型、操作和传输绑定分开，并提供 JSON-RPC
 
 > MCP 解决 Agent 怎么使用工具和数据；A2A 解决 Agent 怎么把任务交给另一个 Agent，并持续获取任务状态和结果。
 
-![MCP 负责 Agent 调用工具和数据，A2A 负责 Agent 之间交接任务与跟踪结果](https://imgbed.szmckj.cn/uploads/2026/08/31/6a9553872406c.png)
+![MCP 负责 Agent 调用工具和数据，A2A 负责 Agent 之间交接任务与跟踪结果](https://imgbed.anluoying.com/2026/10/f7869c317680ffab7116bfbc984ca1d5.png)
 
 比如一个 Agent 可以通过 MCP 读取本机日志；当它需要把另一台机器的检查工作交给远端 Agent 时，这部分协作更接近 A2A。
 
@@ -96,7 +96,7 @@ A2A 规定了如何从一个已知服务地址获取 Agent Card，以及找到�
 - **A2A**：怎样把任务交给它，并拿到进度和结果；
 - **MCP**：Agent 接到任务后，怎样调用工具和数据。
 
-![Agent 联网中的发现与组网、A2A 协作以及 MCP 工具与数据三层能力](https://imgbed.szmckj.cn/uploads/2026/08/31/6a955388f30ee.png)
+![Agent 联网中的发现与组网、A2A 协作以及 MCP 工具与数据三层能力](https://imgbed.anluoying.com/2026/10/532216d76abcd8ac911f0b09d8ff7aa6.png)
 
 这个分层只是为了方便理解，不代表实际系统必须同时使用 LAD-A2A、A2A 和 MCP。真正从局域网扩展到互联网，还会继续碰到身份、加密、权限、NAT 穿透、中继和离线消息等问题。
 

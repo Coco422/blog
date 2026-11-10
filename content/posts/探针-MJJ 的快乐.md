@@ -16,7 +16,7 @@ tags:
 categories:
   - 杂技浅尝
 ---
-![CF-Server-Monitor 世界地图模式显示 6 台服务器在线|300](https://imgbed.szmckj.cn/uploads/2026/09/02/6a97a0edacd05.png)
+![CF-Server-Monitor 世界地图模式显示 6 台服务器在线|300](https://imgbed.anluoying.com/2026/10/91f640199c2eb3bbb434e857b00b9f7b.png)
 
 > 最近好多个 oneman 云的灵车都死光光了，剩下这几个都是 3-8$左右的月付
 
@@ -114,7 +114,7 @@ journalctl -u cf-probe -f
 
 ## 最后的效果
 
-![CF-Server-Monitor 多服务器监控面板效果](https://imgbed.szmckj.cn/uploads/2026/09/02/6a9715091fe99.png)
+![CF-Server-Monitor 多服务器监控面板效果](https://imgbed.anluoying.com/2026/10/17284129c9bdef51e8f7b5aadcbdafdb.png)
 
 这个界面其实也能换肤，但是懒得弄了，现在这个还行。深色终端风格，服务器可以按地区和分组展示，CPU、RAM、磁盘、网速、总流量、月流量、价格和到期时间都有，当然 后面几个信息自己配置的。延迟和丢包也不是只放一个数字，而是直接给一排小色块，看着很直观。
 

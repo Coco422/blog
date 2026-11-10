@@ -11,6 +11,7 @@ tags:
 categories:
   - 杂技浅尝
 showLastmod: true
+lastmod: 2026-11-10T10:24:15Z
 ---
 ## 接上篇，定义 SLM 的模型架构
 
@@ -540,3 +541,5 @@ print(enc.decode(y.squeeze().tolist()))
 看推理结果可以判断，应该是我切数据集切出问题了。失误了，但是本次学习已经学到一些皮毛，足矣，暂时不重新搞了。以后有机会自己训练一个小 BERT 模型 看看有什么用
 
 ![另一组模型推理输出](https://imgbed.anluoying.com/2025/08/eb737087c188eae8dfead54a903ee1a1.png)
+
+这篇接着[第一篇的数据准备]({{< relref "posts/SLM-1-数据准备.md" >}})，训练前先确认分词和批次能正常加载。

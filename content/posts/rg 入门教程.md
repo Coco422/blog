@@ -1,6 +1,6 @@
 ---
 title: rg 入门教程
-description: 把 ripgrep / rg 的安装、基础搜索、过滤、搜不到时的排查顺序整理成一篇初学者小抄
+description: "把 ripgrep 的安装、基础搜索和文件过滤整理成一份小抄，记下大小写、隐藏文件和忽略规则导致搜不到内容时的排查顺序。"
 date: 2026-06-24T15:05:58+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

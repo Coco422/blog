@@ -1,6 +1,6 @@
 ---
 title: 检测虚标U盘并复活它
-description: 介绍如何使用 ValiDrive 检测虚标 U 盘的真实容量，并通过 DiskGenius 删除虚假分区、按约 460–470MB 重建 FAT32 分区，让标称 32GB、实际仅约 493MB 的 U 盘恢复基本使用。
+description: "用 ValiDrive 检测虚标 U 盘的实际容量，再用 DiskGenius 重建小分区，把标称 32GB 的盘恢复到能基本使用的状态。"
 date: 2026-08-30T13:56:36+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

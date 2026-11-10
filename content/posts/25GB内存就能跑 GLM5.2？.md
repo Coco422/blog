@@ -1,6 +1,6 @@
 ---
 title: 25GB 内存就能跑 GLM-5.2？我在 RTX 3060 上实测了 744B MoE
-description: colibri 宣称消费级机器也能运行 GLM-5.2 744B。我在一台 RTX 3060、40GB 内存的内网虚拟机上完成部署，并测试了磁盘流式专家、VRAM/RAM 分层、O_DIRECT、MTP 与实际生成速度。
+description: "用 RTX 3060 和 40GB 内存实测 GLM-5.2 744B，记录磁盘流式专家与内存分层的部署过程，以及实际速度和限制。"
 date: 2026-07-17T19:07:57+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

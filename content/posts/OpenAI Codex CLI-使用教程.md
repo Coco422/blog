@@ -1,6 +1,6 @@
 ---
 title: OpenAI Codex CLI-使用教程
-description: OpenAI Codex CLI-使用教程，转载自 newapi docs
+description: "转载整理 New API 的 Codex CLI 使用教程，保留 Windows、macOS 和 Linux 安装、模型配置及常见问题的操作入口。"
 date: 2026-06-28T19:36:15+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

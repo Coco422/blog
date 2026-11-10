@@ -1,5 +1,5 @@
 ---
-title: lua打日志
+title: "Lua 打日志：session:consoleLog 与字符串拼接"
 description: "从 FreeSWITCH 日志示例出发，解释 Lua 的冒号调用、字符串拼接、string.rep 与 consoleLog 用法，帮助快速读懂基础日志代码。"
 date: 2025-09-25T15:44:17+08:00
 license: Licensed under CC BY-NC-SA 4.0

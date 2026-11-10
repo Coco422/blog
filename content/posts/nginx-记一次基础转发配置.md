@@ -8,6 +8,7 @@ hidden: false
 comments: true
 draft: false
 toc: true
+lastmod: 2026-11-10T10:24:15Z
 ---
 
 
@@ -178,3 +179,5 @@ server_name 172.16.99.32;
 ## 这里最后主要是证书问题
 
 以后再研究了，还是太菜
+
+后来把常用配置重新记成了 [Nginx 入门]({{< relref "posts/nginx-基础.md" >}})和[反向代理]({{< relref "posts/nginx-反代.md" >}})，这份旧配置可以和那两篇对着看。

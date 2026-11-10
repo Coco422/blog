@@ -1,6 +1,6 @@
 ---
 title: 搓了个工具箱+github pages
-description: 这篇文章记录了我最近用 Gemini 3 + Cursor 打造在线工具箱的完整过程：包括如何让前端模块化、如何让工具自动被识别、如何用 Gemini 生成漂亮 UI，以及最终用 GitHub Actions 自动构建并部署到 GitHub Pages。期间也踩了自带的 GITHUB_TOKEN 写
+description: "用 Gemini 和 Cursor 搓一个模块化网页工具箱，再通过 GitHub Actions 发布到 Pages，记录界面生成和部署权限踩坑。"
 date: 2025-11-28T18:02:01+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

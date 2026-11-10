@@ -1,7 +1,7 @@
 ---
 title: Ghostty食用指南
 slug: ghostty-guide
-description: Ghostty 终端使用指南，从安装到配置的完整教程，包括主题设置、字体配置和快捷键使用技巧。
+description: "从系统终端换到 Ghostty，记录 Mac 上的安装、毛玻璃主题配置，以及配合 btop 和 neofetch 调整终端外观的过程。"
 date: 2026-03-17T17:35:25+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

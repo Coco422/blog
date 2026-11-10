@@ -1,6 +1,6 @@
 ---
 title: 把 Qwen3-VL 塞进 RK3588：一次端侧 VL Agent 的小实验
-description: 记录在 Firefly AIO-3588L 上部署 Qwen3-VL-2B 的过程，包括模型运行、性能优化、FastAPI Web 封装，以及接近 14 tok/s 的端侧视觉语言推理实测。
+description: "在 RK3588 开发板上部署 Qwen3-VL-2B，记下推理优化、网页封装和接近每秒 14 个 token 的端侧视觉模型测试。"
 date: 2026-06-30T17:19:51+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

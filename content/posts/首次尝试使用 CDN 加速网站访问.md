@@ -1,6 +1,6 @@
 ---
 title: 首次尝试使用 CDN 加速网站访问
-description: 本文记录了作者首次使用CDN加速网站访问的实践过程，包括CDN基础概念介绍、选择Doki CDN平台的原因、详细配置步骤以及加速效果对比。作者通过配置子域名www.666.com，上传SSL证书，设置CNAME解析，成功实现了网站访问加速。
+description: "第一次给网站接入 Doki CDN，记下证书、CNAME、回源主机名与端口跟随配置，以及遇到 502 后的排查过程。"
 date: 2026-03-25T16:31:04+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

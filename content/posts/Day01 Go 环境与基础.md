@@ -1,6 +1,6 @@
 ---
 title: Day01 Go 环境与基础
-description: Go 学习第一天，搭建开发环境并过一遍基础语法，官网文档比什么教程都靠谱。
+description: "Go 学习第一天，从官网下载和检查环境开始，跟着 A Tour of Go 过一遍基础语法，也记下读官方中英文教程时的感受。"
 date: 2025-12-19T23:46:01+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

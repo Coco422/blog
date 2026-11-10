@@ -1,6 +1,6 @@
 ---
 title: Idea 激活
-description: 记录 IntelliJ IDEA 激活方法和相关工具使用说明
+description: "记录 2025 年 8 月使用 Go 编译工具处理 IntelliJ IDEA 激活的过程，保留当时的仓库入口和操作截图，作为旧版环境备忘。"
 date: 2025-08-24T01:50:07+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: true

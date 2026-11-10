@@ -1,6 +1,6 @@
 ---
 title: mitmproxy 实战以及抓包Claude Code
-description: 记录在 macOS 上安装配置 mitmproxy、处理 quarantine 和证书信任，并通过 upstream 链接 clash，只让 Claude Code 走代理，在 mitmweb 中抓取和分析请求。
+description: "在 Mac 配置 mitmproxy 与证书信任，让 Claude Code 单独经过本地代理，在 mitmweb 查看请求并分析调用过程。"
 date: 2026-05-30T21:12:03+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

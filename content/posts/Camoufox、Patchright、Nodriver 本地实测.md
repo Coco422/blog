@@ -85,7 +85,7 @@ navigator.webdriver: true
 
 Sannysoft 的 8 个基础项目通过 6 个，失败的是 UA 和 WebDriver。Incolumitas 的两组检测合计出现 5 个 `FAIL`，包括 `HEADCHR_UA`、`WEBDRIVER` 和内存特征。
 
-![原生 Playwright 在 Sannysoft 检测中暴露 HeadlessChrome UA 和 WebDriver](https://imgbed.szmckj.cn/uploads/2026/08/31/6a95849bea21a.png)
+![原生 Playwright 在 Sannysoft 检测中暴露 HeadlessChrome UA 和 WebDriver](https://imgbed.anluoying.com/2026/10/c366e380f9e4fdfdb14fb3f276b49c0a.png)
 
 难怪会被拦，这基本等于进门先说了一句“我是自动化浏览器”。
 
@@ -102,7 +102,7 @@ Sannysoft 的 8 个基础项目通过 6 个，失败的是 UA 和 WebDriver。In
 
 Camoufox 在 Sannysoft 唯一失败的是 `window.chrome` 不存在，但 Camoufox 本来就是 Firefox，不应该为了通过 Chromium 专属检查硬塞一个 `window.chrome`。反过来，它在 Incolumitas 的 `webDriverAdvanced` 上出现一个 `FAIL`，说明也不能把“底层修改”理解成绝对不可检测。
 
-![Camoufox 在 Sannysoft 检测中隐藏 WebDriver，Firefox UA 不含 Headless 标记](https://imgbed.szmckj.cn/uploads/2026/08/31/6a95849c612a3.png)
+![Camoufox 在 Sannysoft 检测中隐藏 WebDriver，Firefox UA 不含 Headless 标记](https://imgbed.anluoying.com/2026/10/f8d95ae349611355e9f59e645b418414.png)
 
 Patchright 和 Nodriver 都成功把 `navigator.webdriver` 从 `true` 变成了 `false`，但在当前 headless 配置下，UA 仍写着 `HeadlessChrome`。Patchright 官方推荐的最佳实践其实是 `headless=False`、真实 Chrome、持久化 context，并明确建议不要手动乱改 UA 和请求头。这次为了同条件比较，没有给它单独开 headful 加分局。
 

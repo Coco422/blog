@@ -1,6 +1,6 @@
 ---
 title: "DeepSeek-V4-Flash 实测：八卡 RTX 3090 与双卡 RTX PRO 6000 差多少？"
-description: "对比八张 RTX 3090 与两张 RTX PRO 6000 部署 DeepSeek-V4-Flash 的 DSpark、Prefill、Decode 和并发表现，并整理不同预算下的硬件选择边界。"
+description: "DeepSeek-V4-Flash 实测：对比八卡 3090 与双卡 RTX PRO 6000 的投机解码、长提示词和并发表现。"
 date: 2026-08-08T01:53:57+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -17,6 +17,7 @@ tags:
   - llama.cpp
 categories:
   - 杂技浅尝
+seoTitle: "DeepSeek-V4-Flash：八卡 3090 与双卡 RTX PRO 6000 实测"
 ---
 
 上一篇我把 DeepSeek-V4-Flash 塞进了[八张 RTX 3090](/posts/deepseek-v4-flash-8x-rtx-3090/)，结尾留下两件事：给 3090 测 DSpark 投机解码，再找两张 RTX PRO 6000 跑官方权重。
@@ -30,7 +31,7 @@ categories:
 
 不过先说清楚：这不是一场严格控制变量的 GPU 跑分。两边使用的权重、推理引擎、DSpark 配置和虚拟化环境都不同。本文比较的是**我实际能部署出来的两套方案**，不是单纯比较 RTX 3090 和 RTX PRO 6000 的理论算力。
 
-![八卡 RTX 3090 机架与双卡 RTX PRO 6000 工作站对比插图|300](https://imgbed.szmckj.cn/uploads/2026/08/08/6a76180a432b4.png)
+![八卡 RTX 3090 机架与双卡 RTX PRO 6000 工作站对比插图|300](https://imgbed.anluoying.com/2026/11/000d6ddf04e450b8f3a79dbd79486533.webp)
 
 ## 两套 DeepSeek-V4-Flash 环境有什么不同
 
@@ -66,7 +67,7 @@ categories:
 
 在这套没有 NVLink、没有 P2P 的八卡 PCIe 环境里，猜三步反而比猜五步更合适。
 
-![Unsloth 推荐 DeepSeek-V4-Flash 使用 DSpark n_max=3 的加速图表|300](https://imgbed.szmckj.cn/uploads/2026/08/08/6a761310e5eb6.png)
+![Unsloth 推荐 DeepSeek-V4-Flash 使用 DSpark n_max=3 的加速图表|300](https://imgbed.anluoying.com/2026/11/b0a2570d5fb73337ea587d6fc3be689b.webp)
 
 不过 DSpark 不是打开以后所有任务都自动加速。之前测试 512 Token 的短输出时，它有时只快几个百分点，甚至还会倒退。
 
@@ -149,7 +150,7 @@ CUDA Graph FULL_AND_PIECEWISE
 
 新 shape 的首次 JIT 还会再慢一刀：同样约 17.5K 输入，第一次请求总耗时约 8.76 秒，预热后 TTFT 稳定到约 5.7 秒。正式上线前，最好主动跑一组覆盖常用并发、上下文和长输出的 warmup。
 
-![双卡 RTX PRO 6000 处理长输入后以约 204 tok/s 解码的阶段示意|300](https://imgbed.szmckj.cn/uploads/2026/08/08/6a7617ffad4e5.png)
+![双卡 RTX PRO 6000 处理长输入后以约 204 tok/s 解码的阶段示意|300](https://imgbed.anluoying.com/2026/11/2a7c5ce35c0aea38fe8aae260c680384.webp)
 
 ## 双卡 RTX PRO 6000 的 204 tok/s 从哪里来
 
@@ -186,7 +187,7 @@ SGLang 的 target-only 基线其实不差：单路约 70 tok/s，8 并发全部�
 
 速度确实舒服，基本没有“模型还在慢慢打字，我先去刷会儿手机”的感觉。
 
-![本地 DeepSeek-V4-Flash 生成的明暗主题天气卡片效果](https://imgbed.szmckj.cn/uploads/2026/08/08/6a761167191dd.gif)
+![本地 DeepSeek-V4-Flash 生成的明暗主题天气卡片效果](https://imgbed.anluoying.com/2026/11/763ff5eb0bf344ee38fe9add46a66d52.webp)
 
 自己部署的 DeepSeek 和官方 API 在效果上仍有差异。我目前只是猜测可能与系统提示词或部署模式有关，时间有限，还没有完成严格对照。这轮先确认了可行性，质量差异以后再查。
 

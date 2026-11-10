@@ -1,6 +1,6 @@
 ---
 title: 什么是 CUDA：用 Java 世界的类比看懂 Driver / Toolkit / PyTorch / Conda
-description: Driver、CUDA Toolkit、PyTorch、Conda 这几个概念很容易混在一起，本文用 Java 开发者熟悉的 JVM / JDK / Spring Boot 做类比，把它们的关系理清楚。
+description: "用 Java 开发者熟悉的概念，理清显卡驱动、CUDA 工具包、PyTorch 和 Conda 各自负责什么，记下配置环境时容易混淆的关系。"
 date: 2026-07-14T22:17:51+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -14,6 +14,7 @@ tags:
   - environment
 categories:
   - 什么是什么
+seoTitle: "CUDA 环境：驱动、Toolkit、PyTorch 与 Conda"
 ---
 >AI 开发配置 conda / cuda / pytorch / nvidia-driver 很容易混淆，让人头疼，实际上踩过几次坑就能摸清它们的概念和关系了。本文尝试用 Java 开发者熟悉的语言，对照解释几个常见概念。
 

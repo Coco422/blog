@@ -23,3 +23,11 @@
 
 /index.json
   X-Robots-Tag: noindex
+
+# Dooki replaces only "noindex, follow" on the public CDN response.
+# Preserve the separate /index.json noindex directive above.
+https://blog-dc5.pages.dev/*
+  X-Robots-Tag: noindex, follow
+
+https://:deployment.blog-dc5.pages.dev/*
+  X-Robots-Tag: noindex, follow

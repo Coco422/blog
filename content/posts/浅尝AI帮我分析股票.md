@@ -1,6 +1,6 @@
 ---
 title: 浅尝AI帮我分析股票
-description: "之前看到多次那种AI虚拟盘炒股大战了，今天又刷到个股市分析的项目，忍不住了，搞一个下来玩玩 以下记录折腾过程而已 GitHub - ZhuLinsen/daily\_stock\_analysis LLM驱动的 A/H股智能分"
+description: "在服务器部署股票分析项目，改用 google-genai 并配置模型接口、行情和新闻来源，最后把分析报告推送到飞书，记录一次折腾过程。"
 date: 2026-01-24T02:16:23+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

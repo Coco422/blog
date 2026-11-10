@@ -1,6 +1,6 @@
 ---
 title: "Win 常用开发环境安装"
-description: 记上一次急躁的我为了扩C盘直接抛弃了D盘后。所有开发环境也被我删干净了，都在D盘。正好那就重新安装，顺便记录一下。 我主要用到的环境一般是python java和node 这里java因为许久未碰。我都把我JB系列的软件都删了，
+description: "给 Windows 重新安装开发环境，记下 Miniconda 管理 Python 和 nvm 管理 Node.js 的过程，以及几个容易混淆的安装入口。"
 date: 2025-03-21T23:14:48+08:00
 tags: ["windows","环境"]
 categories: ["杂技浅尝"]

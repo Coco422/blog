@@ -13,6 +13,20 @@ python3 scripts/seo_audit.py
 
 策略和巡检约定见 `docs/SEO.md`。必须用干净的 production 输出，不要在陈旧 `public/` 上审计。
 
+## 远程图片尺寸
+
+新增图床图片后，先缓存原始宽高，再构建：
+
+```bash
+python3 scripts/image_metadata.py
+hugo --environment production --cleanDestinationDir --printI18nWarnings --printPathWarnings
+python3 scripts/seo_audit.py
+```
+
+尺寸工具需要 Pillow（`python3 -m pip install Pillow`），仅请求缺少记录的图片，最多读取每张图片前 1 MiB，并以 6 个并发、25 秒超时限制请求。成功结果写入 `data/remote_images.json`，应与文章一同提交；失败会保留已有结果并返回非零退出码。替换同一 URL 的图片时，先移除对应缓存条目再重跑。
+
+Hugo 构建只读本地尺寸缓存，不访问图床。图片模板保留 `|300` 等显示尺寸语法，按原始比例补齐另一边；没有指定尺寸时输出原图宽高。审计会提示漏掉宽高的图床图片，并检查 Open Graph 与 Twitter 分享图一致。
+
 ## 文楷字体子集
 
 站点保留完整的 LXGW WenKai GB 源字体，同时实际页面加载由当前博客语料生成的较小子集。新增文章出现少见汉字后，可重新生成：

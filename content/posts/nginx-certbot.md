@@ -8,6 +8,7 @@ license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
+lastmod: 2026-11-10T10:24:15Z
 ---
 ## Nginx and Let’s Encrypt with Docker
 
@@ -18,3 +19,5 @@ draft: false
 配完后确保域名解析到服务器即可（一直忘记改 cf，懵了好一会儿）
 
 主要是为了下一篇文章 配置评论系统
+
+反代基础配置可以先看 [proxy_pass 与代理头]({{< relref "posts/nginx-反代.md" >}})。如果服务没有开放 80/443 端口，我后来记过一次 [acme.sh 配合 DNS 验证的续期排查]({{< relref "posts/记录一次 Docker Registry Proxy 的 HTTPS 证书续期排查.md" >}})。

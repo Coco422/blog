@@ -1,12 +1,12 @@
 ---
 title: "八张 RTX 3090 本地部署 DeepSeek-V4-Flash：32K、64K、128K 实测"
-description: "使用 llama.cpp 和 UD-Q4_K_XL GGUF 将 DeepSeek-V4-Flash-0731 部署到八张 RTX 3090，记录显存占用、长上下文性能、KV Cache 与 OpenCode 实测。"
+description: "八张 RTX 3090 用量化权重运行 DeepSeek-V4-Flash，实测不同上下文长度下的显存、速度和 OpenCode 使用体验。"
 date: 2026-08-05T22:11:44+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
 comments: true
 draft: false
-lastmod: 2026-08-05T23:32:31+08:00
+lastmod: 2026-11-10T10:24:15Z
 showLastMod: true
 tags:
   - DeepSeek-V4-Flash
@@ -16,6 +16,7 @@ tags:
   - OpenCode
 categories:
   - 杂技浅尝
+seoTitle: "DeepSeek-V4-Flash 八卡 RTX 3090 部署实测"
 ---
 
 前两天还在纸面上计算 DeepSeek-V4-Flash 本地部署需要多少硬件，这次不继续算账了，直接上机器。
@@ -246,3 +247,5 @@ n_ctx_train = 1048576
 - [Unsloth DeepSeek-V4-Flash-0731 GGUF](https://huggingface.co/unsloth/DeepSeek-V4-Flash-0731-GGUF)
 - [llama.cpp DeepSeek V4 支持 PR](https://github.com/ggml-org/llama.cpp/pull/24162)
 - [llama.cpp Server 文档](https://github.com/ggml-org/llama.cpp/tree/master/tools/server)
+
+后续补上了 [DSpark 投机解码和双卡 RTX PRO 6000 的对比]({{< relref "posts/DeepSeek-V4-Flash-RTX-3090-vs-RTX-PRO-6000.md" >}})，想看换硬件能快多少，可以接着看那篇。

@@ -1,6 +1,6 @@
 ---
 title: 记录一次 Docker Registry Proxy 的 HTTPS 证书续期排查
-description: 本文记录自建 Docker Registry Proxy 证书过期的排查过程。针对未开放 80/443 端口的环境，采用 acme.sh 结合 Cloudflare DNS Challenge 申请泛域名证书，并配置自动续期与容器重启脚本，提供非标准端口下的完整更新方案。
+description: "Docker 镜像代理证书过期，服务又没有开放标准端口，改用 DNS 验证续期，记下 acme.sh 安装证书和自动重启 Nginx 的配置。"
 date: 2026-06-02T17:17:18+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

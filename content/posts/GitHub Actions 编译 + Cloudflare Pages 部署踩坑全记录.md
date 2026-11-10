@@ -1,6 +1,6 @@
 ---
 title: GitHub Actions 编译 + Cloudflare Pages 部署踩坑全记录
-description: 把一个 Vite 前端项目从本地推到 GitHub，让 GitHub Actions 自动编译，再用 Wrangler 部署到 Cloudflare Pages 的完整过程，以及中间踩的坑
+description: "记录 Vite 项目用 GitHub Actions 构建并部署到 Cloudflare Pages 的过程，以及令牌权限和项目名配置踩坑。"
 date: 2026-05-22T18:34:46+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false

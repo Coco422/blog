@@ -46,6 +46,18 @@
   {{- end -}}
 {{- end -}}
 
+{{- /* 离线缓存远程原图尺寸，保留文中指定的显示宽高和原始比例。 */ -}}
+{{- with index site.Data.remote_images $src -}}
+  {{- if and $width (not $height) -}}
+    {{- $height = math.Max 1 (math.Round (div (mul (float $width) .height) .width)) -}}
+  {{- else if and $height (not $width) -}}
+    {{- $width = math.Max 1 (math.Round (div (mul (float $height) .width) .height)) -}}
+  {{- else if and (not $width) (not $height) -}}
+    {{- $width = .width -}}
+    {{- $height = .height -}}
+  {{- end -}}
+{{- end -}}
+
 {{- /* 6. 构建 img 标签属性：合并默认属性和自动生成的属性 */ -}}
 {{- $sizeAttributes := dict -}}
 {{- if and $width (not (isset .Attributes "width")) -}}
@@ -61,7 +73,7 @@
         <img
         {{- range $k, $v := $attributes -}}
             {{- if or $v (eq $k "alt") -}}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
+            {{- printf " %s=%q" $k (string $v) | safeHTMLAttr -}}
             {{- end -}}
         {{- end -}}>
     </a>

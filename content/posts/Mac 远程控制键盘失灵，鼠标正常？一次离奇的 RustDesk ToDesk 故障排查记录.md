@@ -1,6 +1,6 @@
 ---
 title: Mac 远程控制键盘失灵，鼠标正常？一次离奇的 RustDesk ToDesk 故障排查记录
-description: 记录 Mac mini 远程控制时鼠标正常、键盘失灵且卡在锁屏的排查过程：检查 Secure Input 占用，尝试辅助功能键盘、切换输入源和其他远程通道，最终通过切换用户并重连恢复，根因未知。
+description: "Mac 远程控制时鼠标正常、键盘失灵，排查输入占用和控制权限，最后通过切换用户重连恢复，记下这次根因未明的故障。"
 date: 2026-10-14T11:08:59+08:00
 license: Licensed under CC BY-NC-SA 4.0
 hidden: false
@@ -13,6 +13,7 @@ tags:
   - rustdesk
 categories:
   - 杂技浅尝
+seoTitle: "Mac 远程键盘失灵：RustDesk 与 ToDesk 排查"
 ---
 
 最近遇到一个比较奇葩的问题：

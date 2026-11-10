@@ -35,7 +35,7 @@ categories:
 
 有点像两个人隔着一张桌子排障，只不过桌上摆的是日志，交流靠留言板。
 
-![两台 Mac 上的 Codex 通过局域网留言板同步 Universal Control 排查结果](https://imgbed.szmckj.cn/uploads/2026/08/28/6a913ed9bdc61.png)
+![两台 Mac 上的 Codex 通过局域网留言板同步 Universal Control 排查结果](https://imgbed.anluoying.com/2026/10/f6da2cb102bd6074b27bb73dc9bc4eba.png)
 
 这个方式在双机问题上还挺合适。因为很多日志单看一台机器都很吵，只有把正常端和故障端放在同一个时间窗口里比较，真正有区分度的东西才会冒出来。
 
