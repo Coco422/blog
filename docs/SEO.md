@@ -53,7 +53,7 @@ Search Console 是判断 Google 是否抓取、选择 canonical 和拒绝收录�
 
 - Bing Webmaster 的博客资源使用 `https://blog.anluoying.com/`。2026-11-10 通过独立的 `863a01fea8cebbf489df014c0d4e6c19.blog.anluoying.com` CNAME → `verify.bing.com` 验证成功，Cloudflare 设置为仅 DNS、自动 TTL；它不承载网站流量，现有 blog 解析保持不变。回滚时仅移除此验证记录会影响后续所有权复核。
 - 初次使用根目录 `static/BingSiteAuth.xml` 时，本地与 Bingbot UA 均取得 200 且文件匹配，但 Bing 两次报告无法访问，因而改用 DNS 验证；不要据此认定 Bing 已实际抓取网站，也不要关闭安全规则或授权导入全部 GSC 资源。
-- 2026-11-10 已提交 `https://blog.anluoying.com/sitemap.xml`，Bing 控制台显示 Submitted / Processing；尚未给出抓取日期或发现 URL 数。完成验证与提交站点地图不代表已收录。
+- 2026-11-10 已提交 `https://blog.anluoying.com/sitemap.xml`，Bing 控制台显示 Submitted / Processing；尚未给出抓取日期或发现 URL 数。首页的 Bing Index 检查显示 Indexed successfully，22:18 的 Live URL 测试显示 URL can be indexed by Bing、No SEO/GEO issues found；这只能证明该首页的状态，不能推断全站收录。
 - IndexNow 使用根目录 `static/<32 位公钥>.txt` 证明网站所有权。这是协议要求公开的验证材料，不是图床、Cloudflare 或 Bing 的私密 API 凭据；不要把其他服务的密钥放进 `static/`。
 - 验证文件允许抓取，但通过 `X-Robots-Tag: noindex` 避免成为搜索结果。`_headers` 中专用规则要放在源站通配规则之前，确保 CDN 保留独立的 noindex。不要在 robots.txt 中禁止访问验证文件。
 - 先构建和审计，再预览需要通知的 URL；正式发布并确认线上公钥正确后才执行提交：
