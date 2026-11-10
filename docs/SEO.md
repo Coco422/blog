@@ -51,10 +51,11 @@ Search Console 是判断 Google 是否抓取、选择 canonical 和拒绝收录�
 
 ## Bing Webmaster 与 IndexNow
 
-- Bing Webmaster 的博客资源使用 `https://blog.anluoying.com/`，通过根目录的 `static/BingSiteAuth.xml` 验证所有权，避免修改全域 DNS 或授权读取全部 GSC 资源。
-- 验证后提交 `https://blog.anluoying.com/sitemap.xml`。完成验证与提交站点地图不代表已收录。
+- Bing Webmaster 的博客资源使用 `https://blog.anluoying.com/`。2026-11-10 通过独立的 `863a01fea8cebbf489df014c0d4e6c19.blog.anluoying.com` CNAME → `verify.bing.com` 验证成功，Cloudflare 设置为仅 DNS、自动 TTL；它不承载网站流量，现有 blog 解析保持不变。回滚时仅移除此验证记录会影响后续所有权复核。
+- 初次使用根目录 `static/BingSiteAuth.xml` 时，本地与 Bingbot UA 均取得 200 且文件匹配，但 Bing 两次报告无法访问，因而改用 DNS 验证；不要据此认定 Bing 已实际抓取网站，也不要关闭安全规则或授权导入全部 GSC 资源。
+- 2026-11-10 已提交 `https://blog.anluoying.com/sitemap.xml`，Bing 控制台显示 Submitted / Processing；尚未给出抓取日期或发现 URL 数。完成验证与提交站点地图不代表已收录。
 - IndexNow 使用根目录 `static/<32 位公钥>.txt` 证明网站所有权。这是协议要求公开的验证材料，不是图床、Cloudflare 或 Bing 的私密 API 凭据；不要把其他服务的密钥放进 `static/`。
-- 验证文件允许抓取，但通过 `X-Robots-Tag: noindex` 避免成为搜索结果。不要在 robots.txt 中禁止访问验证文件。
+- 验证文件允许抓取，但通过 `X-Robots-Tag: noindex` 避免成为搜索结果。`_headers` 中专用规则要放在源站通配规则之前，确保 CDN 保留独立的 noindex。不要在 robots.txt 中禁止访问验证文件。
 - 先构建和审计，再预览需要通知的 URL；正式发布并确认线上公钥正确后才执行提交：
 
 ```bash
@@ -67,7 +68,7 @@ python3 scripts/indexnow_submit.py --submit https://blog.anluoying.com/posts/exa
 
 最后一行的示例地址必须换成当前 production sitemap 中的真实 canonical URL。脚本默认 dry-run，会拒绝站外、查询参数、锚点及不在 sitemap 中的 URL；`--submit` 先核对线上验证文件，网络或 HTTP 错误不会自动重试。首次全量通知可显式使用 `--submit --sitemap public/sitemap.xml`，后续不要反复提交未变化的全站页面。
 
-IndexNow 的 200 代表收到通知，202 代表收到且仍待验证公钥，都不保证抓取或收录。协议与接收端见 [IndexNow 官方文档](https://www.indexnow.org/documentation)及 [官方 FAQ](https://www.indexnow.org/faq)。不额外创建定时全量提交任务。
+2026-11-10 首次通知 sitemap 的 136 个 URL 返回 HTTP 202；稍后单独通知首页返回 HTTP 200，公钥验证已通过。IndexNow 的 200 代表收到通知，202 代表收到且仍待验证公钥，都不保证抓取或收录。协议与接收端见 [IndexNow 官方文档](https://www.indexnow.org/documentation)及 [官方 FAQ](https://www.indexnow.org/faq)。不额外创建定时全量提交任务。
 
 ## Cloudflare Pages 环境
 
@@ -190,7 +191,7 @@ Codex 自动化 `seo-geo` 每周六运行，只读。报告应包含：
 - `llms.txt` 保持 5 个核心条目，更新为两篇 DeepSeek 实测、Qwen3.8、浏览器自动化对比和 Agent 教程入口。
 - 为现有 343 张正文图补齐宽高；DeepSeek 硬件对比文章的 4 张图从约 8.54 MB 缩至 1.55 MB，动画保留全部 75 帧和时长。原图、转换记录和上传校验保存在不公开的 `sources/seo/2026-11-10/`。
 - 晚间复现并处理了 Dooki 的压缩缓存差异：首页和文章的 1 分钟缓存键增加 `Accept-Encoding` 维度，避免 identity、Brotli、gzip 共用同一份回源表示，并追加 `Vary: Accept-Encoding`。文章 identity 约 86.2 KB，Brotli 约 25.7 KB，gzip 约 25.1 KB；连续命中仍保持各自编码。最小压缩长度仍为 1 KiB，最大 32 MiB，算法保持默认；门槛和重新压缩选项的试验未改善现象，均已恢复。具体缓存契约和回滚见 `docs/DEPLOYMENT.md`。
-- 晚间已登录 GSC 核对最新报告；具体口径和数据见下方基线。Bing / IndexNow 使用独立的博客资源和公开所有权验证文件接入，不能从仓库缺少验证文件推断历史账号状态。
+- 晚间已登录 GSC 核对最新报告；具体口径和数据见下方基线。Bing 使用独立的博客资源与 DNS 验证，IndexNow 使用公开所有权验证文件接入，不能从仓库缺少验证文件推断历史账号状态。
 - 保留现有字体加载方案。文楷 preload 与字体就绪后展示逻辑有关，性能调整应结合真实首屏数据一起验证，不能单独移除 preload。
 
 生产发布核验（2026-11-10，提交 `286e5e5`）：正式首页和 DeepSeek 对比文为 200 且可索引，源站同路径返回 `X-Robots-Tag: noindex, follow`；正式 `/index.json` 仍是 `noindex`，标签与搜索页的 meta noindex 保留；sitemap 136 条，精选目录与新分享图已生效，Googlebot / GPTBot / ClaudeBot 均取得 200。晚间继续完成压缩缓存处理和 GSC 基线核验，并接入 Bing / IndexNow；其状态见相应章节。
